@@ -1,0 +1,76 @@
+﻿@using com.igetui.api.openservice.payload
+@using LZY.BX.Model.Enum
+@model Repair.Web.Mng.Models.AuditCompanyQueryModel
+@{
+    ViewBag.Title = "AuditCompany";
+
+    var timeRange = new Repair.Web.Mng.Models.CondTimeRange("CreateTime", 30);
+    timeRange.TimeEnd = timeRange.TimeEnd.AddDays(1);
+}
+<div class="x_panel">
+    <div class="x_title">
+        <h2>审核申请单位</h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <form class="form-inline" action="@Url.Action("AuditCompanyList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list" method="post">
+        <div class="form-group">
+            @Html.Partial("_inc_time_range", timeRange)
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">审核状态</div>
+                <select name="State" class="form-control">
+                    <option value="">==请选择==</option>
+                    @{
+                        var ht = LZY.BX.Utilities.Comm.EnumToHashtable(typeof(LZY.BX.Model.Enum.CompanyState));
+                        foreach (var item in ht.Keys)
+                        {
+                            <option value="@item" @(Model != null ? "selected=selected"  : "")>@ht[item]</option>
+                            //<option value="@item" @(Model != null ? (Model.State == item.ToString() ? "selected=selected" : "") : "")>@ht[item]</option>
+                        }
+                    }
+                </select>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary form-control">搜索</button>
+            </div>
+        </div>
+        <div id="data-list">
+            @{
+                if (Model != null)
+                {
+                    @Html.Action("AuditCompanyList", Model)
+                }
+                else
+                {
+                    @Html.Action("AuditCompanyList", new
+                    {
+                        CreateTimeLess = timeRange.TimeEnd,
+                        CreateTimeGreaterEqual = timeRange.TimeStart,
+                        State = CompanyState.NotActive
+                    })
+                }
+            }
+        </div>
+    </form>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        function Passed(id) {
+            AComfig("确定通过审核？", function () {
+                $.post(GetAjaxOptions('@Url.Action("PassedAudit", "Company")', { id: id,Reason:"" }));               
+            });
+        }
+        function UnPassed(id) {
+            APrompt("请填写不通过的原因", function (noPassReason) {              
+                $.post(GetAjaxOptions('@Url.Action("PassedAudit", "Company")', { id: id, Reason: noPassReason }));
+            });
+        }
+    </script>
+}

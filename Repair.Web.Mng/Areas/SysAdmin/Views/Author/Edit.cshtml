@@ -1,0 +1,130 @@
+﻿@using Repair.Web.Menu
+@model LZY.BX.Model.Roles
+@{
+}
+
+<form method="post" id="form1" name="form1" action="@Url.Action("Edit")">
+    <div class="modal-header">
+        @if (Model == null)
+        {
+            <h4 class="modal-title" id="myModalLabel">角色添加</h4>
+        }
+        else
+        {
+            <h4 class="modal-title" id="myModalLabel">角色修改</h4>
+        }
+        <div class="clearfix"></div>
+    </div>
+    <div class="modal-body">
+
+        <p class="nowrap">
+            <label>名 称：</label>
+            @if (Model.RolesId != 0)
+            {
+                @Html.TextBoxFor(m => m.Name, new { @class = "required", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.Name, new { @class = "required"})
+            }
+            @Html.HiddenFor(m => m.RolesId)
+        </p>
+
+    </div>
+    <div class="modal-body">
+        <p class="nowrap">
+            <label>
+                类别：
+            </label>
+
+            <select name="CompanyType">
+                <option value="Admin">管理员</option>
+                @if (Model.CompanyType != null)
+                {
+                    switch (Model.CompanyType)
+                    {
+                        case "UseCompany":
+                            <option value="UseCompany" selected="selected">报修单位</option>
+                            <option value="ServiceCompany">报修单位</option>
+                            break;
+                        case "ServiceCompany":
+                        <option value="UseCompany">报修单位</option>
+                        <option value="ServiceCompany" selected="selected">报修单位</option>
+                            break;
+                        case "Admin":
+                        <option value="UseCompany">报修单位</option>
+                        <option value="ServiceCompany">报修单位</option>
+                            break;
+                    }
+                }
+                else
+                {
+                    <option value="UseCompany">报修单位</option>
+                    <option value="ServiceCompany">报修单位</option>
+                }
+
+            </select>
+
+        </p>
+    </div>
+    <div class="form-group">
+        <table class="table table-bordered table-striped">
+            @{
+                ViewData["list"] = new List<string>(Model.Permissions.Split(';'));
+                var rootMenu = MenuMng.MenuTree[MenuMng.RootId];
+
+                @Html.Partial("Edit_MenuTree", rootMenu.SubItems, ViewData)
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+            <button id="send" type="submit" class="btn btn-success">保存</button>
+        </div>
+    </div>
+</form>
+
+
+@section scripts{
+    <script language="javascript">
+
+        $(document)
+            .on("click", "td[data-toggle=switch]", function () {
+                var pThis = $(this).closest("tr");
+
+                var show = pThis.data("hide");
+                pThis.data("hide", !show);
+
+                var sub = pThis.parent().find("[pids*=" + pThis.attr("id") + "]");
+                sub.each(function () {
+                    if (show)
+                        $(this).show();
+                    else
+                        $(this).hide();
+                });
+            })
+            .on("click", "input[name=menus]", function () {
+                var checked = this.checked;
+                var pThis = $(this);
+                var tr = pThis.closest("tr");
+                var pBody = tr.closest("tbody");
+                if (checked) {
+                    //向上选中
+                    var pids = (tr.attr("pids")).split(",");
+                    for (var i = 0; i < pids.length; i++) {
+                        var chk = pBody.find("[id=" + pids[i] + "]").find("input");
+                        chk.prop("checked", checked);
+                    }
+                }
+
+                //向下
+                var subs = pBody.find("tr[pids*=" + tr.attr("id") + "]");
+                subs.each(function () {
+                    $(this).find("input").prop("checked", checked);
+                });
+
+            });
+
+    </script>
+}

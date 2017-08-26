@@ -1,0 +1,99 @@
+﻿@model LZY.BX.Model.Page
+@{
+    ViewBag.Title = "Pager";
+    Layout = null;
+    var previous = Model.Index - 1;
+    var next = Model.Index + 1;
+}
+
+<div class="row">
+    <div class="col-md-4 col-sm-2 col-xs-12">
+        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite" style="padding-top: 30px;">共计 @Model.Count 条数据（第 @Model.Index 页）</div>
+    </div>
+    <div class="col-md-7 col-sm-2 col-xs-12">
+        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+            <ul class="pagination">
+                @if (previous < 1)
+                {
+                    <li class="paginate_button previous disabled" id="datatable_previous">
+                        <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">上一页</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button previous" id="datatable_previous">
+                        <a href="javascript:" onclick="PagerChange(1)" aria-controls="datatable" data-dt-idx="0" tabindex="0">首页</a>
+                    </li>
+                    <li class="paginate_button previous" id="datatable_previous">
+                        <a href="javascript:" onclick="PagerChange(@previous)" aria-controls="datatable" data-dt-idx="0" tabindex="0">上一页</a>
+                    </li>
+                }
+                @for (var i = 1; i <= Model.PageCount; i++)
+                {
+                    if (i <= Model.Index - 3)
+                    {
+                        if (i == Model.Index - 3)
+                        {
+                            <li class="paginate_button "><a href="javascript:" onclick="PagerChange(@i)" aria-controls="datatable" data-dt-idx="1" tabindex="0">...</a></li>
+                        }
+
+                    }
+                    else if (i >= Model.Index + 3)
+                    {
+                        if (i == Model.Index + 3)
+                        {
+                            <li class="paginate_button "><a href="javascript:" onclick="PagerChange(@i)" aria-controls="datatable" data-dt-idx="1" tabindex="0">...</a></li>
+                        }
+                    }
+                    else
+                    {
+                        if (i == Model.Index)
+                        {
+                            <li class="paginate_button active disabled"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">@i</a></li>
+                        }
+                        else
+                        {
+                            <li class="paginate_button "><a href="javascript:" onclick="PagerChange(@i)" aria-controls="datatable" data-dt-idx="1" tabindex="0">@i</a></li>
+                        }
+                    }
+
+
+                }
+                @if (next > Model.PageCount)
+                {
+                    <li class="paginate_button next disabled" id="datatable_next">
+                        <a href="#" aria-controls="datatable" tabindex="0">下一页</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button next" id="datatable_next">
+                        <a href="javascript:" onclick="PagerChange(@next)" aria-controls="datatable" data-dt-idx="7" tabindex="0">下一页</a>
+                    </li>
+                    <li class="paginate_button previous" id="datatable_previous">
+                        <a href="javascript:" onclick="PagerChange(@Model.PageCount)" aria-controls="datatable" data-dt-idx="0" tabindex="0">尾页</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+</div>
+
+<script language="javascript">
+    function PagerChange(index) {
+        var temp = document.getElementById("form1");
+        var opt = document.createElement("input");
+        opt.name = "pageIndex";
+        opt.value = index;
+        opt.display = "none";
+        temp.appendChild(opt);
+
+        temp.submit();
+
+    }
+</script>
+
+

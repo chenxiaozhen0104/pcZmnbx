@@ -1,0 +1,73 @@
+﻿@{
+    var user = User as Repair.Web.Site2._0.Utilities.UserCookie;
+}
+
+<header>
+    <div class="header-container">
+
+        @if (user == null)
+            {
+            <a href="/Home/Login">业主登录</a>
+                    <a href="/Home/Login">服务商登录</a>
+                    <a href="/Home/Reg">注册</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Center","User")" class="myRepair">个人中心</a>
+                <a href="@Url.Action("OrderList","Server", new RouteValueDictionary
+                {
+
+                    { "type",1}
+
+                })" class="selfCenter">我是业主</a>
+                <a href="@Url.Action("OrderList","Server",  new RouteValueDictionary
+                {
+                    { "type",2}
+
+                })" class="serverLogin">我是服务商</a>
+                <a href="/Home/LogOut" class="quit">退出</a>
+        }
+    </div>
+
+</header>
+<nav>
+    <div class="navContent">
+        <a href="/Home"><img src="~/Static/images/zmnbx.com.png" class="logo"></a>
+        <div class="navInner">
+            <a href="/Home" class="navInner-content">首页</a>
+            <a href="/News/LatestNews" class="navInner-content">新闻中心</a>
+            <a href="/Join/Index" class="navInner-content">加入我们</a>
+            <a href="/RepairService/CookDevice" class="navInner-content">维修服务</a>
+            <a href="/About/Index" class="navInner-content">关于我们</a>
+            <a href="/Help/HelpReg" class="navInner-content">帮助中心</a>
+        </div>
+        <div class="search">
+            <input type="text" class="search-input" placeholder="请输入你要查找的关键字" />
+            <div class="search-box">
+                <i class="iconfont icon-fangdajing"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    if (location.href.indexOf("Server/OrderList?type=2")>0) {
+        sessionStorage._page = 2
+    }
+    if (location.href.indexOf("Server/OrderList?type=1")>0) {
+        sessionStorage._page = 1
+    }
+    if (location.href.indexOf("User/Center") > 0) {
+        sessionStorage._page = 3
+    }
+    if (sessionStorage._page == '3') {
+        document.querySelector('.myRepair').classList.add('selected')
+    }
+
+    if (sessionStorage._page == '2') {
+        document.querySelector('.serverLogin').classList.add('selected')
+    }
+    if (sessionStorage._page == '1') {
+        document.querySelector('.selfCenter').classList.add('selected')
+    }
+</script>

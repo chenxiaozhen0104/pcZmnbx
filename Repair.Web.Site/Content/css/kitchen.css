@@ -1,0 +1,140 @@
+﻿.kitchen_content{
+    margin:10px 0 30px;
+    overflow:hidden;
+}
+.kitchen_left{
+   float:left;
+}
+.kitchen_right{
+    width:290px;
+    float:right;
+}
+.kitchen_right>img{
+    margin-bottom:10px;
+}
+.lampblack{
+    height:233px;
+    width:888px;
+    border:1px solid #dadada;
+}
+.lampblack>h3{
+    height:59px;
+    text-align:center;
+    width:100%;
+    line-height:59px;
+    border-bottom:1px solid #dadada;
+}
+.brand_list{
+    height:109px;
+    border-bottom:1px solid #dadada;
+    margin:0px 25px;
+    width:838px; 
+}
+.brand_list>p{
+   height:109px;
+   width:78px;
+   padding-top:22px;
+   float:left;
+   font-size:14px;
+   margin-right:20px;
+}
+.brand_list>ul{
+   width:740px;
+   height:109px;
+   float:right; 
+}
+.brand_list>ul li{
+    float:left;
+    font-size:14px;
+    height:40px;
+    line-height:54px;
+    margin-right:45px;
+    margin-top:5px;
+}
+.product_search{
+    height:63px;
+    width:838px;
+    margin:0 25px;
+    position:relative;
+}
+.ckysCommon{
+    position:absolute;
+    height:63px;
+    line-height:63px;
+    font-size:14px;
+}
+.ckys{
+    width:78px;
+    left:0;
+    top:0;
+    margin-right:20px;
+}
+.appraise{
+    width:400px;
+    left:98px;
+    top:0;
+}
+.appraise>p{
+   display:inline-block;
+   margin-right:60px;
+}
+.appraise>p>img{
+    margin:-5px 10px 0 4px;
+    margin-top:-5px;
+}
+.cpxh{
+    right:30px;
+}
+.cpxh>p>input:first-child{
+    height:30px;
+    width:200px;
+    line-height:30px;
+    float:left;
+    outline:none;
+    margin-top:14px;
+}
+.cpxh>p>input:last-child{
+    height:30px;
+    width:50px;
+    line-height:30px;
+    text-align:center;
+    background:#0091ff;
+    color:white;
+    border:none;
+}
+.row{
+    text-align:center;
+    width:100%;
+    margin-left:0;
+    border-bottom:1px solid #dadada;
+}
+.productDetails{
+    background:#edf6fb;
+    margin:15px 0  0 0;
+    height:50px;
+    line-height:50px;
+}
+.boxProduct{
+    height:100px;
+    line-height:100px;
+}
+.boxProduct .col-xs-4 ul{
+    height:100px;
+    line-height:100px;
+    margin-top:-20px;
+}
+.boxProduct .col-xs-4 ul li{
+   height:20px;
+   width:100%;
+}
+.col-xs-4 img{
+    cursor:pointer;
+}
+.kitchenB {
+    height: 120px;
+    width: 100%;
+    background-image: url('../images/img/wxbd.png');
+    margin: 70px 0 -5px;
+}
+
+// 服务设备列表样式：

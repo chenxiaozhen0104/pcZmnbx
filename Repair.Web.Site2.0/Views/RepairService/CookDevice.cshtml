@@ -1,0 +1,631 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 厨房设备";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/RepairService.css" rel="stylesheet" />
+}
+<div class="cook">
+    <div class="cook-banner"></div>
+    <div class="cook-nav">
+        <a class="nav-title" href="#tab0"><i class="iconfont icon-icon_kitchen"></i><span class="nav-text">厨房设备</span></a>
+        <a class="nav-title" href="#tab1"><i class="iconfont icon-sheshinuanqi"></i><span class="nav-text">公共设施</span></a>
+        <a class="nav-title" href="#tab2"><i class="iconfont icon-bangong"></i><span class="nav-text">办公设备</span></a>
+        <a class="nav-title" href="#tab3"><i class="iconfont icon-shenghuodianqi"></i><span class="nav-text">生活电器</span></a>
+    </div>
+    <div class="cook-content">
+        <div class="content-menu">
+            @*厨房设备*@
+            <div class="menu-details none">
+                <div class="menu-category">
+                    <p class="category-left">项目分类：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">油烟机</a>
+                        <a class="middle-text">消毒柜</a>
+                        <a class="middle-text">净水器</a>
+                        <a class="middle-text">洗碗机</a>
+                        <a class="middle-text">咖啡机</a>
+                        <a class="middle-text">面包机</a>
+                        <a class="middle-text">电磁炉</a>
+                        <a class="middle-text">电饭煲</a>
+                        <a class="middle-text">油烟机</a>
+                        <a class="middle-text">消毒柜</a>
+                        <a class="middle-text">净水器</a>
+                        <a class="middle-text">洗碗机</a>
+                        <a class="middle-text hidden">榨汁机</a>
+                        <a class="middle-text hidden">蒸蛋机</a>
+                        <a class="middle-text hidden">冰箱</a>
+                    </p>
+                    <p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">品牌名称：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">美的</a>
+                        <a class="middle-text">老板</a>
+                        <a class="middle-text">海尔</a>
+                        <a class="middle-text">方太</a>
+                        <a class="middle-text">华帝</a>
+                        <a class="middle-text">火王</a>
+                        <a class="middle-text">康帅</a>
+                        <a class="middle-text">香夫人</a>
+                        <a class="middle-text">有爱好太太</a>
+                        <a class="middle-text">美的</a>
+                        <a class="middle-text">老板</a>
+                        <a class="middle-text">海尔</a>
+                        <a class="middle-text">方太</a>
+                        <a class="middle-text">华帝</a>
+                        <a class="middle-text hidden">苏泊尔</a>
+                        <a class="middle-text hidden">万家乐</a>
+                    </p>
+                    <p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">烟机款式：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">中式</a>
+                        <a class="middle-text">欧式</a>
+                        <a class="middle-text">侧式</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">吸烟方式：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">顶吸式</a>
+                        <a class="middle-text">侧吸式</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">型号：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">CXW-200-DJ336</a>
+                        <a class="middle-text">CXW-200-DJ360R</a>
+                        <a class="middle-text">CXW-180-DJ118</a>
+                        <a class="middle-text">CXW-200-DJ570R</a>
+                        <a class="middle-text">CXW-200-DJ320</a>
+                        <a class="middle-text">CXW-230-TJ8055-GRW</a>
+                        <a class="middle-text hidden">CXW-200-DJ336R</a>
+                        <a class="middle-text hidden">CXW-200-DJ370R</a>
+                        <a class="middle-text hidden">CXW-200-DJ320</a>
+                        <a class="middle-text hidden">CXW-230-TJ8055-GRW</a>
+                        <a class="middle-text hidden">CXW-260-DJ750R</a>
+                    </p>
+                    <p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>
+                </div>
+            </div>
+            @*公共设施*@
+            <div class="menu-details none">  
+                <div class="menu-category">
+                    <p class="category-left">项目分类：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">投影仪</a>
+                        <a class="middle-text">窗</a>
+                        <a class="middle-text">门</a>
+                        <a class="middle-text">投影柜</a>
+                        <a class="middle-text">讲桌</a>
+                        <a class="middle-text">课椅</a>
+                        <a class="middle-text">课桌</a>
+                        <a class="middle-text">体育场</a>
+                        <a class="middle-text">路灯</a>
+                        <a class="middle-text">公共设施</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div> 
+                <div class="menu-category">
+                    <p class="category-left">品牌名称：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">明基</a>
+                        <a class="middle-text">索尼</a>
+                        <a class="middle-text">飞利浦</a>
+                        <a class="middle-text">松下</a>
+                        <a class="middle-text">宏碁</a>
+                        <a class="middle-text">丽讯</a>
+                        <a class="middle-text">奥图码</a>
+                        <a class="middle-text">极米</a>
+                        <a class="middle-text">坚果</a>
+                        <a class="middle-text">华谊</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">亮度：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">4000-5000流明</a>
+                        <a class="middle-text">2000-2900流明</a>
+                        <a class="middle-text">3000-3900流明</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">分辨率：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">标清（1024*768）</a>
+                        <a class="middle-text">全高清（1080P）</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">个性：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">3D显示</a>
+                        <a class="middle-text">手机同屏</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+            </div>
+            @*办公设备*@
+            <div class="menu-details none">
+                <div class="menu-category">
+                    <p class="category-left">项目分类：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">投影仪</a>
+                        <a class="middle-text">打印机</a>
+                        <a class="middle-text">复印机</a>
+                        <a class="middle-text">传真机</a>
+                        <a class="middle-text">碎纸机</a>
+                        <a class="middle-text">点钞机</a>
+                        <a class="middle-text">扫描仪</a>
+                        <a class="middle-text">电话机</a>
+                        <a class="middle-text">考勤机</a>
+                        <a class="middle-text">路由器</a>
+                        <a class="middle-text">电脑</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">品牌名称：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">柯尼卡美能达</a>
+                        <a class="middle-text">富士施乐</a>
+                        <a class="middle-text">京瓷</a>
+                        <a class="middle-text">理光</a>
+                        <a class="middle-text">佳能</a>
+                        <a class="middle-text">东芝</a>
+                        <a class="middle-text">夏普</a>
+                        <a class="middle-text">惠普</a>
+                        <a class="middle-text">震旦</a>
+                        <a class="middle-text">三星</a>
+                        <a class="middle-text">基士得耶</a>
+                        <a class="middle-text">新都</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">产品类型：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">数码复合机（多功能）</a>
+                        <a class="middle-text">复印机（单功能）</a>
+                        <a class="middle-text">便携式</a>
+                        <a class="middle-text">工程机</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">颜色类型：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">彩色</a>
+                        <a class="middle-text">黑白</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">速度类型：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">高速（50页以上）</a>
+                        <a class="middle-text">中速（20-50页）</a>
+                        <a class="middle-text">低速（20页以下）</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+            </div>
+            @*生活电器*@
+            <div class="menu-details none">
+                <div class="menu-category">
+                    <p class="category-left">生活电器：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">电视机</a>
+                        <a class="middle-text">冷饮机</a>
+                        <a class="middle-text">洗衣机</a>
+                        <a class="middle-text">干衣机</a>
+                        <a class="middle-text">电熨斗</a>
+                        <a class="middle-text">吸尘器</a>
+                        <a class="middle-text">热水器</a>
+                        <a class="middle-text">收音机</a>
+                        <a class="middle-text">排气扇</a>
+                        <a class="middle-text">照明灯</a>
+                        <a class="middle-text">电风扇</a>
+                        <a class="middle-text">空调</a>
+                    </p>
+                    @*<p class="category-right">
+                        <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+                    </p>*@
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">品牌名称：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">海尔</a>
+                        <a class="middle-text">西门子</a>
+                        <a class="middle-text">三星</a>
+                        <a class="middle-text">LG</a>
+                        <a class="middle-text">小天鹅</a>
+                        <a class="middle-text">美的</a>
+                        <a class="middle-text">松下</a>
+                        <a class="middle-text">三洋</a>
+                        <a class="middle-text">海信</a>
+                        <a class="middle-text">小鸭</a>
+                        <a class="middle-text">博世</a>
+                    </p>
+                    @*<p class="category-right">
+                <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+            </p>*@
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">产品类别：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">滚筒</a>
+                        <a class="middle-text">波轮</a>
+                        <a class="middle-text">双缸</a>
+                        <a class="middle-text">迷你</a>
+                        <a class="middle-text">洗烘一体</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">洗涤容量：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">8公斤以上</a>
+                        <a class="middle-text">7-8公斤</a>
+                        <a class="middle-text">6-7公斤</a>
+                        <a class="middle-text">5-6公斤</a>
+                        <a class="middle-text">5公斤以下</a>
+                    </p>
+                </div>
+                <div class="menu-category">
+                    <p class="category-left">控制方式：</p>
+                    <p class="category-middle">
+                        <a class="middle-text">智能APP控制</a>
+                        <a class="middle-text">电脑控制</a>
+                        <a class="middle-text">机械控制</a>
+                    </p>
+                    @*<p class="category-right">
+                <a class="more clickMore"><span>更多</span><i class="iconfont icon-chevron-down-copy"></i></a>
+            </p>*@
+                </div>
+            </div>
+        </div>
+        <div class="content-details">
+            <div class="details-menu none">
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-01.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-02.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-03.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-04.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-01.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-02.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-03.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/cook-04.png" class="details-img" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+            </div>
+            <div class="details-menu none">
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-copy.png" class="details-img2" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+            </div>
+            <div class="details-menu none">
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png"  class="details-img3"/>
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/repairService-projector.png" class="details-img3" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+            </div>
+            <div class="details-menu none">
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png"  class="details-img4"/>
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+                <div class="details-first">
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：中式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：欧式</span>
+                            <span>吸烟方式：顶吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                    <div class="details-1">
+                        <img src="~/Static/images/RepairService-washing.png" class="details-img4" />
+                        <p class="details-text">
+                            <span>种类：侧式</span>
+                            <span>吸烟方式：侧吸式</span>
+                            <span>产品型号：CXW-180-AS7210-G1</span>
+                        </p>
+                        <a class="details-btn">确认报修</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+    <script src="~/Static/scripts/view/RepairService.js"></script>
+}

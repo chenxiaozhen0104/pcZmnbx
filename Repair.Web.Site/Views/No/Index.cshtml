@@ -1,0 +1,418 @@
+﻿@{
+    ViewBag.Title = "厨房设备";
+    ViewBag.subTitle = "厨房设备";
+    Layout = "~/Views/Shared/_Layout_No.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/css/kitchen.css" rel="stylesheet" />
+}
+
+<div class="kitchen_content">
+    <div class="kitchen_left">
+        <div class="lampblack">
+            <h3>油烟机</h3>
+            <div class="brand_list">
+                <p>品牌名称：</p>
+                <ul>
+                    <li>美的</li>
+                    <li>老板</li>
+                    <li>海尔</li>
+                    <li>方太</li>
+                    <li>华帝</li>
+                    <li>方讯</li>
+                    <li>康帅</li>
+                    <li>香夫人</li>
+                    <li>Haodtai/有爱好太太</li>
+                    <li>万家乐</li>
+                    <li>苏泊尔</li>
+                </ul>
+            </div>
+            <div class="product_search">
+                <p class="ckys ckysCommon ">查看元素：</p>
+                <div class="appraise ckysCommon">
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务速度
+                    </p>
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务质量
+                    </p>
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务态度
+                    </p>
+                </div>
+                <form action="#" method="#" class="cpxh ckysCommon">
+                    <p>
+                        <input type="text" name="cpxhSearch" placeholder="请输入关键字进行搜素" />
+
+                        <input type="submit" value="搜素 " />
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="productDetails row">
+            <div class="col-xs-2">设备名称</div>
+            <div class="col-xs-2">品牌</div>
+            <div class="col-xs-3">厂家名称</div>
+            <div class="col-xs-1">种类</div>
+            <div class="col-xs-4">评价</div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">老板油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/boss.png" /></a></div>
+            <div class="col-xs-3">杭州老板电器股份有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">美的油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/meidi_logo.png" /></a></div>
+            <div class="col-xs-3">芜湖美的厨房电器制造有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">海尔油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/haier_logo.png" /></a></div>
+            <div class="col-xs-3">青岛海尔洗碗有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">老板油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/boss.png" /></a></div>
+            <div class="col-xs-3">杭州老板电器股份有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">美的油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/meidi_logo.png" /></a></div>
+            <div class="col-xs-3">芜湖美的厨房电器制造有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover ="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+</ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">海尔油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/haier_logo.png" /></a></div>
+            <div class="col-xs-3">青岛海尔洗碗有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">老板油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/boss.png" /></a></div>
+            <div class="col-xs-3">杭州老板电器股份有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover ="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+</ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">美的油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/meidi_logo.png" /></a></div>
+            <div class="col-xs-3">芜湖美的厨房电器制造有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="boxProduct row">
+            <div class="col-xs-2">海尔油烟机</div>
+            <div class="col-xs-2"><a href="cfsb_info"><img src="~/Content/images/img/haier_logo.png" /></a></div>
+            <div class="col-xs-3">青岛海尔洗碗有限公司</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-4">
+                <ul>
+                    <li onmouseover="rate(this,event)">
+                        服务态度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onmouseover="rate(this,event)">
+                        服务质量：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                    <li onclick="rate(this,event)">
+                        服务速度：
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                        <img src="~/Content/images/img/startsN.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="kitchen_right">
+        <img src="~/Content/images/img/lampblack01.png" />
+        <img src="~/Content/images/img/lampBlack02.png" />
+    </div>
+</div>
+<div class="kitchenB">
+</div>
+
+
+@section scripts
+{
+    <script>
+
+
+        function rate(obj, oEvent) {
+            var imgSrc = "/Content/images/img/startsN.png"; //没有填色的星星
+            var imgSrc_2 = "/Content/images/img/startsL.png"; //打分后有颜色的星星
+            if (obj.rateFlag) return;
+            var e = oEvent || window.event;
+            var target = e.target || e.srcElement;
+            var imgArray = obj.getElementsByTagName("img");
+
+            for (var i = 0; i < imgArray.length; i++) {
+                imgArray[i]._num = i;
+                imgArray[i].onclick = function () {
+                    if (obj.rateFlag) return;
+                    obj.rateFlag = true;
+                    console.log(this._num + 1);  //this._num+1这个数字写入到数据库中,作为评分的依据
+                };
+            }
+
+            if (target.tagName == "IMG") {
+                for (var j = 0; j < imgArray.length; j++) {
+                    if (j <= target._num) {
+                        imgArray[j].src = imgSrc_2;
+                    } else {
+                        imgArray[j].src = imgSrc;
+                    }
+                }
+            } else {
+                for (var k = 0; k < imgArray.length; k++) {
+                    imgArray[k].src = imgSrc;
+                }
+            }
+        }
+
+    </script>
+}

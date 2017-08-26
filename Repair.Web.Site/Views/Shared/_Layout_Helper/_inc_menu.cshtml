@@ -1,0 +1,56 @@
+﻿@model string[]
+@{
+    var fileDir=Server.MapPath( string.Format("~\\Views\\SystemInfo"));
+    var baseDir = Path.Combine(fileDir,Model[0],Model[1]);
+    var dirs = new List<string>(Directory.GetDirectories(baseDir));
+    dirs.Sort();
+    var cur = string.Join("\\",Model);
+}
+
+<div>
+   
+    <div class="left-menu">
+        @foreach (var dir in dirs)
+        {
+            var topic = Path.GetFileName(dir);
+            var name = topic;
+            if (name.Contains("-"))
+            {
+                name = name.Split('-')[1];
+            }
+            
+            <div>
+                <div><i class="glyphicon glyphicon-list-alt"></i>@name</div>
+                <ul>
+                    @{
+
+            var files = new List<string>(Directory.GetFiles(dir));
+
+                }
+                @foreach (var file in files)
+                {
+                    var pageName = Path.GetFileNameWithoutExtension(file);
+                    var page = Path.GetFileName(file);
+                    if (page.Contains("-"))
+                    {
+                        page = page.Split('-')[1];
+                    }
+                    var page_name = page.Split('.')[0];
+                    
+                    var info = file.Replace(fileDir+"\\",string.Empty)
+                        .Replace(".cshtml",string.Empty)
+                        .Split('\\');
+                        
+                    
+                    var path = string.Join(",",info);
+                    
+                    <li class="@(file.Contains(cur)?"active":string.Empty)" ><a href="@Url.Action("Index", new { id = path })">@page_name</a></li>
+                }
+                </ul>
+            </div>
+        }
+        
+    </div>
+</div>
+
+

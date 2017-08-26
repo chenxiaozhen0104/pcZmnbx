@@ -1,0 +1,395 @@
+﻿body, html {
+    padding: 0;
+    margin: 0;
+    background-color: #f6f6f6;
+}
+
+.content {
+    padding-top: 25px;
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 107px;
+    display: flex;
+    flex-direction: row;
+}
+.center-changeTitle {
+    display: block;
+    text-decoration: none;
+    width: 250px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*左部分*/
+
+.left {
+    background-color: #fff;
+    width: 250px;
+    border-radius: 2px;
+    margin-right: 20px;
+    padding-bottom:160px;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    /*padding: 30px;*/
+    justify-content: center;
+    align-items:center;
+    width:250px;
+    height:170px;
+}
+
+.headPhoto-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    border-color:transparent;
+    /*border:1px solid #eee;*/
+}
+
+.name{
+    width:100px;
+    padding-left:20px;
+}
+.iconfont.icon-gerenziliao, .iconfont.icon-avatar-fill, .iconfont.icon-mima1 {
+    color: #fba02a;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+
+.text-size {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.middle {
+    height: 46px;
+    width: 250px;
+    background-color: #fba02a;
+    line-height: 46px;
+    text-align: center;
+}
+
+.middle-text {
+    font-size: 16px;
+    color: #fff;
+    position:relative;
+}
+    .middle-text:before{
+        content:"";
+        width:3px;
+        height:3px;
+        background-color:#fff;
+        position:absolute;
+        border-radius:3px;
+        top:9px;
+        left:-15px;
+    }
+    .middle-text:after {
+        content: "";
+        width: 3px;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 3px;
+        position: absolute;
+        top: 9px;
+        right: -15px;
+    }
+.bottom {
+    margin-top: 15px;
+}
+.bottom-box {
+    display: flex;
+    flex-direction: row;
+    margin-left: 70px;
+}
+.selfInformation,
+.changeHeadPhoto,
+.pwd {
+    width: 250px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-text.origin-bottom-text {
+    color: #fba02a;
+}
+
+.highLight {
+    background-color: #efefef;
+    border-left: solid 2px #fba02a;
+    color: #fba02a;
+}
+
+
+.bottom-text {
+    font-size: 14px;
+    color: #333;
+}
+/*右部分*/
+
+.right {
+    width: 930px;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 20px 0px 75px 35px;
+}
+/*个人资料*/
+
+.center-change {
+    padding-left: 36px;
+}
+
+.tips {
+    font-size: 12px;
+    color: #999;
+    /*margin-left: 35px;*/
+    margin-bottom:31px;
+}
+
+.selfCenter-form, .changePwd-form {
+    width: 560px;
+}
+
+.form-group {
+    margin-bottom: 19px;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.col-sm-2 {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+    font-size:14px;
+    color:#333;
+}
+.radio {
+    margin-right: 5px;
+}
+.sexName{
+    font-size:12px;
+    color:#333;
+    margin-right:19px;
+}
+.form-control, .form-group-noBorder {
+    display: flex;
+    flex: 10;
+    width: 560px;
+    height: 40px;
+    justify-content: flex-start;
+    align-items: center;
+}
+/*.form-group-noBorder{
+    padding-left:6px;
+}*/
+.code {
+    width: 250px;
+    height: 40px;
+    border: 1px solid #dcdcdc;
+    margin-left: 120px;
+    border-radius: 4px;
+    margin-right: 30px;
+    padding-left: 10px;
+}
+.getCode {
+    width: 160px;
+    height: 40px;
+    background-color: #fba02a;
+    border-radius:4px;
+    border: none;
+    color:#fff;
+    font-size:14px;
+    opacity:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.getCode-text {
+    color:#FFF;
+    font-size:16px;
+}
+.getCode:disabled {
+    opacity: 0.8;
+}
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+.selectBorder {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+}
+
+.address {
+    display: flex;
+    flex-direction: row;
+}
+
+.birth-select {
+    width: 100px;
+    height: 30px;
+    border: #bcbcbc solid 1px;
+    border-radius: 3px;
+}
+.selectElement {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    /*background-color: red;*/
+    margin-right: 20px;
+}
+/*头像修改*/
+/*.changePhoto {
+    padding-left:36px;
+}*/
+
+.changePhoto-content {
+    width: 710px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top:25px;
+}
+.t-photo{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.t-photo-text {
+    color:#666;
+    font-size:14px;
+}
+.change-input{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    /*align-items:center;*/
+    margin-top:50px;
+}
+.change-input-content {
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+.changePhoto-img {
+    width: 140px;
+    height: 140px;
+}
+
+.chagePhoto-input {
+    width: 430px;
+    height: 40px;
+    border: solid 1px #dcdcdc;
+    border-radius: 5px;
+    background-color: transparent;
+    padding-left: 20px;
+    margin-right:11px;
+}
+
+.a-upload {
+    text-decoration: none;
+    /*padding: 5px;*/
+    height: 40px;
+    width:60px;
+    text-align:center;
+    line-height: 40px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.a-upload input {
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
+
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+
+.selfCenter-submit,
+.changePwd-submit,.changePhoto-submit {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: #2095f4;
+    border-radius: 4px;
+    border: none;
+    opacity:1;
+}
+.selfCenter-submit:disabled{
+    opacity:0.6;
+}
+.selfCenter-submit,.changePwd-submit {
+    margin-left: 121px;
+}
+.changePhoto-submit{
+    /*margin-left:180px;*/
+    margin-top:72px;
+}
+#preview {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+    margin-bottom:7px;
+}
+
+    #preview img {
+        width: 100%;
+        height: 100%;
+    }
+/*修改密码*/
+/*.changePwd {
+    padding-left:36px;
+}*/
+
+.changePwd-group {
+    width: 700px;
+    height: 40px;
+}
+.warning,.sure{
+    font-size:12px;
+    margin-left:10px;
+}
+.warning {
+    color: red;
+}
+.sure {
+    color: green;
+}
+.none {
+    display: none;
+}

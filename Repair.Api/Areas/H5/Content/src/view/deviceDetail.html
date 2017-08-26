@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>设备信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+    <link href="../css/component.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="head">
+        <v-header show-back="1">报修</v-header>
+    </div>
+    <div class="bounceds">
+        <ul class="equipment-info">
+            <li class="row">
+                <div class="col-xs-4 text-right">设备名称：</div>
+                <div class="col-xs-8 deviceName"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">类目：</div>
+                <div class="col-xs-8 categoryName"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">型号：</div>
+                <div class="col-xs-8 modelName"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">区域：</div>
+                <div class="col-xs-8 areaName"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">二维码：</div>
+                <div class="col-xs-8" id="txtQrCode"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">安装地点：</div>
+                <div class="col-xs-8" id="txtLocation"></div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">选择服务单位:</div>
+                <div class="col-xs-8">
+                    <select class="device-select" id="serverCompany">
+
+                    </select>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">工单类型:</div>
+                <div class="col-xs-8">
+                    <select class="device-select" id="device-type">
+                        <option value="1">需要维修</option>
+                        <option value="2">需要保养</option>
+                    </select>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">工单级别:</div>
+                <div class="col-xs-8">
+                    <select class="device-select" id="device-level">
+                        <option value="1">普通工单</option>
+                        <option value="2">加急工单</option>
+                    </select>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-xs-4 text-right">备注:</div>
+                <div class="col-xs-8">
+                    <textarea class="device-textarea"></textarea>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+    <nav class="navbar navbar-fixed-bottom bottom-btn">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 device-btn text-center">报修</div>
+        </div>
+    </nav>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="../common/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="../common/httpParams.js"></script>
+<script type="text/javascript" src="../common/layer/layer.js"></script>
+<script type="text/javascript" src="../common/LayerFunction.js"></script>
+<script src="../common/vue.js"></script>
+<script src="../js/component/v-footer.js"></script>
+<script type="text/javascript">
+
+    new Vue({
+        el: "#head"
+    });
+
+
+    var qrcode = (new LG.URL()).get("qrcode");
+    var deviceId = (new LG.URL()).get("deviceId");
+    var url = qrcode ? "/api/device/getByQRcode?qrcode=" + qrcode : "/api/device/get?deviceId=" + deviceId;
+    var serviceCompanyId = '';
+    //获取服务单位
+    (function () {
+        var html = '';
+        $.get("/api/company/getjoincompanys", function (res) {
+            if (res.length > 0) {
+                res.forEach(function (item) {
+                    html += "<option value='" + item.ServiceCompanyId + "'>" + item.Name + "</option>";
+                });
+                $("#serverCompany").html(html);
+            }
+            else {
+                $("#serverCompany").html("<option value='0'>暂无签约单位</option>");
+            }
+        });
+
+    })();
+    $.get(url, function (res) {
+        if (res) {
+            $('#txtQrCode').text(res.QRCode)
+            $('#txtLocation').text(res.Position)
+            $(".deviceName").text(res.Name);
+            $(".areaName").text(res.Area.Name);
+            $(".categoryName").text(res.Category.Name);
+            $(".modelName").text(res.Model);
+            deviceId = res.DeviceId;
+        }
+    });
+   
+    $(".device-btn").click(function () {
+        if ($("#serverCompany").val() && $("#serverCompany").val() != 0) {
+            $.get("/api/order/create", {
+                DeviceId: deviceId,
+                Describe: $(".device-textarea").val(),
+                Level: $("#device-level").val(),
+                Type: $("#device-type").val(),
+                ServiceCompanyId: $("#serverCompany").val()
+            }, function (res) {
+                if (res.error) {
+                    layer.msg(res.error, { icon: 0, shade: [0.3, '#000'], time: 2000 });
+                } else {
+                    location.href = "orderdetails.html?id=" + res.id;
+                }
+            })
+        } else {
+            layer.msg("请选择服务公司", { icon: 0, shade: [0.3, '#000'], time: 2000 });
+        }
+    })
+
+</script>

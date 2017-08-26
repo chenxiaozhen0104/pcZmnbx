@@ -1,0 +1,160 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+@using Repair.Web.Mng.Controllers
+@using Repair.Web.Mng.Menu
+
+@{
+    var user = BaseController.CurrentUser;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <link rel="icon" href="logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/logo.png" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gentallela Alela! | </title>
+    <!-- Bootstrap -->
+    <link href="/resource/vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="/resource/vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- iCheck -->
+    <link href="/resource/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+    <!-- bootstrap-progressbar -->
+    <link href="/resource/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" rel="stylesheet" />
+    <!-- jVectorMap -->
+    <link href="/resource/production/css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="/resource/build/css/custom.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrapvalidator-master/dist/css/bootstrapValidator.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap-datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <link href="~/Content/css/Style.css" rel="stylesheet" />
+
+    <link href="~/Content/css/zr.css" rel="stylesheet" />
+
+    <link href="~/Content/date-picker/dateRange.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                   <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="/resource/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>欢迎,</span>
+                            <h2>@user.NickName</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>菜单</h3>
+                            <ul class="nav side-menu">
+
+                                @{
+                                    var menu = MenuMng.MenuTree[MenuMng.RootId];
+
+                                    @Html.Partial("_Layout/_inc_menu_tree", menu.SubItems)
+
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                           <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="/resource/production/images/img.jpg" alt="">@user.NickName
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                      <a href="/Login/ChangePassword/@user.UserId"><i class="fa fa-sign-out pull-right"></i>修改密码</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="/Login/SignOut"><i class="fa fa-sign-out pull-right"></i>注销</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <!-- top tiles -->
+                <div class="row">@RenderBody()</div>
+                <!-- /top tiles -->
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    杭州绿中游智能科技有限公司
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/resource/vendors/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery/jquery.form.js"></script>
+    <!-- Bootstrap -->
+    <script src="/resource/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="/resource/build/js/custom.min.js"></script>
+
+    <script src="~/Content/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+
+    <script src="~/Content/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+
+    <script src="~/Content/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script src="~/Scripts/layer/layer.js"></script>
+
+    <script src="~/Scripts/lzy/LayerFunction.js"></script>
+
+    <script src="~/Scripts/lzy/AjaxFormPost.js"></script>
+
+    <script src="~/Content/date-picker/dateRange.js"></script>
+
+    <script src="~/Scripts/lzy/zr.js"></script>
+    @Html.Partial("_Layout/_inc_dlgs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

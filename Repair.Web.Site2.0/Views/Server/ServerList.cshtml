@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 服务绑定列表";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+<link href="~/Static/styles/ServerList.css" rel="stylesheet" />
+}
+<div class="public-right">
+    <div class="ServerList-nav">
+        <span class="bindDevice nav-bind" v-on:click="bindDevice">绑定设备</span>
+        <span class="bindCategory nav-bind" v-on:click="bindCategory">绑定类目</span>
+        <span class="bindArea nav-bind" v-on:click="bindArea">绑定区域</span>
+    </div>
+    <div class="ServerList-search">
+        <input type="text" class="search-input" placeholder="用户ID/姓名/手机号码"/>
+        <div class="img-box">
+            <i class="iconfont icon-fangdajing"></i>
+        </div>
+    </div>
+    <div class="ServerList-content">
+        <table class="table" cellspacing="0" cellpadding="0" border-collapse="collapse">
+            <tr class="table-title">
+                <td class="bindType table-td">绑定类型</td>
+                <td class="bindContent table-td">内容</td>
+                <td class="ServiceCompany table-td">服务单位</td>
+                <td class="bindTime table-td">绑定时间</td>
+            </tr>
+            <tr class="table-title">
+                <td class="bindType table-td">绑定设备</td>
+                <td class="bindContent table-td">组合电磁灶</td>
+                <td class="ServiceCompany table-td">绿中游测试公司</td>
+                <td class="bindTime table-td">2017/06/23 12:45:36</td>
+            </tr>
+        </table>
+    </div>
+    @*弹出部分*@
+    @*绑定设备*@
+    <div class="alert-bindDevice">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定设备</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li>
+                        <a href="#" class="1">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="2">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="3">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="4">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="5">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="6">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="7">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="8">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的设备</p>
+                <div class="selectDevice-content">
+
+                </div>
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content">
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn">绑定</a>
+            <a class="cancelBtn">取消</a>
+        </div>
+    </div>
+    @*绑定类目*@
+    <div class="alert-bindCategory">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定类目</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li>
+                        <a href="#" class="1">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的类目</p>
+                <div class="selectDevice-content">
+
+                </div>
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content">
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn">绑定</a>
+            <a class="cancelBtn">取消</a>
+        </div>
+    </div>
+    @*绑定区域*@
+    <div class="alert-bindArea">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定区域</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li>
+                        <a href="#" class="1">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="2">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="3">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="4">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="5">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="6">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="7">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                    <li>
+                        <a href="#" class="8">暂无&nbsp;>&nbsp;暂无&nbsp;>&nbsp;暂无</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的区域</p>
+                <div class="selectDevice-content">
+
+                </div>
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content">
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                    <option value="">绿中游</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn">绑定</a>
+            <a class="cancelBtn">取消</a>
+        </div>
+    </div>
+    @*分页*@
+    <ul class="page" v-if="pagetotal>1">
+        <li v-on:click="find(1)">首页</li>
+        <li v-on:click="find('pre')">上一页</li>
+        <li v-for="obj in pagetotal" v-bind:class="{liActive:obj==pageindex}" v-on:click="find(obj)" v-html="obj" v-if="obj>=pageindex&&obj<(10+pageindex-1)&&obj!=pagetotal"></li>
+        <li v-if="pagetotal>=(10+pageindex-1)" v-html="'...'"></li>
+        <li v-on:click="find(pagetotal)" v-html="pagetotal"></li>
+        <li v-on:click="find('next')">下一页</li>
+        <li v-on:click="find(pagetotal)">尾页</li>
+        <li v-html="'当前第'+pageindex+'页 共'+pagetotal+'页'"></li>
+    </ul>
+</div>
+
+@section js{
+    <script src="~/Static/scripts/view/ServerList.js"></script>
+}

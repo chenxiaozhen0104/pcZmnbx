@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>工单列表</title>
+    <meta charset="utf-8" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../common/style.css" rel="stylesheet" />
+    <link href="../common/layer/skin/layer.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+    <link href="../css/component.css" rel="stylesheet" />
+    <style type="text/css">
+        .row {
+            line-height: 30px;
+            vertical-align: middle;
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        body {
+            background-color: #eeeeee;
+        }
+
+        .container {
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .col-xs-3 {
+            padding-right: 0px !important;
+            color: #c0c0c0;
+        }
+
+        .col-xs-9 {
+            padding-left: 0px !important;
+            color: #728594;
+        }
+
+        .border-1 {
+            background-color: white;
+            margin: 10px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .stateSelect {
+            min-height: 50px;
+            width: 100%;
+            font-size: 18px;
+            line-height: 50px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            z-index: 1030;
+        }
+
+            .stateSelect div:active {
+                color: black;
+            }
+
+            .stateSelect div.active {
+                color: #3879d9;
+            }
+
+            .stateSelect .state-panel {
+                position: absolute;
+                width: 100%;
+                background: #fff;
+                z-index: 1;
+                transition: all 400ms;
+                transform: translate(0,-300%);
+            }
+
+            .stateSelect .show {
+                transform: translate(0,40%);
+            }
+
+            .stateSelect .row {
+                min-height: 50px;
+                width: 100%;
+                font-size: 18px;
+                line-height: 50px;
+            }
+
+            .stateSelect .state-panel {
+                padding-top: 20px;
+                padding-left: 20px;
+            }
+
+                .stateSelect .state-panel .col-xs-4 {
+                    display: inline-block;
+                    border: 1px solid gray;
+                    line-height: 30px;
+                    width: 30%;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+
+            .stateSelect .checked {
+                transition: all 400ms;
+                transform: rotate(180deg);
+            }
+    </style>
+</head>
+<body>
+    <div class="container" id="orderList">
+        <v-header show-reload="true">工单</v-header>
+        <v-refresh v-bind:start="search">
+            <v-state-search @state-goto="stateGoto" v-bind:statelist="statelist"></v-state-search>
+            <div v-for="item in items" :id="item.id">
+                <div class="border-1" v-on:click="order.paged.opendetails(item.id)">
+                    <div class="shape">
+                        <div class="shapeBg" v-bind:class="item.state,item.serviceUserId|stateCss">
+                        </div>
+                        <div class="shapeText">
+                            {{item.state,item.serviceUserId|stateDescription}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3" style="color: #728594 !important;padding-left:38px;">
+                            单号：
+                        </div>
+                        <div class="col-xs-9">
+                            {{item.id}}
+                        </div>
+                    </div>
+                    <div class="border-bottom-1"></div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            创建时间：
+                        </div>
+                        <div class="col-xs-9">
+                            {{item.createTime}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            工单级别：
+                        </div>
+                        <div class="col-xs-9">
+                            {{item.level|levelDescription}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            设备名称：
+                        </div>
+                        <div class="col-xs-9">
+                            {{item.deviceName}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            需求类型：
+                        </div>
+                        <div class="col-xs-9">
+                            {{item.type|typeDescription}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v-refresh>
+        <div class="row" id="footerWran" style="margin:15px;"></div>
+
+        <v-footer active="1"></v-footer>
+    </div>
+</body>
+</html>
+<script src="../js/jquery-3.1.0.js"></script>
+<script src="../common/vue.js"></script>
+<script src="../js/component/v-footer.js"></script>
+<script src="../common/layer/layer.js"></script>
+<script src="../common/LayerFunction.js"></script>
+<script src="../common/httpParams.js"></script>
+<script src="../js/component/v-refresh.js"></script>
+<script src="../js/component/v-state.search.js"></script>
+<script src="../js/order.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        order.paged.search(order.paged.pageIndex, order.paged.curState);
+
+        order.paged.paged();
+
+    });
+</script>

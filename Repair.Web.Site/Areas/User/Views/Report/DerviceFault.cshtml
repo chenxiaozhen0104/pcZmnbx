@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "设备故障";
+    ViewBag.title1 = "统计";
+    ViewBag.title2 = "设备故障";
+}
+
+
+@section styles{
+    <style>
+        .form-group{
+            padding-right:0;
+        }
+        .inputText {
+            width: 96% !important;
+        }
+        .col-xs-3 {
+            font-size: 14px;
+            height: 34px;
+            line-height: 34px;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        .active {
+            border-bottom: 2px solid #41b0f8;
+        }
+        .charts {
+            height: 500px;
+            width: 920px;
+        }
+
+    </style>    
+}
+<form action="">
+    <div class="clear-bottom-15 clear-top-15 panel-body row">
+        <div class="col-xs-3 text-center active ">表格</div>
+        <div class="col-xs-3 text-center">类目图表</div>
+        <div class="form-group col-xs-5 pull-right">
+            <div class="input-group  ">
+                <div class="input-group-addon">关键字</div>
+                <input name="keywords" id="input_text" placeholder="请输入时间" class="form-control inputText" />
+                <span class="input-group-btn ">
+                    <button class="btn btn-default" type="button">搜素</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ul class="formlists">
+        <li>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>年份</th>
+                    <th>空调</th>
+                    <th>火灶</th>
+                    <th>冰箱</th>
+                    <th>保温台</th>
+                    <th>清洗设备</th>
+                    <th>总数</th>
+                </tr>
+                <tr>
+                    <td>2015-01至2015-12</td>
+                    <td>60次</td>
+                    <td>20次</td>
+                    <td>35次</td>
+                    <td>10次</td>
+                    <td>50次</td>
+                    <td>175次</td>
+                </tr>
+                <tr>
+                    <td>2016-01至2016-12</td>
+                    <td>50次</td>
+                    <td>40次</td>
+                    <td>25次</td>
+                    <td>15次</td>
+                    <td>30次</td>
+                    <td>160次</td>
+                </tr>
+            </table>
+        </li>
+        <li style="display:none">
+            <div class="charts"></div>
+        </li>
+    </ul>
+
+</form>
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/echarts.min.js"></script>
+    <script>
+
+        $(".col-xs-3").click(function () {
+            $(this).addClass("active").siblings(".col-xs-3").removeClass("active");
+            var index = $(this).index();
+            $(".formlists>li").eq(index).show().siblings("li").hide();
+
+        })
+        option = {
+            title: {
+                text: '设备类目故障统计',
+                subtext: '2016-01至2016-12',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                top:"20%",
+                left: '15%',
+                data: ['空调', '火灶', '冰箱', '保温台', '清洗设备']
+            },
+            series: [
+                {
+                    name: '设备类目故障统计',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['66%', '48%'],
+                    data: [
+                        { value: 50, name: '空调' },
+                        { value: 40, name: '火灶' },
+                        { value: 25, name: '冰箱' },
+                        { value: 15, name: '保温台' },
+                        { value: 30, name: '清洗设备' }
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        normal: {
+                            label: {
+                                show: true,
+                                formatter: '{b}:{c}({d}%)',
+                            },
+                            labelLine:{show:true}
+                        }
+                    }
+                }
+            ]
+        };
+
+        var myChart = echarts.init($(".charts")[0]);
+     
+        myChart.setOption(option);
+    </script>
+}

@@ -1,0 +1,191 @@
+﻿@using Repair.Web.Site.Areas.User.Models
+@using Newtonsoft.Json
+@using LZY.BX.Model
+@model Dictionary<string, List<WorkIngReportModel>>
+@{
+    ViewBag.Title = "工作响应时间";
+    ViewBag.title1 = "统计";
+    ViewBag.title2 = "工作响应时间";
+
+    var data = JsonConvert.SerializeObject(Model);
+}
+@section styles{
+    <style>
+        .form-group{
+            padding-right:0;
+        }
+        .inputText {
+            width: 96% !important;
+        }
+        .col-xs-3 {
+            font-size: 14px;
+            height: 34px;
+            line-height: 34px;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        .active {
+            border-bottom: 2px solid #41b0f8;
+        }
+        .charts {
+            height: 500px;
+            width: 920px;
+        }
+    </style>
+}
+<form action="">
+    <div class="clear-bottom-15 clear-top-15 panel-body row">
+        <div class="col-xs-3 text-center active ">表格</div>
+        <div class="col-xs-3 text-center">图表</div>
+        <div class="form-group col-xs-5 pull-right">
+            <div class="input-group  ">
+                <div class="input-group-addon">年份</div>
+                <input name="keywords" id="input_text" placeholder="2016" class="form-control inputText" />
+                <span class="input-group-btn ">
+                    <button class="btn btn-default" type="button">搜素</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ul class="formlists">
+        <li>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>服务单位</th>
+                    <th>1月</th>
+                    <th>2月</th>
+                    <th>3月</th>
+                    <th>4月</th>
+                    <th>5月</th>
+                    <th>6月</th>
+                    <th>7月</th>
+                    <th>8月</th>
+                    <th>9月</th>
+                    <th>10月</th>
+                    <th>11月</th>
+                    <th>12月</th>
+                </tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                var flag = false;
+                                for (int j = 0; j < item.Value.Count; j++)
+                                {
+                                    if (i == item.Value[j].Time)
+                                    {
+                                        <td>@item.Value[j].AvgTime</td>
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                                if (!flag)
+                                {
+                                    <td>0.00</td>
+                                }
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+        </li>
+        <li style="display:none">
+            <div class="charts"></div>
+        </li>
+    </ul>
+</form>
+
+
+@section scripts{
+    <script src="~/Scripts/echarts.min.js"></script>
+    <script>
+
+        $(".col-xs-3").click(function () {
+            $(this).addClass("active").siblings(".col-xs-3").removeClass("active");
+            var index = $(this).index();
+            $(".formlists>li").eq(index).show().siblings("li").hide();
+
+        })
+
+        var data = eval(@Html.Raw(data));
+
+        var companyNames = new Array();
+
+        var series = new Array();
+
+        $.each(data, function (i, item) {
+            companyNames.push(i);
+
+            var times = new Array();
+
+            for (var j = 1; j < 13; j++) {
+                var flag = false;
+                $.each(item, function (z, time) {
+                    if (j == time.Time) {
+                        times.push(time.AvgTime);
+                        flag = true;
+                    }
+                });
+                if (!flag) {
+                    times.push('0.00');
+                }
+            }
+
+            series.push(
+                {
+                    name: i,
+                    type: 'bar',
+                    stack: '总量',
+                    barWidth: '70%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideTop'
+                        }
+                    },
+                    data: times
+                }
+            );
+        });
+
+
+
+        var myChart = echarts.init($(".charts")[0]);
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: companyNames
+            },
+            grid: {
+                top: "14%",
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            },
+
+            yAxis: {
+                type: 'value',
+                name: '平均分钟',
+                axisLabel: {
+                    show: true,
+                    formatter: '{value} 分钟',
+                }
+            },
+            series: series
+        }
+        myChart.setOption(option);
+    </script>
+}

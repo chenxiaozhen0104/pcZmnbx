@@ -1,0 +1,63 @@
+﻿@model LZY.BX.Model.QueryModel.UserRoleQueryModel
+@{
+    ViewBag.Title = "UserRoles";
+}
+<form id="form1" action="@Url.Action("UserRoles")" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>用户角色管理</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.ActionLink("添加", "UserRolesEdit", new { id = 0 }, new { @class = "btn btn-primary" })
+            </div>
+
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">用户名称</th>
+                                <th class="column-title">角色名称</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+
+                                <tr>
+                                    <td class=" ">@item.Id</td>
+                                    <td class=" ">@(Model.UserDic.ContainsKey(item.UserId) ? Model.UserDic[item.UserId].RealName : "")</td>
+                                    <td class=" ">@(Model.RolesDic.ContainsKey(item.RolesId) ? Model.RolesDic[item.RolesId].Name : "")</td>
+
+                                    <td class=" ">
+
+                                        @Html.ActionLink("删除", "UserRolesDelete", new { id = item.Id }, new { onclick = "return confirm('确定要删除吗?')" })
+                                        @Html.ActionLink("修改", "UserRolesEdit", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+        </div>
+    </div>
+</form>

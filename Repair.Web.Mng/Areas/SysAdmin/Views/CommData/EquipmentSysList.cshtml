@@ -1,0 +1,68 @@
+﻿@model Repair.Web.Areas.SysAdmin.Models.EquipmentSysQueryModel
+@{
+    ViewBag.Title = "EquipmentSysList";
+    Layout = null;
+}
+
+
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+                <th class="column-title">编号</th>
+                <th class="column-title">Code</th>
+                <th class="column-title">名称</th>
+                <th class="column-title">隶属品牌</th>
+                <th class="column-title">隶属产品</th>
+                <th class="column-title">型号</th>
+                <th class="column-title">安装地址</th>
+                <th class="column-title">报修单位</th>
+                <th class="column-title">服务单位</th>
+                <th class="column-title">功能</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Data == null || Model.Data.Count == 0)
+            {
+                <tr>
+                    <td colspan="9" align="center">暂无数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <td>@item.EquipmentId</td>
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td>@(Model.BrandDic != null ? (Model.BrandDic.ContainsKey(item.BrandId) ? Model.BrandDic[item.BrandId].Name : "无") : "无")</td>
+                        <td>@(Model.ProductDic != null ? (Model.ProductDic.ContainsKey(item.ProductId) ? Model.ProductDic[item.ProductId].CNName : "无") : "无")</td>
+                        <td>@item.Model</td>
+                        <td>@item.Position</td>
+                        <td>@(Model.UseCompanyDic != null ? (Model.UseCompanyDic.ContainsKey(item.UseCompanyId) ? Model.UseCompanyDic[item.UseCompanyId].Name : "无") : "无")</td>
+                        @{
+                    if (Model.ServiceEquipmentDic.ContainsKey(item.EquipmentId))
+                    {
+                        var serviceCompanyId = Model.ServiceEquipmentDic[item.EquipmentId].ServiceCompanyId;
+                        <td>@(Model.ServiceCompanyDic.ContainsKey(serviceCompanyId) ? Model.ServiceCompanyDic[serviceCompanyId].Name : "无")</td>
+                    }
+                    else
+                    {
+                        <td>无</td>
+                    }
+                        }
+                        <td>
+                            @Html.ActionLink("删除", "EquipmentDelete", new { id = item.EquipmentId }, new { onclick = "return confirm('确定要删除吗?')" })
+                            @Html.ActionLink("修改", "EquipmentEdit", new { id = item.EquipmentId })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

@@ -1,0 +1,1182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\www\zmnbx</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Api/Views/Web.config">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/Charts/images/enter.png">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/images/return.png">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/ArrayExtension.js">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/barChart.js">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/echarts.min.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/LineChart.js">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/selectTime.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/Charts/js/vue.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/Charts/Repair.html">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/RepairStatistical.html">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/Charts/ServiceStatistical.html">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap-datetimepicker.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap-switch.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap-theme.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap-theme.css.map">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap-theme.min.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap.css.map">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/bootstrap.min.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/css/custom.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/httpParams.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/layer.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/default/icon-ext.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/default/icon.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/default/loading-0.gif">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/default/loading-1.gif">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/default/loading-2.gif">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/layer/skin/layer.css">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/LayerFunction.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/style.css">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/common/vue.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/component.css">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/component.css.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/equipment.css">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/index.css">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/index.css.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/login.css">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/login.css.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/my.css">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/css/my.css.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/bx.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/home.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/ic_home_round.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/indexBg.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/live_weixin.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/login_logo.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/login_logoservice.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/order-icons.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/repair-bg.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/images/repair.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/index.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/btn-verify-code.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/btn-verify-code.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/user.list.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/user.list.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-footer.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-footer.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-refresh.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-refresh.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-state.search.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-state.search.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-timeline.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/v-timeline.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/vcodebtn.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/component/vcodebtn.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/forgetPassword.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/forgetPassword.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/index.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/index.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/jquery-3.1.0.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/login.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/login.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/order.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/order.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/register.company.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/register.company.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/register.js">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/js/register.js.map">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/addCompany.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/changePassword.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/companyPerMag.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/CompanyType.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/contactUs.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/device.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/deviceDetail.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/downloadApp.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/forgetPassword.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/index.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/login.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/my.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/orderdetails.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/orderlist.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/personDetails.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/register.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/registerCompany.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/repair.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/unqrCodeRepair.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/updateapp.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/UploadTest.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/dist/view/useCompanyInfo.html">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/gulpfile.js">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Button-bg-L-v.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Button-bg-L.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Cancel.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Close.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Forwarding.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/nofound.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/QRCodeBtn.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Receive.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Search.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/searchR.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Select.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Sended.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Sending.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Unsolved.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Worked.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/image/Working.png">
+      <publishTime>07/06/2017 11:18:01</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/bootstrap-datetimepicker.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/bootstrap-select.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/bootstrap-switch.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/bootstrap.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/echarts.min.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/jquery-1.10.2.min.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/js.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ar.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.az.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.bg.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.bn.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ca.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.cs.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.da.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.de.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ee.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.el.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.es.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.fi.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.fr.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.he.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.hr.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.hu.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.hy.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.id.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.is.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.it.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ja.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ka.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ko.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.lt.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.lv.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ms.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.nb.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.nl.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.no.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.pl.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.pt-BR.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.pt.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ro.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.rs-latin.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.rs.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ru.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.sk.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.sl.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.sv.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.sw.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.th.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.tr.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.ua.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.uk.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.zh-CN.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/locales/bootstrap-datetimepicker.zh-TW.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/js/npm.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/layer.js">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/default/icon-ext.png">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/default/icon.png">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/default/loading-0.gif">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/default/loading-1.gif">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/default/loading-2.gif">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/layer/skin/layer.css">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/package.json">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/httpParams.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/layer.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/default/icon-ext.png">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/default/icon.png">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/default/loading-0.gif">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/default/loading-1.gif">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/default/loading-2.gif">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/layer/skin/layer.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/LayerFunction.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/style.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/common/vue.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/css/component.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/css/index.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/css/login.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/css/my.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/bx.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/download_bg.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/download_bx_btn.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/download_wx_btn.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/home.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/ic_home_round.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/indexBg.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/live_weixin.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/login_logo.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/login_logoservice.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/order-icons.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/repair-bg.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/images/repair.png">
+      <publishTime>07/06/2017 11:18:02</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/index.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/btn-verify-code.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/user.list.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/v-footer.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/v-refresh.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/v-state.search.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/component/v-timeline.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/forgetPassword.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/index.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/jquery-3.1.0.js">
+      <publishTime>05/15/2017 13:34:53</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/login.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/order.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/register.company.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/js/register.js">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/addCompany.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/changePassword.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/companyPerMag.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/CompanyType.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/contactUs.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/device.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/deviceDetail.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/downloadApp.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/forgetPassword.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/index.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/login.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/my.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/orderdetails.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/orderlist.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/personDetails.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/register.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/registerCompany.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/repair.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/unqrCodeRepair.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/updateapp.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/UploadTest.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/src/view/useCompanyInfo.html">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/H5/Content/style.css">
+      <publishTime>07/06/2017 11:18:03</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/addCompany.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/cat.touchjs.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/common.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/index.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/touch.min.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/dist/vue.runtime.js">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/fouceWeChat.html">
+      <publishTime>07/06/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/handRepair.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/company.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/companyname.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/delete.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-down1.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-down2.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-down3.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-logo.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu1.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu2.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu3.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu4.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu5.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu6.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-raidu7.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-up.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-up1.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-up2.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-up3.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-yun1.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-yun2.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/login-yun3.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/order-icons.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/phone.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/qrcode.jpg">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-category.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-code.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-contact.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-describle.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-leve.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-model.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-name.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-phoneNumber.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-photo.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-position.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-serviceCompany.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-successBg.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-takephoto.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/repair-type.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/scanCode-bg.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/weChat-bg.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/wxfouceCode-bg.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/wxrepair-bg.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/wxrepair-delete.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/wxrepair-mask.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/images/wxtime.png">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/login.html">
+      <publishTime>07/12/2017 11:26:47</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/orderDetail.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/orderList.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/repair.html">
+      <publishTime>07/12/2017 11:38:10</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/repairSuccess.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/scanCode.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/weChat.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Content/zmnbxapp/weex.html">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Areas/Wx/Views/Web.config">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/GetuiServerApiSDK.dll">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="bin/GetuiServerApiSDK.pdb">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="bin/Google.ProtocolBuffers.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/log4net.config">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Model.dll">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Model.pdb">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.dll">
+      <publishTime>07/12/2017 11:43:33</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.dll.config">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.pdb">
+      <publishTime>07/12/2017 11:43:33</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.SMSManager.dll">
+      <publishTime>07/12/2017 11:43:34</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.SMSManager.pdb">
+      <publishTime>07/12/2017 11:43:34</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Utilities.dll">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Utilities.pdb">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>06/15/2015 02:06:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/Repair.Api.dll">
+      <publishTime>07/12/2017 11:43:38</publishTime>
+    </File>
+    <File Include="bin/Repair.Api.pdb">
+      <publishTime>07/12/2017 11:43:38</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/18/2015 20:19:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/10/2012 21:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/10/2012 21:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/10/2012 21:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/28/2015 04:02:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/28/2015 04:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/ThoughtWorks.QRCode.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/WeiXin.dll">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/WeiXin.pdb">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>07/10/2012 23:30:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>07/10/2012 23:30:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>07/10/2012 23:30:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>05/15/2017 13:40:57</publishTime>
+    </File>
+    <File Include="bin/ZR.dll">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="bin/ZR.pdb">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/06/2017 11:18:05</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/11/2017 12:54:12</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>啄木鸟app下载</title>
+
+    <style type="text/css">
+        * {
+            color: #3879d9;
+        }
+
+        #title {
+            padding-left: 13px;
+        }
+
+
+
+        /*.btn {
+        }
+
+            .btn a {
+                padding: 10px 20px;
+                width: 150px;
+                display: inline-block;
+                margin: 10px 0;
+            }
+
+
+        a:link {
+            color: #3879d9;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #3879d9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3879d9;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #3879d9;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }*/
+
+
+        .container {
+            line-height: 70px;
+            text-align: center;
+            position: absolute;
+            left: 48%;
+            top: 42%;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%); /* IE 9 */
+            -moz-transform: translate(-50%,-50%); /* Firefox */
+            -webkit-transform: translate(-50%,-50%); /* Safari 和 Chrome */
+            -o-transform: translate(-50%,-50%); /* Opera */
+            width: 50%;
+        }
+
+        body {
+            width: 97%;
+            background: url('../images/download_bg.png') no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .title {
+            font-size: 1rem;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">啄木鸟(<span id="pp"></span>)下载</div>
+        <a id="bx"><img src="../images/download_bx_btn.png" /></a>
+        <a id="wx"><img src="../images/download_wx_btn.png" /></a>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    window.onload = function () {
+        var reg = new RegExp("(^|&)appType=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+
+        var type = r != null ? unescape(r[2]) : undefined;
+
+        if (type == 1) {
+            //报修
+            var bx = document.getElementById('bx');
+            bx.style.display = "none";
+
+        }
+        else if (type == 2) {
+            //维修
+            var wx = document.getElementById('wx');
+            wx.style.display = "none";
+        }
+    };
+
+    function is_weixin() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    var isWeixin = is_weixin();
+    var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+    function loadHtml() {
+        var div = document.createElement('div');
+        div.id = 'weixin-tip';
+        div.innerHTML = '<p><img src="../images/live_weixin.png" alt="微信打开"/></p>';
+        document.body.appendChild(div);
+    }
+
+    function loadStyleText(cssText) {
+        var style = document.createElement('style');
+        style.rel = 'stylesheet';
+        style.type = 'text/css';
+        try {
+            style.appendChild(document.createTextNode(cssText));
+        } catch (e) {
+            style.styleSheet.cssText = cssText; //ie9以下
+        }
+        var head = document.getElementsByTagName("head")[0]; //head标签之间加上style样式
+        head.appendChild(style);
+    }
+    var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}";
+    if (isWeixin) {
+        loadHtml();
+        loadStyleText(cssText);
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+     * 智能机浏览器版本信息:
+     *
+     */
+    var browser = {
+        versions: function () {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {//移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+
+    if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+        document.getElementById("pp").innerHTML = "IOS";
+        document.getElementById("bx").href = 'https://itunes.apple.com/cn/app/啄木鸟报修/id1142263530?mt=8';
+        document.getElementById("wx").href = 'https://itunes.apple.com/cn/app/啄木鸟维修/id1144755910?mt=8';
+    }
+    else if (browser.versions.android) {
+        document.getElementById("pp").innerHTML = "Android";
+           document.getElementById("bx").href = 'http://gl.zmnbx.com/app/zmnbx.v2.0.4.apk?target=_updateapp';
+           document.getElementById("wx").href = 'http://gl.zmnbx.com/app/zmnwx.v2.0.5.apk?target=_updateapp';
+    }
+
+</script>

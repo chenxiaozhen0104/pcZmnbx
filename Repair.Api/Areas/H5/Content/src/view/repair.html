@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>啄木鸟报修</title>
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="../css/component.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_newtymnvzenuerk9.css">
+</head>
+<body>
+    <div class="repair">
+        <v-header style="border-bottom:1px solid #fff">啄木鸟</v-header>
+        <!--<div class="repair-scan repair-rervice" id="scanfRepair" onclick="openQRCode()">扫描报修</div>
+        <div class="repair-equipment repair-rervice">设备报修</div>-->
+        <img onclick="openQRCode()" src="../images/repair-bg.png" />
+        <v-footer active="0"></v-footer>
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../common/httpParams.js"></script>
+    <script src="../common/layer/layer.js"></script>
+    <script src="../common/LayerFunction.js"></script>
+    <script src="../common/vue.js"></script>
+    <script src="../js/component/v-footer.js"></script>
+    <script type="text/javascript">
+        window.onerror = handleErr
+        var txt = ""
+
+        function handleErr(msg, url, l) {
+            txt = "There was an error on this page.\n\n"
+            txt += "Error: " + msg + "\n"
+            txt += "URL: " + url + "\n"
+            txt += "Line: " + l + "\n\n"
+            txt += "Click OK to continue.\n\n"
+            AError(txt);
+            return true
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        new Vue({
+            el: ".repair"
+        })
+
+        function openQRCode() {
+            var actionUrl = new LG.URL(ActionBaseUrl);
+            actionUrl.set("target", "_openqrcode");
+            window.location.href = actionUrl.url();
+        }
+
+        function qrCallBack(eUrl) {
+            Loading();
+            var eStr = eUrl.substr(eUrl.lastIndexOf('/') + 1);
+            $.post('/api/device/exist?qrcode=' + eStr, function (res) {
+                if (res) {
+                    location.href = "deviceDetail.html?qrcode=" + eStr;
+                } else {
+                    alert("该二维码未注册")
+                }
+            })
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 登录注册";
+    Layout = null;
+}
+
+
+<link href="//at.alicdn.com/t/font_69y012v944m18aor.css" rel="stylesheet" />
+<link href="~/Static/styles/main.css" rel="stylesheet" />
+<link href="~/Static/styles/login.css" rel="stylesheet" />
+<link href="~/Static/scripts/common/layer/skin/layer.css" rel="stylesheet" />
+
+<div id="login-content">
+    <div class="login-top">
+        <div class="login-topConten">
+            <a class="login-ColorActive" href="/Home/Login">登录</a>
+            <a href="/Home/Reg">注册</a>
+        </div>
+    </div>
+    <div class="login-logo">
+        <div class="login-logoCentent">
+            <a href="/Home/Index"><img src="/Static/images/login-logo.png" /></a>
+            <span class="login-wayText"> 登录</span>
+        </div>
+    </div>
+    <div class="login-center">
+        <div class="login-centerContent">
+            <img src="~/Static/images/login-img.png" />
+
+            <div class="login-centerForm">
+                <ul class="login-centerTitle">
+                    <li class="longin-titleFisrt login-liCommon login-active">账号密码登录</li>
+                    <li class="login-liCommon">手机号码登录</li>
+                </ul>
+
+                <!-- 账号密码登录 -->
+                <div class="login-centerInput">
+                    <div class="login-inpuRow">
+                        <span class="login-incon login-inconActice"><i class="iconfont icon-yonghuming"></i></span>
+                        <input class="login-input longin-focus" type="text" placeholder="手机号码" v-model="pwdPhone" />
+                    </div>
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-mima"></i></span>
+                        <input class="login-input longin-focus" type="password" placeholder="密码" v-model="pwdPassword" />
+                    </div>
+                    <div class="login-row">
+                        <label><input id="pwdChecked" type="checkbox" v-model="checked" /> 自动登录</label>
+                        <a class="login-forgetPassword" href="###">忘记密码？</a>
+                    </div>
+                    <div class="login-row">
+                        <button class="login-submit" v-on:click="pwdLogin">登录</button>
+                    </div>
+                    <div class="login-row">
+                        <a class="login-register" href="/Home/Reg">免费注册</a>
+                    </div>
+                </div>
+
+
+                <!-- 手机号码登录 -->
+                <div class="login-centerInput" style="display:none;">
+                    <div class="login-inpuRow">
+                        <span class="login-incon login-inconActice"><i class="iconfont icon-yonghuming"></i></span>
+                        <input class="login-input" id="yzmPhone" type="text" placeholder="手机号码" v-model="yzmPhone" />
+                    </div>
+
+                    <div class="login-inpuRow">
+                        <input class="login-input login-code" type="text" placeholder="验证码" v-model="yzmCode" />
+                        <btn-verify-code v-bind:verify-user="true" v-bind:mobile="yzmPhone"></btn-verify-code>
+                    </div>
+
+                    <div class="login-row">
+                        <button class="login-submit login-submitTop" v-on:click="yzmLogin">登录</button>
+                    </div>
+                    <div class="login-row">
+                        <a class="login-register" href="/Home/Reg">免费注册</a>
+                    </div>
+                </div>
+
+                @*<div class="login-centerBot">
+                        <p class="login-centerBotTitle">三方登录</p>
+                        <div class="login-centerBotList">
+                            <i class="iconfont icon-qq"></i>
+                            <i class="iconfont icon-weixin"></i>
+                            <i class="iconfont icon-weibo"></i>
+                        </div>
+                    </div>*@
+            </div>
+
+            <!-- 忘记密码登录 -->
+            <div class="login-centerForms" style="display:none;">
+                <ul class="login-centerTitle">
+                    <li class="login-liCommon login-active">密码重置</li>
+                </ul>
+
+                <div class="login-centerInput">
+                    <div class="login-inpuRow">
+                        <span class="login-incon login-inconActice"><i class="iconfont icon-yonghuming"></i></span>
+                        <input class="login-input" type="text" placeholder="手机号码" id="fgtPhone" v-model="fgtPhone" />
+                    </div>
+                    <div class="login-inpuRow">
+                        <input class="login-input login-code" type="text" placeholder="验证码" v-model="fgtCode" />
+                        <btn-verify-code v-bind:verify-user="true" v-bind:mobile="fgtPhone"></btn-verify-code>
+                    </div>
+
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-mima"></i></span>
+                        <input class="login-input longin-focus" id="fgtpassword"  type="password" placeholder="请输入不小于6位的新密码" v-model="fgtPassword"  v-on:input="homeAlter('fgtpassword')"/>
+                    </div>
+
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-mima"></i></span>
+                        <input class="login-input longin-focus" type="password" placeholder="重复新密码" v-model="fgtNewPassword" />
+                    </div>
+
+                    <div class="login-row">
+                        <button class="login-submit" v-on:click="fgtLogin">提交</button>
+                    </div>
+
+                    <a class="login-backLogin" href="/Home/Login">返回登录</a>
+
+                </div>
+
+            </div>
+
+           
+
+        </div>
+
+
+    </div>
+</div>
+    @Html.Partial("footer")
+
+
+    <script src="~/Static/scripts/common/jquery-3.1.0.js"></script>
+    <script src="~/Static/scripts/common/vue.js"></script>
+    <script src="~/Static/scripts/common/layer/layer.js"></script>
+    <script src="~/Static/scripts/common/LayerFunction.js"></script>
+    <script src="~/Static/scripts/component/btn-verify-code.js"></script>
+    <script src="~/Static/scripts/view/login.js"></script>

@@ -1,0 +1,58 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@model Repair.Web.Site.Areas.User.Models.BindingServiceQueryModel
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>绑定类型</th>
+        <th>内容</th>
+        <th>服务单位</th>
+        <th>绑定时间</th>
+    </tr>
+    @{
+        if (Model.Data == null)
+        {
+            <tr>
+                <td colspan="4" align="center">暂无数据</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model.Data)
+            {
+                var Content = "";
+                if (item.BindingType == BindingServiceType.Category)
+                {
+                    Content = Model.CategoryData.ContainsKey(long.Parse(item.Content)) ? Model.CategoryData[long.Parse(item.Content)].Name : "";
+                }
+                else if (item.BindingType == BindingServiceType.Equipment)
+                {
+                    Content = Model.ListDeviceDic.ContainsKey(long.Parse(item.Content)) ? Model.ListDeviceDic[long.Parse(item.Content)].Name : "";
+                }
+                else if (item.BindingType == BindingServiceType.Area)
+                {
+                    Content = Model.AreaList.ContainsKey(long.Parse(item.Content)) ? Model.AreaList[long.Parse(item.Content)].Name : "";
+                }
+                else if (item.BindingType == BindingServiceType.Manufacturer)
+                {
+                    
+                    Content = (Model.BrandList.ContainsKey(long.Parse(item.Content)) && Model.ManufacturerList.ContainsKey((long)Model.BrandList[long.Parse(item.Content)].ManufacturerId)) ? Model.ManufacturerList[(long)Model.BrandList[long.Parse(item.Content)].ManufacturerId].Name : "";
+                }
+                <tr>
+                    <td>@Comm.GetEnumDescription(item.BindingType, typeof(BindingServiceType))</td>
+                    <td>@Content</td>
+                    <td>@item.ServiceCompany.Name</td>
+                    <td>@item.CreateTime</td>
+                </tr>
+            }
+        }
+    }
+
+</table>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

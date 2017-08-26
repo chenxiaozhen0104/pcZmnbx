@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "维修百科";
+    ViewBag.subTitle = "维修百科";
+    Layout = "~/Views/Shared/_Layout_No.cshtml";
+}
+
+@section styles
+{
+    <style>
+        .weixiuLitle {
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+        }
+        .weixiuLitle > span {
+            font-size: 15px;
+            color: #f5474c;
+        }
+        .tipsContent{
+            width:100%;
+            height:auto;
+            border:1px solid #dedede;
+        }
+        .tipsContent>h4{
+            height:60px;
+            border-bottom:1px solid #dedede;
+            text-align:center;
+            line-height:60px;
+            margin:0 54px;
+        }
+        .contentLis{
+            margin:30px 54px;
+        }
+        .contentLis>li:first-child{
+            font-weight:bold;
+        }
+         .contentLis>li{
+            margin:10px 0;
+            font-size:14px;
+         }
+    </style>
+}
+
+<p class="weixiuLitle">油烟机&nbsp;&gt;&nbsp;<span>维修心得</span></p>
+<div class="tipsContent">
+    <h4>油烟机接通电源，风机不转运</h4>
+    <ul class="contentLis">
+        <li>产生这类故障的原因和排除方法是：</li>
+        <li>1.电源接头接触不良或接线焊接处断开。修理时仔细检查接头、插座并将断线修友，风机即可正常转动。  </li>
+        <li>2.电源线芯拆断。可换一根电。</li>
+        <li>3.电动机绕组内的热熔断器烧坏。油烟机的电动机绕组内都装有热熔断器，一旦电动机沮升超过规定值，热熔断器会自行熔断，达到保护电动机及油烟机的作用。一般来说，
+              油烟机在正常工作状态，热熔断器是不起作用的。但如果油烟机因非正常运转、电机本身质，差使沮升过高，或者热熔断器本身质量差等。
+        </li>
+        <li>4.郊会透成热熔断器烧坏而出现风机不转的情况。有时还会碰到双头油烟机中一个风机不转动情况。如果不是电动机本省的故障，只要更换一只热熔断器即可排除风机不转的故障。</li>
+        <li>5.开关接触不良或拍坏。可用万用表讨盆相关触点，如接触不良，可修磨触点。如已扳坏则 应更换新件。</li>
+        <li>丘电动机扭坏。若电动机有”翁嘴”声音发出，则存在两种情况：一种是电机本身的故障；另一种是其他方面原因造成电动机发生堵转现象。具体来说经常发一些情况会造成电动机不转：
+            <br/>(1)风叶与导风框的内壳卡死。应修复变形部位，调整风叶与导风框的间隙。
+            <br/>(2)安装电动机用的三个专用钮钉爪固程度不同而引起电动机同心度偏移。处理方法是重挤盆固燎钉并加弹赞垫圈，以调益其松录程度。
+            <br/>(3)启动电容器开路、短路或容皿减少。更换同型、同规格的电容器即可。
+            <br/>(4)油烟机风腔内存有油污、异物，将风轮旋转部位堵住。这种情况只要清洗后即可排除。
+        </li>
+    </ul>
+</div>

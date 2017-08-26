@@ -1,0 +1,261 @@
+﻿@{
+    ViewBag.Title = "新用户注册";
+    ViewBag.subTitle = "新用户注册";
+    Layout = "~/Views/Shared/_Layout_Author.cshtml";
+}
+<style>
+    .registerimg {
+        width: 100%;
+        height: 600px;
+        background-image: url(/Content/images/img/login_loginbg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        line-height: 20px;
+    }
+
+    .registerimg > div:first-child {
+        width: 1190px;
+        height: 600px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .registerLeft {
+        width: 722px;
+        height: 600px;
+    }
+
+    .registerLeft > img {
+        position: absolute;
+        top: 119px;
+    }
+
+    .inputWrap {
+        width: 330px;
+        height: 390px;
+        background-color: white;
+        border: 1px solid #dedede;
+        position: absolute;
+        left: 720px;
+        top: 110px;
+    }
+
+    .inputWrap > div:first-child {
+        margin: 10px 0 10px 50px;
+        color: #e31818;
+        font-size: 16px;
+        font-family: "宋体";
+        font-weight: bold;
+    }
+
+    .inputWrap > p {
+        padding: 30px 0 0 35px;
+    }
+
+    .username > input {
+        margin: 0 0 0 8px;
+        width: 203px;
+        height: 30px;
+    }
+
+    .username > span {
+        margin-left: -10px;
+    }
+
+    .photoNumber > input {
+        margin: 0 0 0 10px;
+        width: 203px;
+        height: 30px;
+    }
+
+    #password {
+        margin: 0 0 0 10px;
+        width: 120px;
+        height: 30px;
+    }
+
+    #passwordbtn {
+        background-color: #dedede;
+        border: none;
+    }
+
+    .password > input:last-child {
+        margin: 0 0 0 10px;
+        height: 30px;
+    }
+
+    #AjaxSubmit {
+        width: 250px;
+        height: 30px;
+        background-color: #e31818;
+        border: none;
+        color: white;
+        margin: 0 0 10px 40px;
+    }
+
+    .password input.yzm {
+        padding: 0 5px 0 5px;
+        font-size: 10px;
+        height: 30px;
+        width: 70px;
+        margin-left: 10px;
+    }
+
+    .mleft5 {
+        margin-left: 5px;
+    }
+
+    .mbottom {
+        margin: 35px 0 10px 40px;
+    }
+
+    .yyzh {
+        text-align: right;
+        margin-right: 44px;
+    }
+
+    .yyzh > span {
+        color: #dedede;
+    }
+</style>
+
+<form action="@Url.Action("Register")" id="AjaxForm">
+    <div class="registerimg">
+        <div>
+            <div class="registerLeft">
+                <img src="/Content/images/img/login_people.png" />
+            </div>
+            <div class="inputWrap">
+                <div>手机注册</div><hr />
+                <p class="username">
+                    <span>真实姓名</span>
+                    <input type="text" id="username" name="username" placeholder="请输入您的真实姓名" />
+                </p>
+                <p class="photoNumber">
+                    <span>手机号</span>
+                    <input type="text" id="phone" name="phone" placeholder="请输入手机号码" />
+                </p>
+                <p class="password">
+                    <span>验证码</span>
+                    <input type="text" id="password" name="password" placeholder="请输入验证码" />
+                    <input type="button" id="passwordbtn" class="yzm" value="获取验证码" />
+                </p>
+                <div>
+                    <p class="mbottom">
+                        <input type="checkbox" id="iagree" class="mtop4" /><span class="mleft5">我已阅读并同意</span>
+                        <a href="#">《啄木鸟报修服务协议》</a>
+                    </p>
+                    <input type="button" id="AjaxSubmit" value="同意协议并注册 " />
+                    <p class="yyzh">
+                        <span>已经有账号？</span><a href="@Url.Action("Login", new {area = "", Controller = "Author"})">请登录</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts
+{
+    <script type="text/javascript">
+
+        function AjaxSubmitValidate() {
+            var veiPhone = /^(13|15|14|18|17)\d{9}$/;
+
+            var realName = $("#username");
+            var phone = $("#phone");
+            var password = $("#password");
+
+
+            if (realName.val() == "") {
+                ShowError("username", "请输入真实姓名");
+                realName.focus();
+                return false;
+            }
+            if (phone.val() == "") {
+                ShowError("phone", "请输入手机号码");
+                phone.focus();
+                return false;
+            }
+            if (!veiPhone.test(phone.val())) {
+                ShowError("phone", "输入的手机号码不正确");
+                phone.focus();
+                return false;
+            }
+            if (password.val() == "") {
+                ShowError("password", "请输入验证码");
+                password.focus();
+                return false;
+            }
+            if ($("#iagree").is(':checked') == false) {
+                AWarnMsg("勾选同意并阅读");
+                $("#iagree").focus();
+                return false;
+            }
+            return true;
+        }
+
+
+        var login_quick_query = {
+            sms: function (num, callback) {
+                var reg = /^[1][34578]\d{9}$/;
+                var phone = $("#phone");
+                if (phone.val() == "") {
+                    ShowError("phone", "请输入手机号码");
+                    phone.focus();
+                    sendSmsOpen = true;
+                    return;
+                }
+                if (!reg.test(phone.val())) {
+                    ShowError("phone", "手机号码有误");
+                    phone.focus();
+                    sendSmsOpen = true;
+                    return;
+                }
+                var url = '/Author/SmSVeriCode';
+                $.post(url, { "phone": $("#phone").val() }, function (data) {
+                    return callback(data);
+                });
+            }
+        }
+
+        var sendSmsOpen = true;
+
+        $(function () {
+            $("#passwordbtn").click(function () {
+                if (sendSmsOpen) {
+                    sendSmsOpen = false;
+                    login_quick_query.sms($("#phone").val(), function (data) {
+                        if (data.ErrCode != "0") {
+                            ShowError("password", data.ErrMsg);
+                            clearInterval(timer);
+                            sendSmsOpen = true;
+                            return;
+                        }
+                        else {
+                            login_sendSmsFun(60, $('#passwordbtn'));
+                        }
+                    })
+                }
+            });
+        });
+
+
+        //倒计时
+        function login_sendSmsFun(time, obj) {
+            obj.attr('value', time + 's后重新发送');
+            obj.addClass('disable');
+            $("#AjaxSubmit").removeClass('disable');
+            timer = setInterval(function () {
+                time--;
+                obj.attr('value', time + 's后重新发送');
+                if (time == -1) {
+                    clearInterval(timer);
+                    sendSmsOpen = true;
+                    obj.val('点击获取');
+                    obj.removeClass('disable');
+                    return;
+                };
+            }, 1000);
+        }
+    </script>
+}

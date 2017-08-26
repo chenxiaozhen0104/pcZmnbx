@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBBB8A9C-2DDD-45CB-B2B2-012205D6409A}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Repair.Web.Mng</RootNamespace>
+    <AssemblyName>Repair.Web.Mng</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ZR">
+      <HintPath>..\..\Dlls\Ours\ZR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\SysAdmin\Controllers\AuthorController.cs" />
+    <Compile Include="Areas\SysAdmin\Controllers\CommDataController.cs" />
+    <Compile Include="Areas\SysAdmin\Models\EquipmentSysQueryModel.cs" />
+    <Compile Include="Areas\SysAdmin\SysAdminAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\EquipmentController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\QRCodeController.cs" />
+    <Compile Include="Controllers\RepairOrderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MenuAttribute.cs" />
+    <Compile Include="Menu\MenuBuilder.cs" />
+    <Compile Include="Menu\MenuCurrentAttribute.cs" />
+    <Compile Include="Menu\MenuDefaultAttribute.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuMng.cs" />
+    <Compile Include="Menu\MenuRootAttribute.cs" />
+    <Compile Include="Menu\RouteUtils.cs" />
+    <Compile Include="Models\AuditCompanyQueryModel.cs" />
+    <Compile Include="Models\AuthUser.cs" />
+    <Compile Include="Models\CondTimeRange.cs" />
+    <Compile Include="Models\DeviceQueryModel.cs" />
+    <Compile Include="Models\DlgConfirmInfo.cs" />
+    <Compile Include="Models\IPagedList.cs" />
+    <Compile Include="Models\JsonMessage.cs" />
+    <Compile Include="Models\MainOrderQueryModel.cs" />
+    <Compile Include="Models\QueryListModelBase.cs" />
+    <Compile Include="Models\UserCookie.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSession.cs" />
+    <Compile Include="Utilities\AuthMng.cs" />
+    <Compile Include="Utilities\CategoryMng.cs" />
+    <Compile Include="Utilities\ControllerBase.cs" />
+    <Compile Include="Utilities\DefaultControllerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap-datetimepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Content\bootstrap-fileinput\.gitignore" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\examples\index.html" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput.min.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ar.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_bg.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ca.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_cr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_cz.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_da.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_de.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_el.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_es.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_fa.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_fr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_hu.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_id.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_it.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ja.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_LANG.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_nl.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pl.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pt-BR.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pt.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ro.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ru.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_sk.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_th.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_tr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_uk.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_zh-TW.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_zh.js" />
+    <Content Include="Content\bootstrap-fileinput\js\plugins\canvas-to-blob.js" />
+    <Content Include="Content\bootstrap-fileinput\js\plugins\canvas-to-blob.min.js" />
+    <Content Include="Content\bootstrapvalidator-master\.gitignore" />
+    <Content Include="Content\bootstrapvalidator-master\demo\ajaxSubmit.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\ajaxSubmit.php" />
+    <Content Include="Content\bootstrapvalidator-master\demo\attribute.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\choice.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\collapse.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\container.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\container2.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\container3.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\container4.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\date.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\defaultMessage.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\dynamic.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\dynamic2.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\dynamic3.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\dynamic4.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\enable.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\enable2.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\event.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\event2.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\event3.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\feedbackIcons.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\file.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\group.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\html5.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\i18n.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\index.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\invisible.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\message.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\multiple.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\remote.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\remote.php" />
+    <Content Include="Content\bootstrapvalidator-master\demo\remote2.php" />
+    <Content Include="Content\bootstrapvalidator-master\demo\reset.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\selector.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\selector2.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\specialName.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\submitHandler.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\tab.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\target.php" />
+    <Content Include="Content\bootstrapvalidator-master\demo\tooltip.html" />
+    <Content Include="Content\bootstrapvalidator-master\demo\validators.html" />
+    <Content Include="Content\bootstrapvalidator-master\dist\css\bootstrapValidator.css" />
+    <Content Include="Content\bootstrapvalidator-master\dist\css\bootstrapValidator.min.css" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\bootstrapValidator.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\bootstrapValidator.min.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\ar_MA.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\be_FR.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\be_NL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\bg_BG.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\cs_CZ.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\da_DK.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\de_DE.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\en_US.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\es_CL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\es_ES.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\fa_IR.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\fr_FR.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\gr_EL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\he_IL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\hu_HU.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\id_ID.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\it_IT.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\ja_JP.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\nl_NL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\no_NO.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\pl_PL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\pt_BR.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\pt_PT.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\ro_RO.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\ru_RU.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\sq_AL.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\sr_RS.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\sv_SE.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\th_TH.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\tr_TR.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\ua_UA.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\vi_VN.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\zh_CN.js" />
+    <Content Include="Content\bootstrapvalidator-master\dist\js\language\zh_TW.js" />
+    <Content Include="Content\bootstrapvalidator-master\Gruntfile.js" />
+    <Content Include="Content\bootstrapvalidator-master\LICENSE.txt" />
+    <Content Include="Content\bootstrapvalidator-master\screenshots\demo.gif" />
+    <Content Include="Content\bootstrapvalidator-master\src\css\bootstrapValidator.css" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\bootstrapValidator.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\ar_MA.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\be_FR.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\be_NL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\bg_BG.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\cs_CZ.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\da_DK.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\de_DE.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\en_US.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\es_CL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\es_ES.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\fa_IR.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\fr_FR.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\gr_EL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\he_IL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\hu_HU.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\id_ID.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\it_IT.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\ja_JP.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\nl_NL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\no_NO.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\pl_PL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\pt_BR.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\pt_PT.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\ro_RO.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\ru_RU.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\sq_AL.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\sr_RS.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\sv_SE.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\th_TH.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\tr_TR.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\ua_UA.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\vi_VN.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\zh_CN.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\language\zh_TW.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\base64.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\between.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\blank.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\callback.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\choice.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\color.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\creditCard.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\cusip.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\cvv.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\date.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\different.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\digits.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\ean.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\emailAddress.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\file.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\greaterThan.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\grid.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\hex.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\hexColor.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\iban.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\id.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\identical.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\imei.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\imo.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\integer.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\ip.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\isbn.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\isin.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\ismn.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\issn.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\lessThan.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\mac.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\meid.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\notEmpty.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\numeric.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\phone.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\regexp.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\remote.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\rtn.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\sedol.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\siren.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\siret.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\step.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\stringCase.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\stringLength.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\uri.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\uuid.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\vat.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\vin.js" />
+    <Content Include="Content\bootstrapvalidator-master\src\js\validator\zipCode.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\index.html" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\api.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\autoFocus.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\container.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\dynamic.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\enable.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\event.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\excluded.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\group.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\i18n.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\message.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\submit.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\between.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\callback.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\color.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\creditCard.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\date.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\ean.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\emailAddress.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\greaterThan.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\iban.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\id.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\imo.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\ip.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\isbn.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\isin.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\ismn.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\issn.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\lessThan.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\meid.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\phone.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\stringLength.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\uri.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\vat.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\validator\zipCode.js" />
+    <Content Include="Content\bootstrapvalidator-master\test\spec\verbose.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\js\npm.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\boot.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\console.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\jasmine-html.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\jasmine.css" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\jasmine.js" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jasmine\jasmine_favicon.png" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\css\Style.css" />
+    <Content Include="Content\css\zr.css" />
+    <Content Include="Content\date-picker\dateRange.css" />
+    <Content Include="Content\date-picker\dateRange.js" />
+    <Content Include="Content\date-picker\images\calendar_all.png" />
+    <Content Include="Content\date-picker\images\icon_date.png" />
+    <Content Include="Content\date-picker\images\page.png" />
+    <Content Include="Content\date-picker\images\px.png" />
+    <Content Include="Content\date-picker\index.html" />
+    <Content Include="Content\date-picker\monthPicker.css" />
+    <Content Include="Content\date-picker\monthPicker.js" />
+    <Content Include="Content\My97DatePicker\calendar.js" />
+    <Content Include="Content\My97DatePicker\lang\en.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\My97DatePicker\WdatePicker.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Content\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Global.asax" />
+    <Content Include="logo.png" />
+    <Content Include="role.json" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\SysAdmin\Views\Author\Edit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\Edit_MenuTree.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\Roles.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\User.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\UserEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\UserRoles.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\UserRolesEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Author\UserToCompany.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\BrandEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\BrandSys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\DiagnosisEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\DiagnosisSys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\EquipmentEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\EquipmentSys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\EquipmentSysList.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\ManufacturerEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\ManufacturerSys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\ProductEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\ProductSys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\PropertyEdit.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\CommData\PropertySys.cshtml" />
+    <Content Include="Areas\SysAdmin\Views\Web.config" />
+    <Content Include="Areas\SysAdmin\Views\_ViewStart.cshtml" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bootstrap-fileinput\bower.json" />
+    <Content Include="Content\bootstrap-fileinput\CHANGE.md" />
+    <Content Include="Content\bootstrap-fileinput\composer.json" />
+    <Content Include="Content\bootstrap-fileinput\LICENSE.md" />
+    <Content Include="Content\bootstrap-fileinput\nuget\build.bat" />
+    <Content Include="Content\bootstrap-fileinput\nuget\Package.nuspec" />
+    <Content Include="Content\bootstrap-fileinput\package.json" />
+    <Content Include="Content\bootstrap-fileinput\README.md" />
+    <Content Include="Content\bootstrapvalidator-master\bootstrapValidator.jquery.json" />
+    <Content Include="Content\bootstrapvalidator-master\bower.json" />
+    <Content Include="Content\bootstrapvalidator-master\CHANGELOG.md" />
+    <Content Include="Content\bootstrapvalidator-master\CONTRIBUTORS.md" />
+    <Content Include="Content\bootstrapvalidator-master\package.json" />
+    <Content Include="Content\bootstrapvalidator-master\README.md" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrapvalidator-master\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-3.3.5-dist\bootstrap.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery\jquery.form.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\layer\layer.js" />
+    <Content Include="Scripts\layer\skin\default\icon-ext.png" />
+    <Content Include="Scripts\layer\skin\default\icon.png" />
+    <Content Include="Scripts\layer\skin\default\loading-0.gif" />
+    <Content Include="Scripts\layer\skin\default\loading-1.gif" />
+    <Content Include="Scripts\layer\skin\default\loading-2.gif" />
+    <Content Include="Scripts\layer\skin\layer.css" />
+    <Content Include="Scripts\lzy\AjaxFormPost.js" />
+    <Content Include="Scripts\lzy\LayerFunction.js" />
+    <Content Include="Scripts\lzy\md5.js" />
+    <Content Include="Scripts\lzy\zr.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Category\Add.cshtml" />
+    <Content Include="Views\Category\CategoryTree.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Company\AuditCompany.cshtml" />
+    <Content Include="Views\Company\AuditCompanyList.cshtml" />
+    <Content Include="Views\Company\AuditServerCompany.cshtml" />
+    <Content Include="Views\Company\AuditServerCompanyList.cshtml" />
+    <Content Include="Views\Company\Company.cshtml" />
+    <Content Include="Views\Company\CompanyEdit.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\ServiceUnit.cshtml" />
+    <Content Include="Views\Company\ServiceUnitEdit.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\Index2.cshtml" />
+    <Content Include="Views\Device\DeviceList.cshtml" />
+    <Content Include="Views\Device\Edit.cshtml" />
+    <Content Include="Views\Device\ImportExcel.cshtml" />
+    <Content Include="Views\Device\Index.cshtml" />
+    <Content Include="Views\Device\select_area_control.cshtml" />
+    <Content Include="Views\Device\select_brand_control.cshtml" />
+    <Content Include="Views\Device\select_category_control.cshtml" />
+    <Content Include="Views\Device\select_usecompany_control.cshtml" />
+    <Content Include="Views\Equipment\Index.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\QRCode\Index.cshtml" />
+    <Content Include="Views\QRCode\ServiceCompanyBind.cshtml" />
+    <Content Include="Views\QRCode\UseCompanyBind.cshtml" />
+    <Content Include="Views\RepairOrder\Index.cshtml" />
+    <Content Include="Views\RepairOrder\OrderInfo.cshtml" />
+    <Content Include="Views\Shared\dlg_confirm_info.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Html\BrandList.cshtml" />
+    <Content Include="Views\Shared\Html\Pager.cshtml" />
+    <Content Include="Views\Shared\Html\ServiceCompanyList.cshtml" />
+    <Content Include="Views\Shared\pagger.cshtml" />
+    <Content Include="Views\Shared\_inc_time_range.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout\_inc_dlgs.cshtml" />
+    <Content Include="Views\Shared\_Layout\_inc_menu_tree.cshtml" />
+    <Content Include="Views\Shared\_Layout_Alert.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\SysAdmin\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LZY.BX.Model\LZY.BX.Model.csproj">
+      <Project>{ea9ecd9c-a03c-489d-812f-8e0947fc5366}</Project>
+      <Name>LZY.BX.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.Service\LZY.BX.Service.csproj">
+      <Project>{a7ee2791-dd9a-4449-8b05-4ec47372dba2}</Project>
+      <Name>LZY.BX.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.Utilities\LZY.BX.Utilities.csproj">
+      <Project>{104959f9-f140-4d13-9b63-82d808b0ae33}</Project>
+      <Name>LZY.BX.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7494</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7494/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

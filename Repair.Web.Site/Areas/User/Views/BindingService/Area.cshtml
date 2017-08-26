@@ -1,0 +1,216 @@
+﻿@using LZY.BX.Model
+@using Newtonsoft.Json
+@using LZY.BX.Model.Enum
+@model Repair.Web.Site.Areas.User.Models.BindingServiceQueryModel
+@{
+    Layout = null;
+    var area = Model.Data.Select(t => t.Content).ToArray();
+    var selectAreaArr = (area.Length!=0? Html.Raw(JsonConvert.SerializeObject(area)):Html.Raw(JsonConvert.SerializeObject(string.Empty)));
+
+}
+
+
+<link href="~/Content/css/jquery.selectlist.css" rel="stylesheet" />
+<link href="~/Content/css/jquery.treeview.css" rel="stylesheet" />
+
+<style>
+    .bingdignRight {
+        margin-top: 20px;
+    }
+    h5 {
+        margin-bottom: 10px;
+    }
+    .addEquipment > ul {
+        border: 1px solid #a6a6a6;
+        overflow-y: hidden;
+        height: 232px;
+        overflow-y: scroll;
+    }
+
+    .addEquipment > ul > li {
+        height: 23px;
+        width: 100%;
+        line-height: 23px;
+    }
+
+    .addEquipment > ul span {
+        display: inline-block;
+        padding-left: 10px;
+        float: left;
+    }
+
+    .addEquipment > ul a {
+        float: right;
+        padding-right: 10px;
+    }
+
+    .addService {
+        margin-top: 50px;
+    }
+
+    #tree{
+        width: 100%;
+        height: 375px;
+        border: 1px solid #a6a6a6;
+        overflow: scroll;
+        margin: 10px 0 10px 50px;
+        font-size:20px;
+    }
+ 
+</style>
+
+<form class="form-inline" id="data-addUser" data-toggle="ajax-form" data-target="#data-addUser">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">绑定区域</h4>
+    </div>
+    <div class="row" style="margin:10px auto;">
+        <div class="col-xs-4">
+            <ul class="bingdingLeft" id="tree">
+                @if (Model != null)
+                {
+                    foreach (var item in Model.AreaList)
+                    {
+                        <li>
+                            <a href="#" id="@item.Value.AreaId">@item.Value.Name</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1 bingdignRight">
+            <div class="addEquipment">
+                <h5>选择的区域：</h5>
+                <ul>
+                    @foreach (var item in Model.Data)
+                    {
+                        <li><span>@(Model.AreaList.ContainsKey(long.Parse(item.Content))?Model.AreaList[long.Parse(item.Content)].Name+"("+item.ServiceCompany.Name+")":"")</span>  <a href="#" id="@long.Parse(item.Content)" class='deteAll' onclick="deteAll(this)">删除</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="addService">
+                <h5>选择服务单位：</h5>
+                <div id="main_demo">
+                    <select id="edu" name="edu">
+                        @foreach (ServiceCompany item in Model.JoinCompanyDic)
+                        {
+                            <option value="@item.ServiceCompanyId">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="margin-right:30px;" onclick="Binding()">绑定</button>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">取消</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script src="~/Scripts/jquery.treeview.js"></script>
+
+<script>
+    //要绑定的区域集合
+    var areaArr = [];
+    $(function () {
+        if (@selectAreaArr) {
+            areaArr=@selectAreaArr;
+        }
+       
+        $('select').selectlist({
+            zIndex: 6,
+            width: 102,
+            height: 32
+        });
+    });
+
+    $(function () {
+        $("#tree").treeview({
+            collapsed: true,
+            animated: "medium",
+            control: "#sidetreecontrol",
+            persist: "location"
+        });
+    });
+    
+    $("#tree a").click(function () {
+        var txt = $(this).text();
+        if (!areaArr.contains($(this)[0].id)) {
+            areaArr.push($(this)[0].id);
+            if ($(this).parents().siblings('a')) {
+                var txtArr = [];
+                var addTxt = "";
+                var txt1 = $(this).parents().siblings('a').toArray();
+
+                for (var i = 0; i < txt1.length; i++) {
+                    txtArr.push(txt1[i].innerHTML + '->');
+                };
+                for (var i = 0 ; i < txtArr.length; i++) {
+                    addTxt += txtArr[i];
+                };
+                var addText1 = addTxt + txt;
+                var addText = $("<li><span>" + addText1 + "</span><a href='#'id='" + $(this)[0].id+"' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                $(".addEquipment ul").append(addText);
+            };            
+            $(this).unbind('click')
+        }
+    })
+
+    function deteAll(that) {
+        areaArr.remove($(that)[0].id);     
+        $(that).parent().remove();
+        $("#tree a").unbind("click");
+        $("#tree a").click(function () {
+            var txt = $(this).text();
+            if (!areaArr.contains($(this)[0].id)) {
+                areaArr.push($(this)[0].id);
+                if ($(this).parents().siblings('a')) {
+                    var txtArr = [];
+                    var addTxt = "";
+                    var txt1 = $(this).parents().siblings('a').toArray();
+
+                    for (var i = 0; i < txt1.length; i++) {
+                        txtArr.push(txt1[i].innerHTML + '->');
+                    };
+                    for (var i = 0; i < txtArr.length; i++) {
+                        addTxt += txtArr[i];
+                    };
+
+                    var addText1 = addTxt + txt;
+                    var addText = $("<li><span>" + addText1 + "</span><a href='#' id='" + $(this)[0].id + "' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                    $(".addEquipment ul").append(addText);
+                };
+                $(this).unbind('click')
+            }
+        })
+    }
+    function Binding() {      
+        if (areaArr.length == 0) {
+            AErrorMsg("请先选择区域");
+        } else {
+             $.ajax({
+               url:"@Url.Action("BindingArea")",
+                type: "POST",
+                data: { areaArr: areaArr, bindingType: 4, serviceCompanyId: $("#edu input")[0].value },
+                traditional: true,
+                success: function (res) {
+                    if (res.ErrCode == 0) {
+                        ASuccess("区域绑定成功");
+                        window.location.reload;
+                    } else {
+                        AErrorMsg(res.ErrMsg);
+                    }
+                   
+                }
+            });
+
+        }
+
+    }
+
+</script>

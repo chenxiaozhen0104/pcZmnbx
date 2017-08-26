@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 加入我们";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/join.css" rel="stylesheet" />
+}
+
+
+<div  id="container">
+        <div class="join-banner"></div>
+        <div class="join-row">
+            <div class="join-one join-common">
+                <h3>入驻信息填写</h3>
+                <div class="join-oneCont">
+                    <div class="joinOne-top">
+                        <span>选择入驻方式</span>
+                        <span class="joinTab joinTab-active">创建新企业</span>
+                        <span class="joinTab">加入指定企业</span>
+                    </div>
+                    <div class="createCompany">
+                        <div class="joinOne-bottom">
+                            <div class="joinInfo"><span>填写相关信息</span></div>
+                            <div class="joinBottom-right">
+                                <div class="form-row">
+                                    <p>角色选择</p>
+                                    <div class="form-inputs isFactury">
+                                        <label><input type="radio" name="playRoles" :value="2" v-model="chooseType"> 服务商 </label>
+                                        <label><input type="radio" name="playRoles" :value="1" v-model="chooseType"> 业主 </label>
+                                    </div>
+                                </div>
+                                <div class="create-Company createService">
+                                    <input type="hidden" class="input-text" v-model="serviceCompanyId" />
+                                    <div class="form-row">
+                                        <p>单位名称</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text"  v-model="serviceCompany"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>单位地址</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text" v-model="servicePosition"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>联系人</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text" v-model="serviceContact"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>联系电话</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text" id="servicePhone" v-model="servicePhone" v-on:input="ownerBlur('servicePhone')"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>服务范围</p>
+                                        <div class="form-inputs serviceList isFactury">
+                                            <label v-for=" item in serviceList"><input name="serviceList" type="checkbox" :value="item.Category.CategoryId"> {{item.Category.CNName}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>是否为生产厂家</p>
+                                        <div class="form-inputs isFactury">
+                                            <label><input type="radio" name="Joinfactury" :value="0" v-model="IsManufacturer"> 否 </label>
+                                            <label><input type="radio" name="Joinfactury" :value="1" v-model="IsManufacturer"> 是 </label>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <p>营业执照扫描件</p>
+                                        <div class="form-inputs">
+                                            <form enctype="multipart/form-data" id="joinUpload">
+                                                <input type="text" class="chagePhoto-input" readonly />
+                                                <a href="javascript:;" class="a-upload">
+                                                    <input type="file" class="file" name="file"  accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" v-on:change="fileChange(this)" />上传
+                                                </a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <label style="font-size:14px;"><input type="checkbox" v-model="checked"> 我已阅读并同意啄木鸟网站服务协议 </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <input type="button" value="提交" class="create-serviceBtn"  v-on:click="createServiceBtn"/>          
+                                            <p class="joinStatus" v-if="chooseType==2&&serUserState!=3" v-html="'状态:'+(serUserState==0?'审核通过':(serUserState==1?'待审核':'审核不通过'))"></p>
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="create-Company createOwner">
+                                    <input type="hidden" class="input-text" v-model="useCompanyId" />
+                                    <div class="form-row">
+                                        <p>单位名称</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text"  v-model="ownerCompany"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>单位地址</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text"  v-model="ownerPosition"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>联系人</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text" v-model="ownerContact"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p>联系电话</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="input-text" id="phoneBlur" v-model="ownerPhone" v-on:input="ownerBlur('phoneBlur')"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <label style="font-size:14px;"><input type="checkbox" v-model="checked"> 我已阅读并同意啄木鸟网站服务协议 </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <input type="button" value="提交"  class="create-ownerBtn" v-on:click="createOwnerBtn"/>
+                                            <p class="joinStatus" v-if="chooseType==1&&userState!=3" v-html="'状态:'+(userState==0?'审核通过':(userState==1?'待审核':'审核不通过'))"></p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="joinCompany">
+                        <div class="joinOne-bottom">
+                            <div class="joinInfo"><span>填写相关信息</span></div>
+                            <div class="joinBottom-rights">
+                                <div class="form-row">
+                                    <p>角色选择</p>
+                                    <div class="form-inputs isFactury">
+                                        <label><input type="radio" :value="2" name="selectType" v-model="selectType"> 服务商 </label>
+                                        <label><input type="radio" :value="1" name="selectType" v-model="selectType"> 业主 </label>
+                                    </div>
+                                </div>
+                                <div class="create-Company">
+                                    <div class="form-row">
+                                        <p>企业名称</p>
+                                        <div class="form-inputs">
+                                            <input type="text" class="joinSearch" v-model="serviceKey" />
+                                            <input type="button" value="搜素" class="serarchBtn" v-on:click="searchCompany" />
+                                        </div>
+                                    </div>
+                                    <div class="form-row" v-for="item in companyList">
+                                        <p></p>
+                                        <div class="form-inputs joinCompany-list">
+                                            <p><label><input type="radio" :value="item.id" v-model="companyId"> {{"公司名字："+item.Name}}</label></p>
+                                            <p><span class="marginRight">{{"联系人："+item.Contact}}</span> <span>{{"联系方式："+item.Phone}}</span></p>
+                                            <p>{{"地址："+item.Position}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row" v-if="isShow">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            没有符合搜索的内容
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <label style="font-size:14px;"><input type="checkbox" v-model="checked"> 我已阅读并同意啄木鸟网站服务协议 </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <p></p>
+                                        <div class="form-inputs">
+                                            <input type="button" value="加入" class="create-ownerBtn" v-on:click="addCompanyBtn" />
+                                            <p class="joinStatus" v-if="selectType==2&&serUserState!=3" v-html="'状态:'+(serUserState==0?'审核通过':(serUserState==1?'待审核':'审核不通过'))"></p>
+                                            <p class="joinStatus" v-if="selectType==1&&userState!=3" v-html="'状态:'+(userState==0?'审核通过':(userState==1?'待审核':'审核不通过'))"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <img class="joinImg7" src="~/Static/images/join-img7.png" />
+            </div>
+        </div>
+
+        <div class="join-row">
+            <div class="join-three join-common">
+                <h3>加入我们</h3>
+                <div class="join-content">
+                    <div class="join-col join-canvas">
+                        <canvas id="joinService" width="200" height="200"></canvas>
+                    </div>
+                    <div class="join-col join-canvas">
+                        <canvas id="joinUser" width="200" height="200" style="margin-right:100px;"></canvas>
+                    </div>
+                    <div class="join-col join-notice">
+                        <div class="join-noticeCont">
+                            <p class="join-noticeTil">已经成功入驻啄木鸟的企业<p>
+                                <ul>
+                                    <li><span>2017.04.12</span><span>1781...58</span> <span>浙大后勤入驻啄木鸟平台</span></li>
+                                    <li><span>2017.03.12</span><span>1781...58</span> <span>绿中游智能科技入驻啄木鸟平台</span></li>
+                                    <li><span>2016.10.12</span><span>1781...58</span> <span>联众科技驻啄木鸟平台</span></li>
+                                    <li><span>2016.12.12</span><span>1781...58</span> <span>浙大后勤入驻啄木鸟平台</span></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="join-row">
+            <div class="join-two join-common">
+                <h3>我们的优势</h3>
+                <div class="join-content">
+                    <div class="join-col">
+                        <img src="~/Static/images/join-img1.png" />
+                        <p>维修百科</p>
+                        <span>供维修师傅和厂家进行学习和使<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用，资源共享</span>
+                    </div>
+                    <div class="join-col">
+                        <img src="~/Static/images/join-img2.png" />
+                        <p>规范的服务体系</p>
+                        <span>规范完善的维修服务流程，保证<br>&nbsp;&nbsp;&nbsp;每个环节的公开性和正确性</span>
+                    </div>
+                    <div class="join-col">
+                        <img src="~/Static/images/join-img3.png" />
+                        <p>维修数据统计</p>
+                        <span>对已有的维修数据，从各个方面进行<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有效的分析，从而更好的调配<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资源，为用户服务</span>
+                    </div>
+                    <div class="join-col">
+                        <img class="join-colImg4" src="~/Static/images/join-img4.png" />
+                        <p>迅速便捷的服务</p>
+                        <span>我们承诺在最快的时间内为用户<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决维修问题</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    
+
+</div>
+
+@section js{
+    <script src="~/Static/scripts/common/jquery/jquery.form.js"></script>
+    <script src="~/Static/scripts/view/joinUs.js"></script>
+}

@@ -1,0 +1,322 @@
+﻿
+
+@{
+    ViewBag.Title = "啄木鸟报修 - 首页";
+    Layout = null;
+    var user = User as Repair.Web.Site2._0.Utilities.UserCookie;
+}
+
+
+<link href="//at.alicdn.com/t/font_69y012v944m18aor.css" rel="stylesheet" />
+<link href="~/Static/styles/main.css" rel="stylesheet" />
+<link href="~/Static/styles/index.css" rel="stylesheet" />
+
+
+<div id="login-content">
+    <div class="login-top">
+        <div class="login-topConten">
+            <div class="homeTop-left">
+
+            </div>
+            <div class="homeTop-right">
+                @if (user == null)
+                {
+                    <a href="/Home/Login">业主登录</a>
+                    <a href="/Home/Login">服务商登录</a>
+                    <a href="/Home/Reg">注册</a>
+                }
+               else{
+                <a href="@Url.Action("Center","User")" class="myRepair">个人中心</a>
+                <a href="@Url.Action("OrderList","Server", new RouteValueDictionary
+                {
+
+                    { "type",1}
+
+                })" class="selfCenter">我是业主</a>
+                <a href="@Url.Action("OrderList","Server",  new RouteValueDictionary
+                {
+                    { "type",2}
+
+                })" class="serverLogin">我是服务商</a>
+                <a href="/Home/LogOut" class="quit">退出</a>
+                }
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="navContent">
+            <img src="~/Static/images/zmnbx.com.png" class="logo">
+            <div class="navInner">
+                <a href="/Home" class="navInner-content">首页</a>
+                <a href="/News/LatestNews" class="navInner-content">新闻中心</a>
+                <a href="/Join/Index" class="navInner-content">加入我们</a>
+                <a href="/RepairService/CookDevice" class="navInner-content">维修服务</a>
+                <a href="/About/Index" class="navInner-content">关于我们</a>
+                <a href="/Help/HelpReg" class="navInner-content">帮助中心</a>
+            </div>
+            <div class="search">
+                <input type="text" class="search-input" placeholder="请输入你要查找的关键字" />
+                <div class="search-box">
+                    <i class="iconfont icon-fangdajing"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="home-center">
+        <div class="homeCenter-cont">
+            <div class="homeCont-one">
+                <ul class="homeContOne-left">
+                    <li>
+                        <a href="##" class="default">全部维修服务<i class="iconfont  icon-quanbu oneIcon"></i></a>
+                    </li>
+
+                    <li class="home-serviceList">
+                        <a href="##">厨房设备<i class="iconfont icon-arrow-right oneIcon"></i></a>
+                        <ul class="submenu">
+                            <li><i class="iconfont icon-youyanji listIcon"></i><a href="##">油烟机</a></li>
+                            <li><i class="iconfont icon-diancilu listIcon"></i><a href="##">电磁炉</a></li>
+                            <li><i class="iconfont icon-bingxiang listIcon"></i><a href="##">冰箱</a></li>
+                            <li><i class="iconfont icon-xiaodugui listIcon"></i><a href="##">消毒柜</a></li>
+                            <li><i class="iconfont icon-xiwanji listIcon"></i><a href="##">洗碗机</a></li>
+                            <li><i class="iconfont icon-dianfanbao listIcon"></i><a href="##">电饭煲</a></li>
+                            <li><i class="iconfont icon-kafeiji listIcon"></i><a href="##">咖啡机</a></li>
+                            <li><i class="iconfont icon-kaoxiang listIcon"></i><a href="##">烤箱</a></li>
+                            <li><i class="iconfont icon-jingshuiqi listIcon"></i><a href="##">净水器</a></li>
+                            <li><i class="iconfont icon-mianbaoji listIcon"></i><a href="##">面包机</a></li>
+                        </ul>
+                    </li>
+                    <li class="home-serviceList">
+                        <a href="##">公共设施<i class="iconfont icon-arrow-right oneIcon"></i></a>
+                        <ul class="submenu">
+                            <li><i class="iconfont icon-25 listIcon"></i><a href="##">路灯</a></li>
+                            <li><i class="iconfont icon-shuzhuo listIcon"></i><a href="##">课桌</a></li>
+                            <li><i class="iconfont icon-yizi listIcon"></i><a href="##">课椅</a></li>
+                            <li><i class="iconfont icon-tiyuchangguan listIcon"></i><a href="##">体育场</a></li>
+                            <li><i class="iconfont icon-icon1 listIcon"></i><a href="##">门</a></li>
+                            <li><i class="iconfont icon-touyingyi listIcon"></i><a href="##">投影仪</a></li>
+                            <li><i class="iconfont icon-chuang listIcon"></i><a href="##">窗户</a></li>
+                        </ul>
+                    </li>
+                    <li class="home-serviceList">
+                        <a href="##">办公设备<i class="iconfont icon-arrow-right oneIcon"></i></a>
+                        <ul class="submenu">
+                            <li><i class="iconfont icon-dayinjin0101 listIcon"></i><a href="##">打印机</a></li>
+                            <li><i class="iconfont icon-fuyinji listIcon"></i><a href="##">复印机</a></li>
+                            <li><i class="iconfont icon-screen listIcon"></i><a href="##">电脑</a></li>
+                            <li><i class="iconfont icon-chuanzhenji listIcon"></i><a href="##">传真机</a></li>
+                            <li><i class="iconfont icon-suizhiji01 listIcon"></i><a href="##">碎纸机</a></li>
+                            <li><i class="iconfont icon-cash-counting listIcon"></i><a href="##">点钞机</a></li>
+                            <li><i class="iconfont icon-saomiaoyi listIcon"></i><a href="##">扫描仪</a></li>
+                            <li><i class="iconfont icon-dianhuaji listIcon"></i><a href="##">电话机</a></li>
+                            <li><i class="iconfont icon-kaoqinjiqiandao listIcon"></i><a href="##">考勤机</a></li>
+                            <li><i class="iconfont icon-luyouqi listIcon"></i><a href="##">路由器</a></li>
+                        </ul>
+                    </li>
+                    <li class="home-serviceList">
+                        <a href="##">生活电器<i class="iconfont icon-arrow-right oneIcon"></i></a>
+                        <ul class="submenu">
+                            <li><i class="iconfont icon-yinshuiji1 listIcon"></i><a href="##">冷饮机</a></li>
+                            <li><i class="iconfont icon-dianshiji listIcon"></i><a href="##">电视机</a></li>
+                            <li><i class="iconfont icon-xiyiji listIcon"></i><a href="##">洗衣机</a></li>
+                            <li><i class="iconfont icon-shouyinji01 listIcon"></i><a href="##">收音机</a></li>
+                            <li><i class="iconfont icon-icon_iron listIcon"></i><a href="##">熨斗</a></li>
+                            <li><i class="iconfont icon-kongtiao listIcon"></i><a href="##">空调</a></li>
+                            <li><i class="iconfont icon-icon223 listIcon"></i><a href="##">插座</a></li>
+                            <li><i class="iconfont icon-paiqishan listIcon"></i><a href="##">排气扇</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="homeContOne-center nav">
+                    <ul class="images">
+                        <li><a href="#"><img src="~/Static/images/banner.png" /></a></li>
+                        <li><a href="#"><img src="~/Static/images/banner.png" /></a></li>
+                        <li><a href="#"><img src="~/Static/images/banner.png" /></a></li>
+                        <li><a href="#"><img src="~/Static/images/banner.png" /></a></li>
+                    </ul>
+                    <ul class="num">
+                        <li class="on"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="btn btn_l">&lt;</div>
+                    <div class="btn btn_r">&gt;</div>
+                </div>
+                <div class="homeContOne-right">
+                    <div class="notice-content">
+                        <div class="notice-titile">
+                            <i class="iconfont icon-gonggao homeIcon"></i>公告
+                        </div>
+                        <ul class="notice-lists">
+                            <li><a href="#">啄木鸟正式上线了</a></li>
+                            <li><a href="#">啄木鸟服务站招募了</a></li>
+                            <li><a href="#">报修专宠，让你随时随地报修</a></li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <div class="notice-titile">
+                            <i class="iconfont icon-ruzhu homeIcon"></i>平台入驻单位
+                        </div>
+                        <ul class="notice-lists">
+                            <li><a href="#">浙江大学</a></li>
+                            <li><a href="#">蓝科科技有限公司</a></li>
+                            <li><a href="#">联众服务有限公司</a></li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <div class="notice-titile">
+                            <i class="iconfont icon-weixiu homeIcon"></i>维修动态
+                        </div>
+                        <ul class="notice-lists">
+                            <li><a href="#">今日绿中游服务有限公司维修员上门维修一台空调</a></li>
+                            <li><a href="#">今日浙大后勤服务部维修员上门维修一台洗衣机</a></li>
+                            <li><a href="#">今日联众科技服务有限公司维修员上门维修一电视机</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="homeCont-row">
+                <div class="homeCont-coloum">
+                    <div class="homeCont-rowTitle">
+                        <img class="home-img" src="~/Static/images/home-row1.png" />
+                        <div class="home-caption">
+                            <h3 class="home-color1">厨房设备维修</h3>
+                            <p>对它，我们采取一对一的方案</p>
+                        </div>
+                    </div>
+                    <div class="homeCont-rowCont">
+                        <div class="panel-heading">
+                            <h3 class="panel-title1">厨房设备</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="##">油烟机</a>
+                            <a href="##">消毒柜</a>
+                            <a href="##">净水器</a>
+                            <a href="###">洗碗机</a>
+                            <a href="##">咖啡机</a>
+                            <a href="##">面包机</a>
+                            <a href="##">电磁炉</a>
+                            <a href="##">电饭煲</a>
+                            <a href="##">烘焙机</a>
+                            <a href="##">冰箱</a>
+                            <a href="##">豆浆机</a>
+                            <a href="##">榨汁机</a>
+                            <a href="###">蒸蛋机</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="homeCont-coloum">
+                    <div class="homeCont-rowTitle">
+                        <img class="home-img" src="~/Static/images/home-row2.png" />
+                        <div class="home-caption">
+                            <h3 class="home-color2">寝室设备维修</h3>
+                            <p>对它，我们有专业的团队</p>
+                        </div>
+                    </div>
+                    <div class="homeCont-rowCont">
+                        <div class="panel-heading">
+                            <h3 class="panel-title2">公共设施</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="##">路灯</a>
+                            <a href="##">体育场</a>
+                            <a href="##">课桌</a>
+                            <a href="###">课椅</a>
+                            <a href="##">讲桌</a>
+                            <a href="##">投影柜</a>
+                            <a href="##">门</a>
+                            <a href="##">窗户</a>
+                            <a href="##">投影仪</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="homeCont-row">
+                <div class="homeCont-coloum">
+                    <div class="homeCont-rowTitle">
+                        <img class="home-img" src="~/Static/images/home-row3.png" />
+                        <div class="home-caption">
+                            <h3 class="home-color3">办公设备维修</h3>
+                            <p>对它，我们有专业的团队</p>
+                        </div>
+                    </div>
+                    <div class="homeCont-rowCont">
+                        <div class="panel-heading">
+                            <h3 class="panel-title3">办公设备</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="##">投影仪</a>
+                            <a href="##">打印机</a>
+                            <a href="##">复印机</a>
+                            <a href="###">传真机</a>
+                            <a href="##">碎纸机</a>
+                            <a href="##">点钞机</a>
+                            <a href="##">扫描仪</a>
+                            <a href="##">电话机</a>
+                            <a href="##">电脑</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="homeCont-coloum">
+                    <div class="homeCont-rowTitle">
+                        <img class="home-img" src="~/Static/images/home-row4.png" />
+                        <div class="home-caption">
+                            <h3 class="home-color4">生活电器维修</h3>
+                            <p>对它，我们有专业的团队</p>
+                        </div>
+                    </div>
+                    <div class="homeCont-rowCont">
+                        <div class="panel-heading">
+                            <h3 class="panel-title4">生活电器</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="##">电视机</a>
+                            <a href="##">冷饮机</a>
+                            <a href="##">洗衣机</a>
+                            <a href="###">空调</a>
+                            <a href="##">热水器</a>
+                            <a href="##">收音机</a>
+                            <a href="##">照明灯</a>
+                            <a href="##">空调</a>
+                            <a href="##">插座</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="home-ad" src="~/Static/images/home-ad1.png" />
+            <h3 class="home-partners">合作伙伴</h3>
+            <img class="home-ad" src="~/Static/images/home-ad3.png" />
+            <img class="home-ad" src="~/Static/images/home-ad2.png" />
+            <div class="homeCont-last">
+                <div class="homeCont-lastInfo">
+                    <div class="home-adInfo">
+                        <img src="~/Static/images/home-info1.png" />
+                        <h4>优先商家</h4>
+                        <p>选择最顶尖的服务商，进行全方位评价，并由专业人士定期考核</p>
+                    </div>
+                </div>
+                <div class="homeCont-lastInfo">
+                    <div class="home-adInfo">
+                        <img src="~/Static/images/home-info2.png" />
+                        <h4>优先商家</h4>
+                        <p>选择最顶尖的服务商，进行全方位评价，并由专业人士定期考核</p>
+                    </div>
+                </div>
+                <div class="homeCont-lastInfo">
+                    <div class="home-adInfo home-adInfoLast">
+                        <img src="~/Static/images/home-info3.png" />
+                        <h4>优先商家</h4>
+                        <p>选择最顶尖的服务商，进行全方位评价，并由专业人士定期考核</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("footer")
+
+
+<script src="~/Static/scripts/common/jquery-3.1.0.js"></script>
+<script src="~/Static/scripts/view/index.js"></script>
+
+

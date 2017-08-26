@@ -1,0 +1,226 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Model.Enum
+@using Newtonsoft.Json
+@model List<Device>
+@{
+    var serviceCompany = ViewBag.JoinCompany as List<ServiceCompany>;
+    var ServiceBindings = ViewBag.Data as List<ServiceBinding>;
+    var equipmentDic= ViewBag.equipmentDic as Dictionary<long,Device>;
+    var manufactorerDic = ViewBag.manufactorerDic as Dictionary<long, Manufacturer>;
+    var brandDic=ViewBag.brandDic as Dictionary<long,Brand>;
+
+    var device = ServiceBindings.Where(t => t.BindingType == BindingServiceType.Equipment).Select(t => t.Content).ToArray();
+    var server= ServiceBindings.Where(t => t.BindingType == BindingServiceType.Equipment).Select(t => t.ServiceCompanyId.ToString()).ToArray();
+    var selectdeviceArr = (device.Length != 0 ? Html.Raw(JsonConvert.SerializeObject(device)) : Html.Raw(JsonConvert.SerializeObject(string.Empty)));
+    var selectServerArr = (device.Length != 0 ? Html.Raw(JsonConvert.SerializeObject(server)) : Html.Raw(JsonConvert.SerializeObject(string.Empty)));
+    Layout = null;
+}
+
+
+<link href="~/Content/css/jquery.selectlist.css" rel="stylesheet" />
+<link href="~/Content/css/jquery.treeview.css" rel="stylesheet" />
+
+<style>
+    .bingdignRight {
+        margin-top: 20px;
+    }
+
+    h5 {
+        margin-bottom: 10px;
+    }
+
+    .addEquipment > ul {
+        border: 1px solid #a6a6a6;
+        overflow-y: hidden;
+        height: 232px;
+        overflow-y: scroll;
+    }
+
+        .addEquipment > ul > li {
+            height: 23px;
+            width: 100%;
+            line-height: 23px;
+        }
+
+        .addEquipment > ul span {
+            display: inline-block;
+            padding-left: 10px;
+            float: left;
+        }
+
+        .addEquipment > ul a {
+            float: right;
+            padding-right: 10px;
+        }
+
+    .addService {
+        margin-top: 50px;
+    }
+
+    #tree {
+        width: 100%;
+        height: 375px;
+        border: 1px solid #a6a6a6;
+        overflow: scroll;
+        margin: 10px 0 10px 50px;
+        font-size: 20px;
+    }
+</style>
+
+
+<form class="form-inline" id="data-addUser" data-toggle="ajax-form" data-target="#data-addUser">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">绑定设备</h4>
+    </div>
+    <div class="row" style="margin:10px auto; ">
+        <div class="col-xs-4">
+            <ul class="bingdingLeft" id="tree">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        var BrandName = ((item.BrandId != null && brandDic.ContainsKey((long)item.BrandId)) ? brandDic[(long)item.BrandId].Name : "暂无");
+                        var ManufacturerName = ((BrandName != "暂无" && manufactorerDic.ContainsKey((long)(brandDic[(long)item.BrandId].ManufacturerId))) ? manufactorerDic[(long)(brandDic[(long)item.BrandId].ManufacturerId)].Name : "暂无");
+                        <li>
+                            <a href="#" id="@item.DeviceId">@item.Name->@BrandName->@ManufacturerName</a>
+                        </li>
+                    }
+                }
+            </ul>
+
+        </div>
+        <div class="col-xs-5 col-xs-offset-1 bingdignRight">
+            <div class="addEquipment">
+                <h5>选择的设备：</h5>
+                <ul>
+                    @foreach (var item in ServiceBindings)
+                    {
+                        <li><span>@(equipmentDic.ContainsKey(long.Parse(item.Content)) ? equipmentDic[long.Parse(item.Content)].Name + "(" + equipmentDic[long.Parse(item.Content)].BrandName+":" + equipmentDic[long.Parse(item.Content)].ManufacturerName +")" : "")</span>  <a href="#" id="@long.Parse(item.Content)" onclick="deteAll(this)">删除</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="addService">
+                <h5>选择服务单位：</h5>
+                <select id="edu" name="edu">
+                    @{
+                        foreach (var item in serviceCompany)
+                        {
+                            <option value="@item.ServiceCompanyId">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="margin-right:30px;" onclick="Binding()">绑定</button>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">取消</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+<script src="~/Scripts/jquery.treeview.js"></script>
+<script>
+    //要绑定的设备集合
+    var deviceArr = [];
+    var selectServerArr=[]
+    $(function () {
+         if (@selectdeviceArr) {
+             deviceArr=@selectdeviceArr;
+        }
+         if (@selectServerArr){
+             selectServerArr=@selectServerArr;
+         }
+         $(function () {
+             $("#tree").treeview({
+                 collapsed: true,
+                 animated: "medium",
+                 control: "#sidetreecontrol",
+                 persist: "location"
+             });
+         });
+        $('select').selectlist({
+            zIndex: 6,
+            width: 102,
+            height: 32
+        });
+    });
+
+    $("#tree a").click(function () {
+        var txt = $(this).text();
+        if (!deviceArr.contains($(this)[0].id) || !selectServerArr.contains($("#edu input")[0].value)) {
+            deviceArr.push($(this)[0].id);
+            if ($(this).parents().siblings('a')) {
+                var txtArr = [];
+                var addTxt = "";
+                var txt1 = $(this).parents().siblings('a').toArray();
+                for (var i = 0; i < txt1.length; i++) {
+                    txtArr.push(txt1[i].innerHTML + '->');
+                };
+                for (var i = 0; i < txtArr.length; i++) {
+                    addTxt += txtArr[i];
+                };
+                var addText1 = addTxt + txt;
+                var addText = $("<li><span>" + addText1 + "</span><a href='#'id='" + $(this)[0].id + "' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                $(".addEquipment ul").append(addText);
+            };
+            $(this).unbind('click')
+        }
+    })
+    function deteAll(that) {
+        deviceArr.remove($(that)[0].id);
+        $(that).parent().remove();
+        $("#tree a").unbind("click");
+        $("#tree a").click(function () {
+            var txt = $(this).text();
+            if (!deviceArr.contains($(this)[0].id) || !selectServerArr.contains($("#edu input")[0].value)) {
+                areaArr.push($(this)[0].id);
+                if ($(this).parents().siblings('a')) {
+                    var txtArr = [];
+                    var addTxt = "";
+                    var txt1 = $(this).parents().siblings('a').toArray();
+
+                    for (var i = 0; i < txt1.length; i++) {
+                        txtArr.push(txt1[i].innerHTML + '->');
+                    };
+                    for (var i = 0; i < txtArr.length; i++) {
+                        addTxt += txtArr[i];
+                    };
+
+                    var addText1 = addTxt + txt;
+                    var addText = $("<li><span>" + addText1 + "</span><a href='#' id='" + $(this)[0].id + "' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                    $(".addEquipment ul").append(addText);
+                };
+                $(this).unbind('click')
+            }
+        })
+    }
+
+    function Binding() {
+        var serviceCompanyArr = [];
+        serviceCompanyArr= $("#edu input")[0].value;
+        if (deviceArr.length == 0) {
+            AErrorMsg("请先选择设备");
+        } else {
+             $.ajax({
+               url:"@Url.Action("BindingDevice")",
+                type: "POST",
+                data: { deviceArr: deviceArr, bindingType: 2, serviceCompanyArr: serviceCompanyArr },
+                traditional: true,
+                success: function (res) {
+                    if (res.ErrCode == 0) {
+                        ASuccess("设备绑定成功");
+                    } else {
+                        AErrorMsg(res.ErrMsg);
+                    }
+                }
+            });
+        }
+
+    }
+</script>

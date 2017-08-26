@@ -1,0 +1,383 @@
+﻿
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+#login-content{
+    position:relative;
+    flex:1;
+  
+}
+
+
+
+/*登录 最顶部样式*/
+.login-top{
+    width:100%;
+    height:40px;
+    background-color:#16191b;
+}
+
+.login-topConten{
+    width:1200px;
+    margin:0 auto;
+    height:40px;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+}
+.login-topConten>a{
+    margin-left:30px;
+    color:white;
+}
+
+.login-topConten>a.login-ColorActive{
+    color:#fba02a;
+}
+
+/*l登录 logo部分样式*/
+.login-logo{
+    width:100%;
+    height:90px;
+    background-color:white;
+}
+.login-logoCentent{
+    width:1200px;
+    height:90px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.login-logoCentent>span{
+    color:#fba02a;
+    font-size:24px;
+}
+
+
+/*登录  背景及登录输入样式*/
+.login-center{
+    height:600px;
+    width:100%;
+    margin-top:20px;
+    background:url(../images/login-bg.png) no-repeat;
+    background-size:100% 100%;
+    margin-bottom:60px;
+    
+}
+.login-centerContent{
+    width:1200px;
+    height:600px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.login-centerForm,.login-centerForms,.register-centerForm{
+    height:390px;
+    width:320px;
+    background-color:white;
+    position:relative;
+}
+
+
+
+.login-centerTitle{
+    height:55px;
+    padding:0 35px;
+    list-style:none;
+    border-bottom:1px solid #e6e6e6;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}  
+
+.login-liCommon{
+   padding:17px 0 ;
+   color:#c0c0c0;
+   border-bottom:1px solid rgba(229,229,229,0);
+}
+.longin-titleFisrt{
+    position:relative;
+}
+.longin-titleFisrt:after{
+    position:absolute;
+    content:"";
+    height:15px; 
+    width:2px;
+    background-color:#e6e6e6;
+    right:-30px;
+    top:20px;
+}
+
+/*切换登录方式添加类名*/
+.login-active{
+    border-bottom:1px solid #fb802a;
+    color:#fba02a;
+}
+
+
+.login-inpuRow{
+    width:250px;
+    height:35px;
+    display:flex;
+    flex-direction:row;
+    margin-bottom:15px;
+    position:relative;
+}
+
+.login-incon {
+    /*display: flex;*/
+    width: 40px;
+    height: 35px;
+    border: 1px solid #e6e6e6;
+    /*justify-content: center;
+    align-items: center;*/
+    display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+}
+.login-input{
+    height:35px;
+    width:210px;
+    border:none;
+    outline:none;
+    text-indent:20px;
+    border:1px solid #e6e6e6;
+    border-left:0;
+    font-size:14px;
+}
+.login-centerInput{
+    padding:0 35px;
+    margin-top:25px;
+    position:relative;
+}
+
+.iconfont.icon-yonghuming{
+     font-size:26px;
+     color:white;
+}
+.iconfont.icon-mima{
+   font-size:25px;
+   color:#fba02a;
+}
+.iconfont.icon-shouji{
+    font-size:25px;
+    color:#fba02a;
+}
+
+
+/*文本框输入时，激活的类名*/
+.login-inconActice{
+    background-color:#fba02a;
+    color:white;
+}
+
+.login-row{
+    display:flex;
+    width:100%;
+    flex-direction:row;
+    justify-content:space-between;
+    position:relative;
+}
+
+.login-forgetPassword,.register-agreen{
+    color:#3595e7;
+}
+
+label{
+    display:inline-block;
+    vertical-align: middle;
+}
+input[type="checkbox"]{
+    height:16px;
+    width:16px;
+    vertical-align:middle
+}
+
+.login-submit{
+    width:100%;
+    height:35px;
+    text-align:center;
+    line-height:35px;
+    color:white;
+    background-color:#fba02a;
+    outline:none;
+    border:none;
+    margin-top:25px;
+    font-size:16px;
+}
+
+.login-register{
+    color:#3595e7;
+    right:0;
+    top:10px;
+    position:absolute
+}
+
+
+/*手机号码登录样式*/
+.login-code{
+    border:1px solid #e6e6e6;
+    width:150px;
+}
+
+.btn-getCode{
+    width:90px;
+    margin-left:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    outline:none;
+    border:none;
+    background-color:#fba02a;
+    text-indent:0;
+   cursor:pointer;
+}
+
+.login-submitTop{
+    margin-top:44px;
+}
+
+
+/*忘记密码样式*/
+.login-backLogin{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    color:#3595e7;
+}
+
+.login-centerBot{
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.login-centerBotTitle{
+    display:flex;
+    justify-content:center;
+    position:relative;
+}
+.login-centerBotTitle:before{
+    position:absolute;
+    content:"";
+    width:120px;
+    height:2px;
+    background-color:#e6e6e6;
+    left:0;
+    top:10px;
+}
+.login-centerBotTitle:after{
+    position:absolute;
+    content:"";
+    width:120px;
+    height:2px;
+    background-color:#e6e6e6;
+    right:0;
+    top:10px;
+}
+
+.login-centerBotList{
+    height:60px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+.iconfont.icon-qq,.iconfont.icon-weixin,.iconfont.icon-weibo{
+    font-size:30px;
+    margin:0 10px;
+}
+.icon-qq{
+    color:#2a9cd5;
+}
+.icon-weixin{
+    color:#00bb00;
+}
+.icon-weibo{
+    color:#eb6161;
+}
+
+
+
+/*注册页面样式*/
+.register-del{
+    font-size:12px;
+}
+
+.register-backLogin{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+.register-backLogin a{
+    color:#3595e7;
+}
+
+.register-centerForm{
+    height:460px;
+}
+
+.register-agreement{
+   z-index:1000;
+   position:absolute;
+   left:50%;
+   top:3%;
+   width:1000px;
+   height:auto;
+   transform:translate(-50%,0);
+   background-color:white;
+   display:none; 
+}
+.agreement-title{
+   display:flex;
+   justify-content:center;
+   width:100%;
+   position:relative;
+}
+
+.agreement-title>h2{
+    padding:12px 0 ;
+    color:#fba743;
+}
+.iconfont.icon-shanchu{
+    position:absolute;
+    right:10px;
+    top:12px;
+    font-size:28px;
+    color:#b6b6b6;
+}
+hr{
+    border:1px solid #e3e3e3;
+    margin-bottom:15px;
+}
+.register-agreement>p{
+    padding:0 20px;
+}
+.register-agreement>p>span{
+    display:block;
+    width:100%;
+    padding:8px 0;
+    line-height:24px;
+}
+
+.agreement-submit{
+    height:40px;
+    width:500px;
+    outline:none;
+    border:none;
+    background-color:#179df2;
+    border-radius:5px;
+    font-size:18px;
+    color:white;
+    margin:20px 0 25px 300px;
+}

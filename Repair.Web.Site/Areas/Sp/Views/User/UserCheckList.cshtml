@@ -1,0 +1,40 @@
+﻿@model Repair.Web.Site.Areas.Sp.Models.UserQueryModel
+
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>用户ID</th>
+        <th>姓名</th>
+        <th>手机号</th>
+        <th>操作</th>
+    </tr>
+    @if (Model.Data != null)
+    {
+        foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.RealName</td>
+                <td>@item.Phone</td>
+                <td>
+                <td>
+                     @Html.Raw("<a href='javascript:void(0)' onclick=checkPassed('" + item.UserId.ToString() + "','0')>通过</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick=checkUnPassed('" + item.UserId.ToString() + "','2')>不通过</a>")
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4">没有用户</td>
+
+        </tr>
+    }
+</table>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

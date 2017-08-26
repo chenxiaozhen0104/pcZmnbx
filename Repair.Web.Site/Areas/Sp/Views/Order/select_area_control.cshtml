@@ -1,0 +1,21 @@
+﻿@model List<LZY.BX.Model.Area>
+@{
+    ViewBag.Title = "select_area_control";
+    Layout = null;
+}
+<div class="form-group">
+    <label for="areaId" class="col-sm-2 control-label">区域</label>
+    <div class="col-sm-6">
+        <select class="form-control" id="areaId" name="AreaId">
+            <option>暂无</option>
+            @{
+                foreach (var item in Model)
+                {
+
+                    <option value="@item.AreaId">@item.Name</option>
+
+                }
+            }
+        </select>
+    </div>
+</div>

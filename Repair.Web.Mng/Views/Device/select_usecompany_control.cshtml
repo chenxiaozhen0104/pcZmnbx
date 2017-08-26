@@ -1,0 +1,24 @@
+﻿@model List<LZY.BX.Model.UseCompany>
+@{
+    ViewBag.Title = "select_usecompany_control";
+    Layout = null;
+}
+<div class="form-group">
+    <label for="usecompanyId">所属公司</label>
+    <select class="form-control" id="usecompanyId" name="UseCompanyId">
+        <option>暂无</option>
+        @{
+            foreach (var item in Model)
+            {
+                if (item.UseCompanyId == Convert.ToInt64(ViewBag.companyId))
+                {
+                    <option selected="selected" value="@item.UseCompanyId">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.UseCompanyId">@item.Name</option>
+                }
+            }
+        }
+    </select>
+</div>

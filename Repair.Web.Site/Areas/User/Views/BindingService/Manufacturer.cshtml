@@ -1,0 +1,225 @@
+﻿@using LZY.BX.Model
+@model Repair.Web.Site.Areas.User.Models.BindingServiceQueryModel
+
+@{
+    Layout = null;
+  
+}
+
+<link href="~/Content/css/jquery.selectlist.css" rel="stylesheet" />
+<link href="~/Content/css/jquery.treeview.css" rel="stylesheet" />
+
+<style>
+    .bingdignRight {
+        margin-top: 20px;
+    }
+
+    h5 {
+        margin-bottom: 10px;
+    }
+
+    .addEquipment > ul {
+        border: 1px solid #a6a6a6;
+        overflow-y: hidden;
+        height: 232px;
+        overflow-y: scroll;
+    }
+
+        .addEquipment > ul > li {
+            height: 23px;
+            width: 100%;
+            line-height: 23px;
+        }
+
+        .addEquipment > ul span {
+            display: inline-block;
+            padding-left: 10px;
+            float: left;
+        }
+
+        .addEquipment > ul a {
+            float: right;
+            padding-right: 10px;
+        }
+
+    .addService {
+        margin-top: 50px;
+    }
+
+    #tree {
+        width: 100%;
+        height: 375px;
+        border: 1px solid #a6a6a6;
+        overflow: scroll;
+        margin: 10px 0 10px 50px;
+        font-size: 20px;
+    }
+</style>
+
+
+<form style="height:auto;" class="form-inline" id="data-addUser" data-toggle="ajax-form" data-target="#data-addUser">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">绑定品牌</h4>
+    </div>
+    <div class="row" style="margin:10px auto; height:auto;">
+        <div class="col-xs-4 ">
+            <ul class="bingdingLeft" id="tree">
+                @foreach (var item in Model.BrandList)
+                {
+                    var ManufacturerName = (Model.ManufacturerList.ContainsKey((long)item.Value.ManufacturerId) ? Model.ManufacturerList[(long)item.Value.ManufacturerId].Name:"暂无");
+                    <li>
+                        <a href="#"  id="@item.Value.BrandId">@item.Value.Name->@ManufacturerName</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1 bingdignRight">
+            <div class="addEquipment">
+                <h5>选择的品牌：</h5>
+                <ul>
+                </ul>
+            </div>
+            <div class="addService">
+                <h5>选择服务单位：</h5>
+                <select id="edu" name="edu">
+                    @foreach (var item in Model.JoinCompanyDic)
+                    {
+                        <option value="@item.ServiceCompanyId">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="margin-right:30px;" onclick="bingdingManufacturer()">绑定</button>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">取消</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Scripts/jquery.treeview.js"></script>
+
+<script>
+    //要绑定的区域集合
+    var manufacturerArr = [];
+    $(function () {
+        $("#tree").treeview({
+            collapsed: true,
+            animated: "medium",
+            control: "#sidetreecontrol",
+            persist: "location"
+        });
+        $('select').selectlist({
+            zIndex: 6,
+            width: 102,
+            height: 32
+        });
+    });
+
+    $("#tree a").click(function () {
+        var txt = $(this).text();
+        if (!manufacturerArr.contains($(this)[0].id)) {
+            manufacturerArr.push($(this)[0].id);
+            if ($(this).parents().siblings('a')) {
+                var txtArr = [];
+                var addTxt = "";
+                var txt1 = $(this).parents().siblings('a').toArray();
+
+                for (var i = 0; i < txt1.length; i++) {
+                    txtArr.push(txt1[i].innerHTML + '->');
+                };
+                for (var i = 0; i < txtArr.length; i++) {
+                    addTxt += txtArr[i];
+                };
+                var addText1 = addTxt + txt;
+                var addText = $("<li><span>" + addText1 + "</span><a href='#'id='" + $(this)[0].id + "' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                $(".addEquipment ul").append(addText);
+            };
+            $(this).unbind('click')
+        }
+    })
+
+    function deteAll(that) {
+        manufacturerArr.remove($(that)[0].id);
+        $(that).parent().remove();
+        $("#tree a").unbind("click");
+        $("#tree a").click(function () {
+            var txt = $(this).text();
+            if (!manufacturerArr.contains($(this)[0].id)) {
+                manufacturerArr.push($(this)[0].id);
+                if ($(this).parents().siblings('a')) {
+                    var txtArr = [];
+                    var addTxt = "";
+                    var txt1 = $(this).parents().siblings('a').toArray();
+
+                    for (var i = 0; i < txt1.length; i++) {
+                        txtArr.push(txt1[i].innerHTML + '->');
+                    };
+                    for (var i = 0; i < txtArr.length; i++) {
+                        addTxt += txtArr[i];
+                    };
+
+                    var addText1 = addTxt + txt;
+                    var addText = $("<li><span>" + addText1 + "</span><a href='#' id='" + $(this)[0].id + "' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+                    $(".addEquipment ul").append(addText);
+                };
+                $(this).unbind('click')
+            }
+        })
+    }
+
+    //$(".bingdingLeft li").bind("click", function () {
+    //    if (!manufacturerArr.contains($(this)[0].id)) {
+    //        manufacturerArr.push($(this)[0].id);
+    //        var txt = $(this).html();
+
+    //        var addText = $("<li><span>" + txt + "</span><a href='#'id='" + $(this)[0].id+"' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+    //        $(".addEquipment ul").append(addText);
+    //        $(this).unbind("click");
+    //    }
+    //});
+    //function deteAll(that) {
+    //    manufacturerArr.remove($(that)[0].id);
+    //    $(".bingdingLeft li").unbind("click");
+    //    $(that).parent().remove();
+    //    $(".bingdingLeft li").bind("click", function () {
+    //        if (!manufacturerArr.contains($(this)[0].id)) {
+    //            manufacturerArr.push($(this)[0].id);
+    //            var txt = $(this).html();
+
+    //            var addText = $("<li><span>" + txt + "</span><a href='#'id='" + $(this)[0].id+"' class='deteAll' onclick='deteAll(this)'>删除</a></li>");
+    //            $(".addEquipment ul").append(addText);
+    //            $(this).unbind("click");
+    //        }
+    //    });
+    //}
+
+
+    function bingdingManufacturer() {
+        if (manufacturerArr.length == 0) {
+            AErrorMsg("请先选择厂商");
+        } else {
+             $.ajax({
+               url:"@Url.Action("BindingManufacturer")",
+                type: "POST",
+                data: { manufacturerArr: manufacturerArr, bindingType: 8, serviceCompanyId: $("#edu input")[0].value },
+                traditional: true,
+                success: function (res) {
+                    if (res.ErrCode == 0) {
+                        ASuccess("厂商绑定成功");
+                      
+                    } else {
+                        AErrorMsg(res.ErrMsg);
+                    }
+                    location.reload;
+                }
+            });
+
+        }
+    }
+
+</script>

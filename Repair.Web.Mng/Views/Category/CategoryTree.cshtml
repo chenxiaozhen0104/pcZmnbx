@@ -1,0 +1,41 @@
+﻿@using LZY.BX.Model
+@using Repair.Web.Mng.Utilities
+@model List<Category>
+@{
+
+}
+
+@foreach (var menu in Model)
+{
+
+    var hasSubMenu = 0 > 0;
+
+    var hasRoot = menu.CategoryId < 10;
+
+    var pids = CategoryMng.ParentIds(menu);
+
+    pids.Remove(menu.CategoryId);
+
+    <tr style="cursor:@(hasSubMenu ? "pointer" : "")" class="treeview" pids="@string.Join(",", pids)" id="@menu.CategoryId">
+        <td style="text-align:left;padding-left: @((pids.Count+1) * 20)px;" @(hasSubMenu ? "data-toggle=switch" : string.Empty)>
+            <a>
+                <i class="fa @(hasSubMenu ? "fa-circle" : "fa-circle-o")"></i>
+                <span>@menu.Name</span>
+            </a>
+        </td>
+        <td>
+            <a href="javascript:OpenUrl('@Url.Action("Add", new { pid = menu.CategoryId })','类目添加',700,320)" class="fa fa-plus"></a>
+        </td>
+        <td>
+            <a href="javascript:OpenUrl('@Url.Action("Edit", new { id = menu.CategoryId })','类目修改',700,320)" class="fa  fa-edit (alias)"></a>
+        </td>
+        <td>
+            <a href="javascript:remove('@menu.CategoryId')" style="cursor:pointer" class="fa @(!(hasSubMenu || hasRoot) ? "fa-minus" : "")"></a>
+        </td>
+    </tr>
+
+    @*if (hasSubMenu)
+    {
+        @Html.Partial("CategoryTree", menu.SubItems)
+    }*@
+}

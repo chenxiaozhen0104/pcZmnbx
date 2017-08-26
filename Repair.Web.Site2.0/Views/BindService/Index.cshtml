@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 服务绑定列表";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/ServerList.css" rel="stylesheet" />
+}
+<div class="public-right">
+    <div class="ServerList-nav">
+        <span class="bindDevice nav-bind" v-on:click="bindDevice">绑定设备</span>
+        <span class="bindCategory nav-bind" v-on:click="bindCategory">绑定类目</span>
+        <span class="bindArea nav-bind" v-on:click="bindArea">绑定区域</span>
+    </div>
+    <div class="ServerList-search">
+        <input type="text" class="search-input" placeholder="设备名称/区域/类目" v-model="keys" />
+        <div class="img-box" v-on:click="search">
+            <i class="iconfont icon-fangdajing"></i>
+        </div>
+    </div>
+    <div class="ServerList-content">
+        <table class="table" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr class="table-title">
+                    <td class="bindType table-td">绑定类型</td>
+                    <td class="bindContent table-td">内容</td>
+                    <td class="ServiceCompany table-td">服务单位</td>
+                    <td class="bindTime table-td">绑定时间</td>
+                </tr>
+            </thead>
+            <tbody v-if="bindlist&&bindlist.length>0">
+                <tr class="table-title" v-for="obj in bindlist">
+                    <td class="bindType table-td" v-html="getBindType(obj.BindingType)"></td>
+                    <td class="bindContent table-td" v-html="getBindName(obj.BindingType,obj.Content)"></td>
+                    <td class="ServiceCompany table-td" v-html="obj.ServiceCompany?obj.ServiceCompany.Name:'暂无'"></td>
+                    <td class="bindTime table-td" v-html="jsonDateFormat(obj.CreateTime)"></td>
+                </tr>
+            </tbody>
+            <tbody v-else>
+                <tr>
+                    <td class="none table-td">暂无数据</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @*弹出部分*@
+    @*绑定设备*@
+    <div class="alert-bindDevice">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定设备</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li v-for="obj in deviceList">
+                        <a v-on:click="addItem(2,obj.DeviceId)">{{obj.Name}}&nbsp;>&nbsp;{{obj.BrandId?getManufacturer(obj.BrandId).Name:'暂无'}}&nbsp;>&nbsp;{{getManufacturer(obj.BrandId).Manufacturer?getManufacturer(obj.BrandId).Manufacturer.Name:'暂无'}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的设备</p>
+                <div class="selectDevice-content">
+                    <ul>
+                        <li v-for="obj in selectItemArr.deviceArr">
+                            <a class="BeforeClear" style="cursor:pointer">{{getDeviceInfo(obj)?getDeviceInfo(obj).Name:'暂无'}}&nbsp;>&nbsp;{{getDeviceInfo(obj).BrandId?(getManufacturer(getDeviceInfo(obj).BrandId)?getManufacturer(getDeviceInfo(obj).BrandId).Name:'暂无'):'暂无'}}&nbsp;>&nbsp;{{getDeviceInfo(obj).BrandId?(getManufacturer(getDeviceInfo(obj).BrandId).Manufacturer?getManufacturer(getDeviceInfo(obj).BrandId).Manufacturer.Name:'暂无'):'暂无'}}</a>
+                            <a class="clear" v-on:click="removeItem(2,obj)">清除</a>
+                        </li>
+                    </ul>
+                </div>
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content" v-model="deviceSelectServiceCompany">
+                    <option :value="obj.ServiceCompanyId" v-for="obj in joinCompany" v-if="joinCompany&&joinCompany.length>0">{{obj.Name}}</option>
+                    <option :value="0" v-if="!joinCompany">暂无签约单位</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn" v-on:click="submitBind(2)">绑定</a>
+            <a class="cancelBtn" v-on:click="close">取消</a>
+        </div>
+    </div>
+    @*绑定类目*@
+    <div class="alert-bindCategory">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定类目</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li v-for="obj in categoryArr" v-if="categoryArr.length>0">
+                        <a v-on:click="addItem(1,obj.CategoryId)">{{obj.Name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的类目</p>
+                <div class="selectDevice-content">
+                    <ul>
+                        <li v-for="obj in selectItemArr.categoryArr">
+                            <a class="BeforeClear">{{getCategory(obj)}}</a>
+                            <a class="clear" v-on:click="removeItem(1,obj)">清除</a>
+                        </li>
+                    </ul>
+                </div>
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content" v-model="cateSelectServiceCompany">
+                    <option :value="obj.ServiceCompanyId" v-for="obj in joinCompany" v-if="joinCompany&&joinCompany.length>0">{{obj.Name}}</option>
+                    <option :value="0"  v-if="!joinCompany">暂无签约单位</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn" v-on:click="submitBind(1)">绑定</a>
+            <a class="cancelBtn" v-on:click="close">取消</a>
+        </div>
+    </div>
+    @*绑定区域*@
+    <div class="alert-bindArea">
+        <div class="bindDevice-header">
+            <p class="bindDevice-title">绑定区域</p>
+            <i class="iconfont icon-shanchu" v-on:click="close"></i>
+        </div>
+        <div class="bindDevice-content">
+            <div class="bindDevice-left">
+                <ul>
+                    <li v-for="obj in areaList">
+                        <a v-on:click="addItem(4,obj.AreaId)">{{obj.Name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bindDevice-right">
+                <p class="selectDevice">选择的区域</p>
+                <div class="selectDevice-content">
+                    <ul>
+                        <li v-for="obj in selectItemArr.areaArr">
+                            <a class="1">{{getArea(obj)}}</a>
+                            <a class="clear" v-on:click="removeItem(4,obj)">清除</a>
+                        </li>
+                    </ul>
+                </div>
+               
+                <p class="selectCompany">选择服务单位</p>
+                <select class="selectCompany-content" v-model="areaSelectServiceCompany">
+                    <option :value="obj.ServiceCompanyId" v-for="obj in joinCompany" v-if="joinCompany&&joinCompany.length>0">{{obj.Name}}</option>
+                    <option :value="0" v-if="!joinCompany">暂无签约单位</option>
+                </select>
+            </div>
+        </div>
+        <div class="bindDevice-btns">
+            <a class="bindBtn" v-on:click="submitBind(4)">绑定</a>
+            <a class="cancelBtn" v-on:click="close">取消</a>
+        </div>
+    </div>
+    @*分页*@
+    <ul class="page" v-if="pagetotal>1">
+        <li v-on:click="find(1)">首页</li>
+        <li v-on:click="find('pre')">上一页</li>
+        <li v-for="obj in pagetotal" v-bind:class="{liActive:obj==pageindex}" v-on:click="find(obj)" v-html="obj" v-if="obj>=pageindex&&obj<(10+pageindex-1)&&obj!=pagetotal"></li>
+        <li v-if="pagetotal>=(10+pageindex-1)" v-html="'...'"></li>
+        <li v-on:click="find(pagetotal)" v-html="pagetotal"></li>
+        <li v-on:click="find('next')">下一页</li>
+        <li v-on:click="find(pagetotal)">尾页</li>
+        <li v-html="'当前第'+pageindex+'页 共'+pagetotal+'页'"></li>
+    </ul>
+</div>
+
+@section js{
+   
+
+<script src="~/Static/scripts/view/ServerList.js"></script>
+}

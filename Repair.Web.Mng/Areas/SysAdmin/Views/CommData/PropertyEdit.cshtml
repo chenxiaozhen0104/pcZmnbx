@@ -1,0 +1,297 @@
+﻿@model LZY.BX.Model.Assets
+@{
+    ViewBag.Title = "PropertyEdit";
+}
+
+<form class="form-horizontal form-label-left" id="form1" action="@Url.Action("PropertyEdit")" method="POST">
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            资产编号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Number,new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            名称
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            型号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Model, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            单价
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            现状
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.State, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            领用人编号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.UsePersonId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            领用人
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.UsePerson, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            领用单位编号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.UseUnitId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            领用单位
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.UseUnit, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            存放地
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.DesignatedArea, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            购置日期
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.BuyTime, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            入库日期
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.PutInTime, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            厂家
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Manufacturer, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            供货商
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Supplier, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            备注
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Note, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            下账日期
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.PostingTime, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            分类号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.ClassifyId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            分类名称
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.ClassifyName, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            规格
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Size, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            国别
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Country, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            附件数
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.AccessoryNumber, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            附件价值
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.AccessoryPrice, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            经费科目
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.FundsSunject, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            经费卡号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.FactoryId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            经费名称
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.FundsName, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            是否进口
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.IsImport, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            资产归属
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.AssetsBelong, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            单据号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.ReceiptsNum, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            合同号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.ContractId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            经手人
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.HandledBy, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            采购人
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.Buyer, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            核查状态
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.InspectState, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            出厂号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.FactoryId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            财务凭单号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.FinanceVoucherId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="first-name">
+            建账业务号
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(x => x.SetAccountsBusinessId, new { @class = "form-control col-md-7 col-xs-12"})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+            <button id="send" type="submit"  class="btn btn-success">保存</button>
+        </div>
+    </div>
+
+</form>

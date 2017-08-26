@@ -1,0 +1,106 @@
+﻿
+@*@model Repair.Web.Site2._0.Models.OrderQueryModel*@
+
+@{
+    ViewBag.Title = "啄木鸟报修 - 我的维修";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+    //var orderList = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="public-right" id="OrderListvue">
+    <div class="right-orderList">
+        <div class="right-nav">
+            <span class="right-nav-text yellowBackground" v-html="'全部订单('+getNum()+')'" v-on:click="stateFun(4+8+16+32+64+128+256+512+1024+2048+4096)"></span>
+            <span class="right-nav-text"  v-html="'待派单('+getNum(8)+')'" v-on:click="stateFun(8)"></span>
+            <span class="right-nav-text"  v-html="'待服务('+getNum(16)+')'" v-on:click="stateFun(16)"></span>
+            <span class="right-nav-text" v-html="'工作中('+getNum(32)+')'" v-on:click="stateFun(32)"></span>
+            <span class="right-nav-text" v-html="'未确认('+getNum(64)+')'" v-on:click="stateFun(64)"></span>
+            <span class="right-nav-text" v-html="'未解决('+getNum(128)+')'"v-on:click="stateFun(128)" ></span>
+            <span class="right-nav-text" v-html="'已完成('+getNum(1024+2048)+')'" v-on:click="stateFun(1024+2048)"></span>
+        </div>
+        <div class="workOrder-center">
+            <div class="workOrder-search">
+                <input type="text" class="workOrder-search-input" placeholder="输入设备名称或订单号搜索" v-model="searchkey"/>
+                <div class="img-box" v-on:click="searchFun()">
+                    <i class="iconfont icon-fangdajing"></i>
+                </div>
+            </div>
+        </div>
+        <div class="workOrder-content">
+            <div class="workOrder-title">
+                <span class="order-title-text">报修设备</span>
+                <span class="order-title-text">设备故障</span>
+                <span class="order-title-text">报修地址</span>
+                <span class="order-title-text">报修人员</span>
+                <span class="order-title-text">状态</span>
+            </div>
+            <div v-if="list&&list.length>0">
+                <div class="workOrder-details" v-for="obj in list" >
+
+                    <div class="oprate">
+                        <div class="operate-orderInfo">
+                            <img src="~/Static/images/house.png" class="house" />
+                            <span class="operate-text" id="serviceCompany" v-html="'维修单位：'+(obj.ServiceCompany?obj.ServiceCompany.Name:'暂无')"></span>
+                            <span class="operate-text" id="orderPerson" v-html="'订单编号：'+obj.MainOrderId"></span>
+                            <span class="operate-text" id="servicePerson" v-html="'维修人员：'+(getrepairuser(obj.ServiceUserId).RealName||'待派单')"></span>
+                        </div>
+                    </div>
+                    <div class="details-content">
+                        <div class="product">
+                            <span class="product-text" id="product-name" v-html="getDevice(obj.DeviceId).Name||'尚未绑定'"></span>
+                            <span class="product-text" id="product-style" v-html="'型号：'+(getDevice(obj.DeviceId).Model||'尚未录入')"></span>
+                            <span class="product-text" id="product-model" v-html="'工单类型：'+getType(obj.Type)"></span>
+                            <span class="product-text" v-html="'工单级别：'+getLevel(obj.Level)"></span>
+                        </div>
+                        <div class="trouble">
+                            <span class="product-text" id="description" v-html="'故障描述 : ' +obj.Describe||'尚未填写'"></span>
+                            <div class="photo">
+                                <span class="trouble-text">现场图片：</span>
+                                <div class="imgList" v-if="getImgurl(obj.DeviceId).length>0">
+                                    <img :src="obj.Url" class="img" v-for="obj in (getImgurl(obj.DeviceId))" />
+                                </div>
+                                <div class="imgList" v-else>
+                                    <span class="product-text"><font color="red">暂无设备现场图片</font></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="address">
+                            <span class="product-text" v-html="'安装地址：'+(getDevice(obj.DeviceId).Position||'尚未录入')"></span>
+                        </div>
+                        <div class="repairPerson">
+                            <span class="product-text orderListText" v-html="getUser(obj.UserId).Name||'暂无'"></span>
+                            <span class="product-text orderListText" v-html="getUser(obj.UserId).Phone||'暂无'"></span>
+
+                        </div>
+                        <div class="state">
+                            <span class="state-text" id="state-text" v-html="getState(obj.State)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="orderList-noResult" v-else>暂无数据</div>
+        </div>
+        <ul class="page" v-if="pagetotal>1">
+            @*<input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+                @Html.Partial("pagger",Model.PageInfo);*@
+
+            <li v-on:click="find(1)">首页</li>
+            <li v-on:click="find('pre')">上一页</li>
+            <li v-for="obj in pagetotal" v-bind:class="{liActive:obj==pageindex}"  v-on:click="find(obj)" v-html="obj" v-if="obj>=pageindex&&obj<(10+pageindex-1)&&obj!=pagetotal"></li> 
+            <li v-if="pagetotal>=(10+pageindex-1)" v-html="'...'"></li>
+            <li v-on:click="find(pagetotal)" v-html="pagetotal"></li>
+            <li v-on:click="find('next')">下一页</li>
+            <li v-on:click="find(pagetotal)">尾页</li>
+            <li v-html="'当前第'+pageindex+'页 共'+pagetotal+'页'"></li>
+        </ul>
+    </div>
+</div>
+@section js{     
+    <script src="~/Static/scripts/view/orderlist.js"></script>
+}
+

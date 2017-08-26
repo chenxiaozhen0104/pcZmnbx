@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>工单列表</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link href="../../../H5/Content/layer/skin/layer.css" rel="stylesheet" />
+    <script src="dist/common.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 0.24rem;
+        }
+
+        html, body {
+            height: auto;
+            width: 100%;
+            background-color: #f1f1f1;
+        }
+
+        #wxorderlist-content {
+            height: auto;
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 0.15rem 0;
+        }
+
+        .wxorderlist-cont {
+            width: 100%;
+            height: auto;
+            margin-top: 0.9rem;
+        }
+
+        .wxorderlist {
+            width: 100%;
+            text-decoration: none;
+            color: black;
+         
+            display:inline-block;
+
+            /*margin: 0 auto;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            margin-bottom: 0.15rem;*/
+        }
+
+        .wxorderlist-state {
+            position: absolute;
+            width: 1.66rem;
+            height: 0.67rem;
+            right: -0.05rem;
+            top: 0.3rem;
+        }
+
+        .wxorderlist-info {
+            width: 7.3rem;
+            margin:0 auto;
+            height: auto;
+            list-style: none;
+            background-color: white;
+            margin-bottom: 0.15rem;
+            position: relative;
+
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            
+        }
+
+        .wxorderlist-row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            padding: 0.1rem;
+        }
+
+        .wxorderlsit-rowLine{
+			border-bottom: 1px solid #efefef;
+		}
+         .wxorder-title.wxorder-num{
+			padding-left: 0.7rem;
+			background: url(images/wxtime.png) no-repeat 0.2rem center;
+			background-size:0.28rem 0.28rem;		
+		}
+
+        .wxorder-title {
+            flex:2.5;
+            text-align: left;
+            padding-left: 0.2rem;
+            color: #bdbdbd;
+        }
+
+        .wxorder-text {
+            flex: 9.5;
+            margin-left:-0.1rem;
+            
+        }
+
+        /*固定头部*/
+        .wxorderlist-head {
+            background: white;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+        }
+
+        .wxfixed-up {
+            /*height: 0.85rem;*/
+            width: 100%;
+            padding:0.25rem 0 ;
+            /*padding:0.15rem 0;*/
+        }
+
+        .wxfixed-col {
+            flex: 1;
+            /*height: 0.55rem;*/
+            text-align: center;
+            /*line-height: 0.55rem;*/
+         
+            position:relative;
+            padding-left:0.4rem;
+        }
+        .wxfixed-colBorder{
+			border-right:1px solid #ddd;
+		}
+
+       .wxfixed-down{
+           padding:0.3rem 0.25rem;
+           height:2.5rem;
+           width:100%;
+           background-color:white;
+           border-top:1px solid #ddd;
+           border-bottom:1px solid #ddd;
+           -webkit-flex-wrap: wrap ;
+           -ms-flex-wrap: wrap ;
+            flex-wrap: wrap ;
+       }
+       .wxfixed-text{
+           height:0.7rem;
+           width:2rem;
+           border:1px solid #ddd;
+           text-align:center;
+           line-height:0.7rem;
+           margin-right:0.32rem;
+           color: #555;
+       }
+       .wxfixed-checked{
+           height:0.7rem;
+           width:2rem;
+           border:1px solid #ddd;
+           text-align:center;
+           line-height:0.7rem;
+           margin-right:0.32rem;
+           color:#3879D9;
+       }
+       .wxfixed-img1{
+           position:absolute;
+           top:-0.05rem;
+           left:0.5rem;
+           height:0.38rem;
+           width:0.43rem;
+       }
+        .wxfixed-img2{
+           position:absolute;
+           top:-0.05rem;
+           left:0.6rem;
+           height:0.38rem;
+           width:0.28rem;
+       }
+
+       .wxfixed-img3{
+           position:absolute;
+           top:-0.05rem;
+           left:0.7rem;
+           height:0.38rem;
+           width:0.34rem;
+       }
+       .wx-round{
+           position:absolute;
+           z-index:1000;
+           text-align:center;
+           line-height:0.45rem;
+           height:0.45rem;
+           width:0.45rem;
+           background-color:#0d84e0;
+           border-radius:100%;
+           color:white;
+           display:inline-block;
+           font-size:0.18rem;
+       }
+       .wxround-done{
+          right:0.3rem;
+          top:-0.2rem;
+       }
+        .wxround-all{
+          right:0.4rem;
+          top:-0.2rem;
+       }
+        /*底部提示*/
+        .wxorderlist-bottom{
+          text-align:center;
+          padding:0.15rem;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wxorderlist-content">
+        <div class="wxorderlist-head">
+            <div class="wxfixed-up wxorderlist-row">
+                <p class="wxfixed-col wxfixed-colBorder" :style="{'color':colors[menu.processing.isChoose?1:0]}" @click="menuClick('processing')">
+                    <img class="wxfixed-img1" :src="menu.processing.isChoose?'http://img.zmnbx.com//dist/Images/wxprogress-blue.png':'http://img.zmnbx.com//dist/Images/wxprogress-gray.png'" />
+                    {{state}}
+                    <!--<img class="wxfixed-img" src="http://img.zmnbx.com//dist/Images/down.png" />-->
+                </p>
+                <p class="wxfixed-col wxfixed-colBorder" :style="{'color':colors[menu.processed.isChoose?1:0]}" @click="menuClick('processed')">
+                    <img class="wxfixed-img2" :src="menu.processed.isChoose?'http://img.zmnbx.com//dist/Images/wxdoneTitle-blue.png':'http://img.zmnbx.com//dist/Images/wxdoneTitle-gray.png'" />已完成
+                    <span class="wxround-done  wx-round" v-html="menu.processed.num"></span>
+                </p>
+                <p class="wxfixed-col" :style="{'color':colors[menu.all.isChoose?1:0]}" @click="menuClick('all')">
+                    <img class="wxfixed-img3" :src="menu.all.isChoose?'http://img.zmnbx.com//dist/Images/wxall-blue.png':'http://img.zmnbx.com//dist/Images/wxall-gray.png'" />全部
+                    <span class="wxround-all wx-round" v-html="menu.all.num"></span>
+                </p>
+            </div>
+            <div class="wxfixed-down wxorderlist-row" v-if="menu.processing.hideOrder">
+                <p :class="[item.isSelect?'wxfixed-checked':'wxfixed-text']" v-for="item in menu.processing.type" @click="orderStateItemClick(item)" v-html="item.name+'('+item.num+')'"></p>
+            </div>
+        </div>
+     
+        <div class="wxorderlist-cont">
+            <a :href="'orderDetail.html?orderId='+item.id" class="wxorderlist" v-for="(item,index) in items" target="_blank">
+                <ul class="wxorderlist-info">
+                    <li class="wxorderlist-row">
+                        <p class="wxorder-title" v-html="'工单号：'+item.id" style="color:black">单号:</p>
+                        <!--<p class="wxorder-text" v-html="item.id"></p>-->
+                    </li>
+                    <li class="wxorderlist-row wxorderlsit-rowLine">
+                        <p class="wxorder-title wxorder-num" v-html="item.createTime"></p>
+                        <!--<p class="wxorder-text" v-html="item.createTime"></p>-->
+                    </li>
+                    <li class="wxorderlist-row">
+                        <p class="wxorder-title">工单级别:</p>
+                        <p class="wxorder-text" v-html="item.level==1?'普通工单':'加急工单'"></p>
+                    </li>
+                    <li class="wxorderlist-row">
+                        <p class="wxorder-title">需求类型:</p>
+                        <p class="wxorder-text" v-html="item.type==1?'需要维修':'需要保养'"></p>
+                    </li>
+                    <li class="wxorderlist-row">
+                        <p class="wxorder-title">设备名称:</p>
+                        <p class="wxorder-text" v-html="item.deviceName"></p>
+                    </li>
+                    <li class="wxorderlist-row">
+                        <p class="wxorder-title">安装地址:</p>
+                        <p class="wxorder-text" v-html="item.devicePosition"></p>
+                    </li>
+                    <li> <img class="wxorderlist-state" :src="getState(item.state)" /></li>
+                </ul>
+               
+               
+            </a>
+            <p class="wxorderlist-bottom" v-if="showBottom">加载到底喽，没有更多内容了！</p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+<script src="../../../H5/Content/src/common/vue.js"></script>
+<script src="../../../H5/Content/src/js/jquery-3.1.0.js"></script>
+<script src="../../../H5/Content/layer/layer.js"></script>
+<script src="http://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+    var login = new Vue({
+        el: '#wxorderlist-content',
+        data: {
+            pageIndex: 1,
+            items: [],
+            curState: 4 + 8 + 16 + 32 + 64,
+            colors: ['#333333', '#3879D9'],
+            state: '进行中',
+            showBottom: false,
+            areaId: null,
+            token:"",
+            menu: {
+                processing: {
+                    isChoose: true,
+                    hideOrder: false,
+                    curState: 4 + 8 + 16 + 32 + 64,
+                    type: [{
+                        name: '派单中',
+                        state: 8,
+                        isSelect: false,
+                        num: 0
+
+                    }, {
+                        name: '已派单',
+                        state: 16,
+                        isSelect: false,
+                        num: 0
+                    }, {
+                        name: '工作中',
+                        state: 32,
+                        isSelect: false,
+                        num: 0
+                    }, {
+                        name: '未确认',
+                        state: 64,
+                        isSelect: false,
+                        num: 0
+                    }, {
+                        name: '进行中',
+                        state: 8 + 16 + 32 + 64,
+                        isSelect: true,
+                        num: 0
+                    }]
+                },
+                processed: {
+                    isChoose: false,
+                    state: 1024 + 2048,
+                    num: 0
+                },
+                all: {
+                    isChoose: false,
+                    state: 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048,
+                    num: 0
+                }
+
+            },
+        },
+        methods: {
+            doSearch: function () {
+                var self = this;
+                 layer.msg("加载中...", { icon: 16, time: 0, shadeClose: false });
+                 $.post('/api/order/WxSearch', {
+                    state: self.curState,
+                    atype: 1,
+                    pageIndex: self.pageIndex,
+                    pageSize: 10,
+                    AreaId: self.areaId
+                }, function (res) {
+                    if (res.error) {
+                        layer.msg(res.error, { icon: 2, time: 2000 });
+                    } else {
+                        if (self.items.length < res.count) {
+                            self.pageIndex++;
+                            self.items = self.items.concat(res.data);
+                        } else {
+                            self.showBottom = true;
+                        }
+                    }
+                    layer.closeAll();
+                })
+            },
+            getState: function (state) {
+                self = this;
+                switch (state) {
+                    case 4:
+                        return 'http://img.zmnbx.com//dist/Images/wxsending-green.png';
+                        break;
+                    case 8:
+                        return 'http://img.zmnbx.com//dist/Images/wxsending-green.png';
+                        break;
+                    case 16:
+                        return 'http://img.zmnbx.com//dist/Images/wxsendDone-green.png';
+                        break;
+                    case 32:
+                        return 'http://img.zmnbx.com//dist/Images/wxworking-green.png';
+                        break;
+                    case 64:
+                        return 'http://img.zmnbx.com//dist/Images/wxconfirmed-red.png';
+                        break;
+                    case 128:
+                        return 'http://img.zmnbx.com//dist/Images/wxnotSolve-red.png';
+                        break;
+                    case 256:
+                        return 'http://img.zmnbx.com//dist/Images/wxcanceledDone-gray.png';
+                        break;
+                    case 512:
+                        return 'http://img.zmnbx.com//dist/Images/wxcloseDone-gray.png';
+                        break;
+                    case 1024:
+                        return 'http://img.zmnbx.com//dist/Images/wxdone-blue.png';
+                        break;
+                    case 2048:
+                        return 'http://img.zmnbx.com//dist/Images/wxdone-blue.png';
+                        break;
+                }
+            },
+            menuClick: function (Type) {
+                var self = this;
+                self.menu.processing.isChoose = false;
+                self.menu.processed.isChoose = false;
+                self.menu.all.isChoose = false;
+                self.menu[Type].isChoose = true;
+                self.showBottom = false;
+                if (Type == "processing") {
+                  
+                    self.menu.processing.hideOrder = !self.menu.processing.hideOrder;
+                    if (self.menu.processing.hideOrder) {
+                        $(".wxfixed-img").css({
+                            "transform": "rotate(180deg)",
+                            "-webkit-transform": "rotate(180deg)",
+                            "-ms-transform": "rotate(180deg)",
+                            "-o-transform": "rotate(180deg)",
+                            "-moz-transform": "rotate(180deg)",
+                        })
+                    } else {
+                        $(".wxfixed-img").css({
+                            "transform": "rotate(0deg)",
+                            "-webkit-transform": "rotate(0deg)",
+                            "-ms-transform": "rotate(0deg)",
+                            "-o-transform": "rotate(0deg)",
+                            "-moz-transform": "rotate(0deg)",
+                        })
+                    }
+                } else {
+                    self.menu.processing.hideOrder = false;
+                    $(".wxfixed-img").css({
+                        "transform": "rotate(0deg)",
+                        "-webkit-transform": "rotate(0deg)",
+                        "-ms-transform": "rotate(0deg)",
+                        "-o-transform": "rotate(0deg)",
+                        "-moz-transform": "rotate(0deg)",
+                    })
+                    //执行查询
+                    self.curState = self.menu[Type].state;
+                    self.pageIndex = 1;
+                    self.items = [];
+                    self.doSearch();
+                }
+            },
+            orderStateItemClick: function (item) {
+                $(".wxfixed-img").css({
+                    "transform": "rotate(0deg)",
+                    "-webkit-transform": "rotate(0deg)",
+                    "-ms-transform": "rotate(0deg)",
+                    "-o-transform": "rotate(0deg)",
+                    "-moz-transform": "rotate(0deg)",
+                })
+                var self = this;
+                self.state = item.name;
+                self.menu.processing.hideOrder = !self.menu.processing.hideOrder;
+                self.menu.processing.isChoose = true;
+                self.menu.processing.type = self.menu.processing.type.map(function (item) {
+                    item.isSelect = false;
+                    return item;
+                });
+                item.isSelect = true;
+                self.menu.processed.isChoose = false;
+                self.menu.all.isChoose = false;
+                self.curState = item.state;
+                self.pageIndex = 1;
+                self.items = [];
+                self.doSearch();
+            }
+        },
+        created: function () {
+            var self = this;
+            self.pageIndex = 1;
+            self.doSearch();
+
+            $.get("/api/order/WxGetOrderStateNum", { appType: 1}, function (res) {
+                for (var i = 0; i < res.length; i++) {
+                    self.menu.all.num += res[i].Num;
+                    if (res[i].State & (1024 | 2048)) {
+                        self.menu.processed.num += res[i].Num;
+                    } else if (res[i].State == 8) {
+                        self.menu.processing.type[0].num += res[i].Num;
+                        self.menu.processing.type[4].num += res[i].Num;
+                    } else if (res[i].State == 16) {
+                        self.menu.processing.type[1].num += res[i].Num;
+                        self.menu.processing.type[4].num += res[i].Num;
+                    } else if (res[i].State == 32) {
+                        self.menu.processing.type[2].num += res[i].Num;
+                        self.menu.processing.type[4].num += res[i].Num;
+                    } else if (res[i].State == 64) {
+                        self.menu.processing.type[3].num += res[i].Num;
+                        self.menu.processing.type[4].num += res[i].Num;
+                    }
+                }
+            });
+
+            $(window).scroll(function () {
+                if ($(document).scrollTop() >= $(document).height() - $(window).height() - 20 &&!self.showBottom) {
+                      self.doSearch();
+                }
+            })
+        }
+    })
+
+</script>

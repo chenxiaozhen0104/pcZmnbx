@@ -1,0 +1,22 @@
+﻿@model List<LZY.BX.Model.Brand>
+@{
+    ViewBag.Title = "select_brand_control";
+    Layout = null;
+}
+
+
+<div class="form-group">
+    <label for="brandId" class="col-sm-2 control-label">品牌</label>
+    <div class="col-sm-6">
+        <select class="form-control" name="BrandId" id="brandId">
+            <option>请选择品牌</option>
+            @{
+                foreach (var item in Model)
+                {
+                    <option value="@item.BrandId">@item.Name</option>;
+                }
+            }
+        </select>
+    </div>
+</div>
+

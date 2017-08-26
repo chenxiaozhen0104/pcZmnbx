@@ -1,0 +1,110 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@using LZY.BX.Model
+
+@model Repair.Web.Site.Areas.User.Models.OrderQueryModel
+
+@{
+    Layout = null;
+}
+
+@if (Model.MainOrderData != null && Model.MainOrderData.Count > 0)
+{
+    foreach (var item in Model.MainOrderData)
+    {
+        User serUser = new User();
+        if (item.ServiceUserId != null && Model.ServeUserDic.ContainsKey((long)(item.ServiceUserId)))
+        {
+            serUser = Model.ServeUserDic[(long)(item.ServiceUserId)];
+        }
+        var limitLength = 25;
+
+        var offset = 13;
+
+        var mantissa = 9;
+        var userCompany = new UseCompany();
+        if (item.UseCompanyId != null)
+        {
+            if (Model.UseCompanyDic.ContainsKey((long)item.UseCompanyId) && !string.IsNullOrEmpty(Model.UseCompanyDic[(long)item.UseCompanyId].Name))
+            {
+                userCompany.Name = Model.UseCompanyDic[(long)item.UseCompanyId].Name;
+                if (userCompany.Name.Length > limitLength)
+                {
+                    userCompany.Name = string.Concat(userCompany.Name, "...", userCompany.Name.Substring(userCompany.Name.Length - mantissa, mantissa));
+                }
+            }
+            else
+            {
+                userCompany.Name = "暂无";
+            }
+        }
+
+        var describe = (!string.IsNullOrEmpty(item.Describe) && item.Describe.Length > limitLength) ? string.Concat(item.Describe.Substring(0, offset), "...", item.Describe.Substring(item.Describe.Length - mantissa, mantissa)) : item.Describe;
+
+
+
+        <div class="panel-body border-top-1 border-right-1 border-bottom-1 border-left-1" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+            <div class="row clear-top-10 clear-bottom-10" style="background-color:#edf6fb">
+                <span class="col-md-2">@item.MainOrderId</span>
+                <span class="col-md-1">@Comm.GetEnumDescription(item.State, typeof(OrderState)).Split('|')[0]</span>
+                @*<span class="col-md-2">@item.CreateTime</span>*@
+                <span class="col-md-5" title="@(Model.UseCompanyDic.ContainsKey((long)item.UseCompanyId)?Model.UseCompanyDic[(long)item.UseCompanyId].Name:"暂无")">@userCompany.Name</span>
+
+                <span class="col-md-1 col-md-offset-1">操作</span>
+            </div>
+            <div class="row clear-top-10 clear-bottom-10">
+                <span class="col-md-3">报修人员：@(Model.UserDic.ContainsKey((long)item.UserId) ? Model.UserDic[(long)item.UserId].RealName : "暂无")</span>
+                <span class="col-md-5">联系电话：@(Model.UserDic.ContainsKey((long)item.UserId) ? Model.UserDic[(long)item.UserId].Phone : "暂无")</span>
+                <span class="col-md-1 col-md-offset-3">
+                </span>
+            </div>
+            <div class="row clear-bottom-10">
+                <span class="col-md-3">工单类型：@(item.Type == OrderType.Repair ? "需要维修" : "需要保养")</span>
+                <span class="col-md-5">工单级别：@(item.Level == OrderLevel.Ordinary ? "普通工单" : "加急工单")</span>
+                <span class="col-md-1 col-md-offset-3">
+                </span>
+            </div>
+            <div class="row clear-bottom-10">
+                <span class="col-md-3">设备名称：@(Model.DeviceDic.ContainsKey(item.DeviceId == null ? 0 : (long)item.DeviceId) ? Model.DeviceDic[(long)item.DeviceId].Name : "暂无")</span>
+                <span class="col-md-5">安装地址：@(Model.DeviceDic.ContainsKey(item.DeviceId == null ? 0 : (long)item.DeviceId) ? Model.DeviceDic[(long)item.DeviceId].Position : "暂无")</span>
+                <span class="col-md-1 col-md-offset-3">
+                </span>
+            </div>
+            <div class="row clear-bottom-10">
+                <span class="col-md-3">设备型号：@Model.DeviceDic[(long)item.DeviceId].Model</span>
+                <span class="col-md-5" title="@item.Describe">故障描述：@describe</span>
+                <span class="col-md-1 col-md-offset-3">
+                    
+                    @if (item.State.ToString() == OrderState.Worked.ToString() )
+                    {
+                        <a href='#' onclick='worked("@item.MainOrderId.ToString()",128)'>未解决</a>
+                        <a href='#' onclick='worked("@item.MainOrderId.ToString()",1024)'>已完成</a>
+                    }
+                </span>
+            </div>
+            <div class="row clear-bottom-10">
+                <hr />
+                <div class=" clear-top-10"></div>
+                <span class="col-md-3">维修人员：@((serUser == null || string.IsNullOrEmpty(serUser.RealName)) ? "未接单" : Model.ServeUserDic[(long)item.ServiceUserId].RealName)</span>
+                <span class="col-md-3">联系方式：@((serUser == null || string.IsNullOrEmpty(serUser.Phone)) ? "未接单" : Model.ServeUserDic[(long)item.ServiceUserId].Phone)</span>
+                <span class="col-md-3">订单创建时间：@(item.CreateTime == null ? DateTime.MinValue : item.CreateTime)</span>
+            </div>
+        </div>
+        <div class="clear-bottom-20">
+        </div>
+    }
+}
+else
+{
+    <div class="panel-body border-top-1 border-right-1 border-bottom-1 border-left-1" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+        <div class="row clear-top-10 clear-bottom-10" style="background-color:#edf6fb">
+            <span class="text-center" style="padding-left:20px;">暂时没有工单</span>
+        </div>
+    </div>
+}
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>
+
+

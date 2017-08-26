@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "厨房设备";
+    ViewBag.subTitle = "厨房设备";
+    Layout = "~/Views/Shared/_Layout_No.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/css/kitchen.css" rel="stylesheet" />
+}
+<style>
+    .bossInfo{
+        height:173px;
+    }
+    .kitchen_left>p{
+        margin:5px 0;
+        font-family:"Microsoft YaHei";
+    }
+    .kitchen_left>p>span{
+        color:red;
+        font-size:14px;
+    }
+    .yyjDetails{
+        width:900px;
+        margin-top:10px;
+    }
+    .yyjList{
+       margin-left:-15px;
+       margin-bottom:10px;
+       margin-right:15px;
+    }
+   .yyjList>.thumbnail{
+       height:350px;
+       width:288px;
+   }
+   .capBttom{
+      margin:10px 0 0 20px;
+   }
+   .capBttom>p{
+       margin-top:3px;
+   }
+    .capBttom>p>span{
+      padding-left:10px;
+      color:red;
+   }
+    .capBttom>p>em{
+        color:#269aff;
+    }
+</style>
+
+<div class="kitchen_content">
+    <div class="kitchen_left">
+        <p>品牌目录&nbsp;&gt;&nbsp;油烟机&nbsp;&gt;&nbsp;<span>老板</span></p>
+        <div class="lampblack  bossInfo">
+            <div class="brand_list">
+                <p>品牌名称：</p>
+                <ul>
+                    <li>美的</li>
+                    <li>老板</li>
+                    <li>海尔</li>
+                    <li>方太</li>
+                    <li>华帝</li>
+                    <li>方讯</li>
+                    <li>康帅</li>
+                    <li>香夫人</li>
+                    <li>Haodtai/有爱好太太</li>
+                    <li>万家乐</li>
+                    <li>苏泊尔</li>
+                </ul>
+            </div>
+            <div class="product_search">
+                <p class="ckys ckysCommon ">查看元素：</p>
+                <div class="appraise ckysCommon">
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务速度
+                    </p>
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务质量
+                    </p>
+                    <p>
+                        <input type="checkbox" name="appraise" />
+                        服务态度
+                    </p>
+                </div>
+                <form action="#" method="#" class="cpxh ckysCommon">
+                    <p>
+                        <input type="text" name="cpxhSearch" placeholder="请输入关键字进行搜素" />
+                        <input type="submit" value="搜素 " />
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="yyjDetails">
+           <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam1.png" />
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam2.png" style="margin-top:30px;padding:0 0 35px 30px;" />
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam3.png"  style="margin-top:30px;padding-bottom:40px;"/>
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam1.png" />
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam2.png" style="margin-top:30px;padding:0 0 35px 30px;" />
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="yyjList col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/Content/images/img/lam3.png" style="margin-top:30px;padding-bottom:40px;" />
+                    <div class="capBttom caption">
+                        <p>产品名称：Robam/老板<span>油烟机</span></p>
+                        <p>产品型号：6A5T+7B16</p>
+                        <p>产品类型：<em>侧吸式</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kitchen_right">
+        <img src="~/Content/images/img/lampblack01.png" />
+        <img src="~/Content/images/img/lampBlack02.png" />
+    </div>
+</div>
+
+

@@ -1,0 +1,115 @@
+﻿@model Repair.Web.Site.Areas.User.Models.EquipmentQueryModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = null;
+}
+
+
+
+<style type="text/css">
+    .media {
+        margin-top: 30px;
+    }
+
+        .media img {
+            height: 65%;
+        }
+
+    .botLine {
+        border-bottom: 1px solid #dadada;
+        padding-bottom: 20px;
+        color: #999999;
+        position: relative;
+    }
+
+        .botLine > p {
+            line-height: 25px;
+        }
+
+            .botLine > p span {
+                color: #dd1716;
+            }
+
+            .botLine > p b {
+                color: black;
+                font-weight: normal;
+            }
+
+            .botLine > p strong {
+                color: #ffb900;
+            }
+
+        .botLine > a {
+            height: 25px;
+            width: 70px;
+            color: black;
+            text-align: center;
+            border: 1px solid #999999;
+            line-height: 25px;
+            text-decoration: none;
+        }
+
+        .botLine > .amend {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            border-bottom: 0;
+        }
+
+    .cancels {
+        position: absolute;
+        right: 0;
+        top: 75px;
+    }
+
+    .amend:hover {
+        border: none;
+        background: #84cafe;
+        color: white;
+    }
+
+    .cancels:hover {
+        border: none;
+        background: red;
+        color: white;
+    }
+</style>
+@if (Model.Data != null)
+{
+    foreach (var item in Model.Data)
+    {
+        <div class="media">
+            <a class="media-left" href="javascript:">
+                <img src="~/Content/images/img/placeholderFigure.png" />
+            </a>
+            <div class="media-body botLine">
+                <p><b>设备名称：</b><span>@item.Name</span></p>
+                <p>安装地点：@item.Position</p>
+                <p>类目/品牌/型号：@(item.CategoryId!=null&&Model.CategoryDic.ContainsKey((long)item.CategoryId)==true? Model.CategoryDic[(long)item.CategoryId].Name:"暂无")<e>/</e>@(item.BrandId!=null&&Model.BrandDic.ContainsKey((long)item.BrandId)==true?Model.BrandDic[(long)item.BrandId].Name:"暂无")<e>/</e>@(item.Model!=null&&string.IsNullOrEmpty(item.Model)==true?"暂无": item.Model)</p>
+                <p>安装地址：@item.Position</p>
+                <a data-toggle="modal" href="@Url.Action("EditEquipment", new { id = item.DeviceId })" data-target="#openEditDevice">编辑</a>
+                <a style="color:red" href="javascript:void(0)" onclick="remove(@item.DeviceId)">删除</a>
+            </div>
+        </div>
+    }
+    <div id="page">
+        <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+        @Html.Partial("pagger", Model.PageInfo)
+    </div>
+}
+else
+{
+    <div class="media">        
+        <div class="media-body botLine">
+           暂时没有设备
+        </div>
+    </div>
+}
+<script>
+
+    //$(".cancels").click(function () {
+    //    $(this).parents(".media").remove();
+    //})
+
+</script>

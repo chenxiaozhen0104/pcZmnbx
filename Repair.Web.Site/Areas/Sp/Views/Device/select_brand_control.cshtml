@@ -1,0 +1,68 @@
+﻿@model List<LZY.BX.Model.Manufacturer>
+@{
+    ViewBag.Title = "select_brand_control";
+    Layout = null;
+}
+
+<div class="form-group">
+    <label for="manufacturerId">厂家</label>
+    <select class="form-control" id="manufacturerId">
+        <option>暂无</option>
+        @{
+            foreach (var item in Model)
+            {
+                var branIds = item.Brands.OrderBy(t => t.Name).Select(t => t.BrandId).ToList();
+                var brandstr = string.Join(",", branIds);
+
+                var brannames = item.Brands.OrderBy(t => t.Name).Select(t => t.Name).ToList();
+                var brandnamestr = string.Join(",", brannames);
+
+                if (branIds.Contains(Convert.ToInt64(ViewBag.brandId)))
+                {
+                    <option selected="selected" branidarr="@brandstr" brannamearr="@brandnamestr" value="@item.ManufacturerId">@item.Name</option>
+                }
+                else
+                {
+                    <option branidarr="@brandstr" brannamearr="@brandnamestr" value="@item.ManufacturerId">@item.Name</option>
+                }
+            }
+        }
+    </select>
+</div>
+<div class="form-group">
+    <label for="brandId">品牌</label>
+    <select class="form-control" name="BrandId" id="brandId">
+        <option>暂无</option>
+    </select>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#manufacturerId").on("change", function () {
+            var branidarr = $(this).find("option:selected").attr("branidarr") != undefined ? $(this).find("option:selected").attr("branidarr").split(",") : [];
+            var brannamearr = $(this).find("option:selected").attr("brannamearr") != undefined ? $(this).find("option:selected").attr("brannamearr").split(",") : [];
+           
+            
+            var brandEle = $("#brandId");
+            //清空内容
+            brandEle.empty();
+
+            //数据重组
+            brandEle.append("<option>暂无</option>")
+
+            $.each(branidarr, function (i, item) {
+                if (item != "") {
+                    var name = brannamearr[i];
+                    if (item == '@ViewBag.brandId') {
+                        brandEle.append("<option  selected='selected' value=" + item + ">" + name + "</option>");
+                    }
+                    else {
+                        brandEle.append("<option value=" + item + ">" + name + "</option>");
+                    }
+                }
+            });
+        });
+
+        $("#manufacturerId").trigger("change");
+    });
+</script>

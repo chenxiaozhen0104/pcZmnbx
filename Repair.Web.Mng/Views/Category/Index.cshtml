@@ -1,0 +1,50 @@
+﻿@using LZY.BX.Model
+@model List<Category>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>类目管理</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    @{
+                        @Html.Partial("CategoryTree", Model)
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document)
+           .on("click", "td[data-toggle=switch]", function () {
+               var pThis = $(this).closest("tr");
+
+               var show = pThis.data("hide");
+               pThis.data("hide", !show);
+
+               var sub = pThis.parent().find("[pids*=" + pThis.attr("id") + "]");
+               sub.each(function () {
+                   if (show)
+                       $(this).show();
+                   else
+                       $(this).hide();
+               });
+           });
+
+        function remove(id) {
+            AComfig("确定删除本目录？", function () {
+                $.post(GetAjaxOptions('@Url.Action("Remove", "Category")', { id: id }));
+            });
+        }
+    </script>
+}
+

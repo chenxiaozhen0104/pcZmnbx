@@ -1,0 +1,177 @@
+﻿
+@using LZY.BX.Model;
+@model RepairOrder
+@{
+    ViewBag.Title = "OrderInfo";
+    var repairBooking = ViewData["repairBooking"]as RepairBooking;
+    var useCompanyUser = ViewData["useCompanyUser"]as User;
+    var useCompany = ViewData["useCompany"]as UseCompany;
+
+    var userId = (long)ViewData["UserId"];
+    var repairOrderLog = ViewData["repairOrderLog"]as List<RepairOrderLog>;
+    var serviceCompany = ViewData["serviceCompany"] as ServiceCompany;
+    var serviceCompanyUser = ViewData["serviceCompanyUser"] as User;
+    var equipment = ViewData["equipment"] as Equipment;
+}
+<head>
+    <style>
+        .to_do1 {
+            float: left;
+            margin: 0;
+            padding: 0;
+        }
+
+            .to_do1 li {
+                background: none;
+                list-style: none;
+                padding: 4px;
+                position: relative;
+                border-radius: 3px;
+            }
+    </style>
+</head>
+<form action="@Url.Action("CancelOrder")" method="POST">
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="col-md-12" name=" repairorderid" value="@Model.RepairOrderId" style="display: none" />
+                    <input type="text" class="col-md-12" name="userId" value="@userId" style="display: none" />
+                    取消原因：<input type="text" name="cause" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                    <button type="submit" class="btn btn-primary">取消订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="text" name="repairOrderId" value="@Model.RepairOrderId" style="display: none" />
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="col-md-2 col-sm-12 col-xs-12">
+
+            </div>
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                @{
+                    if (Model.State != "Cancel" && Model.State != "Worked")
+                    {
+                        @*<div class="col-md-12 col-sm-12 col-xs-12">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">取消订单</button>
+                          </div>*@
+                    }
+                }
+                
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>报修状态时间轴</h2>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <ul class="list-unstyled timeline">
+                                @{
+                                    var i = 0;
+                                    foreach (var item in repairOrderLog)
+                                    {
+                                        i++;
+                                        <li>
+                                            <div class="block">
+                                                <div class="tags" style="top: 5px;">
+                                                    <a class="tag">
+                                                        <span>@i</span>
+                                                    </a>
+                                                </div>
+                                                <div class="block_content">
+                                                    <h2 class="title">
+                                                        <a>@item.CreateTime</a>
+                                                    </h2>
+                                                </div>
+                                                <p class="excerpt">
+                                                    @item.Content
+                                                </p>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <ul class="to_do">
+                                @if (equipment != null)
+                                {
+                                    <li>设备名称:@equipment.Name</li>
+                                }
+                                else
+                                {
+                                    <li>设备名称:</li>
+                                }
+                                <li>订单编号:@Model.RepairOrderId</li>
+                                <li>报修时间:@Model.CreateTime</li>
+                                <li>故障描述:@Model.Describe</li>
+                                @if (repairBooking != null)
+                                {
+                                    <li>预约时间:@repairBooking.Time</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <ul class="to_do">
+                                <li>报修人:@useCompanyUser.RealName</li>
+                                <li>联系电话:@useCompanyUser.Phone</li>
+                                <li>报修单位:@useCompany.Name</li>
+                                <li>联系人:@useCompany.Contact</li>
+                                <li>联系电话:@useCompany.Phone</li>
+                                <li>地址:@useCompany.Position</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+
+                        <div class="x_content">
+                            <ul class="to_do">
+                                @{
+                                   
+                                    if (serviceCompanyUser != null)
+                                    {
+                                        <li>维修人:@serviceCompanyUser.RealName</li>
+                                        <li>联系电话:@serviceCompanyUser.Phone</li>
+                                    }
+                                    if (serviceCompany != null)
+                                    {
+                                        <li>维修单位:@serviceCompany.Name</li>
+                                        <li>联系人:@serviceCompany.Contact</li>
+                                        <li>联系电话:@serviceCompany.Phone</li>
+                                        <li>地址:@serviceCompany.Position</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+@using Repair.Web.Mng
+@using Repair.Web.Mng.Menu
+@model List<MenuItem>
+@{
+    var curMenu = MenuMng.GetCurMenu(ViewContext.RouteData);
+    var activeMenu = MenuMng.ParentIds(curMenu);
+
+    var user = (UserSession)User;
+}
+
+@foreach (var menuL0 in Model)
+{
+    if (menuL0.Hide || !user.Roles.Contains(menuL0.Id))
+    {
+        continue;
+    }
+    
+    <li class="@(activeMenu.Contains(menuL0.Id)?"active":string.Empty) treeview">
+        @if (menuL0.HasVisiableSubItem)
+        {
+            <a href="#">
+                <i class="fa @menuL0.Icon" title="@menuL0.Title"></i>
+                <span>@menuL0.Title</span>
+            </a>
+        }
+        else
+        {
+            <a href="@menuL0.Url" title="@menuL0.Title"><i class="fa  @menuL0.Icon"></i>@menuL0.Title</a>
+        }
+        @if (menuL0.HasVisiableSubItem)
+        {
+            <ul class="nav child_menu">
+                @Html.Partial("_Layout/_inc_menu_tree", menuL0.SubItems)
+            </ul>
+        }
+    </li>
+}
+
+
+
+
+
+

@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .mainbo {
+        width: 1190px;
+        height: 700px;
+        margin: 10px auto;
+        border: 1px solid #dedede;
+        padding: 10px 150px 10px 150px;
+        border-radius: 5px;
+    }
+
+     .mine    .row {
+        width: 850px;
+        height: 82px;
+        display: flex;
+        align-items: center;
+    }
+
+    .top {
+        border-bottom: 1px solid #d6d6d6;
+    }
+
+    .p-text {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .number {
+        width: 24px;
+        height: 24px;
+        background-color: #fb791f;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        line-height: 24px;
+        border-radius: 12px;
+    }
+
+    .create, .join {
+        width: 140px;
+        height: 36px;
+        color: white;
+        font-size: 15px;
+        text-align: center;
+        line-height: 24px;
+        border-radius: 5px;
+    }
+
+    .create {
+        margin-right: 40px;
+    }
+
+    .join {
+        background-color: #d6d6d6;
+    }
+
+        .create:hover, .join:hover, .submit:hover {
+            color: white;
+            border: none;
+    }
+
+    .submit {
+        width: 360px;
+        height: 41px;
+        background-color: #128ce9;
+        color: white;
+        font-size: 16px;
+    }
+
+    .p {
+        margin-top: 12px;
+    }
+
+    .dropDown-text {
+        color: #aaa;
+        font-size: 10px;
+        margin-right: 50px;
+        position: absolute;
+        left: 12px;
+        top: 10px;
+    }
+
+    .dropdown-toggle {
+        width: 302px;
+        height: 36px;
+        position: relative;
+    }
+
+    .caret {
+        position: absolute;
+        top: 15px;
+        right: 12px;
+    }
+
+    .highLight {
+        background-color: #fb791f;
+        border: none;
+        color: white;
+    }
+
+    .form2 {
+        display: none;
+    }
+</style>
+
+<form action="@Url.Action("Register")" class="form-horizontal mainbo" role="form" id="AjaxForm">
+    <div class="form-group">
+        <div class="row top">
+            <div class="col-sm-1">
+                <div class="number">1</div>
+            </div>
+            <div class="col-sm-2 p">
+                <p class="p-text">选择入住方式</p>
+            </div>
+            <div class="col-sm-9 click">
+                <input type="button" value="创建新企业" class="btn create highLight">
+                <input type="button" value="加入指定企业" class="btn join">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="number">2</div>
+            </div>
+            <div class="col-sm-2 p">
+                <p class="p-text">填写相关信息</p>
+            </div>
+        </div>
+    </div>
+    <div class="form">
+        <div class="form1">
+            <div class="form-group">
+                <label for="companyName" class="col-sm-2 control-label">单位名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="companyName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="companyAddress" class="col-sm-2 control-label">单位地址</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="companyAddress" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="connectPeople" class="col-sm-2 control-label">联系人</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="connectPeople" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="connectMobile" class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="connectMobile" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="range" class="col-sm-2 control-label">服务范围</label>
+                <div class="col-sm-10">
+                    <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <text class="dropDown-text">请选择&nbsp;/&nbsp;输入您可以提供的服务范围</text>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another</a></li>
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="yes-no" class="col-sm-2 control-label">是否是生产厂家</label>
+                <div class="col-sm-10">
+                    <input type="radio" name="yes-no" value="yes" />是
+                    <input type="radio" name="yes-no" value="no" />否
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uploading" class="col-sm-2 control-label">企业扫描件</label>
+                <div class="col-sm-10">
+                    <input type="file" id="uploading" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <input type="checkbox" id="check" />
+                    <text class="text">我已经同意并申请啄木鸟网站服务协议</text>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn submit">提交</button>
+                </div>
+            </div>
+        </div>
+        <div class="form2">
+            <div class="form-group">
+                <label for="range" class="col-sm-2 control-label">服务范围</label>
+                <div class="col-sm-10">
+                    <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <text class="dropDown-text">请选择&nbsp;/&nbsp;输入您可以提供的服务范围</text>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another</a></li>
+                            <li><a href="#">Something</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <input type="checkbox" id="check" />
+                    <text class="text">我已经同意并申请啄木鸟网站服务协议</text>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn submit">加入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts
+{
+    <script type="text/javascript">
+
+        function AjaxSubmitValidate() {
+            var usedname = $("#usedname");
+
+            var add = $("#add");
+
+            var name = $("#name");
+
+            var photo = $("#photo");
+
+            if (usedname.val() == "") {
+                ShowError("Name", "请输入申请的单位名称");
+                usedname.focus();
+                return false;
+            }
+            if (add.val() == "") {
+                ShowError("Position", "请输入单位地址");
+                add.focus();
+                return false;
+            }
+            if (name.val() == "") {
+                ShowError("Contact", "请输入单位联系人");
+                name.focus();
+                return false;
+            }
+            if (photo.val() == "") {
+                ShowError("Phone", "请输入单位联系电话");
+                photo.focus();
+                return false;
+            }
+            if ($("#iagree").is(':checked') == false) {
+                AWarnMsg("勾选同意并阅读");
+                $("#iagree").focus();
+                return false;
+            }
+            return true;
+        }
+
+        $(function () {
+            $('.dropdown-menu>li>a').click(function () {
+                $(".dropDown-text").text(($(this).text()));
+                $(".dropDown-text").css("color", "#333");
+            });
+            $(".click>input").click(function () {
+                $(this).addClass("highLight").siblings().removeClass("highLight");
+            })
+            $(".join").click(function () {
+                $(".form2").css("display", "block").siblings().css("display", "none");
+            })
+            $(".create").click(function () {
+                $(".form1").css("display", "block").siblings().css("display", "none");
+            })
+        })
+    </script>
+}

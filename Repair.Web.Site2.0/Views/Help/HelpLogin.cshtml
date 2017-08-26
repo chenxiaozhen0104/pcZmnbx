@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "帮助中心";
+    Layout = "~/Views/Shared/_Other.cshtml";
+}
+
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="equipmentContent">
+    <ul class="helpReg-list">
+        <li>
+            <p><span>啄木鸟有几种登录方式？</span> <i class="iconfont icon-chevron-up"></i></p>
+
+            <ul>
+                <li>您好，有两种。1、进入啄木鸟首页，点击右上角登录，你可以用手机验证码快捷登录<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、也可以使用用户名和密码登录</li>
+            </ul>
+        </li>
+        <li>
+            <p><span>账号是否可以在多个终端登录？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，可以在电脑和手机同时登录，但是都需要通过手机验证。</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/help.js"></script>
+}

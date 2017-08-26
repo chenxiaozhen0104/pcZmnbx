@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "工单总量统计";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+   
+
+<div id="statistics-time">
+    <ul class="statistics-tab">
+        <li class="statisticsIcon" onclick="servicePrevious()"><i class="iconfont icon-xiangzuo"></i></li>
+        <li  class="statistics-selectActive" onclick="serviceTimes(this, selectTime.Type.Week)">周</li>
+        <li onclick="serviceTimes(this, selectTime.Type.Year)">年</li>
+        <li class="statisticsIcon" onclick="serviceNext()"><i class="iconfont icon-arrow-right"></i></li>
+    </ul>
+    <div id="orderCountEcharts"></div>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/statisticsOrderCount.js"></script>
+}
+

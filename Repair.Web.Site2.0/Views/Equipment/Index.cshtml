@@ -1,0 +1,250 @@
+﻿
+@{
+    ViewBag.Title = "设备列表";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+<div class="equipmentContent" id="equipmentLists">
+    <div class="equipment-title">
+        <span v-on:click="addEquipment">导入设备</span>
+        <span class="addEquipment" v-on:click="deviceEditor('0')">新增设备</span>
+    </div>
+    <div class="workOrder-center">
+        <div class="workOrder-search">
+            <input type="text" class="workOrder-search-input" placeholder="设备ID/设备名称" v-model="searchkey" />
+            <div class="img-box" v-on:click="doSearch">
+                <i class="iconfont icon-fangdajing"></i>
+            </div>
+        </div>
+    </div>
+    <div class="equipment-deleteAll">
+        <span style="display:none;"><i class="iconfont icon-shanchu1" v-on:click="deviceDeleteAll"></i>&nbsp;&nbsp;批量删除</span>
+        <span v-on:click="deviceDeleteAll"><i class="iconfont icon-gengxin"></i>&nbsp;&nbsp;批量更新类目</span>
+
+    </div>
+    <ul class="equipment-listTitle">
+        <li>设备名称</li>
+        <li>设备类目</li>
+        <li>安装地址</li>
+        <li>操作</li>
+    </ul>
+    <div class="equipment-listContent">
+        <div class="equipment-list" v-for="item in devicelist">
+            <p v-html="item.DeviceId?'设备ID：'+item.DeviceId:'暂无'"></p>
+            <ul class="equipment-listTitle equipment-info">
+                <li>
+                    <input type="checkbox" :checked="item.selectCheck" v-on:click="setSelectCheck(item)" />
+                    <img class="equipment-figure" v-bind:src="getUrl(item.DeviceId)? getUrl(item.DeviceId): '/Static/images/placeholderFigure.png'" />
+                    <div class="equipmentInfo-list">
+                        <p v-html="item.Name"></p>
+                        <p v-html="'资产:'+item.AssetsId"></p>
+                        <p v-html="item.Brand&&item.Brand.Name?'品牌:'+item.Brand.Name:'暂无'"></p>
+                        <p v-html="item.Model?'型号:'+item.Model:'暂无'"></p>
+                    </div>
+                </li>
+                <li v-html="item.Category&&item.Category.Name?item.Category.Name:'暂无'"></li>
+                <li v-html="item.Position?item.Position:'暂无'"></li>
+                <li><i class="iconfont icon-shanchu1" v-on:click="deviceDelete(item.DeviceId)"></i><i class="iconfont icon-icon07" v-on:click="deviceEditor(item)"></i></li>
+            </ul>
+        </div>
+
+        <div class="equipment-prompt" v-if="devicelist.length=='0'">没有符合的搜索内容！</div>
+
+    </div>
+
+    <div class="equipment-editorCont">
+        <div class="equipment-editor">
+            <div class="equipment-editorTitle">
+                <h3>新增设备</h3>
+                <i class="iconfont icon-shanchu" v-on:click="deviceClose"></i>
+            </div>
+            <div class="equipment-editorInfo">
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>资产</span>
+                        <input type="text" v-model="AssetsId" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>二维码</span>
+                        <input type="text" v-model="QRCode" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>名称</span>
+                        <input type="text" v-model="Name" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>型号</span>
+                        <input type="text" v-model="Model" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorRight">
+                        <span>品牌</span>
+                        <select v-model="brandsId" v-on:change="chooseManu(brandsId)">
+                            <option v-bind:value="item.BrandId" v-for="item in brands" v-html="item.Name"></option>
+                        </select>
+                    </div>
+
+                    <div class="equipment-editorLeft">
+                        <span>厂家</span>
+                        <input type="text" v-model="manufacturersName" value="readonly" readonly />
+                    </div>
+
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>区域</span>
+                        <select v-model="areaId">
+                            <option v-bind:value="item.AreaId" v-for="item in areas" v-html="item.Name"></option>
+                        </select>
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>类目</span>
+                        <select v-model="categoryId">
+                            <option v-bind:value="item.CategoryId" v-for="item in categorys" v-html="item.Name"></option>
+                        </select>
+                    </div>
+                </div>
+
+                @*<div class="equipment-editorRow">
+                        <div class="equipment-editorLeft">
+                            <span>所属公司</span>
+                            <input type="text" name="name" value="" />
+                        </div>
+                        <div class="equipment-editorRight">
+
+                        </div>
+                    </div>*@
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>经度</span>
+                        <input type="text" v-model="Longitude" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>维度</span>
+                        <input type="text" v-model="Dimension" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>采购时间</span>
+                        <input id="buyTime" type="date" v-model="BuyTime" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>质保时间</span>
+                        <input type="date" id="warrantyTime" v-model="WarrantyTime" />
+                    </div>
+                </div>
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>安转地址</span>
+                        <input type="text" v-model="Position" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>信息备注</span>
+                        <input type="text" v-model="Note" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipment-editorBtn">
+                <button class="equipment-btnSubmit" v-on:click="submitBtn">提交</button>
+                <button class="equipment-btnClose" v-on:click="deviceClose">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <ul class="page" v-if="pagetotal>1">
+        <li v-on:click="find(1)">首页</li>
+        <li v-on:click="find('pre')">上一页</li>
+        <li v-for="obj in pagetotal" v-bind:class="{liActive:obj==pageindex}" v-on:click="find(obj)" v-html="obj" v-if="obj>=pageindex&&obj<(10+pageindex-1)&&obj!=pagetotal"></li>
+        <li v-if="pagetotal>=(10+pageindex-1)" v-html="'...'"></li>
+        <li v-on:click="find(pagetotal)" v-html="pagetotal"></li>
+        <li v-on:click="find('next')">下一页</li>
+        <li v-on:click="find(pagetotal)">尾页</li>
+        <li v-html="'当前第'+pageindex+'页 共'+pagetotal+'页'"></li>
+    </ul>
+
+    <div class="equipment-addCont">
+        <div class="add-equipmentTop">
+            <div class="add-equipmentTitle">
+                <span>请选择Excel文件</span>
+                <i class="iconfont icon-shanchu" v-on:click="deviceClose"></i>
+            </div>
+        </div>
+        <form enctype="multipart/form-data" id="excelUpload" target="nm_iframe">
+            <div class="add-equipmentCont">
+                <div class="change-input-content">
+                    <a href="http://img.zmnbx.com//dist/Js/设备录入模板.xlsx" class="equipment-download">下载导入模板</a>
+
+                    <div class="equipment-inputs">
+                        <input type="text" class="chagePhoto-input" v-model="addExcel" value="readonly" readonly />
+
+                        <a href="javascript:;" class="a-upload">
+                            <input type="file" class="file" name="excelFile" onchange="fileChange(this)" />浏览
+                        </a>
+
+                    </div>
+                    <button class="addEquipment-submit" v-on:click="excelSubmit">上传</button>
+                </div>
+            </div>
+        </form>
+        <iframe id="nm_iframe" name="nm_iframe" style="display:none;"></iframe>
+
+    </div>
+
+    <div class="amendCategory">
+        <table border="0" cellspacing="0">
+            <tr>
+                <td><span>一级类目</span></td>
+                <td><span>二级类目</span></td>
+                <td><span>三级类目</span></td>
+                <td><span>四级类目</span></td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <select v-model="item1" v-on:change="getChildCate(item1)">
+                        <option :value="obj" v-for="obj in cateArry1" v-html="obj.Name"></option>
+                    </select>
+                </td>
+                <td>
+                    <select v-model="item2" v-on:change="getChildCate(item2)" v-show="selectItem.LevelDeep>=1">
+                        <option :value="obj" v-for="obj in cateArry2" v-if="obj.Left > item1.Left && obj.Right < item1.Right " v-html="obj.Name"></option>
+                    </select>
+                </td>
+                <td>
+                    <select v-model="item3" v-on:change="getChildCate(item3)" v-show="selectItem.LevelDeep>=2">
+                        <option :value="obj" v-for="obj in cateArry3" v-if="obj.Left > item2.Left && obj.Right < item2.Right " v-html="obj.Name"></option>
+                    </select>
+                </td>
+                <td>
+                    <select v-model="item4" v-on:change="getChildCate(item4)" v-show="selectItem.LevelDeep>=3">
+                        <option :value="obj" v-for="obj in cateArry4" v-if="obj.Left > item3.Left && obj.Right < item3.Right " v-html="obj.Name"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input class="amendBtn" type="button" value="确认修改" v-on:click="updateCate()" />
+    </div>
+
+</div>
+
+
+
+@section js{
+    <script src="~/Static/scripts/common/jquery/jquery.form.js"></script>
+    <script src="~/Static/scripts/view/equipmentList.js"></script>
+
+}

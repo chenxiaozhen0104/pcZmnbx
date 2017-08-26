@@ -1,0 +1,356 @@
+﻿@using LZY.BX.Model
+@using Newtonsoft.Json;
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    UseCompany userCompany = ViewData["UseCompany"] as UseCompany ?? new UseCompany();
+   
+}
+
+<style>
+    .mainbo {
+        width: 1190px;
+        height: 700px;
+        margin: 10px auto;
+        border: 1px solid #dedede;
+        padding: 10px 150px 10px 150px;
+        border-radius: 5px;
+    }
+
+    .row {
+        width: 850px;
+        height: 82px;
+        display: flex;
+        align-items: center;
+    }
+
+    .top {
+        border-bottom: 1px solid #d6d6d6;
+    }
+
+    .p-text {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .number {
+        width: 24px;
+        height: 24px;
+        background-color: #fb791f;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        line-height: 24px;
+        border-radius: 12px;
+    }
+
+    .create, .join {
+        width: 140px;
+        height: 36px;
+        color: white;
+        font-size: 15px;
+        text-align: center;
+        line-height: 24px;
+        border-radius: 5px;
+    }
+
+    .create {
+        margin-right: 40px;
+    }
+
+    .join {
+        background-color: #d6d6d6;
+    }
+
+        .create:hover, .join:hover, .submit:hover {
+            color: white;
+            border: none;
+        }
+
+    .text {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .submit {
+        width: 360px;
+        height: 41px;
+        background-color: #128ce9;
+        color: white;
+        font-size: 16px;
+    }
+
+    .p {
+        margin-top: 12px;
+    }
+
+    .dropDown-text {
+        color: #aaa;
+        font-size: 10px;
+        margin-right: 50px;
+        position: absolute;
+        left: 12px;
+        top: 10px;
+    }
+
+    .dropdown-toggle {
+        width: 302px;
+        height: 36px;
+        position: relative;
+    }
+
+    .caret {
+        position: absolute;
+        top: 15px;
+        right: 12px;
+    }
+
+    .highLight {
+        background-color: #fb791f;
+        border: none;
+        color: white;
+    }
+
+    .form2 {
+        display: none;
+    }
+</style>
+
+<div class="form-horizontal mainbo">
+    <div class="form-group">
+        <div class="row top">
+            <div class="col-sm-1">
+                <div class="number">1</div>
+            </div>
+            <div class="col-sm-2 p">
+                <p class="p-text">选择入住方式</p>
+            </div>
+            <div class="col-sm-9 click">
+                <input type="button" value="创建新企业" class="btn create highLight">
+                <input type="button" value="加入指定企业" class="btn join">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-1">
+                <div class="number">2</div>
+            </div>
+            <div class="col-sm-2 p">
+                <p class="p-text">填写相关信息</p>
+            </div>
+        </div>
+    </div>
+    <div class="form">    
+            <div class="form1">
+                <form role="form" id="AjaxForm">
+                    <div class="form-group">
+                        <label for="companyName" class="col-sm-2 control-label">单位名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="companyName" name="Name" value="@userCompany.Name"/>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyAddress" class="col-sm-2 control-label">单位地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="companyAddress" name="Position" value="@userCompany.Position"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="connectPeople" class="col-sm-2 control-label">联系人</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="connectPeople" name="Contact" value="@userCompany.Contact" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="connectMobile" class="col-sm-2 control-label" > 联系电话</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="connectMobile" name="Phone" value="@userCompany.Phone"/>
+                        </div>
+                    </div>
+                    @if(userCompany.State == LZY.BX.Model.Enum.CompanyState.Locked) {
+                        <div class="form-group" style="">
+                            <label for="connectMobile" class="col-sm-2 control-label">原因:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Note" name="Note" value="@userCompany.Note" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="UseCompanyId" value="@userCompany.UseCompanyId"/>
+                    }
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <label>
+                                <input type="checkbox" id="check" />
+                                <text class="text">我已经同意并申请啄木鸟网站服务协议</text>
+                            </label>
+</div>
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="button" class="btn submit" onclick="registerUserCompany()">提交</button>
+                        </div>
+
+                    </div>
+                </form>
+</div>
+        
+        <div class="form2">
+            <div class="form-group">
+                <label for="range" class="col-sm-2 control-label">企业名称</label>
+                <div class="col-sm-5">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default searchClick" type="button">搜索</button>
+                        </span>
+                        <input type="text" class="form-control import" name="Search" placeholder="请输入要搜索的企业名称">
+                    </div>
+                </div>
+            </div>
+            <div class="list-group col-sm-offset-2 col-sm-5">
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <label>
+                        <input type="checkbox" id="Addcheck" />
+                        <text class="text">我已经同意并申请啄木鸟网站服务协议</text>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="button" class="btn submit" onclick="AddUserCompany()">加入</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+      
+        //注册公司
+        function registerUserCompany() {
+            if (ajaxSubmitValidate()) {
+                var formData = new FormData(document.getElementById("AjaxForm"));
+                $.ajax({
+                    url: "Auth/Register",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        if (res.ErrCode == 0) {
+                            ASuccess("提交成功.请稍后留意审核状态");
+                            location.href = 'Order/Order';
+                        } else {
+                            AErrorMsg(res.ErrMsg);
+                        }
+                    }
+                });
+            }
+        }
+        //验证
+        function ajaxSubmitValidate() {
+            var usedname = $("#companyName");
+
+            var add = $("#companyAddress");
+
+            var person = $("#connectPeople");
+
+            var Phone = $("#connectMobile");
+
+            if (usedname.val() == "") {
+                ShowError("Name", "请输入申请的单位名称");
+                usedname.focus();
+                return false;
+            }
+            if (add.val() == "") {
+                ShowError("Position", "请输入单位地址");
+                add.focus();
+                return false;
+            }
+            if (person.val() == "") {
+                ShowError("Contact", "请输入单位联系人");
+                person.focus();
+                return false;
+            }
+            if (Phone.val() == "") {
+                ShowError("Phone", "请输入单位联系电话");
+                Phone.focus();
+                return false;
+            }
+            if ($("#check").is(':checked') == false) {
+                AWarnMsg("勾选同意并阅读");
+                $("#check").focus();
+                return false;
+            }
+            return true;
+        }
+        function AddUserCompany() {
+            if ($("#Addcheck").is(':checked') == false) {
+                AWarnMsg("勾选同意并阅读");
+                $("#Addcheck").focus();
+                return false;
+            }
+        if ($("input[name='radio']:checked").val()) {
+               $.ajax({
+                    url: "Auth/AddUserCompany",
+                    type: 'POST',
+                    data: { id: $("input[name='radio']:checked").val() },
+                    success: function (res) {
+                        if (res.ErrCode == 0) {
+                            ASuccess("提交成功.请稍后留意审核状态");
+                            location.href = 'Order/Order';
+                        } else {
+                            AErrorMsg(res.ErrMsg);
+                        }
+                    }
+                });
+            } else {
+                AWarnMsg("请选择您要添加的公司!");
+            }
+        }
+
+        $(function () {
+           
+            var str = "";
+            $(".searchClick").click(function () {
+                if ($(".import").val() == "") {
+                    ShowError("Search", "请输入公司姓名");
+                    $(".import").focus();
+                    return false;
+                }
+                str = "";
+                $(".list-group").html(str);
+                $.get("Auth/UserCompanyList", { keywords: $(".import").val() }, function (res) {
+                    //console.log(res);
+                    for (var i = 0; i < res.length; i++) {
+                        str += '<a href="#####" class="list-group-item"><label><p class="companyName" ><span><input type="radio" name="radio" value="' + res[i].id + '"></span>公司名称:' + (res[i].Name || '暂无') + '</p ><p class="connect">联系人：' + (res[i].Contact || '暂无') + '&nbsp;&nbsp;&nbsp;联系方式：' + (res[i].Phone || '暂无') + '</p><p class="address">地址：' + (res[i].Position || '暂无') + '</p></label></a >'
+                    }
+                    $(".list-group").append(str);
+                })
+            })
+
+            //$('.dropdown-menu>li>a').click(function () {
+            //    $(".dropDown-text").text(($(this).text()));
+            //    $(".dropDown-text").css("color", "#333");
+            //});
+            $(".click>input").click(function () {
+                $(this).addClass("highLight").siblings().removeClass("highLight");
+            })
+            $(".join").click(function () {
+                $(".form2").css("display", "block").siblings().css("display", "none");
+            })
+            $(".create").click(function () {
+                $(".form1").css("display", "block").siblings().css("display", "none");
+            })
+        })
+    </script>
+}

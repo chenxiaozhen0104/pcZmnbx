@@ -1,0 +1,52 @@
+﻿
+@model LZY.BX.Model.Page<LZY.BX.Model.Roles>
+@{
+    ViewBag.Title = "Index";
+}
+
+<form method="post" id="form1" name="form1" action="@Url.Action("Index")">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>角色管理</h2>
+                <div class="clearfix"></div>
+            </div>
+            @Html.ActionLink("添加", "Edit", new { id = 0 }, new { @class = "btn btn-primary" })
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">名称</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">@item.RolesId</td>
+                                    <td class=" ">@item.Name</td>
+                                    <td class=" ">
+                                        @Html.ActionLink("删除", "Delete", new { id = item.RolesId }, new { onclick = "return confirm('确定要删除吗?')" })
+                                        @Html.ActionLink("角色修改", "Edit", new { id = item.RolesId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+            </div>
+    </div>
+
+
+</form>

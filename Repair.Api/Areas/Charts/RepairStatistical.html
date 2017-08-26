@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable= no">
+    <!--<link href="../H5/Content/css/bootstrap.min.css"rel="stylesheet" />-->
+    <title>报修端统计</title>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/LineChart.js"></script>
+    <script src="js/BarChart.js"></script>
+    <script src="js/ArrayExtension.js"></script>
+    <script src="js/selectTime.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: #eeeeee;
+        }
+
+        .repair-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*tab切换*/
+        .repair-tables {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .tables-btn {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .tab-change {
+            color: #00a0fa;
+            border-bottom: 1px solid #00a0fa;
+        }
+
+        /*时间选择*/
+        .select-time {
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid white;
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+
+        .time-span {
+            height: 30px;
+            width: 50px;
+            border: 1px solid #00a0fa;
+            line-height: 30px;
+            text-align: center;
+            color: #00a0fa;
+        }
+       .time-span.borderNo{
+           border-left:none;
+           border-right:none;
+       }
+
+        .checked-color {
+            background-color: #00a0fa;
+            color: #fff;
+        }
+
+       .repairSpan{
+            display:flex;
+            height: 30px;
+            width: 50px;
+            border: 1px solid #00a0fa;
+        }
+       .returnBack{
+            border-right:none;
+            background-color:transparent;
+            background:url(http://img.zmnbx.com//dist/Images/returnActive.png) no-repeat center center;  
+       }
+       .returnEnter{
+            background-color:transparent;
+            border-left:none;
+            background:url(http://img.zmnbx.com//dist/Images/enterActive.png) no-repeat center center;
+       }
+        .returnBack:active,.returnEnter:active{
+            background-color:#999999;
+        }
+
+        /*图表样式*/
+        #repairCategory {
+            margin-top: 10px;
+            width: 100%;
+            height: 390px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--报修端 统计-->
+    <div class="repair-container">
+        <ul class="repair-tables">
+            <li class="tables-btn tab-change">类目统计报表</li>
+            <li class="tables-btn">区域统计报表</li>
+            <li class="tables-btn">响应时间报表</li>
+        </ul>
+
+        <div class="select-time">
+            <span class="returnBack repairSpan" onclick="Previous()"></span>
+            <span class="time-span checked-color" onclick="selectTimes(this, selectTime.Type.Day)">日</span>
+            <span class="time-span borderNo" onclick="selectTimes(this, selectTime.Type.Week)">周</span>
+            <span class="time-span" onclick="selectTimes(this, selectTime.Type.Month)">月</span>
+            <span class="returnEnter repairSpan" onclick="Next()"></span>
+        </div>
+        <div id="repairCategory"></div>
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+    var index = 0;
+    var datas = selectTime.setTimeType(selectTime.Type.Day);
+    var myChart = echarts.init(document.getElementById('repairCategory'));
+    var token = location.search.split('=')[1];    
+    var date = new Date;
+    var year = date.getFullYear();
+
+    function substr(start, end) {
+        start = start.split(" ")[0]
+        end = end.split(" ")[0]
+        if (start == end) {
+            return start
+        } else {
+            return start + " 至 " + end;
+        }
+    }
+
+    // 类目，区域统计
+    function init(api, title, startTime, endTime) {
+        $.post('/api/Repair/' + api + '?token=' + token + '&appType=1&beginTime=' + startTime + '&endTime=' + endTime, {}, function (res) {
+            barOption.title.text = title;
+            barOption.title.subtext = substr(startTime, endTime);
+            barOption.title.left = "center";
+            barOption.title.itemGap = -5;
+            barOption.yAxis.data = res.yAxis;
+            barOption.series[0].data = res.seriesData
+
+            myChart.setOption(barOption);
+        });
+    }
+
+    function postData(index, startTime, endTime) {
+        if (index == 0) {
+            myChart.clear()
+            $(".select-time").show();
+            init('CategoryCount', '类目统计报表 单位(个)', startTime, endTime)
+        }
+        if (index == 1) {
+            myChart.clear()
+            $(".select-time").show();
+            init('AreaCount', '区域统计报表 单位(个)', startTime, endTime)
+        }
+
+        // 响应时间统计
+        if (index == 2) {
+            $(".select-time").hide();
+            myChart.clear()
+            $.post('/api/Repair/RepairdTimeCount?token=' + token + '&appType=1&year=' + year, {}, function (res) {
+                res.series = res.series.map(function (item) {
+                    var lens = item.data.length;
+                    for (var i = 0; i < lens; i++) {
+                        item.data[i] = (item.data[i] / 60).toFixed(2);
+                    }
+                    return item;
+                })
+
+                orderOption.title.text = year+'年' + '\n' + "派单响应时间";
+                orderOption.legend.data = res.lengData
+                orderOption.series = res.series;
+                myChart.setOption(orderOption);
+            });
+        }
+    }
+
+    function selectTimes(that, type) {
+        $(that).addClass("checked-color").siblings().removeClass("checked-color");
+        datas = selectTime.setTimeType(type);
+        postData(index, datas[0], datas[1])
+    }
+
+
+    function Previous() {
+        datas = selectTime.Previous();
+        postData(index, datas[0], datas[1])
+    }
+    function Next() {
+        datas = selectTime.Next();
+        postData(index, datas[0], datas[1])
+
+    }
+    (function () {
+        //Height = $(window).height() - 200;
+        //console.log(Height);
+        //$("#repairCategory").css("height", Height);
+        init('CategoryCount', '类目统计报表 单位(个)', datas[0], datas[1])
+    })();
+
+
+    $(".tables-btn").click(function () {
+        index = $(this).index();
+        $(this).addClass("tab-change").siblings().removeClass("tab-change");
+        postData(index, datas[0], datas[1])
+
+    });
+
+
+
+</script>

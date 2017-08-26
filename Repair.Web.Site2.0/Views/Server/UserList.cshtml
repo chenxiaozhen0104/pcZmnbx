@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+    //var userList = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+    <div class="right-userList" id="userdata">
+        <div class="workOrder-center">
+            <div class="workOrder-search">
+                <input type="text" class="workOrder-search-input" placeholder="用户名ID/手机号/用户名"  v-model="searchkey"/>
+                <div class="img-box" v-on:click="doSearch">
+                    <i class="iconfont icon-fangdajing"></i>
+                </div>
+            </div>
+        </div>
+        <div class="userList-table" >
+            <table class="table" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>用户名</th>
+                        <th>手机号码</th>
+                        <th>Email</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>状态</th>
+                        <th>最近操作时间</th>
+                    </tr>
+                </thead>
+                <tbody v-if="list.length > 0">
+                    <tr v-for="obj in list" >
+                        <td v-html="obj.UserId"></td>
+                        <td v-html="obj.RealName"></td>
+                        <td v-html="obj.Phone"></td>
+                        <td v-html="obj.Email"> </td>
+                        <td v-html="obj.Sex"></td>
+                        <td v-html="obj.Age"></td>
+                        <td v-html="obj.UserState"></td>
+                        <td v-html="obj.LastLogin"></td>
+                    </tr>
+                   
+                </tbody>
+                <tbody  v-else>
+                    <tr><td colspan="8">没有符合的搜索内容</td></tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <ul class="page" v-if="pagetotal>1">
+            @*<input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+            @Html.Partial("pagger",Model.PageInfo);*@
+
+            <li v-on:click="find(1)">首页</li>
+            <li v-on:click="find('pre')">上一页</li>
+            <li v-for="obj in pagetotal" v-bind:class="{liActive:obj==pageindex}" v-on:click="find(obj)" v-html="obj" v-if="obj>=pageindex&&obj<(10+pageindex-1)&&obj!=pagetotal"></li>
+            <li v-if="pagetotal>(10+pageindex-1)" v-html="'...'"></li>
+            <li v-on:click="find(pagetotal)" v-html="pagetotal"></li>
+            <li v-on:click="find('next')">下一页</li>
+            <li v-on:click="find(pagetotal)">尾页</li>
+            <li v-html="'当前第'+pageindex+'页 共'+pagetotal+'页'"></li>
+        </ul>
+    </div>
+
+
+@section js{
+    <script src="~/Static/scripts/view/userlist.js"></script>
+}

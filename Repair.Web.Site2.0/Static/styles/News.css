@@ -1,0 +1,341 @@
+﻿/*左边公共样式*/
+.publicBody {
+    width: 1200px;
+    margin: 30px auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.publicLeft-content {
+    background-color: #f6f6f6;
+}
+
+.public-left {
+    background-color: white;
+    height: 600px;
+    width: 250px;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.publicLeft-Top {
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    justify-content: space-between;
+}
+
+.headPhoto-img {
+    width: 77px;
+    height: 106px;
+    margin-left: 20px;
+}
+
+.Info {
+    width: 120px;
+    height: auto;
+    padding: 15px 0 0 10px;
+}
+
+    .Info > p:last-child {
+        margin-top: 10px;
+    }
+
+.text-size {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.publicLeft-middle {
+    height: 46px;
+    width: 250px;
+    background-color: #fba02a;
+    line-height: 46px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.publicLeft-middle:before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    left: 75px;
+    top: 22px;
+}
+
+.publicLeft-middle:after {
+    content: "";
+    width: 3px;
+    height: 3px;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    right: 75px;
+    top: 22px;
+}
+
+.publicLeft-bottom {
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.publistBottom-lists {
+    width: 250px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.publistBottom-lists.publicLists-active {
+    background-color: #efefef;
+    border-left: 2px solid #fba02a;
+    color: #fba02a;
+}
+
+.publistBottom-lists > a {
+    position: absolute;
+    left: 90px;
+    text-decoration: none;
+    color: black;
+}
+
+.publistBottom-lists > a.color-active {
+    color: #fba02a;
+}
+
+.icon-liebiaoqiehuan, .icon-zuixindongtai, .icon-tongzhigonggao, .icon-meiti {
+    color: #fba02a;
+    font-size: 18px;
+    position: absolute;
+    left: 55px;
+}
+
+
+/*右部分*/
+.public-right {
+    width: 930px;
+    background-color: white;
+    border-radius: 2px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding-top: 12px;
+    padding-left: 36px;
+}
+.News-banner {
+    width: 100%;
+    height: 500px;
+    background: url('../images/NewsCenter-banner.png') no-repeat;
+}
+/*最新动态*/
+.Recent-content {
+    padding-top: 17px;
+    padding-bottom: 19px;
+    width: 858px;
+    border-bottom: 1px solid #e9e9e9;
+    display: flex;
+    flex-direction: row;
+}
+/*Recent-content:hover .description-title {
+    color: #fba02a;
+}*/
+.description-title {
+    font-size: 16px;
+    color: #333;
+    padding-left: 14px;
+    border-left: 4px solid #fba02a;
+    font-weight: bold;
+    text-decoration:none;
+}
+.description-title:hover{
+    color:#fba02a;
+}
+.description-content {
+    font-size: 14px;
+    color: #333;
+    margin-top: 23px;
+    margin-left: 19px;
+    width: 649px;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 22px;
+}
+.description-img{
+    width:177px;
+    height:120px;
+    margin-left:16px;
+}
+.description-bottom {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    flex-direction: row;
+    /*height: 30px;*/
+    padding-left:19px;
+}
+.bottom-time{
+    display:flex;
+    flex-direction:row;
+}
+.icon-xinwenfabushijian, .icon-yueduliang {
+    margin-right: 8px;
+    font-size: 14px;
+    color: #999;
+}
+.bottom-time span,.title-time span{
+    color:#404040;
+    font-size:14px;
+    margin-right:28px;
+}
+/*最新动态详情*/
+.position{
+    width:100%;
+    height:60px;
+    background-color:#fff;  
+}
+
+.positionAuto {
+    width:1200px;
+    margin:0 auto;
+    display: flex;
+    line-height:60px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon-fangzi,.icon-arrow-right {
+    color: #333;
+    font-size: 16px;
+    margin-right: 8px;
+}
+.NewsCenter, .LatestNews {
+    font-size: 16px;
+    color: #333;
+    margin-right: 8px;
+    text-decoration:none;
+}
+.linkHomepage{
+    text-decoration:none;
+}
+.NewsCenter:hover, .LatestNews:hover, .icon-fangzi:hover {
+    color: #fba02a;
+    cursor: pointer;
+}
+.NewsDetail-content {
+    width: 100%;
+    height: 100%;
+    background-color: #f6f6f6;
+}
+.NewsDetail-inner {
+    margin:30px auto;
+    width: 1200px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.title-text {
+    width:1220px;
+    text-align:center;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top:49px;
+}
+.inner-title {
+    height: 130px;
+    width: 1200px;
+    border-bottom: 1px solid #e5e5e5;
+    flex-direction: column;
+}
+.title-time{
+    margin-bottom:28px;
+    margin-left:950px;
+    margin-top:23px;
+}
+.inner-introduction{
+    width:1200px;
+    height:327px;
+    display:flex;
+    flex-direction:row;
+    padding-left:64px;
+}
+.intro-left {
+    width: 680px;
+    height: 327px;
+    padding-top: 57px;
+}
+.intro-right{
+    padding-top:57px;
+}
+.Number01 {
+    font-size: 30px;
+    color: #fba02a;
+    margin-right:13px;
+}
+.left-text{
+    width:520px;
+    display:flex;
+    flex-wrap:wrap;
+}
+.left-text p{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    margin-bottom:30px;
+    font-size:14px;
+}
+
+.left-text p:nth-of-type(even){
+    line-height:25px;
+}
+.firstStage{
+    font-size:16px;
+    flex-wrap:wrap;
+    display:flex;
+    flex-direction:column;
+}
+.firstStage a{
+    text-decoration:none;
+}
+.intro-right-img{
+    width:400px;
+    height:270px;
+    margin-right:144px;
+}
+/*视频*/
+.video {
+    margin-left: -85px;
+    margin-top:119px;
+    margin-bottom:55px;
+}
+.vedio-img {
+    width: 1367px;
+    height: 495px;
+    box-shadow: 5px -5px 10px #cdcdcd;
+}
+/*底部*/
+.intro-bottom {
+    width: 1200px;
+    height: 252px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 53px;
+    padding-left: 49px;
+}
+.intro-bottom p{
+    font-size:14px;
+    color:#333;
+}
+.last{
+    margin-bottom:17px;
+}

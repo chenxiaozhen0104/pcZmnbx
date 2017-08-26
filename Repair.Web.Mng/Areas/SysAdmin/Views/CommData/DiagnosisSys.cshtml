@@ -1,0 +1,65 @@
+﻿@using LZY.BX.Service
+@model LZY.BX.Model.Page<LZY.BX.Model.PageModel.PageDiagnosis>
+@{
+    ViewBag.Title = "DiagnosisSys";
+}
+
+<form id="form1" action="@Url.Action("DiagnosisSys")" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>故障描述</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                @Html.ActionLink("添加", "DiagnosisEdit", new { id = 0 }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">制造商名称</th>
+                                <th class="column-title">品牌名称</th>
+                                <th class="column-title">产品名称</th>
+                                <th class="column-title">故障描述</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">@item.DiagnosisId</td>
+                                   
+                                    <td class=" ">@item.ManufacturersName</td>
+                                
+                                    <td class=" ">@item.BrandName</td>
+                               
+                                    <td class=" ">@item.ProductName</td>
+                                
+                                    <td class=" ">@item.Describe</td>
+                                    <td class=" ">
+                                        @Html.ActionLink("删除", "DiagnosisDelete", new { id = item.DiagnosisId }, new { onclick = "return confirm('确定要删除吗?')" })
+
+                                        @Html.ActionLink("修改", "DiagnosisEdit", new { id = item.DiagnosisId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+
+        </div>
+    </div>
+</form>

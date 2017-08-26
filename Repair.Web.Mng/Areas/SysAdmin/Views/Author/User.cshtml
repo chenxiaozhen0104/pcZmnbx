@@ -1,0 +1,102 @@
+﻿@using LZY.BX.Model
+@model LZY.BX.Model.QueryModel.UserQueryModel
+@{
+    ViewBag.Title = "User";
+}
+<form action="@Url.Action("User")" id="form1" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>用户管理</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                @Html.ActionLink("添加", "UserEdit", new { id = 0 }, new { @class = "btn btn-primary" })
+            </div>
+
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">姓名</th>
+                                <th class="column-title">昵称</th>
+                                <th class="column-title">账号</th>
+                                <th class="column-title">手机号</th>
+                                <th class="column-title">Email</th>
+                                <th class="column-title">性别</th>
+                                <th class="column-title">年龄</th>
+                                <th class="column-title">短语</th>
+                                <th class="column-title">所属单位</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">@item.UserId</td>
+                                    <td class=" ">@item.RealName</td>
+                                    <td class=" ">@item.NickName</td>
+                                    <td class=" ">@item.Account</td>
+                                    <td class=" ">@item.Phone</td>
+                                    <td class=" ">@item.Email</td>
+                                    @if (item.Sex == "Man")
+                                    {
+                                        <td class=" ">男</td>
+                                    }
+                                    else if (item.Sex == "Woman")
+                                    {
+                                        <td class=" ">女</td>
+                                    }
+                                    else
+                                    {
+                                        <td class=" "></td>
+                                    }
+                                    <td class=" ">@item.Age</td>
+                                    <td class=" ">@item.Note</td>
+                                    <td class=" ">
+                                        @if (Model.UseCompanyUserDic.ContainsKey(item.UserId))
+                                        {
+                                            var useCompanyId = Model.UseCompanyUserDic[item.UserId].UseCompanyId;
+                                            if (Model.UseCompanyDic.ContainsKey(useCompanyId))
+                                            {
+                                                <p>报修单位：@Model.UseCompanyDic[useCompanyId].Name</p>
+                                            }
+
+                                        }
+                                       @if (Model.serviceCompanyUserDic.ContainsKey(item.UserId))
+                                       {
+                                           var serviceCompanyId = Model.serviceCompanyUserDic[item.UserId].ServiceCompanyId;
+                                           if (Model.serviceCompanyDic.ContainsKey(serviceCompanyId))
+                                           {
+                                            <p>服务单位：@Model.serviceCompanyDic[serviceCompanyId].Name</p>
+                                           }
+
+                                       }
+                                        
+                                    </td>
+                                    <td class=" ">
+
+                                        @Html.ActionLink("删除", "UserDelete", new { id = item.UserId }, new { onclick = "return confirm('确定要删除吗?')" })
+                                        @Html.ActionLink("修改", "UserEdit", new { id = item.UserId })
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+        </div>
+    </div>
+</form>

@@ -1,0 +1,31 @@
+@using Repair.Web.Mng.Models
+@model DlgConfirmInfo
+@{
+    Layout = null;
+
+    var dic = new Dictionary<InfoType, Tuple<string, string>>() 
+    {
+        {InfoType.Error, new Tuple<string, string>("glyphicon glyphicon-remove-sign", "text-danger")},
+        {InfoType.Danger, new Tuple<string, string>("glyphicon glyphicon-ban-circle", "text-danger")},
+        {InfoType.Info, new Tuple<string, string>("glyphicon glyphicon-info-sign", "text-info")},
+        {InfoType.Warning, new Tuple<string, string>("glyphicon glyphicon-exclamation-sign", "text-warning")},
+        {InfoType.Success, new Tuple<string, string>("glyphicon glyphicon-ok-circle", "text-success")},
+    };
+
+    var val = dic[Model.Type];
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title"><i ></i>@Model.Title</h4>
+</div>
+<div class="clear-bottom-5 clear-top-5 clear-left-5" style="height:110px; line-height:115px; vertical-align:middle;">
+    <div class="pull-left margin-r-5 border-right">
+        <i class="@val.Item1 @val.Item2" style="font-size: 100px;"></i>
+    </div>
+    <div class="pull-left margin">
+        &nbsp;&nbsp;&nbsp;@Model.Content
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-right" data-dismiss="modal" onclick="window.location.reload()">È·¶¨</button>
+</div>

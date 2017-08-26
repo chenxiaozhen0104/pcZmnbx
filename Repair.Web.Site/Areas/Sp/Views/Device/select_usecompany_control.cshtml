@@ -1,0 +1,24 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "select_usecompany_control";
+    Layout = null;
+}
+<div class="form-group">
+    <label for="usecompanyId">所属公司</label>
+    <select class="form-control"  name="UseCompanyName">
+        <option>暂无</option>
+        @{
+            foreach (var item in Model)
+            {
+                if (item == ViewBag.UserCompanyName)
+                {
+                    <option selected="selected" value="@item">@item</option>
+                }
+                else
+                {
+                    <option value="@item">@item</option>
+                }
+            }
+        }
+    </select>
+</div>

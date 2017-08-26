@@ -1,0 +1,122 @@
+﻿html, body {
+    font-size: 62.5%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.login-logo {
+    width: 12rem;
+    height: 12rem;
+    margin: 2rem 0 1rem 50%;
+    transform: translate(-50%,0);
+}
+
+    .login-logo.login-logo-min {
+        width: 8rem;
+        height: 8rem;
+        margin: 2rem 0 1rem 50%;
+    }
+
+a {
+    color: #3879d9;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.main {
+    padding: 2rem;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.form-row {
+    margin: 1rem 0;
+    line-height: 3.5rem;
+}
+
+    .form-row label {
+        font-size: 1.2rem;
+        color: #666;
+        display: block;
+        line-height: 1.8rem;
+    }
+
+.form-input {
+    position: relative;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+    .form-input .iconfont {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1rem;
+    }
+
+    .form-input input {
+        border: none;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 3rem;
+        background: transparent;
+    }
+
+.pull-right {
+    float: right;
+}
+
+.line-btn {
+    padding: 0 0 0 1rem;
+}
+
+.btn-sms-code {
+    border: 1px solid #3879d9;
+    padding: 0 1rem;
+    margin-left: 1rem;
+    position: absolute;
+    right: 0.3rem;
+    line-height: 2.8rem;
+    top: 0.2rem;
+}
+
+.btn-block {
+    width: 100%;
+    border: none;
+    color: #fff;
+    background-color: #3879d9;
+    line-height: 3.5rem;
+    font-size: 1.4rem;
+}
+.btn-block:active{
+    background-color: #3399ff;
+}
+.foot {
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.fade-enter.fade-enter-active {
+    display: block;
+}
+
+.fade-enter {
+    display: none;
+}
+
+a.disabled {
+    opacity: 0.5;
+}
+
+.err-msg {
+    color: brown;
+}
+
+.required {
+    color: red;
+}

@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable=no">
+    <!--<link href="../H5/Content/css/bootstrap.min.css"rel="stylesheet" />-->
+    <title>维修端统计</title>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/LineChart.js"></script>
+    <script src="js/BarChart.js"></script>
+    <script src="js/ArrayExtension.js"></script>
+    <script src="js/selectTime.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,body{
+            height:100%;
+            width:100%;
+        }
+        .serviceContainer {
+            width: 100%;
+            height:100%;
+            background-color: #eeeeee;
+        }
+
+        /*tab切换*/
+        .serviceTables {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .serviceCont {
+            width: 100%;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        .serviceBtn {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .tab-change {
+            color: #00a0fa;
+            border-bottom: 1px solid #00a0fa;
+        }
+
+        
+     
+        /*时间选择*/
+        .serviceTime, .serviceOrderTime {
+            height: 45px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid white;
+            padding-bottom: 15px;
+        }
+
+        .serviceOrderTime {
+            padding-bottom: 20px;
+        }
+
+        .serviceSpan,.serviceOrderSpan {
+            display:flex;
+            height: 30px;
+            width: 50px;
+            text-align :center;
+            line-height:30px;
+            justify-content:center;
+            border: 1px solid #00a0fa;
+            color: #00a0fa;
+        }
+
+        span.serviceSpan:nth-of-type(2) {
+            border-right: none;
+            border-left:none;
+        }
+
+        span.serviceSpan:nth-of-type(3) {
+            border-right: none;
+        }
+        span.serviceOrderSpan.spanBorder{
+            border-right:none;
+            border-left:none;
+        }
+         .checked-color,.checked-Ordercolor {
+            background-color: #00a0fa;
+            color: #fff;
+        }
+
+       .serviceBack{
+            background-color:transparent;
+            background:url(http://img.zmnbx.com//dist/Images/returnActive.png) no-repeat center center;  
+       }
+       .serviceEnter{
+            background-color:transparent;
+            border-left:none;
+            background:url(http://img.zmnbx.com//dist/Images/enterActive.png) no-repeat center center;
+       }
+        .serviceBack:active,.serviceEnter:active{
+            background:#999999;
+        }
+  
+        /*图表样式*/
+        #serviceEchart {
+            margin-top: 20px;
+            width: 100%;
+            height: 380px;
+        }
+
+        #serviceEchart1 {
+            margin-top: 20px;
+            width: 100%;
+            height: 380px;
+        }
+
+        #serviceEchart2 {
+            margin-top: 20px;
+            width: 100%;
+            height: 380px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--维修端 统计-->
+    <div class="serviceContainer">
+        <!-- tab切换 -->
+        <ul class="serviceTables">
+            <li class="serviceBtn tab-change">人员工时统计</li>
+            <li class="serviceBtn">人员工单统计</li>
+            <li class="serviceBtn">工单总量统计</li>
+        </ul>
+        <!-- s -->
+        <div class="serviceCont">
+            <div class="serviceTime">
+                <span class="serviceBack serviceSpan" onclick="servicePrevious()"></span>
+                <span class="serviceSpan checked-color" onclick="serviceTimes(this, selectTime.Type.Day)">日</span>
+                <span class="serviceSpan" onclick="serviceTimes(this, selectTime.Type.Week)">周</span>
+                <span class="serviceSpan" onclick="serviceTimes(this, selectTime.Type.Month)">月</span>
+                <span class="serviceEnter serviceSpan" onclick="serviceNext()"></span>
+            </div>
+
+            <div class="serviceOrderTime" style="display:none;">
+                <span class="serviceBack serviceSpan" onclick="Previouss()"></span>
+                <span class="serviceOrderSpan spanBorder checked-Ordercolor" onclick="selectOrderTime(this, selectTime.Type.Week)">周</span>
+                <span class="serviceOrderSpan" onclick="selectOrderTime(this, selectTime.Type.Year)">年</span>
+                <span class="serviceEnter serviceSpan" onclick="Nexts()"></span>
+            </div>
+
+            <div id="serviceEchart"></div>
+            <div id="serviceEchart1" style="display:none;"></div>
+            <div id="serviceEchart2" style="display:none;"></div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+  
+    
+
+    var myChart = echarts.init(document.getElementById('serviceEchart'));
+    var index = 0;
+    var datas = selectTime.setTimeType(selectTime.Type.Day);
+    var timeType = 2;
+    var token = location.search.split('=')[1];
+    
+    function substr(start, end) {
+        start = start.split(" ")[0]
+        end = end.split(" ")[0]
+        if (start == end) {
+            return start
+        } else {
+            return start + " 至 " + end;
+        }
+    }
+
+    //工作时长
+    function init(startTime, endTime) {
+        var myChart = echarts.init(document.getElementById('serviceEchart'));      
+        $.post('/api/Repair/WorkTime?token=' + token + '&appType=2&beginTime=' + startTime + '&endTime=' + endTime, {}, function (res) {
+            var lens = res.seriesdata[0].data.length;
+            for (var i = 0; i < lens; i++) {
+                res.seriesdata[0].data[i] = (res.seriesdata[0].data[i] / 60).toFixed(2);
+            }
+            serviceOption.title.text = "人员工时统计 单位(小时)";
+            serviceOption.title.subtext = substr(startTime, endTime);
+            serviceOption.yAxis.data = res.Axis;
+            serviceOption.title.left = "center";
+            serviceOption.title.itemGap = -5;
+            serviceOption.series[0].data = res.seriesdata[0].data;
+            myChart.setOption(serviceOption);
+        });
+    }
+
+
+    // 订单总量统计
+    function orderTime(startTime, endTime, type) {
+        var myChart2 = echarts.init(document.getElementById('serviceEchart2'));
+        $.post('/api/Repair/ServerRepairTime?token=' + token + '&appType=2&beginTime=' + startTime + '&endTime=' + endTime + '&Type=' + type, {}, function (res) {
+            barWithPieoption.yAxis[0].data = res.Axis;
+            barWithPieoption.series[0].data = res.data;
+            barWithPieoption
+            barWithPieoption.title[0].subtext = substr(startTime, endTime);
+            barWithPieoption.title[1].subtext = substr(startTime, endTime);
+            barWithPieoption.series[1].data = res.pieArry;
+            myChart2.setOption(barWithPieoption);
+        })
+    }
+
+
+    (function () {
+        init(datas[0], datas[1]);
+    })();
+
+
+
+    function postData(index, startTime, endTime, type) {
+        type = type || 2;
+
+        if (index == 0) {
+            $("#serviceEchart").show();
+            var myChart = echarts.init(document.getElementById('serviceEchart'));
+            $("#serviceEchart1,#serviceEchart2").hide();
+            init(startTime, endTime);
+        }
+
+        // 人员订单统计
+        if (index == 1) {
+            $("#serviceEchart1").show();
+            var myChart1 = echarts.init(document.getElementById('serviceEchart1'));
+            $("#serviceEchart,#serviceEchart2").hide();
+            $.post('/api/Repair/RepartUserCount?token=' + token + '&appType=2&beginTime=' + startTime + '&endTime=' + endTime, {}, function (res) {
+               
+
+                res.result[0].label.normal.position = "insideTopRight"
+                res.result[0].label.normal.offset =[0,8]
+                res.result[0].label.normal.formatter = function (a) { return a.value > 0 ? a.value : "" };
+
+                res.result[1].label.normal.position = "insideRight"
+                res.result[1].label.normal.offset = [0, -5]
+                res.result[1].label.normal.formatter = function (a) { return a.value > 0 ? a.value : "" };
+
+                res.result[2].label.normal.position = "insideBottomRight"
+                //res.result[2].label.normal.offset = [0,0]
+                res.result[2].label.normal.formatter = function (a) { return a.value > 0 ? a.value : "" };
+
+
+                ordersOption.title.text = "工单数量统计 单位(个)";
+                ordersOption.title.subtext = substr(startTime, endTime);
+                ordersOption.title.itemGap = -5;
+                ordersOption.legend.data = res.legend;
+                ordersOption.yAxis.data = res.userNmaeArr;
+                ordersOption.series = res.result;
+                myChart1.setOption(ordersOption);
+            });
+        }
+        if (index == 2) {
+           
+            $("#serviceEchart2").show();
+            var myChart2 = echarts.init(document.getElementById('serviceEchart2'));
+            $("#serviceEchart,#serviceEchart1").hide();
+            orderTime( startTime, endTime, type)
+        }
+    }
+
+    function servicePrevious() {
+        datas = selectTime.Previous();
+        postData(index, datas[0], datas[1])
+    }
+    function serviceNext() {
+        datas = selectTime.Next();
+        postData(index, datas[0], datas[1])
+
+    }
+
+    function serviceTimes(that, type) {
+        $(that).addClass("checked-color").siblings().removeClass("checked-color");
+        datas = selectTime.setTimeType(type);
+        postData(index, datas[0], datas[1])
+    }
+
+    function Previouss() {
+        datas = selectTime.Previous();
+        postData(index, datas[0], datas[1], timeType)
+    }
+
+    function Nexts() {
+        datas = selectTime.Next();
+        postData(index, datas[0], datas[1], timeType)
+    }
+
+    function selectOrderTime(that, type) {
+        timeType=type
+        $(that).addClass("checked-Ordercolor").siblings().removeClass("checked-Ordercolor");
+        datas = selectTime.setTimeType(type);
+        postData(index, datas[0], datas[1], type)
+    }
+   
+
+    $(".serviceBtn").click(function () {
+        index = $(this).index();
+        $(this).addClass("tab-change").siblings().removeClass("tab-change");
+        if (index == 0 || index == 1) {
+            $(".serviceTime").show();
+            $(".serviceOrderTime").hide();
+            postData(index, datas[0], datas[1])
+        }
+        if (index == 2) {
+            $(".serviceTime").hide();
+            $(".serviceOrderTime").show();
+            var weekDatas = selectTime.setTimeType(selectTime.Type.Week);
+             postData(index, weekDatas[0],weekDatas[1],2)
+        }
+    });
+
+
+
+ 
+
+</script>

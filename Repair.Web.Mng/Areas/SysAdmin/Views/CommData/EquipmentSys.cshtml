@@ -1,0 +1,42 @@
+﻿@model Repair.Web.Areas.SysAdmin.Models.EquipmentSysQueryModel
+@{
+    ViewBag.Title = "EquipmentSys";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>设备管理</h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <form class="form-inline" action="@Url.Action("EquipmentSysList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+        <div class="form-group">
+            <div class="input-group">
+                @Html.ActionLink("添加", "EquipmentEdit", new { id = 0 }, new { @class = "btn btn-primary form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">设备名称</div>
+                <input type="text" class="form-control" name="NameLike" value="@(Model!=null?Model.NameLike:"")">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary form-control">搜索</button>
+            </div>
+        </div>
+        <div id="data-list">
+            @{
+                if (Model != null)
+                {
+                    @Html.Action("EquipmentSysList", Model)
+                }
+                else
+                {
+                    @Html.Action("EquipmentSysList")
+                }
+            }
+        </div>
+    </form>
+</div>

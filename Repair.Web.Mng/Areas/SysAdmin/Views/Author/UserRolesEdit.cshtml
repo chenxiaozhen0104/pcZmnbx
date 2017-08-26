@@ -1,0 +1,122 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+
+@model LZY.BX.Model.UserRoles
+@{
+    ViewBag.Title = "UserRolesEdit";
+
+    var users = ViewData["users"] as List<User>;
+
+    var roles = ViewData["roles"] as List<LZY.BX.Model.Roles>;
+   
+}
+
+<form class="form-horizontal form-label-left" action="@Url.Action("UserRolesEdit")" method="POST">
+    @if (Model == null)
+    {
+        <span class="section">用户添加</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" placeholder="自动生成" data-validate-length-range="6" data-validate-words="2" name="Id" required="required" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                用户名称
+            </label>
+            <div class="col-md-6  col-xs-12">
+                <select class="select2_single form-control" name="UserId" tabindex="-1">
+                    @foreach (var item in users)
+                    {
+                        <option value="@item.UserId">@item.RealName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                角色名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="RolesId" tabindex="-1">
+                    @foreach (var item in roles)
+                    {
+                        <option value="@item.RolesId">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+                <button id="send" type="submit" class="btn btn-success">保存</button>
+            </div>
+        </div>
+    }
+    else
+    {
+
+
+        <span class="section">用户修改</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" value="@Model.Id" data-validate-length-range="6" data-validate-words="2" name="UserId" required="required" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                用户名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="UserId" tabindex="-1">
+                    @foreach (var item in users)
+                    {
+                        if (item.UserId == Model.UserId)
+                        {
+                            <option value="@item.UserId" selected="selected">@item.RealName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.UserId">@item.RealName</option>
+                        }
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                角色名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="RolesId" tabindex="-1">
+                    @foreach (var item in roles)
+                    {
+                        if (item.RolesId == Model.RolesId)
+                        {
+                            <option value="@item.RolesId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.RolesId">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+                <button id="send" type="submit" class="btn btn-success">保存</button>
+            </div>
+        </div>
+    }
+
+
+</form>

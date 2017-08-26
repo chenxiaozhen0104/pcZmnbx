@@ -1,0 +1,133 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+@model LZY.BX.Model.Page<LZY.BX.Model.PageModel.PageServiceEquipment>
+@{
+    ViewBag.Title = "ServiceCompanyBind";
+    var serviceCompanyList = ViewData["serviceCompanyList"]as List<ServiceCompany>;
+    var brandList = ViewData["brandList"] as List<Brand>;
+    var useCompanyId = long.Parse(ViewData["useCompanyId"].ToString());
+}
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <form action="@Url.Action("Add")" id="form2" method="POST">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <tr>
+                            <td>选择服务单位</td>
+                            <td>选择设备</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4 col-sm-12 col-xs-12">
+                                @Html.Partial("Html/ServiceCompanyList", serviceCompanyList)
+                            </td>
+                            <td class="col-md-8 col-sm-12 col-xs-12">
+                                @Html.Partial("Html/BrandList", brandList)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" onclick="Save()" class="btn btn-primary">添加</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-hidden="true">
+    <form action="@Url.Action("Import")" id="form2" method="POST" enctype="multipart/form-data">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="file" id="dataFile" name="dataFile" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">导入</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<form action="@Url.Action("ServiceCompanyBind")" method="POST" id="form1">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>服务单位绑定</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <a style="cursor: pointer" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary">添加</a>
+                </div>
+                @if (useCompanyId > 0)
+                {
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <a style="cursor: pointer" data-toggle="modal" data-target=".bs-example-modal-lg1" class="btn btn-primary">导入</a>
+                    </div>
+                }
+                
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">服务单位</th>
+                                <th class="column-title">设备</th>
+                                <th class="column-title">编辑</th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                               <tr>
+                                    <td class=" ">@item.ServiceCompanyName</td>
+                                  
+                                    <td class=" ">@item.EquipmentName</td>
+                                
+                                <td>
+                                    @Html.ActionLink("取消绑定", "ServiceEquipmentDelete", new { id = item.ServiceEquipmentId }, new { onclick = "return confirm('确定要删除吗?')" })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function Save() {
+            if (document.getElementById("brand").value == "0") {
+                return alert("请选择品牌");
+            }
+            if (document.getElementById("product").value == "0") {
+                return alert("请选择产品");
+            }
+            document.getElementById("form2").submit();
+        }
+    </script>
+}

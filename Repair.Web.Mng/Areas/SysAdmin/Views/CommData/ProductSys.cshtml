@@ -1,0 +1,108 @@
+﻿@using LZY.BX.Model
+@model LZY.BX.Model.QueryModel.ProductQueryModel
+@{
+    ViewBag.Title = "ProductSys";
+    var manugacturer = ViewData["manugacturer"] as List<Manufacturer>;
+
+}
+<form action="@Url.Action("ProductSys")" id="form1" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>产品管理</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                @Html.ActionLink("添加", "ProductEdit", new { id = 0 }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <input type="text" class="form-control" name="productId" value="@Request["productId"]" placeholder="请输入编号">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <select class="form-control" name="manufacturerId">
+                    <option>选择制造商</option>
+                    @foreach (var item in manugacturer)
+                    {
+                        if (item.ManufacturerId == Request["manufacturerId"].AsInt(0))
+                        {
+                            <option value="@item.ManufacturerId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ManufacturerId" onclick="SelectManufacturer(@item.ManufacturerId)">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <input type="text" class="form-control" name="key" value="@Request["key"]" placeholder="请输入名称">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </div>
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">所属制造商</th>
+                                <th class="column-title">隶属品牌</th>
+                                <th class="column-title">中文名称</th>
+                                <th class="column-title">英文名称</th>
+                                <th class="column-title">型号</th>
+                                <th class="column-title">诞生时间</th>
+                                <th class="column-title">设备描述</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">编辑( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">@item.ProductId</td>
+
+                                    <td class=" ">@(Model.ManufacturerDic.ContainsKey(item.ManufacturerId) ? Model.ManufacturerDic[item.ManufacturerId].Name : "")</td>
+
+                                    <td class=" ">@(Model.BrandDic.ContainsKey(item.BrandId) ? Model.BrandDic[item.BrandId].Name : "")</td>
+
+                                    <td class=" ">@item.CNName</td>
+                                    <td class=" ">@item.ENName</td>
+                                    <td class=" ">@item.Model</td>
+                                    <td class=" ">@item.BirthTime</td>
+                                    <td class=" ">@item.Describe</td>
+                                    <td class=" ">
+
+                                        @Html.ActionLink("删除", "ProductDelete", new { id = item.ProductId }, new { onclick = "return confirm('确定要删除吗?')" })
+
+                                        @Html.ActionLink("修改", "ProductEdit", new { id = item.ProductId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @Html.Partial("Html/Pager", @Model)
+        </div>
+
+    </div>
+
+</form>

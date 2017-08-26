@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 关于我们";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+
+
+<div class="about-banner"></div>
+<div class="about-content">
+    <ul class="about-tab about-common">
+        <li class="liActive">
+            <i class="iconfont icon-gongsijianjie aboutIcon"> </i>
+            <a href="#aboutCompany">公司简介</a>
+        </li>
+        <li>
+            <i class="iconfont icon-qiyewenhua aboutIcon"> </i>
+            <a href="#aboutCulture">企业文化</a>
+        </li>
+        <li>
+            <i class="iconfont icon-lianxiwomen aboutIcon"> </i>
+            <a href="#aboutContact">联系我们</a>
+        </li>
+
+
+        <li>
+            <i class="iconfont icon-gongsizizhi aboutIcon"> </i>
+            <a href="#aboutAptitude">公司资质</a>
+        </li>
+    </ul>
+</div>
+
+<div  id="aboutCompany" class="about-content" >
+   <div class="about-company about-common">
+       <div class="aboutCompany-title"><h2>公司简介</h2></div>
+        <div class="aboutCompany-cont">
+            <div class="companyCont-left">
+               <p class="companyCont-leftTil"><i class="about-nums">01</i> <span class="about-names">公司简介<br>Company profile</span></p>
+               <p class="companyCont-leftCont">杭州绿中游智能科技有限公司于2013年11月成立，注册资本500万元，自公司成立以来，
+                  始终专注于智能化、视频监控、门禁道闸等弱电系统集成领域的工作，为广大用户提供
+                  智能化设备、工程施工、系统维护等完整的智能化系统集成服务。目前已在视频监控系
+                  统、防盗报警系统、综合布线系统、门禁一卡通系统、背景广播系统等领域具备了扎实
+                  的技术实力和丰富的集成经验，是一家涉及物联网、智能化系统的软硬件开发等领域的
+                  高新技术企业。
+               </p>
+            </div>
+            <img src="~/Static/images/about-img1.png" />
+        </div>
+       <div class="aboutCompany-cont">
+           <img src="~/Static/images/about-img2.png" />
+           <div class="companyCont-left">
+               <p class="companyCont-leftTil companyCont-rightTil"><span class="about-names">服务范围<br>Scope of services</span><i class="about-nums">02</i> </p>
+               <p class="companyCont-leftCont">
+                   经营范围包括一般经营项目：服务：计算机软硬件、通信设备、物联网的技术开发、
+                   技术服务、成果转让，承接建筑智能化工程、机电设备工程、音视频设备工程、道
+                   路智能交通设备工程、自动化工程、建筑装饰工程、通风空调设备工程（涉及资质
+                   证凭证经营），电子商务技术的技术开发等。
+               </p>
+           </div>
+       </div>
+   </div>
+</div>
+
+<div id="aboutCulture" class="about-content" >
+    <div class="about-company about-common">
+        <div class="aboutCompany-title"><h2>企业文化</h2></div>
+        <div class="aboutCompany-cont">
+            <div class="companyCont-left">
+                <p class="companyCont-leftTil"><i class="about-nums">03</i> <span class="about-names">公司文化<br>Company culture</span></p>
+                <p class="companyCont-leftCont">
+                    公司始终注重品牌管理与团队建设，凭借国际化的管理体系，形成了科学的公司架构和
+                    完善的运行网络，以优秀的团队、先进的技术、完善的服务为保障，向全国各行业各单
+                    位提供优质、稳定、创新的智能系统一体化工程服务。<br/><br/>
+
+                    同心协力，务实创新；优质的信誉、卓越的产品、过硬的团队、高品质的服务，不追求
+                    高价格，但求高质量。始终为用户提供一流的工程质量和性能运行可靠的产品。
+                    坚持“合作、创新、高效、职业”的经营理念，以客户为中心，专业提供需求解决方案。
+                </p>
+            </div>
+            <img src="~/Static/images/about-img3.png" />
+        </div>
+        <div class="aboutCompany-bottom">
+            <img src="~/Static/images/about-img5.png" />
+            <h3>合作、创新、高效、职业、以客户为中心</h3>
+        </div>
+    </div>
+    <img src="~/Static/images/about-img4.png" style="display:block" />
+</div>
+
+<div id="aboutContact" class="about-content">
+    <div class="about-company about-common">
+        <div class="aboutCompany-title"><h2>联系我们</h2></div>
+        <div class="aboutCompany-cont">
+            <div class="companyCont-left">
+                <p class="companyCont-leftTil"><i class="about-nums">04</i> <span class="about-names">联系我们<br>Contact Us</span></p>
+                <p class="companyCont-leftCont">
+                   杭州绿中游智能科技有限公司 <br>
+                    <i class="iconfont icon-dizhi aboutIcons"></i>： 浙江省杭州市西湖区文一西路与崇义路口公元里9幢5单元2楼 <br>
+                    <i class="iconfont icon-dianhua aboutIcons"></i>： 0571 - 56075697   |   0571-56075698 <br/>
+                    <i class="iconfont icon-youxiang aboutIcons"></i>： lzyznkj&#64;163.com
+                </p>
+            </div>
+            <div class="companyCont-right">
+                <img src="~/Static/images/selfCenter-qrCode.png" />
+                <p>关注我们</p>
+            </div>
+        </div>
+        <img class="about-map" src="~/Static/images/about-map.png"/>
+    </div>
+</div>
+
+<div id="aboutAptitude" class="about-content">
+    <div class="about-company about-common">
+        <div class="aboutCompany-title"><h2>公司资质</h2></div>
+        <div class="aboutCompany-cont">
+            <div class="companyCont-left">
+                <p class="companyCont-leftTil"><i class="about-nums">05</i> <span class="about-names">公司资质<br>Company qualification</span></p>
+            </div>
+        </div>
+        <div class="aboutCompany-cont aboutCompany-last">
+            <img src="~/Static/images/about-aptitude.png" />
+        </div>
+    </div>
+</div>
+
+@section js{
+    
+    <script src="~/Static/scripts/view/help.js"></script>
+}

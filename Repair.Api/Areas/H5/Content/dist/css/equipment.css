@@ -1,0 +1,46 @@
+﻿.navbar-fixed-top{
+    height:46px;
+    background:#0092fc;
+    font-size:18px;
+    line-height:46px;
+    color:white;
+}
+.container{
+    padding-top:60px;
+    padding-bottom:40px;
+    background:#eeeeee;
+}
+.row{
+    margin-bottom:10px;
+}
+.col-xs-3{
+    padding:0;
+    color:#bcbcbc;
+}
+.col-xs-9{
+    padding-right:0;
+}
+
+textarea{
+    width: 98%;
+    height: 80px;
+    resize: none;
+}
+
+.navbar-fixed-bottom{
+    height:46px;
+    background:white;
+    font-size:18px;
+    line-height:46px;
+    color:white;
+    text-align:center;
+}
+.navbar-fixed-bottom>p{
+    height:46px;
+    width:94%;
+    margin-left:3%;
+    background:#f5a508;
+    font-size:18px;
+    line-height:46px;
+    color:white;
+}

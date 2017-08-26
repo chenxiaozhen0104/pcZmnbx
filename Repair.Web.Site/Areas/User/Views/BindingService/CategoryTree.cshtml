@@ -1,0 +1,31 @@
+﻿@using LZY.BX.Model
+@model Dictionary<long,Category>
+<ul  id="tree">
+    @{
+        foreach (var item in Model.Values)
+        {
+            <li>
+                <a href="#" id="@item.CategoryId">@item.Name</a>
+            </li>
+
+            @*<li class="cfsbList">
+                <a class="ccc secondDir" href="javascript:void(0);"></a>
+                @Html.Partial("CategoryTree", item.Name)
+            </li>*@
+
+            @*var hasSubMenu = item.Count > 0;
+
+            if (hasSubMenu)
+            {
+                <li class="cfsbList">
+                    <a class="ccc secondDir" href="javascript:void(0);">@item.Name</a>
+                    @Html.Partial("CategoryTree", item.SubItems)
+                </li>
+            }
+            else
+            {
+                <li><a class="aaa" href="#">@item.Name</a></li>
+            }*@
+        }
+    }
+</ul>

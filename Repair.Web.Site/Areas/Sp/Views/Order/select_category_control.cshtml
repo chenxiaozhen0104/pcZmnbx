@@ -1,0 +1,19 @@
+﻿@model List<LZY.BX.Model.Category>
+@{
+    ViewBag.Title = "select_category_control";
+    Layout = null;
+}
+<div class="form-group">
+    <label for="categoryId" class="col-sm-2 control-label">类目</label>
+    <div class="col-sm-6">
+        <select class="form-control" id="categoryId" name="CategoryId" >
+            <option>请选择类目</option>
+            @{
+                foreach (var item in Model)
+                {
+                    <option value="@item.CategoryId">@item.Name</option>;
+                }
+            }
+        </select>
+    </div>
+</div>

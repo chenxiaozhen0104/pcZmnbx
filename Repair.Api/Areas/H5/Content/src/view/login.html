@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用户登录</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_newtymnvzenuerk9.css">
+    <link href="../css/login.css" rel="stylesheet" />
+    <link href="../common/layer/skin/layer.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="content">
+        <div class="main  fade-enter" v-bind:class="{'fade-enter-active':!passwordLogin}">
+            <img class="login-logo" v-bind:src="logo" />
+            <div class="logo"></div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="mobile" type="tel" placeholder="请输入手机号" />
+                    <btn-verify-code v-bind:verify-user="true"  v-bind:mobile="mobile"></btn-verify-code>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-save"></i>
+                    <input v-model="smsCode" placeholder="请输入验证码" type="tel" />
+                </div>
+            </div>
+            <div>
+                <span class="err-msg"></span>
+                <button v-on:click="login" class="btn-block">登 录</button>
+            </div>
+            <div class="foot">
+                <a href="register.html">账号注册</a>
+                <a v-on:click="passwordLogin=!passwordLogin" class="pull-right">密码登录</a>
+            </div>
+        </div>
+        <div class="main fade-enter" v-bind:class="{'fade-enter-active':passwordLogin}">
+            <img class="login-logo" v-bind:src="logo" />
+            <div class="logo"></div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="userName" placeholder="用户名" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-password"></i>
+                    <input v-model="password" placeholder="请输入密码" type="password" />
+                </div>
+            </div>
+            <div>
+                <button v-on:click="login" class="btn-block">登 录</button>
+            </div>
+            <div class="foot">
+                <a href="forgetPassword.html">忘记密码？</a>
+                <a v-on:click="passwordLogin=!passwordLogin" class="pull-right">手机快捷登录</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../common/vue.js"></script>
+    <script src="../common/jquery-3.1.0.js"></script>
+    <script src="../common/layer/layer.js"></script>
+    <script src="../js/component/btn-verify-code.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

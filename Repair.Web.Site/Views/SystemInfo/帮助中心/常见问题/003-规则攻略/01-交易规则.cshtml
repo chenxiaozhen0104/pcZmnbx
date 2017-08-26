@@ -1,0 +1,19 @@
+﻿@model string
+@{
+    var baseDir = Server.MapPath(Model);
+
+    var arrFile = Directory.GetFiles(baseDir);
+}
+<div class="helpView">
+    <p>交易规则</p>
+    <div>
+        <ul>
+            @foreach (var item in arrFile)
+            {
+                var file = new FileInfo(item);
+                <li><a target="_blank" href="@string.Concat(Model, "/", file.Name)">@file.Name.Replace(file.Extension, "")</a></li>
+            }
+        </ul>
+    </div>
+
+</div>

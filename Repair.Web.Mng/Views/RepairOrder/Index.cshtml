@@ -1,0 +1,194 @@
+﻿@using LZY.BX.Utilities
+@using LZY.BX.Model
+@model Page<MainOrder>
+@{
+    ViewBag.Title = "Index";
+    var serviceUser = ViewData["serviceUser"] as List<User>;
+
+}
+<head>
+    <style>
+        .to_do1 {
+            float: left;
+            margin: 0;
+            padding: 0;
+        }
+
+            .to_do1 li {
+                
+                background: none;
+                list-style: none;
+                padding: 4px;
+                position: relative;
+                border-radius: 3px;
+            }
+    </style>
+</head>
+<form action="@Url.Action("SendOrder")" id="form2" method="POST">
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">指派人员</h4>
+                </div>
+                @*<div class="modal-body">
+                    <input type="text" id="repairOrder" name="repairOrderId" style="display: none" />
+                    <select class="form-control" name="serviceCompanyUserId">
+                        @if (serviceUser != null)
+                        {
+                            foreach (var item in serviceUser)
+                            {
+                                <option value="@item.UserId">@item.RealName</option>
+                            }
+                        }
+
+                    </select>
+                </div>*@
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">派单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form id="form1" action="@Url.Action("Index")" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>订单列表</h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <input type="text" class="form-control" name="key" value="@Request["key"]" placeholder="请输入报修单位或维修人">
+
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </div>
+
+
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">报修单位</th>
+                                <th class="column-title">报修人</th>
+                                <th class="column-title">报修时间</th>
+                                <th class="column-title">订单详情</th>
+                                <th class="column-title">订单状态</th> 
+                                <th class="column-title">维修人</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">详情</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">
+                                        <ul class="to_do1">
+                                            <li><span>单位名称：</span><span>@item.UseCompany.Name</span></li>
+                                            <li><span>联系人：</span><span>@item.UseCompany.Contact</span></li>
+                                        </ul>
+                                    </td>
+                                    <td class=" ">
+                                        <span>@item.User.RealName</span>
+                                    </td>
+                                    <td class=" ">@item.CreateTime</td>
+                                    <td class=" ">
+                                        <ul class="to_do1">
+                                            <li><span>设备名：</span><span>@item.Device.Name</span></li>
+                                            <li><span>故障描述：</span><span>@item.Describe</span></li>
+                                            @if (item.AppointmentTime != null)
+                                            {
+                                                <li><span>预约时间：</span><span>@item.AppointmentTime</span></li>
+                                            }
+
+                                        </ul>
+                                    </td>
+                                    <td>@Comm.GetEnumDescription(item.State).Split('|')[1]</td>
+
+                                    @*@{
+                                        switch (item.State)
+                                        {
+                                            case "Sending":                                                
+                                            <td class=" "><span>派单中</span></td>
+                                            break;
+                                            case "Sended":
+                                            <td class=" "><span>已派单</span></td>
+                                                break;
+                                            case "Receive":
+                                            <td class=" "><span>已派单</span></td>
+                                                break;
+                                            case "Working":
+                                            <td class=" "><span>服务中</span></td>
+                                                break;
+                                            case "Worked":
+                                            <td class=" "><span>服务结束</span></td>
+                                                break;
+                                            case "Cancel":
+                                            <td class=" "><span>已取消</span></td>
+                                                break;
+                                        }
+                                    }*@
+                                    <td class=" ">
+                                        @{
+
+                                            if (item.ServiceCompany != null)
+                                            {
+                                    <span>@item.ServiceCompany.Name</span>
+                                }
+                                else
+                                {
+                                    if (item.State == "Cancel")
+                                    {
+                                        <span>无</span>
+                                    }
+                                    else
+                                    {
+                                        <a onclick="SendOrder('@item.RepairOrderId')" style="cursor: pointer" data-toggle="modal" data-target=".bs-example-modal-sm">派单</a>
+                                    }
+                                }
+
+                                        }
+                                    </td>
+                                    <td class=" ">
+                                        <ul class="to_do1">
+                                            <li>
+                                                @Html.ActionLink("详情", "OrderInfo", new { id = item.RepairOrderId })
+                                            </li>
+
+                                        </ul>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+
+
+        </div>
+    </div>
+</form>
+@section scripts
+{
+    <script type="text/javascript">
+        function SendOrder(repairOrderId) {
+            document.getElementById("repairOrder").value = repairOrderId;
+        }
+    </script>
+}

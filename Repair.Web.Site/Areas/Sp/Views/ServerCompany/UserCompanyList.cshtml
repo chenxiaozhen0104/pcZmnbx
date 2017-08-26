@@ -1,0 +1,49 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@using LZY.BX.Model
+@model Repair.Web.Site.Areas.User.Models.CompanyQueryModel
+@{
+    Layout = null;
+    var ID = 0;
+}
+<div class="panel-body border-top-1 border-right-1 border-bottom-1 border-left-1">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+                <th class="column-title">编号</th>
+                <th class="column-title">公司名称</th>
+                <th class="column-title">联系人</th>
+                <th class="column-title">地址</th>
+                <th class="column-title">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ServiceCompanyList == null || Model.ServiceCompanyList.Count == 0)
+            {
+                <tr>
+                    <td colspan="10" align="center">暂无数据</td>
+                </tr>
+            }
+            else
+            {   
+                foreach (var item in Model.ServiceCompanyList)
+                {
+                    <tr>
+                        <td>@(ID=ID+1)</td>
+                        <td>@item.Name</td>
+                        <td>@item.Contact</td>
+                        <td>@item.Position</td>
+                        <td>@Html.Raw("<a href='javascript:void(0)' onclick=SubmitServerCompany('" + item.Name + "','"+item.ServiceCompanyId+""+"')>加入</a>")</td>
+                    </tr>
+                                    }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="clear-bottom-20">
+</div>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>
+

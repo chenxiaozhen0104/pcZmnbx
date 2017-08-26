@@ -1,0 +1,275 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+
+html{
+    background-color:#f6f6f6;
+    width:100%;
+    height:100%;
+}
+
+body{
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+}
+#container{
+    flex:1;
+}
+
+
+
+
+/*头部*/
+header {
+    width: 100%;
+    height: 40px;
+    background-color: #000;
+}
+
+.header-container {
+    height: 40px;
+    width: 1200px;
+    margin: 0 auto;
+    line-height: 40px;
+    display:flex;
+    justify-content:flex-end;
+   
+}
+
+.header-container>a{
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #fff;
+}
+.navInner > a {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.header-container > a.selected {
+    color: #fba02c;
+    
+}
+
+.navInner > a.home-titleActive {
+    text-decoration: underline;
+    color: #fba02c;
+}
+/*导航*/
+nav {
+    width: 100%;
+    height: 90px;
+    background-color: #fff;
+}
+
+.navContent {
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 218px;
+    height: 60px;
+    margin-right: 60px;
+}
+
+.navInner {
+    height: 90px;
+    width: 670px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 60px;
+}
+
+.navInner-content {
+    font-size: 16px;
+    color: #333;
+}
+
+.search {
+    width: 260px;
+    height: 34px;
+    border: solid 2px #fba02c;
+    flex-direction: row;
+    display: flex;
+}
+
+.search-input {
+    border: none;
+    height: 30px;
+    width: 227px;
+    padding-left: 10px;
+}
+
+.search-box {
+    width: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fba02c;
+}
+
+.search-box .iconfont.icon-fangdajing {
+    font-size: 34px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.linkContent:hover {
+    color: #fba02c;
+    text-decoration: none;
+}
+
+/*banner*/
+.banner{
+    height:170px;
+    width: 100%;
+    background: url('../images/selfCenter-nav.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+.help-banner {
+    width: 100%;
+    height:500px;
+    background: url('../images/help-banner.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/*底部*/
+.footerTop {
+    width: 100%;
+    height: 220px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    flex-direction: column;
+}
+
+.footerLink {
+    width: 1200px;
+    height: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.linkContent {
+    color: #fff;
+    font-size: 13px;
+    text-decoration:none;
+}
+
+.separate {
+    color: #fff;
+}
+
+.footerConnect {
+    width: 1200px;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connect-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 140px;
+}
+
+.footerBottom {
+    width: 100%;
+    height: 50px;
+    background-color: #16191b;
+    line-height: 50px;
+    text-align: center;
+}
+
+.footerBottom-text {
+    color: #fff;
+    font-size: 14px;
+   
+}
+.footerConnect p{
+    padding:5px 0;
+}
+
+
+/*左边样式*/
+.icon-iconfontdingdan, .icon-tongji,
+.icon-user, .icon-gongshi,
+.icon-wodegongdan, .icon-dingdantongji,
+.icon-shougongchudanJv, .icon-bangding, .icon-icon11, .icon-cf-c12, .icon-sikaoshijian, .icon-liebiaoqiehuan {
+    color: #fba02a;
+    font-size: 18px;
+    position: absolute;
+    left: 55px;
+}
+
+
+.publicLeft-Top {
+    display: flex;
+    flex-direction: row;
+    height: 170px;
+    align-items: center;
+    justify-content: center;
+}
+
+.headPhoto-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    font-size: 70px;
+    color: #fba02a;
+}
+
+.public-selfInfo {
+    width: 120px;
+    height: auto;
+    padding-left:15px;
+}
+.commonCompany {
+    margin-top: 5px;
+}
+
+#totop {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    z-index: 999;
+    width: 71px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+#totop a {
+    display: block;
+    width: 71px;
+    height: -20px;
+    padding-top: 48px;
+    background: url(../image/toTop.gif) no-repeat;
+    background-image: url('../images/toTop.gif');
+    text-align: center;
+    color: #888
+}
+
+#totop a.cur {
+    background-position: -88px 0;
+    text-decoration: none;
+    color: #3a9
+}

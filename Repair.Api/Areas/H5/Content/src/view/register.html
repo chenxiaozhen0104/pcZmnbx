@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_newtymnvzenuerk9.css">
+    <link href="../css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="content">
+        <div class="main">
+            <img class="login-logo login-logo-min" v-bind:src="logo" />
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="RealName" type="text" placeholder="请输入用户名" required/>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="mobile" type="tel" placeholder="请输入手机号" />
+                    <btn-verify-code v-bind:mobile="mobile"></btn-verify-code>
+                </div>
+              
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-save"></i>
+                    <input v-model="smsCode" placeholder="请输入验证码" type="tel" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-password"></i>
+                    <input v-model="password" type="password" placeholder="请输入登录密码" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-password"></i>
+                    <input v-model="passwordConfirm" type="password" placeholder="请再次输入登录密码" />
+                </div>
+            </div>
+            <div>
+                <span class="err-msg"></span>
+                <button v-on:click="register" class="btn-block">注 册</button>
+            </div>
+            <div class="foot">
+                <a href="javascript:history.back()">已有账号？</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../common/vue.js"></script>
+    <script src="../common/jquery-3.1.0.js"></script>
+    <script src="../js/component/btn-verify-code.js"></script>
+    <script src="../common/layer/layer.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>

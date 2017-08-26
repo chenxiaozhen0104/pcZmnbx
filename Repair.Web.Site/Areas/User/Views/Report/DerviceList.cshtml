@@ -1,0 +1,36 @@
+﻿@model Repair.Web.Site.Areas.User.Models.ReportDeviceQueryModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = null;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>设备名称</th>
+        <th>设备型号</th>
+        <th>安装地点</th>
+        <th>生产商</th>
+        <th>品牌</th>
+        <th>报修量</th>
+    </tr>
+    @foreach (var item in Model.deviceData)
+    {
+        <tr>
+            <td class="text-left">@(item.Name??"暂无")</td>
+            <td class="text-left">@(item.Model ?? "暂无")</td>
+            <td class="text-left">@(item.Position ?? "暂无")</td>
+            <td class="text-left">@((item.Brand != null&&item.Brand.Manufacturer != null) ? item.Brand.Manufacturer.Name:"其他")</td>
+            <td class="text-left">@(item.Brand != null ? item.Brand.Name : "其他")</td>
+            <td class="text-right">@(Model.deviceCount.ContainsKey(item.DeviceId)==true? Model.deviceCount[item.DeviceId]:"0")</td>
+        </tr>
+    }
+</table>
+
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>
+
+
+

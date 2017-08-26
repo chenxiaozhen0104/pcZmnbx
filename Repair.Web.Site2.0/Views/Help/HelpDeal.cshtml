@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "帮助中心";
+    Layout = "~/Views/Shared/_Other.cshtml";
+}
+
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="equipmentContent">
+    <ul class="helpReg-list">
+        <li>
+            <p><span>交易中出现纠纷怎么办？</span> <i class="iconfont icon-chevron-up"></i></p>
+
+            <ul>
+                <li>您好，维修机构和用户在交易过程中发生纠纷，双方尽量按照之前签订的交易协议处理。<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    如果协商不下，任何一方都可以在订单中发起维权举报，举报会转到啄木鸟报修纠纷处理大厅，官方工作人员会介入仲裁处理。
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><span>维修结构如何查找维修订单？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，维修机构可以在啄木鸟首页右上角的“报修大厅”里面查找适合自己的订单，并接单维修。</li>
+            </ul>
+        </li>
+        <li>
+            <p><span>维修机构跟单过程中遇到问题（如联系不上用户）怎么办？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，维修机构可以在啄木鸟首页“帮助中心”获取客服的联系方式进行了解。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    也可以官网的最底部查找客服热线电话，或者是在官网的“联系我们”来查找公司联系方式了解情况。
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/help.js"></script>
+}

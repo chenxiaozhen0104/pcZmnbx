@@ -1,0 +1,207 @@
+﻿@model LZY.BX.Model.ServiceCompany
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .mainbo {
+        width: 1190px;
+        height: 600px;
+        margin: 10px auto;
+        border: 1px solid #dedede;
+        padding: 10px 150px 10px 150px;
+        border-radius: 5px;
+    }
+
+        .mainbo > p {
+            color: rgb(18, 140, 233);
+            font-size: 22px;
+            font-family: '宋体 ';
+            font-weight: bold;
+            margin: 25px 0px 15px;
+        }
+</style>
+@*@using (Html.BeginForm("Registers", "Auth", FormMethod.Post, new { @class = "form-horizontal mainbo", enctype = "multipart/form-data", id = "form" }))
+{
+    @Html.ValidationSummary(true)
+    <p>填写信息</p>
+        <div class="form-group">          
+            <label for="usedname" class="col-sm-2 control-label">单位名称</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="usedname" name="Name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="add" class="col-sm-2 control-label">单位地址</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="add" name="Position" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">联系人</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="name" name="Contact" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="photo" class="col-sm-2 control-label">联系电话</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="photo" name="Phone" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="photo" class="col-sm-2 control-label">服务范围</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="Categorys" name="Categorys" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="photo" class="col-sm-2 control-label">是否是生产商</label>
+            <div class="col-sm-6">
+                <input type="radio" name="IsManufacturer" checked="checked" value="1"/>是
+                <input type="radio" name="IsManufacturer" value="2">否
+            </div>
+        </div>
+    <div class="form-group">
+        <label for="file" class="col-sm-2 control-label">上传印业执照:</label>
+        <input type="file" name="imgUrl" id="imgUrl" multiple="multiple" />
+       
+    </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10 mt30">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="iagree" required> 我已同意并申请啄木鸟网站服务协议
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="提交" style="background-color:aqua;width:440px; height:40px; border:0px" />
+            </div>
+        </div>*@
+        @*<form enctype="multipart/form-data" class="form-horizontal mainbo"  id="AjaxForm" method="post" action="@Url.Action("Register")">*@
+<form enctype="multipart/form-data" class="form-horizontal mainbo" id="AjaxForm">
+    <p>填写信息</p>
+    <div class="form-group">
+        <label for="usedname" class="col-sm-2 control-label">单位名称</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="usedname" name="Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="add" class="col-sm-2 control-label">单位地址</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="add" name="Position" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">联系人</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="name" name="Contact" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="photo" class="col-sm-2 control-label">联系电话</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="photo" name="Phone" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="photo" class="col-sm-2 control-label">服务范围</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="Categorys" name="Categorys" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="photo" class="col-sm-2 control-label">是否是生产商</label>
+        <div class="col-sm-6">
+            <input type="radio" name="IsManufacturer" checked="checked" value="1" />是
+            <input type="radio" name="IsManufacturer" value="2">否
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="file" class="col-sm-2 control-label">上传印业执照:</label>
+        <input type="file" name="imgUrl" id="imgUrl" multiple="multiple" />
+
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 mt30">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="iagree" required> 我已同意并申请啄木鸟网站服务协议
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            @*<input type="submit" value="提交" style="background-color:aqua;width:440px; height:40px; border:0px" />*@
+            <input type="button" value="提交" style="background-color:aqua;width:440px; height:40px; border:0px" onclick="Upload()"/>
+        </div>
+    </div>
+</form>
+        @*}*@
+        @section scripts
+{
+            <script type="text/javascript">
+                function Upload() {
+                    if (AjaxSubmitValidate()){
+                    var formData = new FormData(document.getElementById("AjaxForm"));
+                    $.ajax({
+                        url: "../Auth/Registers",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if (res.ErrCode == 0) {
+                                ASuccess("提交成功.请稍后留意审核状态");
+                                location.href = '../Order/Order';
+                            } else {
+                                AErrorMsg(res.ErrMsg);                               
+                            }
+                        }
+                    });
+                    }
+                }
+
+                function AjaxSubmitValidate() {
+                    var usedname = $("#usedname");
+
+                    var add = $("#add");
+
+                    var name = $("#name");
+
+                    var photo = $("#photo");
+
+                    if (usedname.val() == "") {
+                        ShowError("Name", "请输入申请的单位名称");
+                        usedname.focus();
+                        return false;
+                    }
+                    if (add.val() == "") {
+                        ShowError("Position", "请输入单位地址");
+                        add.focus();
+                        return false;
+                    }
+                    if (name.val() == "") {
+                        ShowError("Contact", "请输入单位联系人");
+                        name.focus();
+                        return false;
+                    }
+                    if (photo.val() == "") {
+                        ShowError("Phone", "请输入单位联系电话");
+                        photo.focus();
+                        return false;
+                    }
+                    if ($("#iagree").is(':checked') == false) {
+                        AWarnMsg("勾选同意并阅读");
+                        $("#iagree").focus();
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+        }

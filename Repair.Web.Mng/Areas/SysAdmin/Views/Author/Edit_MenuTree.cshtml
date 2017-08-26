@@ -1,0 +1,37 @@
+﻿@using Repair.Web.Menu
+@model List<MenuItem>
+
+@{
+    var level = -1;
+    List<string> pids = null;
+    var list = ViewData["list"] as List<string>;
+}
+
+@foreach (var menu in Model)
+{
+    if (level == -1)
+    {
+        pids = MenuMng.ParentIds(menu);
+        pids.RemoveAt(pids.Count - 1);
+        level = pids.Count;
+    }
+    var hasSubMenu = menu.SubItems.Count > 0;
+
+    <tr class="treeview" pids="@string.Join(",",pids)" id="@menu.Id">
+        <td> <input type="checkbox" value="@menu.Id" @(list.Contains(menu.Id) ? "checked" : string.Empty) name="menus"></td>
+        <td style="padding-left: @((level)*15)px;" @(hasSubMenu ? "data-toggle=switch" : string.Empty)>
+            <a>
+                <i class="fa @menu.Icon"></i>
+                @menu.Sequ.ToString("D5")
+                <span>@menu.Title</span>
+            </a>
+        </td>
+        <td>@menu.Url</td>
+
+    </tr>
+
+    if (menu.SubItems.Count > 0)
+    {
+        @Html.Partial("Edit_MenuTree", menu.SubItems)
+    }
+}

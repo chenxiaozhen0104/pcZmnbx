@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+
+
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>啄木鸟智能报修系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link href="/resource/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/resource/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="/resource/vendors/nimate.css/animate.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/resource/build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form action="@Url.Action("Index")" method="post">
+                        <h1>啄木鸟服务平台</h1>
+                        <div>
+                            <input type="text" class="form-control" name="username" placeholder="用户名" required="required" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" name="password" placeholder="密码" required="required" />
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-default submit">登录</button>
+                            <a class="reset_pass" href="#">忘记密码?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <p>©2016 版权所有. 杭州绿中游智能科技有限公司</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

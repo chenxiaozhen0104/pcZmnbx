@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="//at.alicdn.com/t/font_69y012v944m18aor.css" rel="stylesheet" />
+    <link href="~/Static/scripts/common/layer/skin/layer.css" rel="stylesheet" />
+    <link href="~/Static/styles/main.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+        
+</head>
+<body>
+    <div id="container">
+        @Html.Partial("header")
+        <div class="banner"></div>
+        <div class="publicBody">
+            @Html.Partial("Menu")
+            @RenderBody()
+        </div>
+    </div>
+    @Html.Partial("footer")
+  
+    <script src="~/Static/scripts/common/jquery-3.1.0.js"></script>
+    <script src="~/Static/scripts/common/jquery/jquery.form.js"></script>
+    <script src="~/Static/scripts/common/vue.js"></script>
+    <script src="~/Static/scripts/common/layer/layer.js"></script>
+    <script src="~/Static/scripts/common/LayerFunction.js"></script>
+    <script src="~/Static/scripts/common/echarts.min.js"></script>
+    <script src="~/Static/scripts/common/barChart.js"></script>
+    <script src="~/Static/scripts/common/selectTime.js"></script>
+
+
+     @RenderSection("js", required: false)
+       
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+@model Page<LZY.BX.Model.PageModel.PageEquipment>
+@{
+    ViewBag.Title = "UseCompanyBind";
+    var useCompanyList = ViewData["useCompanyList"]as List<UseCompany>;
+    var brandList = ViewData["brandList"]as List<Brand>;
+}
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <form action="@Url.Action("UseCompanyEquipmentAdd")" id="form2" method="POST">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <tr>
+                            <td>选择报修单位</td>
+                            <td>选择设备</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <select name="UseCompanyId" class=" form-control">
+                                        @foreach (var item in useCompanyList)
+                                        {
+                                            <option value="@item.UseCompanyId">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="col-md-8 col-sm-12 col-xs-12">
+                                @*@Html.Partial("Html/BrandList", brandList)*@
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" onclick="Save()" class="btn btn-primary">添加</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<form action="@Url.Action("UseCompanyBind")" method="POST" id="form1">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>报修单位绑定</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a style="cursor: pointer" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary">添加</a>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">报修单位</th>
+                                <th class="column-title">设备</th>
+                                <th></th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                               
+                                <tr>
+                                   
+                                        <td class=" ">@item.UseCompanyName</td>
+                                   
+                                    <td class=" ">@item.Name</td>
+
+                                    <td>
+                                        @Html.ActionLink("取消绑定", "UseCompanyEquipmentDelete", new { id = item.EquipmentId }, new { onclick = "return confirm('确定要删除吗?')" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            @Html.Partial("Html/Pager", Model)
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function Save() {
+            if (document.getElementById("brand").value == "0") {
+                return alert("请选择品牌");
+            }
+            if (document.getElementById("product").value == "0") {
+                return alert("请选择产品");
+            }
+            document.getElementById("form2").submit();
+        }
+    </script>
+}

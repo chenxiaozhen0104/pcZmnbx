@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>啄木鸟报修</title>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/index.css">
+        <link href="//at.alicdn.com/t/font_lz0upabtupojemi.css" rel="stylesheet" />
+    </head>
+    <body>
+		<nav class="navbar navbar-fixed-top">
+			<div class="row text-center serarchBut">
+				 <span>设备列表</span>		
+                <span class="iconfont icon-sou"></span>
+			</div>
+			<ul class="row chooseList">
+				<li class="col-xs-4 text-center ddl ddl-area" data-panel=".regionas-panel"><span>区域</span><span class="glyphicon glyphicon-triangle-bottom"></span></li>
+				<li class="col-xs-4 text-center ddl ddl-category" data-panel=".categorys-panel"><span>类目</span><span class="glyphicon glyphicon-triangle-bottom"></span></li>
+				<li class="col-xs-4 text-center ddl ddl-brand" data-panel=".brands-panel"><span>品牌</span><span class="glyphicon glyphicon-triangle-bottom"></span></li>
+			</ul>
+
+			<div class="row clickSerch showSearch">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-1"><span class="glyphicon glyphicon-menu-left search-back"></span></div>
+			    <div class="col-xs-9 input-group searchBtn">
+			      	<input type="text" class="form-control" id="txt-key" placeholder="请输入关键字">
+			      	<span class="input-group-btn">
+			       	 	<button class="btn btn-default" id="btn-search" type="button">搜索</button>
+			      	</span>
+			    </div>
+			</div>
+			
+			<div class="area show-panel regionas-panel"><span class='search-tag' data-type='area' data-id=''>全部区域</span></div>
+			
+			<div class="category show-panel categorys-panel" ><span class='search-tag' data-type='category' data-id=''>全部类目</span></div>
+			
+			<div class="brand show-panel brands-panel" ><span class='search-tag' data-type='brand' data-id=''>全部品牌</span></div>
+			
+		</nav>
+	
+		<div class="contList">
+			<div class="list-group">
+				<!--<div  class="list-group-item row">
+					<div class="col-xs-9">
+						<div class="list-group-item-heading">设备名称：海尔冰箱</div>
+				    	<div class="row list-group-item-text">
+					    	<p class="col-xs-4">区域：</p>
+					    	<p class="col-xs-4">类目：</p>
+					    	<p class="col-xs-4">品牌：</p>
+				   		</div>
+					</div>
+					<div class="col-xs-3 text-center">
+						<img src="images/play.png" alt=""/>
+					</div>
+				</div>
+				<div  class="list-group-item row">
+					<div class="col-xs-9">
+						<div class="list-group-item-heading">设备名称：海尔冰箱</div>
+				    	<div class="row list-group-item-text">
+					    	<p class="col-xs-4">区域：</p>
+					    	<p class="col-xs-4">类目：</p>
+					    	<p class="col-xs-4">品牌：</p>
+				   		</div>
+					</div>
+					<div class="col-xs-3 text-center">
+						<img src="images/play.png" alt=""/>
+					</div>
+				</div>-->
+			</div>
+            <div class="nodata">暂无更多内容</div>
+		</div>
+
+        <div class="bounceds">
+            <ul class="equipment-info">
+                <li class="row">
+                    <div class="col-xs-4 text-right">设备名称：</div>
+                    <div class="col-xs-8 deviceName"></div>
+                </li>
+                <li class="row">
+                    <div class="col-xs-4 text-right">类目：</div>
+                    <div class="col-xs-8 categoryName"></div>
+                </li>
+                <li class="row">
+                    <div class="col-xs-4 text-right">型号：</div>
+                    <div class="col-xs-8 modelName"></div>
+                </li>
+                <li class="row">
+                    <div class="col-xs-4 text-right">区域：</div>
+                    <div class="col-xs-8 areaName"></div>
+                </li>
+                <li class="row">
+                    <div class="col-xs-4 text-right">二维码：</div>
+                    <div class="col-xs-8"><input type="text" id="txtQrCode"  placeholder="扫描二维码" />&nbsp;<span class="iconfont icon-saoyisao" onclick="openQRCode()" style="font-size:18px;"></span></div>
+                </li>
+                <li class="row">
+                    <div class="col-xs-4 text-right">安装地点：</div>
+                    <div class="col-xs-8"><input id="txtLocation" type="text" name="name" placeholder="请输入安装地点" /></div>
+                </li>
+            </ul>
+            <div class="alert alert-success hide" role="alert">恭喜你，添加成功</div>
+            <div class="alert alert-danger hide" role="alert">很遗憾，添加失败</div>
+            <nav class="navbar navbar-default btn-bottom">
+                <div class="col-xs-5 btn btn-warning" id="btn-submit">添加</div>   
+                <div class="col-xs-5 col-xs-offset-1  btn btn-danger pull-right" id="btn-close">关闭</div>   
+            </nav>
+        </div>
+
+        <div class="loading">
+            <span class="iconfont icon-loading"></span>
+            加载中...
+        </div>
+ 
+    </body>
+    <script src="/Areas/H5/Content/js/js.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+ 
+   
+</html>

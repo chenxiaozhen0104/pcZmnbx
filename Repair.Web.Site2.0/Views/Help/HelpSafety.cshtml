@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "帮助中心";
+    Layout = "~/Views/Shared/_Other.cshtml";
+}
+
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="equipmentContent">
+    <ul class="helpReg-list">
+        <li>
+            <p><span>如何确保账号安全？</span> <i class="iconfont icon-chevron-up"></i></p>
+
+            <ul>
+                <li>您好，进入个人中心，在个人资料里面绑定手机号码，可以在忘记密码时，用于找回密码和直接使用手机验证码快捷登录。</li>
+            </ul>
+        </li>
+        <li>
+            <p><span>账号被盗怎么办？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，手机注册账号可直接后台修改密码，找回密码可通过与账号绑定的手机验证码来找回。站内注册的账号，请咨询在线客服。</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/help.js"></script>
+}

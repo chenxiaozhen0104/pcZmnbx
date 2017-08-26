@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "HelpReg";
+    Layout = "~/Views/Shared/_Other.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="equipmentContent">
+    <ul class="helpReg-list">
+        <li>
+            <p><span>啄木鸟用户和维修商如何注册？</span> <i class="iconfont icon-chevron-up"></i></p>
+            
+            <ul>
+                <li>您好，进入啄木鸟首页，点击右上角注册，您可用：手机号、用户名注册</li>
+            </ul>
+        </li>
+        <li>
+            <p><span>如何修改/找回密码？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，手机注册账号可直接后台修改密码，找回密码可通过与账号绑定的手机验证码找回。<br/>站内注册的账号，请咨询在线客服。</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/help.js"></script>
+}

@@ -1,0 +1,47 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@model Repair.Web.Site.Areas.Sp.Models.ConMngListQueryModel
+@{
+    ViewBag.Title = "合作单位";
+    Layout = null;
+}
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>序号</th>
+        <th>单位名称</th>
+        <th>联系人</th>
+        <th>签约时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    @if (Model.Data != null)
+    {
+        foreach (var item in Model.Data)
+        {
+            var usecompany = Model.UseCompanyDic.ContainsKey(item.UseCompanyId) ? Model.UseCompanyDic[item.UseCompanyId] : null;
+
+            <tr>
+                <td>@item.UseCompanyId</td>
+                <td>@(usecompany != null ? usecompany.Name : "")</td>
+                <td>@(usecompany != null ? usecompany.Contact : "")</td>
+                <td>@item.CreateTime</td>
+                <td>@Comm.GetEnumDescription(item.State, typeof(CompanySginState))</td>
+                <td>
+                    
+                    @if (item.State == CompanySginState.Waitting.ToString())
+                    {
+                    <a href="@Url.Action("PassedConMng", new { uid = item.UseCompanyId })" data-toggle="confirm-request" data-title="签约合作" data-content="确认要通过该单位申请吗?" data-confirm-text="确认" data-target="#remoteDlg">通过</a>
+                    <a href="@Url.Action("CloseConMng", new { uid = item.UseCompanyId })" data-toggle="confirm-request" data-title="签约合作" data-content="确认要关闭该单位申请吗?" data-confirm-text="确认" data-target="#remoteDlg">关闭</a>
+                    }
+                   
+
+                    
+                </td>
+            </tr>
+        }
+    }
+</table>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "设备列表";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+<div class="equipmentContent" id="equipmentLists">
+    <div class="equipment-title">
+        <span>导入设备</span>
+        <span class="addEquipment">新增设备</span>
+    </div>
+    <div class="workOrder-center">
+        <div class="workOrder-search">
+            <input type="text" class="workOrder-search-input" placeholder="设备ID/设备名称" />
+            <div class="img-box" v-on:click="doSearch">
+                <i class="iconfont icon-fangdajing"></i>
+            </div>
+        </div>
+    </div>
+    <div class="equipment-deleteAll"> <span><i class="iconfont icon-shanchu1"></i>&nbsp;&nbsp;批量删除</span></div>
+    <ul class="equipment-listTitle">
+        <li>设备名称</li>
+        <li>设备类目</li>
+        <li>安装地址</li>
+        <li>操作</li>
+    </ul>
+    <div class="equipment-listContent">
+        <div class="equipment-list" v-for="obj in list">
+                <p v-html="'设备ID:'+obj.DeviceID"></p>
+                <ul class="equipment-listTitle equipment-info">
+                    <li>
+                        <input type="checkbox"  value=""/>
+                        <img class="equipment-figure" src="~/Static/images/placeholderFigure.png" />
+                        <div class="equipmentInfo-list">
+                            <p v-html="obj.Name"></p>
+                            <p v-html="'资产:'+obj.AssetsId"></p>
+                            <p v-html="'品牌:'+obj.Brand.Name"></p>
+                            <p v-html="'型号：'+obj.Model"></p>
+                        </div>
+                    </li>
+                    <li v-html="obj.Category.Name"></li>
+                    <li v-html="obj.Position"></li>
+                    <li><i class="iconfont icon-shanchu1"></i><i class="iconfont icon-icon07"></i></li>
+                </ul>
+          </div>
+        @*<div class="equipment-list">
+                <p>设备ID：1235</p>
+                <ul class="equipment-listTitle equipment-info">
+                    <li>
+                        <input type="checkbox" value="" />
+                        <img class="equipment-figure" src="~/Static/images/placeholderFigure.png" />
+                        <div class="equipmentInfo-list">
+                            <p>美的油烟机</p>
+                            <p>品牌：海尔美的油烟机</p>
+                            <p>型号：123*456*789</p>
+                        </div>
+                    </li>
+                    <li>厨房设备</li>
+                    <li>浙大玉泉校区</li>
+                    <li><i class="iconfont icon-shanchu1"></i><i class="iconfont icon-icon07"></i></li>
+                </ul>
+            </div>
+            <div class="equipment-list">
+                <p>设备ID：1235</p>
+                <ul class="equipment-listTitle equipment-info">
+                    <li>
+                        <input type="checkbox" value="" />
+                        <img class="equipment-figure" src="~/Static/images/placeholderFigure.png" />
+                        <div class="equipmentInfo-list">
+                            <p>美的油烟机</p>
+                            <p>品牌：海尔美的油烟机</p>
+                            <p>型号：123*456*789</p>
+                        </div>
+                    </li>
+                    <li>厨房设备</li>
+                    <li>浙大玉泉校区</li>
+                    <li><i class="iconfont icon-shanchu1"></i><i class="iconfont icon-icon07"></i></li>
+                </ul>
+            </div>*@
+    </div>
+
+    <div class="equipment-editorCont">
+        <div class="equipment-editor">
+            <div class="equipment-editorTitle">
+                <h3>新增设备</h3>
+                <i class="iconfont icon-shanchu"></i>
+            </div>
+            <div class="equipment-editorInfo">
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>资产</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>二维码</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>名称</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>型号</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>厂家</span>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>品牌</span>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>区域</span>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>类目</span>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>所属公司</span>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>安转地址</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>经度</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>维度</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                </div>
+
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>采购时间</span>
+                        <input type="date" name="name" value="" />
+                    </div>
+                    <div class="equipment-editorRight">
+                        <span>质保时间</span>
+                        <input type="date" name="name" value="" />
+                    </div>
+                </div>
+                <div class="equipment-editorRow">
+                    <div class="equipment-editorLeft">
+                        <span>信息备注</span>
+                        <input type="text" name="name" value="" />
+                    </div>
+                    <div class="equipment-editorRight">
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipment-editorBtn">
+                <button class="equipment-btnSubmit">提交</button>
+                <button class="equipment-btnClose">关闭</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+@section js{
+    <script src="~/Static/scripts/view/equipmentList.js"></script>
+}

@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>公司基本信息</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="../css/my.css" rel="stylesheet" />
+        <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+        <link href="../css/component.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../css/index.css">
+
+        <style>
+            .person-details{
+                margin-top:20px;
+            }
+            .btn{
+                width:75%;
+                background:#f0ad4e;
+                border:none;
+                height:40px;
+                color:white;
+            }
+            .btn:active{
+                background:#ffd800;
+            }   
+              .greenColor{
+           background-color:green;
+        }        
+               .category-cursor{
+           cursor:pointer;
+       }
+        </style>
+
+       
+    </head>
+    <body>
+        <div id="UserCompanyInfo">
+            <nav class="navbar navbar-fixed-top">
+                <div class="person-info text-center">
+                    <a class="iconfont icon-fanhui btn-back" v-on:click="Back"></a>
+                    公司基本信息
+                </div>
+            </nav>
+           
+                <ul class="person-details list-group">
+                    <li class="list-group-item row">
+                        <input type="hidden" v-model="CompanyInfoId" value="" name="CompanyInfoId" />
+                        <input type="hidden" v-model="Categorys" value="" name="Categorys" />
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">公司名称:</div>
+                        <div class="col-xs-8 text-right row-right">
+                            <input class="form-control" v-model="Name" placeholder="请输入公司名称" type="text" required />
+                        </div>
+                    </li>
+                    <li class="list-group-item row">
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">联系人:</div>
+                        <div class="col-xs-8 text-right row-right"><input class="form-control" v-model="Contact" value="" placeholder="请输入联系人" type="text" /></div>
+                    </li>
+                    <li class="list-group-item row">
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">联系电话:</div>
+                        <div class="col-xs-8 text-right row-right"><input class="form-control" v-model="Phone" value="" placeholder="请输入联系电话" type="tel" /></div>
+                    </li>
+                    <li class="list-group-item row">
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">地址:</div>
+                        <div class="col-xs-8 text-right row-right"><input class="form-control" v-model="Position" placeholder="请输入地址" type="text" /></div>
+                    </li>
+                    <li class="list-group-item row" v-show="show">
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">服务范围:</div>
+                        <div class="col-xs-8 text-right row-right"><input class="form-control" v-model="CategorysName" placeholder="请选择服务范围" type="text" readonly v-on:click="showCategorys" /></div>
+                    </li>
+
+                    <li class="list-group-item row" v-show="show">
+                        <div class="col-xs-4 text-right">是否生产厂家:</div>
+                        <div class="col-xs-8 text-left row-right">
+                            <input type="checkbox" checked v-model="IsManufacturer" />
+                        </div>
+                    </li>
+                    <li class="list-group-item row" v-show="show">
+                        <div class="col-xs-4 text-right" style="padding-top:8px ">营业执照:</div>
+                        <div class="col-xs-8 text-right row-right">
+                            <form enctype="multipart/form-data"><input class="form-control" placeholder="营业执照" type="file" v-model="ImgUrl" @change="getFile" /></form>
+                        </div>
+                    </li>
+                    <li class="list-group-item row" v-show="State">
+                        <div class="col-xs-4 text-right" style="color:red ">不通过原因:</div>
+                        <div class="col-xs-8 text-left row-right"><label>{{Note}}</label></div>
+                    </li>
+
+                    <li>
+                        <div class="text-center" style="margin-top:30px">
+                            <button v-on:click="submitCompanyInfo" class="btn" >提 交</button>
+                            <!--<a class="btn btn-success  btn2" v-on:click="Back">返 回</a>-->
+                        </div>
+                    </li>
+                </ul>
+            
+            <div class="area" v-show="categoryPanel" id="category-show-panel">
+                <span class="search-tag category-cursor" v-bind:class="{ greenColor:!!category.Category.isSelect }" data-id="{{category.Category.CategoryId}}" v-for="category in categorys" v-on:click="getSelectItem(category.Category)">{{category.Category.CNName}}</span>
+            </div>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="../common/layer/layer.js"></script>
+<script type="text/javascript" src="../common/LayerFunction.js"></script>
+<script src="../common/httpParams.js"></script>
+<script src="../common/vue.js"></script>
+<script type="text/javascript">
+   
+    //(new LG.URL()).get('Type')
+    //企业信息   
+    
+    var CompanyInfo = new Vue({
+        el: "#UserCompanyInfo",
+        data: {
+            Name: '',
+            State: false,
+            CompanyInfoId: '',
+            Contact: '',
+            Phone: '',
+            Note: '',
+            Position: '',
+            returnUrl: (new LG.URL()).get('personDetails'),
+            Categorys: '',
+            CategorysName:'',
+            IsManufacturer:'',
+            ImgUrl: '',
+            categoryPanel: false,
+            categorys: [],
+            file: [],
+            show:localStorage.appType==2
+            
+        },
+        methods: {
+            getFile: function ($event) {
+                this.file = $event.target.files;
+               
+            },
+
+            getSelectItem: function (obj) {
+                obj.isSelect = !obj.isSelect
+            },
+
+            showCategorys: function () {
+                this.categoryPanel = true;
+                var self = this;
+                layer.open({
+                    title: '技能标签',
+                    type: 1,
+                    closeBtn: false,
+                    content: $('#category-show-panel'),
+                    btn: ['确定', '取消'],
+                    btnAlign: 'c',
+                    success: function (layero) {
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.css('text-align', 'center');
+                    },
+                    yes: function (index, layero) {                        
+                        self.categorys.forEach(function (item) {
+                            if (item.Category.isSelect) {
+                                self.CategorysName += item.Category.CNName + ';'
+                                self.Categorys += item.Category.CategoryId + ','
+                            }
+
+                        });
+                        CloseLoad(index);
+                    },
+                    cancel: function (index) {
+
+                    }
+                });
+            },
+
+            Back:function(){
+                if(this.returnUrl)
+                    location.href=this.returnUrl+".html";
+                else
+                    location.href="CompanyType.html";
+                
+            },            
+            submitCompanyInfo: function () {              
+                if (!this.Name || !this.Contact || !this.Phone || !this.Position) {
+                        layer.msg("请填写完整信息", { icon: 0 });
+                        return;
+                    } else if (!localStorage.userId) {
+                        layer.msg("数据错误,请从新登录", { icon: 0 });
+                        return;
+                    }
+                    else {
+                        if (localStorage.appType == 1) {
+                            $.post('/api/user/companyinfo', {
+                                Name: this.Name,
+                                Contact: this.Contact,
+                                Phone: this.Phone,
+                                Position: this.Position,
+                                UseCompanyId: this.CompanyInfoId | 0
+                            },
+                            function (res) {
+                                if (res.error) {
+                                    layer.alert(res.error, { icon: 0 });
+                                } else {
+                                    layer.msg('申请已提交，请耐心等待审核', {
+                                        icon: 1,
+                                        time: 2000
+                                    }, function () {
+                                        if (this.returnUrl)
+                                            location.href = this.returnUrl + ".html";
+                                        else
+                                            location.href = "repair.html?target=_blank_closecurrent&appType=" + localStorage.appType;
+                                    });
+                                }
+                            });
+                        } else if (localStorage.appType == 2) {
+                            //if (this.file.length > 0) {
+                            var formData = new FormData();
+                            var Data = {                                    
+                                    Name: this.Name,
+                                    Contact: this.Contact,
+                                    Phone: this.Phone,
+                                    Position: this.Position,
+                                    ServiceCompanyId: this.CompanyInfoId|0,
+                                    Categorys: this.Categorys,
+                                    IsManufacturer: this.IsManufacturer ? 1 : 0                                   
+                            };                               
+                            formData.append("file", this.file.length>0?this.file[0]:"");
+                            formData.append("servicecompany", JSON.stringify(Data));
+
+                            $.ajax({
+                                url: "/api/user/servicecompany",                                   
+                                type: "POST",
+                                data: formData,
+                                contentType: false,                                  
+                                processData: false,
+                                success: function (res) {
+                                        if (res.error) {
+                                            layer.alert(res.error, { icon: 0 });
+                                        } else {
+                                            layer.msg('申请已提交，请耐心等待审核', {
+                                                icon: 1,
+                                                time: 2000
+                                            }, function () {
+                                                if (this.returnUrl)
+                                                    location.href = this.returnUrl + ".html";
+                                                else
+                                                    location.href = "orderlist.html?target=_blank_closecurrent&appType=" + localStorage.appType;
+                                            });
+                                        }
+                                }});
+                          
+                            //}
+                            //else {
+                            //    layer.alert("请选择图片", { icon: 0 });
+                            //}
+                           
+                        }
+                    }               
+            }
+        },
+        created: function () {
+            var self = this;
+            $.get("/api/user/getcompanyinfo", { appType: localStorage.appType }, function (res) {
+                self.Name = res.Name;
+                self.State = (res.State == "4");
+                self.CompanyInfoId = res.Id;
+                self.Contact = res.Contact;
+                self.Phone = res.Phone;
+                self.Note = res.Note;
+                self.Position = res.Position;               
+            });
+            //获取标签列表
+            $.get("/api/user/getcategorylist", function (res) {
+              
+                self.categorys = res.filter(function (item) {
+                  
+                    item.Category.isSelect = false;
+                    return true;
+                });
+
+              
+            });
+        }
+    });
+   
+    
+    
+</script>

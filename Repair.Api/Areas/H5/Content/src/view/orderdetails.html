@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>工单详情</title>
+    <meta charset="utf-8" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../common/style.css" rel="stylesheet" />
+    <link href="../common/layer/skin/layer.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+    <link href="../css/component.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            background-color: #eeeeee;
+        }
+
+        .row {
+            line-height: 30px;
+            vertical-align: middle;
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .container {
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .col-xs-3 {
+            padding-right: 0px !important;
+            color: #c0c0c0;
+        }
+
+        .col-xs-9 {
+            padding-left: 0px !important;
+            color: #728594;
+        }
+
+        .border-1 {
+            background-color: white;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .navbar {
+            padding-top: 8px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .btn-group .btn {
+            border-radius: 1px !important;
+            background: #3879d9;
+            color: white;
+            font-weight: bold;
+        }
+
+        .submitBlock {
+            display: block;
+        }
+
+        .submitNone {
+            display: none;
+        }
+
+        #workedDialog {
+            color: #728594;
+            margin: 15px;
+            display: none;
+        }
+
+        #v-user {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="order">
+            <v-header show-back="1" show-reload="true">工单详情</v-header>
+
+            <div v-for="item in items">
+                <v-refresh v-bind:start="search">
+                    <div class="border-1" style="position: relative;">
+                        <div class="shape">
+                            <div class="shapeBg" v-bind:class="item.State,item.ServiceUserId|stateCss">
+                            </div>
+                            <div class="shapeText">
+                                {{item.State,item.ServiceUserId|stateDescription}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="hidden" id="serviceUserId" v-bind:value="item.ServiceUserId" />
+                            <div class="col-xs-3" style="padding-left:38px;">
+                                单号：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.Id}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                &nbsp;&nbsp;&nbsp;&nbsp;二维码：
+                            </div>
+                            <div class="col-xs-9">
+                                <input type="hidden" name="QRCode" v-bind:value="item.QRCode" />
+                                {{item.QRCode}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                工单级别：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.Level|levelDescription}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                需求类型：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.Type|typeDescription}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                创建时间：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.CreateTime}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-1">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                需求描述：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.Describe}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-1">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                设备名称：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.DeviceName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                设备型号：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.DeviceModel}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                所属品牌：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.DeviceBrand}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                所属厂家：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.DeviceManufacturer}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                所属类目：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.CategoryName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                所属区域：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.AreaName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                安装地址：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.DevicePosition}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-1">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                报修单位：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.UserCompany}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                报修人员：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.UserName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                联系电话：
+                            </div>
+                            <div class="col-xs-9">
+                                <a v-bind:href="'tel:'+item.UserPhone">{{item.UserPhone}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-1">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                维修单位：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.ServiceCompany}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                维修人员：
+                            </div>
+                            <div class="col-xs-9">
+                                {{item.ServiceUserName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                联系电话：
+                            </div>
+                            <div class="col-xs-9">
+                                <a v-bind:href="'tel:'+item.ServiceUserPhone">{{item.ServiceUserPhone}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <v-timeline v-bind:orderid="item.Id"></v-timeline>
+                    <br />
+                </v-refresh>
+                <nav class="navbar navbar-default navbar-fixed-bottom" v-bind:class="item.State,item.ServiceUserId|submitCss">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="..." >
+                        <div class="btn-group" role="group" >
+                            <button type="button" v-bind:onclick="item.State,item.ServiceUserId|submitFunc" class="btn btn-default">{{item.State,item.ServiceUserId|submitContent}}</button>
+                        </div>
+                    </div>                  
+                </nav>
+            </div>
+            <div id="v-user">
+                <user-list @select-user="selectUser"></user-list>
+            </div>
+        </div>
+    </div>
+    <div id="workedDialog">
+        <label class="radio-inline">
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Worked" checked="checked" name="workedState">
+                <span class="demo--radioInput"></span>完成
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Unsolved" name="workedState">
+                <span class="demo--radioInput"></span>未解决
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Cancel" name="workedState">
+                <span class="demo--radioInput"></span>取消
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Close" name="workedState">
+                <span class="demo--radioInput"></span>关闭
+            </label>
+            <label class="demo-label" style="display:none !important">
+                <input class="demo--radio" type="radio" value="Confirm" name="workedState">
+                <span class="demo--radioInput"></span>确认
+            </label>
+            <label class="demo-label" style="display:none !important">
+                <input class="demo--radio" type="radio" value="UseComment" name="workedState">
+                <span class="demo--radioInput"></span>评论
+            </label>
+            <br />
+            <br />
+        </label>
+        <div style="display:none;" class="level">
+            <label>服务打分：</label>
+        </div>
+        <div>
+            <label id="contentTitle">描述：</label>
+            <div>
+                <textarea id="description" class="form-control" rows="6"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" onclick="order.common.worked()">提交</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/jquery-3.1.0.js"></script>
+<script src="../common/layer/layer.js"></script>
+<script src="../common/LayerFunction.js"></script>
+<script src="../common/vue.js"></script>
+<script src="../js/component/v-footer.js"></script>
+<script src="../common/httpParams.js"></script>
+<script src="../js/component/user.list.js"></script>
+<script src="../js/component/v-timeline.js"></script>
+<script src="../js/component/v-refresh.js"></script>
+<script src="../js/order.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        order.details.search();
+    });
+</script>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+    <link href="../H5/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script src="js/echarts.min.js"></script>
+    
+    <script src="js/jquery-3.1.0.js"></script>
+   <style>
+         #serviceEchart {
+            margin-top: 20px;
+            width: 100%;
+            height: 450px;
+        }
+
+   </style>
+</head>
+<body>
+    <div id="serviceEchart"></div>
+    <script type="text/javascript">
+
+        var myChart = echarts.init(document.getElementById('serviceEchart'));
+        $.post("/api/Repair/ServerRepairTime?token=636234887666745829&appType=2&beginTime=2017-04-23&endTime=2017-04-30&Type=2", {}, function (res) {
+
+            option.yAxis.data = res.Axis;
+            option.series[0].data = res.data;
+            option.series[1].data = res.pieArry;
+            myChart.setOption(option);
+        })
+
+      
+
+        var waterMarkText = 'ECHARTS';
+
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = canvas.height = 100;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.globalAlpha = 0.08;
+        ctx.font = '20px Microsoft Yahei';
+        ctx.translate(50, 50);
+        ctx.rotate(-Math.PI / 4);
+        ctx.fillText(waterMarkText, 0, 0);
+
+        option = {
+            backgroundColor: {
+                type: 'pattern',
+                image: canvas,
+                repeat: 'repeat'
+            },
+            title: [{
+                text: '维修量',
+                x: '5%',
+            }, {
+                text: '完成情况',
+                x: '70%',
+                textAlign: 'center'
+            }],
+            grid: [{
+                top: 50,
+                width: '50%',
+                bottom: '45%',
+                left: 10,
+                containLabel: true
+            }],
+            xAxis: [{
+                type: 'value',
+               
+                splitLine: {
+                    show: false
+                }
+            }],
+            yAxis: [{
+                type: 'category',
+                data:[],
+                axisLabel: {
+                    interval: 0,
+                    rotate: 30
+                },
+                splitLine: {
+                    show: false
+                }
+            }],
+            series: [{
+                type: 'bar',
+                stack: 'chart',
+                z: 3,
+                label: {
+                    normal: {
+                        position: 'right',
+                        show: true
+                    }
+                },
+                data:[]
+            }, {
+                type: 'pie',
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                radius: [0, '30%'],
+                center: ['70%', '25%'],
+                data:[]
+            }]
+        }
+
+      
+    </script>
+</body>
+</html>

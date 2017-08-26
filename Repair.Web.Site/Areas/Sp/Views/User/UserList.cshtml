@@ -1,0 +1,37 @@
+﻿@model Repair.Web.Site.Areas.Sp.Models.UserQueryModel
+
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>用户ID</th>
+        <th>姓名</th>
+        <th>手机号</th>
+        <th>操作</th>
+    </tr>
+    @if (Model.Data != null)
+    {
+        foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.RealName</td>
+                <td>@item.Phone</td>
+                <td><a href="@Url.Action("UnBindUser", new { id = item.UserId })" data-toggle="confirm-request" data-title="解绑" data-content="确认解除绑定该用户吗?" data-confirm-text="确认" data-target="#remoteDlg">解绑</a></td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4">没有用户</td>
+            
+        </tr>
+    }
+</table>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

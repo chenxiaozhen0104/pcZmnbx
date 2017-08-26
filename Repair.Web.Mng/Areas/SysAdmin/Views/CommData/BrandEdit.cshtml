@@ -1,0 +1,140 @@
+﻿@using LZY.BX.Model
+
+@model Brand
+@{
+    ViewBag.Title = "BrandEdit";
+    var manufaturers = ViewData["manufatuer"] as List<Manufacturer>;
+}
+
+<form class="form-horizontal form-label-left" action="@Url.Action("BrandEdit")" method="POST">
+    @if (Model == null)
+    {
+        <span class="section">品牌添加</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                中文名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="CNName" required="required" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                英文名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="ENName" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ManufacturerId" tabindex="-1">
+                    @foreach (var item in manufaturers)
+                    {
+                        <option value="@item.ManufacturerId">@item.CNName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                类别
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Label" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                描述
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Describe" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+                <button id="send" type="submit" class="btn btn-success">保存</button>
+            </div>
+        </div>
+    }
+    else
+    {
+
+
+        <span class="section">品牌修改</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.BrandId" data-validate-length-range="6" data-validate-words="2" name="BrandId" required="required" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                中文名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.CNName" data-validate-length-range="6" data-validate-words="2" name="CNName" required="required" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                英文名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.ENName" data-validate-length-range="6" data-validate-words="2" name="ENName" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ManufacturerId" tabindex="-1">
+                    @foreach (var item in manufaturers)
+                    {
+                        if (Model.ManufacturerId == item.ManufacturerId)
+                        {
+                            <option value="@item.ManufacturerId" selected="selected">@item.CNName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ManufacturerId">@item.CNName</option>
+                        }
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                类别
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Label" data-validate-length-range="6" data-validate-words="2" name="Label" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                描述
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Describe" data-validate-length-range="6" data-validate-words="2" name="Describe" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+                <button id="send" type="submit" class="btn btn-success">保存</button>
+            </div>
+        </div>
+    }
+
+
+</form>

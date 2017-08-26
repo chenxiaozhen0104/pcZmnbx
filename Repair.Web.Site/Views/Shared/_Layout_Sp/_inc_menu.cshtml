@@ -1,0 +1,73 @@
+﻿
+@{
+
+    var user = User as Repair.Web.Site.Models.UserCookie;
+}
+<div>
+    <div class="left-menu-first">
+
+        <div class="left-menu-first-icon">
+            <img src="~/Content/images/ico/head.png" />
+        </div>
+        @{
+            if (User == null)
+            {
+                <div class="left-menu-first-info">
+                    <p>昵称</p>
+                    <p>所属单位</p>
+                </div>
+            }
+            else
+            {
+                <div class="left-menu-first-info" style="width:100px;">
+                    <p>@user.User.RealName</p>
+                    @*<p>@user.ServiceCompany.Name</p>*@
+                </div>
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+    <div class="left-menu">
+
+        <div>
+            <div><i class="glyphicon glyphicon-list-alt"></i>工单列表</div>
+            <ul>
+                <li><a href="~/Sp/Order/Order">服务工单</a></li>
+                <li><a href="~/Sp/Order/OrderWrite">手工单录入</a></li>
+            </ul>
+        </div>
+        <div>
+            <div><i class="glyphicon glyphicon-calendar"></i>合作单位</div>
+            <ul>
+                <li><a href="/Sp/Mng/Index">合作单位列表</a></li>
+            </ul>
+        </div>
+        @if (user.User.RoleKey.HasFlag(LZY.BX.Model.Enum.UserType.SvcCompanyUserAdmin))
+        {
+            <div>
+                <div><i class="glyphicon glyphicon-user"></i>用户管理</div>
+                <ul>
+                    <li><a href="~/Sp/User/Index">用户列表</a></li>
+                    <li><a href="~/Sp/User/Check">审核用户</a></li>
+                </ul>
+            </div>
+            <div>
+                <div><i class="glyphicon glyphicon-user"></i>设备管理</div>
+                <ul>
+                    <li><a href="~/Sp/Device/Device">设备列表</a></li>
+                  
+                </ul>
+            </div>
+        }
+        <div>
+            <div><i class="glyphicon glyphicon-user"></i>统计</div>
+            <ul>
+                <li><a href="~/Sp/Report/Evaluate">评价</a></li>
+                <li><a href="~/Sp/Report/RepairCount">维修量</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,40 @@
+﻿@model Repair.Web.Site.Areas.User.Models.EquipmentQueryModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = null;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>设备ID</th>
+        <th>设备名称</th>
+        <th>设备型号</th>
+        <th>安装地点</th>
+        <th>添加时间</th>
+        <th>生产商</th>
+        <th>品牌</th>
+        @*<th>操作</th>*@
+    </tr>
+    @foreach (var item in Model.Data)
+    {
+        <tr>
+            <td>@item.DeviceId</td>
+            <td>@item.Name</td>
+            <td>@item.Model</td>
+            <td>@item.Position</td>
+            <td>@item.CreateTime</td>
+            <td>@Model.ManufactorerDic[(long)item.DeviceId].Name</td>
+            <td>@Model.BrandDic[(long)item.BrandId].Name</td>
+            @*<td>
+                <a href="@Url.Action("AddEquipment", new { id = item.EquipmentId })" data-toggle="modal" data-target="#remoteDlgLg">编辑</a>
+                <a href="@Url.Action("EquipmentDel", new { id = item.EquipmentId })" data-toggle="confirm-request" data-title="删除" data-content="确认删除吗?" data-confirm-text="确认" data-target="#remoteDlg">删除</a>
+            </td>*@
+        </tr>
+    }
+</table>
+
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

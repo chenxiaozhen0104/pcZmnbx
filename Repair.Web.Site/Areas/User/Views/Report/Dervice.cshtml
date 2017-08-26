@@ -1,0 +1,28 @@
+﻿@using Repair.Web.Site.Areas.User.Models
+@model ReportDeviceQueryModel
+@{
+    ViewBag.Title = "设备故障";
+    ViewBag.title1 = "统计";
+    ViewBag.title2 = "设备故障";
+}
+<form class="form-inline" action="@Url.Action("DerviceList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                @*@Html.Partial("_inc_time_range", timeRange)*@
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">年份</div>
+                    <input name="keywords" id="input_text" placeholder="请输入年份查询" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("DerviceList")
+    </div>
+</form>

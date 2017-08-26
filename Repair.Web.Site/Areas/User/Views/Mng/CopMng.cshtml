@@ -1,0 +1,30 @@
+﻿@using Repair.Web.Site
+@model dynamic
+
+@{
+    ViewBag.Title = "合作单位";
+    ViewBag.title1 = "合作单位";
+    ViewBag.title2 = "合作单位列表";
+}
+
+<form class="form-inline" action="@Url.Action("CopMngList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+          
+                <a href="@Url.Action("AddConMng")" class="btn btn-primary" data-toggle="modal" data-target="#remoteDlgLg">签约合作</a>
+           
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">关键字</div>
+                    <input name="NameLike" id="input_text" placeholder="单位名称" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("CopMngList")
+    </div>
+</form>

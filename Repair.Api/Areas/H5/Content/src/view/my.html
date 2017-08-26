@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>我的</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+    <link href="../css/component.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <nav class="navbar navbar-fixed-top">
+            <div class="title text-center">我的</div>
+        </nav>
+        <div class="content-list">
+            <div class="panel">
+                <div class="panel-body">
+                    <p class="tou-content"><span class="iconfont icon-touxiang head-photo"></span> <span class="tou-name"></span></p>
+                </div>
+
+                <!-- List group -->
+                <div class="list-group">
+                    <a href="personDetails.html" class="list-group-item">
+                        <span class="iconfont icon-jibenxinxi icon1"></span> &nbsp;基本信息 <span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <a href="orderlist.html" class="list-group-item">
+                        <span class="iconfont icon-dingdanjilu icon2"></span> &nbsp;全部订单<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <a href="companyPerMag.html" class="list-group-item" v-show="personMenu">
+                        <span class="iconfont icon-wodexiaoxi icon6"></span> &nbsp;用户区域管理<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <!--<a href="#" class="list-group-item">
+                        <span class="iconfont icon-wodexiaoxi icon3"></span> &nbsp;我的消息<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <span class="iconfont icon-yijianfankui icon4"></span> &nbsp;意见反馈<span class="iconfont icon-jinru icon-right"></span>
+                    </a>-->
+                    <a href="contactUs.html" class="list-group-item">
+                        <span class="iconfont icon-youcelianxiwomen icon5"></span> &nbsp;联系我们<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <!--<a href="index.html" class="list-group-item">
+                        <span class="iconfont icon-tianjia icon6"></span> &nbsp;注册设备<span class="iconfont icon-jinru icon-right"></span>
+                    </a>-->
+                    <a href="changePassword.html" class="list-group-item">
+                        <span class="iconfont icon-mimaxiugai icon7"></span> &nbsp;修改密码<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                    <a id="exit" class="list-group-item">
+                        <span class="iconfont icon-weibiaoti-- icon8"></span> &nbsp;退出登录<span class="iconfont icon-jinru icon-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <v-footer active="3"></v-footer>
+        </div>
+    </div>
+    <script src="../common/jquery-3.1.0.js"></script>
+    <script src="../common/layer/layer.js"></script>
+    <script src="../common/vue.js"></script>
+    <script src="../js/component/v-footer.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#main",
+            data: {
+                personMenu: localStorage.appType == 1 && localStorage.userType == 8
+            }
+        })
+        $('.tou-name').text(localStorage.userName)
+        $("#exit").click(function () {
+            layer.confirm('确定退出？', { btn: ['确定', '取消'] }, function () {
+
+                location.href = '/api/user/exit?appType=' + localStorage.appType;
+                //$.post('/api/user/exit', function (res) {
+                //    if (res.error) {
+                //        layer.alert(res.error, { icon: 0 })
+                //    } else {
+                //        location.href = 'login.html?target=_blank_closecurrent&appType=' + localStorage.appType;
+                //    }
+                //})
+            }, function () {
+
+            })
+        });
+    </script>
+</body>
+</html>

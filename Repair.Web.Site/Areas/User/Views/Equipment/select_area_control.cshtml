@@ -1,0 +1,24 @@
+﻿@model List<LZY.BX.Model.Area>
+@{
+    ViewBag.Title = "select_area_control";
+    Layout = null;
+}
+<div class="form-group">
+    <label for="areaId">区域</label>
+    <select class="form-control" id="areaId" name="AreaId">
+        <option>暂无</option>
+        @{
+            foreach (var item in Model)
+            {
+                if (item.AreaId == Convert.ToInt64(ViewBag.areaId))
+                {
+                    <option selected="selected" value="@item.AreaId">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.AreaId">@item.Name</option>
+                }
+            }
+        }
+    </select>
+</div>

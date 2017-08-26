@@ -1,0 +1,140 @@
+﻿@model LZY.BX.Model.Device
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+<form action="@Url.Action("AddOrEdit")" id="editForm">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">@(@Model.DeviceId > 0 ? "[编辑]" + string.Format("{0}-{1}", Model.DeviceId, Model.Name) : "[添加]")</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="assetsId">资产</label>
+                <input value="@Model.AssetsId" name="AssetsId" type="text" class="form-control" id="assetsId" placeholder="资产代码" />
+            </div>
+            <div class="form-group">
+                <label for="qrCode">二维码</label>
+                <input value="@Model.QRCode" name="QRCode" type="text" class="form-control" id="qrCode" placeholder="二维码" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="name">名称</label>
+                <input value="@Model.Name" name="Name" type="text" class="form-control" id="name" placeholder="设备名称" />
+            </div>
+            <div class="form-group">
+                <label for="model">&nbsp;&nbsp;&nbsp;型号</label>
+                <input value="@Model.Model" name="Model" type="text" class="form-control" id="model" placeholder="设备型号" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            @Html.Action("select_brand_control", new { brandId = Model.BrandId })
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            @Html.Action("select_area_control", new { areaId = Model.AreaId })
+            @Html.Action("select_category_control", new { categoryId = Model.CategoryId })
+            @Html.Action("select_usecompany_control", new { companyId = Model.UseCompanyId })
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="position">安装地址</label>
+                <input type="text" value="@Model.Position" name="Position" class="form-control" id="position" placeholder="设备安装地址" />
+            </div>
+            <div class="form-group">
+                <label for="longitude">经度</label>
+                <input type="number" value="@Model.Longitude" name="Longitude" class="form-control" id="longitude" placeholder="设备安装经度" />
+            </div>
+            <div class="form-group">
+                <label for="dimension">纬度</label>
+                <input type="number" value="@Model.Dimension" name="Dimension" class="form-control" id="dimension" placeholder="设备安装纬度" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="buyTime">采购时间</label>
+                <input type="datetime" value="@(Model.BuyTime.HasValue ? Model.BuyTime.Value.ToString("yyyy-MM-dd") : "1899-01-01")" name="BuyTime" class="form-control date" id="buyTime" />
+            </div>
+            <div class="form-group">
+                <label for="warrantyTime">质保时间</label>
+                <input type="datetime" value="@(Model.WarrantyTime.HasValue ? Model.WarrantyTime.Value.ToString("yyyy-MM-dd") : "1899-01-01")" name="WarrantyTime" class="form-control date" id="warrantyTime" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="Note">信息备注</label>
+                <input type="text" value="@Model.Note" name="Note" class="form-control" id="Note" />
+            </div>
+        </div>
+    </div>
+    <!--设置时间-->
+    <input type="hidden" name="LastUpdateTime" value="@DateTime.Now" />
+    <input type="hidden" name="CreateTime" value="@(Model.CreateTime.Year > 1 ? Model.CreateTime : DateTime.Now)" />
+    <input type="hidden" name="DeviceId" value="@Model.DeviceId" />
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" onclick="submitEdit()">提交</button>
+    </div>
+</form>
+<script type="text/javascript">
+
+    function AjaxSubmitValidate() { return true; }
+
+    function submitEdit() {
+        AComfig("确定执行此操作？", function () {
+            $('#editForm').ajaxSubmit(GetOptions());
+        });
+    }
+
+    $(function () {
+        $('.date').datetimepicker({
+            format: "yyyy-mm-dd",
+            language: 'zh-CN',
+            forceParse: true,
+            autoclose: true,
+            minView: 2,
+            todayHighlight: true
+        });
+
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Name: {
+                    message: '设备名称验证失败',
+                    validators: {
+                        notEmpty: {/*非空提示*/
+                            message: '设备名称不能为空'
+                        },
+                        stringLength: {/*长度提示*/
+                            min: 1,
+                            max: 32,
+                            message: '设备名称长度须在1到32之间'
+                        },
+                        //regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
+                        //    regexp: /^[a-zA-Z0-9_\.]+$/,
+                        //    message: '只能是数字和字母_.'
+                        //},
+                    }
+                }
+            }
+        });
+    });
+</script>

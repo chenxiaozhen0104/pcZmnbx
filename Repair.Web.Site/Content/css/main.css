@@ -1,0 +1,249 @@
+* {
+	font-family: "microsoft yahei"
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+ul,li,dl,dd,ol,dt {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+	text-decoration: none;
+}
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn{
+            height:44px;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mt15 {
+	margin-top: 15px;
+}
+.mt30 {
+	margin-top: 30px;
+}
+.mb15 {
+	margin-bottom: 15px;
+}
+.mb30 {
+	margin-bottom: 30px;
+}
+.textc {
+	text-align: center;
+}
+.yellow{
+	color: #fa903a;
+}
+.blue {
+	color:#3ea3fb;
+}
+.orange {
+	color: #f5aa44;
+}
+.red0 {
+	color: #eb5d8b;
+}
+.font12 {
+	font-size: 12px;
+}
+.bgeee {
+	background: #eee;
+}
+.line {
+	border: 1px solid #e1e1e1;
+}
+.lineb {
+	border-bottom: 1px solid #778899;
+    padding-bottom:5px;
+}
+.clear {
+	clear: both;
+}
+.w270 {
+	width: 270px;
+}
+.w273 {
+	width: 273px;
+}
+.w275 {
+	width: 275px;
+}
+.h490 {
+	height: 490px;
+}
+.w645 {
+	width: 645px;
+	height: 490px;
+}
+.mw200 {
+	min-width: 200px;
+}
+.content, .w1190 {
+	width: 1190px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.frame {
+	margin: 0 auto;
+}
+.alllink {
+	height: 45px;
+	line-height: 45px;
+	width: 270px;
+	background: #ec0203;
+}
+.alllink span {
+	float: right;
+	margin-right: 15px;
+}
+.menu {
+	background: #fb2b2b;
+	height: 490px;
+	
+}
+.menu li {
+height: 45px;
+line-height: 45px;
+width: 270px;
+position: relative;
+}
+.menu li a, .alllink h2 {
+	font-size: 16px;
+	color: #fff;
+	line-height: 45px;
+	text-decoration: none;
+	display: block;
+	padding-left:20px; 
+	font-weight: bold;
+}
+.menu li a:hover, .menu li.ahover a {
+	color: #666;
+	background: #eee;
+	display: block;
+}
+.submenu {
+	display: none;
+	background: #fff;
+	position: absolute;
+	left: 270px;
+	top:0;
+	border:1px #ddd solid;
+	z-index: 1
+}
+.submenu li a{
+	color: #666;
+}
+.submenu li a:hover{
+	color: #fb2b2b;
+}
+.menu li span {
+	float: right;
+	margin:12px 15px 0 0;
+}
+.title {
+	height: 38px;
+	line-height: 38px;
+	border-bottom: 1px solid #e1e1e1;
+}
+.title h3 {
+}
+.ullist {
+	padding: 11px 10px 10px 30px;
+}
+.ullist li {
+	line-height: 32px;
+	list-style-type: disc;
+}
+.ullist li a {
+	color: #7d7d7d;
+}
+.across-line {
+	background: url(../images/home/acrossline.jpg) repeat-x;
+	height: 48px;
+}
+.across-line h4 {
+	background: #fff;
+	width: 120px;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 48px;
+	font-size: 18px;
+	color: #ed4a4b;
+}
+.brand {
+	height: 180px;
+}
+.brand img {
+	position: relative;
+	top: 50%;
+	margin-top: -67px;
+	height: 135px;
+} 
+.nav-pills li a {
+	color: #787878;
+	font-size: 14px;
+}
+.thumbnail img.h206 {
+	height: 206px;
+}
+.the-icons i:hover {
+    background-color: rgba(255,0,0,.25);
+}
+.icon-chevron-right {
+    background-position: -456px -72px;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+.caption h3 {
+	font-size: 18px;
+	line-height: 32px;
+}
+.dl-horizontal dd h3 {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.dl-horizontal dd p{
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 24px;
+}
+.mainView {
+    width: 1190px;
+    height: 600px;
+    margin: 10px auto;
+    padding:10px 150px 10px 60px;
+    border-radius:5px;
+}
+.mainView p {
+    color: #128ce9;
+    font-size: 22px;
+    font-family: "宋体 ";
+    font-weight: bold;
+    margin: 25px 0 15px 0px;
+
+}
+button[name=submit] {
+     width: 360px;
+     height: 40px;
+     background-color: #128ce9;
+     color: white;
+     border: none;
+     font-size: 20px;
+}

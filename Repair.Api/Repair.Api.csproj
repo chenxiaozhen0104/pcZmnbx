@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C949170A-5880-4C0B-9C29-C150F6717A78}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Repair.Api</RootNamespace>
+    <AssemblyName>Repair.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GetuiServerApiSDK">
+      <HintPath>..\..\Dlls\Ours\GetuiServerApiSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ZR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Ours\ZR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\CommonController.cs" />
+    <Compile Include="Areas\Api\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\Api\Controllers\DeviceController.cs" />
+    <Compile Include="Areas\Api\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Api\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Api\Controllers\PictureController.cs" />
+    <Compile Include="Areas\Api\Controllers\RepairController.cs" />
+    <Compile Include="Areas\Api\Controllers\UploadController.cs" />
+    <Compile Include="Areas\Api\Controllers\UserController.cs" />
+    <Compile Include="Areas\Api\Models\QeuryUserAll.cs" />
+    <Compile Include="Areas\Api\Utilities\ApiUser.cs" />
+    <Compile Include="Areas\H5\H5AreaRegistration.cs" />
+    <Compile Include="Areas\Utilities\ControllerApiBase.cs" />
+    <Compile Include="Areas\Wx\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Wx\WxAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSession.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Charts\images\enter.png" />
+    <Content Include="Areas\Charts\images\return.png" />
+    <Content Include="Areas\Charts\js\ArrayExtension.js" />
+    <Content Include="Areas\Charts\js\barChart.js" />
+    <Content Include="Areas\Charts\js\echarts.min.js" />
+    <Content Include="Areas\Charts\js\jquery-3.1.0.js" />
+    <Content Include="Areas\Charts\js\LineChart.js" />
+    <Content Include="Areas\Charts\js\selectTime.js" />
+    <Content Include="Areas\Charts\js\vue.js" />
+    <Content Include="Areas\Charts\Repair.html" />
+    <Content Include="Areas\Charts\RepairStatistical.html" />
+    <Content Include="Areas\Charts\ServiceStatistical.html" />
+    <Content Include="Areas\H5\Content\css\bootstrap-datetimepicker.css" />
+    <Content Include="Areas\H5\Content\css\bootstrap-switch.css" />
+    <Content Include="Areas\H5\Content\css\bootstrap-theme.css" />
+    <Content Include="Areas\H5\Content\css\bootstrap-theme.min.css" />
+    <Content Include="Areas\H5\Content\css\bootstrap.css" />
+    <Content Include="Areas\H5\Content\css\bootstrap.min.css" />
+    <Content Include="Areas\H5\Content\css\custom.css" />
+    <Content Include="Areas\H5\Content\dist\common\httpParams.js" />
+    <Content Include="Areas\H5\Content\dist\common\jquery-3.1.0.js" />
+    <Content Include="Areas\H5\Content\dist\common\LayerFunction.js" />
+    <Content Include="Areas\H5\Content\dist\common\layer\layer.js" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\default\icon-ext.png" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\default\icon.png" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\default\loading-0.gif" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\default\loading-1.gif" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\default\loading-2.gif" />
+    <Content Include="Areas\H5\Content\dist\common\layer\skin\layer.css" />
+    <Content Include="Areas\H5\Content\dist\common\style.css" />
+    <Content Include="Areas\H5\Content\dist\common\vue.js" />
+    <Content Include="Areas\H5\Content\dist\css\component.css" />
+    <Content Include="Areas\H5\Content\dist\css\equipment.css" />
+    <Content Include="Areas\H5\Content\dist\css\index.css" />
+    <Content Include="Areas\H5\Content\dist\css\login.css" />
+    <Content Include="Areas\H5\Content\dist\css\my.css" />
+    <Content Include="Areas\H5\Content\dist\images\bx.png" />
+    <Content Include="Areas\H5\Content\dist\images\home.png" />
+    <Content Include="Areas\H5\Content\dist\images\ic_home_round.png" />
+    <Content Include="Areas\H5\Content\dist\images\indexBg.png" />
+    <Content Include="Areas\H5\Content\dist\images\live_weixin.png" />
+    <Content Include="Areas\H5\Content\dist\images\login_logo.png" />
+    <Content Include="Areas\H5\Content\dist\images\login_logoservice.png" />
+    <Content Include="Areas\H5\Content\dist\images\order-icons.png" />
+    <Content Include="Areas\H5\Content\dist\images\repair-bg.png" />
+    <Content Include="Areas\H5\Content\dist\images\repair.png" />
+    <Content Include="Areas\H5\Content\dist\index.html" />
+    <Content Include="Areas\H5\Content\dist\js\component\btn-verify-code.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\user.list.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-footer.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-refresh.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-state.search.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-timeline.js" />
+    <Content Include="Areas\H5\Content\dist\js\component\vcodebtn.js" />
+    <Content Include="Areas\H5\Content\dist\js\forgetPassword.js" />
+    <Content Include="Areas\H5\Content\dist\js\index.js" />
+    <Content Include="Areas\H5\Content\dist\js\jquery-3.1.0.js" />
+    <Content Include="Areas\H5\Content\dist\js\login.js" />
+    <Content Include="Areas\H5\Content\dist\js\order.js" />
+    <Content Include="Areas\H5\Content\dist\js\register.company.js" />
+    <Content Include="Areas\H5\Content\dist\js\register.js" />
+    <Content Include="Areas\H5\Content\dist\view\addCompany.html" />
+    <Content Include="Areas\H5\Content\dist\view\changePassword.html" />
+    <Content Include="Areas\H5\Content\dist\view\companyPerMag.html" />
+    <Content Include="Areas\H5\Content\dist\view\CompanyType.html" />
+    <Content Include="Areas\H5\Content\dist\view\contactUs.html" />
+    <Content Include="Areas\H5\Content\dist\view\device.html" />
+    <Content Include="Areas\H5\Content\dist\view\deviceDetail.html" />
+    <Content Include="Areas\H5\Content\dist\view\downloadApp.html" />
+    <Content Include="Areas\H5\Content\dist\view\forgetPassword.html" />
+    <Content Include="Areas\H5\Content\dist\view\index.html" />
+    <Content Include="Areas\H5\Content\dist\view\login.html" />
+    <Content Include="Areas\H5\Content\dist\view\my.html" />
+    <Content Include="Areas\H5\Content\dist\view\orderdetails.html" />
+    <Content Include="Areas\H5\Content\dist\view\orderlist.html" />
+    <Content Include="Areas\H5\Content\dist\view\personDetails.html" />
+    <Content Include="Areas\H5\Content\dist\view\register.html" />
+    <Content Include="Areas\H5\Content\dist\view\registerCompany.html" />
+    <Content Include="Areas\H5\Content\dist\view\repair.html" />
+    <Content Include="Areas\H5\Content\dist\view\unqrCodeRepair.html" />
+    <Content Include="Areas\H5\Content\dist\view\updateapp.html" />
+    <Content Include="Areas\H5\Content\dist\view\UploadTest.html" />
+    <Content Include="Areas\H5\Content\dist\view\useCompanyInfo.html" />
+    <Content Include="Areas\H5\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\H5\Content\gulpfile.js" />
+    <Content Include="Areas\H5\Content\image\Button-bg-L-v.png" />
+    <Content Include="Areas\H5\Content\image\Button-bg-L.png" />
+    <Content Include="Areas\H5\Content\image\Cancel.png" />
+    <Content Include="Areas\H5\Content\image\Close.png" />
+    <Content Include="Areas\H5\Content\image\Forwarding.png" />
+    <Content Include="Areas\H5\Content\image\nofound.png" />
+    <Content Include="Areas\H5\Content\image\QRCodeBtn.png" />
+    <Content Include="Areas\H5\Content\image\Receive.png" />
+    <Content Include="Areas\H5\Content\image\Search.png" />
+    <Content Include="Areas\H5\Content\image\searchR.png" />
+    <Content Include="Areas\H5\Content\image\Select.png" />
+    <Content Include="Areas\H5\Content\image\Sended.png" />
+    <Content Include="Areas\H5\Content\image\Sending.png" />
+    <Content Include="Areas\H5\Content\image\Unsolved.png" />
+    <Content Include="Areas\H5\Content\image\Worked.png" />
+    <Content Include="Areas\H5\Content\image\Working.png" />
+    <Content Include="Areas\H5\Content\js\bootstrap-datetimepicker.js" />
+    <Content Include="Areas\H5\Content\js\bootstrap-select.js" />
+    <Content Include="Areas\H5\Content\js\bootstrap-switch.js" />
+    <Content Include="Areas\H5\Content\js\bootstrap.js" />
+    <Content Include="Areas\H5\Content\js\echarts.min.js" />
+    <Content Include="Areas\H5\Content\js\jquery-1.10.2.min.js" />
+    <Content Include="Areas\H5\Content\js\jquery-3.1.0.js" />
+    <Content Include="Areas\H5\Content\js\js.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Areas\H5\Content\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Areas\H5\Content\js\npm.js" />
+    <Content Include="Areas\H5\Content\layer\layer.js" />
+    <Content Include="Areas\H5\Content\layer\skin\default\icon-ext.png" />
+    <Content Include="Areas\H5\Content\layer\skin\default\icon.png" />
+    <Content Include="Areas\H5\Content\layer\skin\default\loading-0.gif" />
+    <Content Include="Areas\H5\Content\layer\skin\default\loading-1.gif" />
+    <Content Include="Areas\H5\Content\layer\skin\default\loading-2.gif" />
+    <Content Include="Areas\H5\Content\layer\skin\layer.css" />
+    <Content Include="Areas\H5\Content\src\common\httpParams.js" />
+    <Content Include="Areas\H5\Content\src\common\jquery-3.1.0.js" />
+    <Content Include="Areas\H5\Content\src\common\LayerFunction.js" />
+    <Content Include="Areas\H5\Content\src\common\layer\layer.js" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\default\icon-ext.png" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\default\icon.png" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\default\loading-0.gif" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\default\loading-1.gif" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\default\loading-2.gif" />
+    <Content Include="Areas\H5\Content\src\common\layer\skin\layer.css" />
+    <Content Include="Areas\H5\Content\src\common\style.css" />
+    <Content Include="Areas\H5\Content\src\common\vue.js" />
+    <Content Include="Areas\H5\Content\src\css\component.css" />
+    <Content Include="Areas\H5\Content\src\css\index.css" />
+    <Content Include="Areas\H5\Content\src\css\login.css" />
+    <Content Include="Areas\H5\Content\src\css\my.css" />
+    <Content Include="Areas\H5\Content\src\images\bx.png" />
+    <Content Include="Areas\H5\Content\src\images\download_bg.png" />
+    <Content Include="Areas\H5\Content\src\images\download_bx_btn.png" />
+    <Content Include="Areas\H5\Content\src\images\download_wx_btn.png" />
+    <Content Include="Areas\H5\Content\src\images\home.png" />
+    <Content Include="Areas\H5\Content\src\images\ic_home_round.png" />
+    <Content Include="Areas\H5\Content\src\images\indexBg.png" />
+    <Content Include="Areas\H5\Content\src\images\live_weixin.png" />
+    <Content Include="Areas\H5\Content\src\images\login_logo.png" />
+    <Content Include="Areas\H5\Content\src\images\login_logoservice.png" />
+    <Content Include="Areas\H5\Content\src\images\order-icons.png" />
+    <Content Include="Areas\H5\Content\src\images\repair-bg.png" />
+    <Content Include="Areas\H5\Content\src\images\repair.png" />
+    <Content Include="Areas\H5\Content\src\index.html" />
+    <Content Include="Areas\H5\Content\src\js\component\btn-verify-code.js" />
+    <Content Include="Areas\H5\Content\src\js\component\user.list.js" />
+    <Content Include="Areas\H5\Content\src\js\component\v-footer.js" />
+    <Content Include="Areas\H5\Content\src\js\component\v-refresh.js" />
+    <Content Include="Areas\H5\Content\src\js\component\v-state.search.js" />
+    <Content Include="Areas\H5\Content\src\js\component\v-timeline.js" />
+    <Content Include="Areas\H5\Content\src\js\forgetPassword.js" />
+    <Content Include="Areas\H5\Content\src\js\index.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\addCompany.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\jquery-3.1.0.js" />
+    <Content Include="Areas\H5\Content\src\js\login.js" />
+    <Content Include="Areas\H5\Content\src\js\order.js" />
+    <Content Include="Areas\H5\Content\src\js\register.company.js" />
+    <Content Include="Areas\H5\Content\src\js\register.js" />
+    <Content Include="Areas\H5\Content\src\view\addCompany.html" />
+    <Content Include="Areas\H5\Content\src\view\changePassword.html" />
+    <Content Include="Areas\H5\Content\src\view\companyPerMag.html" />
+    <Content Include="Areas\H5\Content\src\view\CompanyType.html" />
+    <Content Include="Areas\H5\Content\src\view\contactUs.html" />
+    <Content Include="Areas\H5\Content\src\view\device.html" />
+    <Content Include="Areas\H5\Content\src\view\deviceDetail.html" />
+    <Content Include="Areas\H5\Content\src\view\downloadApp.html" />
+    <Content Include="Areas\H5\Content\src\view\forgetPassword.html" />
+    <Content Include="Areas\H5\Content\src\view\index.html" />
+    <Content Include="Areas\H5\Content\src\view\login.html" />
+    <Content Include="Areas\H5\Content\src\view\my.html" />
+    <Content Include="Areas\H5\Content\src\view\orderdetails.html" />
+    <Content Include="Areas\H5\Content\src\view\orderlist.html" />
+    <Content Include="Areas\H5\Content\src\view\personDetails.html" />
+    <Content Include="Areas\H5\Content\src\view\register.html" />
+    <Content Include="Areas\H5\Content\src\view\registerCompany.html" />
+    <Content Include="Areas\H5\Content\src\view\repair.html" />
+    <Content Include="Areas\H5\Content\src\view\unqrCodeRepair.html" />
+    <Content Include="Areas\H5\Content\src\view\updateapp.html" />
+    <Content Include="Areas\H5\Content\src\view\UploadTest.html" />
+    <Content Include="Areas\H5\Content\src\view\useCompanyInfo.html" />
+    <Content Include="Areas\H5\Content\style.css" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\cat.touchjs.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\common.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\index.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\touch.min.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\dist\vue.runtime.js" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\fouceWeChat.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\handRepair.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\company.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\companyname.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\delete.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-down1.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-down2.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-down3.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-logo.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu1.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu2.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu3.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu4.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu5.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu6.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-raidu7.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-up.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-up1.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-up2.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-up3.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-yun1.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-yun2.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\login-yun3.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\order-icons.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\phone.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\qrcode.jpg" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-category.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-code.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-contact.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-describle.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-leve.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-model.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-name.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-phoneNumber.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-photo.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-position.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-serviceCompany.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-successBg.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-takephoto.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\repair-type.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\scanCode-bg.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\weChat-bg.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\wxfouceCode-bg.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\wxrepair-bg.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\wxrepair-delete.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\wxrepair-mask.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\images\wxtime.png" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\login.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\orderDetail.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\orderList.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\repair.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\scanCode.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\repairSuccess.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\weChat.html" />
+    <Content Include="Areas\Wx\Content\zmnbxapp\weex.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Api\Views\Web.config" />
+    <Content Include="Areas\Wx\Views\Web.config" />
+    <Content Include="Areas\H5\Content\css\bootstrap-theme.css.map" />
+    <Content Include="Areas\H5\Content\css\bootstrap.css.map" />
+    <Content Include="Areas\H5\Content\dist\css\component.css.map" />
+    <Content Include="Areas\H5\Content\dist\css\index.css.map" />
+    <Content Include="Areas\H5\Content\dist\css\login.css.map" />
+    <Content Include="Areas\H5\Content\dist\css\my.css.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\btn-verify-code.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\user.list.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-footer.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-refresh.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-state.search.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\v-timeline.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\component\vcodebtn.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\forgetPassword.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\index.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\jquery-3.1.0.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\login.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\order.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\register.company.js.map" />
+    <Content Include="Areas\H5\Content\dist\js\register.js.map" />
+    <Content Include="Areas\H5\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\H5\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\H5\Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\H5\Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\H5\Content\package.json" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\repair.api.pubxml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="Areas\H5\Content\src\less\" />
+    <Folder Include="Areas\Wx\Models\" />
+    <Folder Include="Areas\Wx\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LZY.BX.Model\LZY.BX.Model.csproj">
+      <Project>{ea9ecd9c-a03c-489d-812f-8e0947fc5366}</Project>
+      <Name>LZY.BX.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.Service\LZY.BX.Service.csproj">
+      <Project>{a7ee2791-dd9a-4449-8b05-4ec47372dba2}</Project>
+      <Name>LZY.BX.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.SMSManager\LZY.BX.SMSManager.csproj">
+      <Project>{4d3907b9-6f25-4be1-a96b-9523245610c4}</Project>
+      <Name>LZY.BX.SMSManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeiXin\WeiXin.csproj">
+      <Project>{6b28f30b-c00c-472c-a03b-d8e545673053}</Project>
+      <Name>WeiXin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53137</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53137/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,52 @@
+﻿@using LZY.BX.Model
+@model Category
+@{
+    Layout = "~/Views/Shared/_Layout_Alert.cshtml";
+
+    var cur = new Category();
+
+    var activeMenu = new List<string>();
+    cur = Model;
+    while (cur != null)
+    {
+        activeMenu.Add(cur.Name);
+
+        cur = cur.ParentItem;
+    }
+
+    activeMenu.Reverse();
+    var pTree = string.Join("->", activeMenu.ToArray());
+}
+
+<form class="form-horizontal" action="@Url.Action("Edit")" id="AjaxForm">
+    <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+
+    <div class="form-group">
+        <label for="pTree" class="col-sm-2 control-label"></label>
+        <div class="col-sm-8">
+            <label id="pTree" class="control-label">@pTree</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">类目名称</label>
+        <div class="col-sm-6">
+            <input type="text" required="required" class="form-control" value="@Model.Name" id="Name" name="Name" placeholder="请输入类目名称">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="SortField" class="col-sm-2 control-label">排序数字</label>
+        <div class="col-sm-6">
+            <input type="number" class="form-control" id="SortField" value="@Model.SortField"  name="SortField" placeholder="请输入排序数字">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="AjaxSubmit">更新</button>
+        <button type="button" onclick="CloseFrame()" aria-label="Close" class="btn btn-default">取消</button>
+    </div>
+</form>
+@section scripts
+{
+    <script type="text/javascript">
+        function AjaxSubmitValidate() { return true; }
+    </script>
+}

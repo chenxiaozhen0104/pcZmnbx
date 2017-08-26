@@ -1,0 +1,66 @@
+﻿@model Repair.Web.Site.Areas.Other.Models.SystemInfoModel
+
+@{
+    ViewBag.Title = "ContactUs";
+
+    if (string.IsNullOrEmpty(Model.Model))
+    {
+        Model.Model = "帮助中心";
+    }
+
+    if (string.IsNullOrEmpty(Model.Topic))
+    {
+        Model.Topic = "001-用户账号";
+    }
+
+    if (string.IsNullOrEmpty(Model.Page))
+    {
+        Model.Page = "01-账户注册";
+    }
+
+    ViewBag.MenuPath = Model.Model;
+
+}
+<style>
+    .contact_us > div:first-child {
+        float: left;
+        margin-top: -50px;
+        margin-right: 50px;
+    }
+
+    .contact_us {
+        width: 700px;
+        margin: 0 auto 0 auto;
+    }
+
+    .contact_us > div:last-child {
+        margin-top:80px;
+    }
+
+    .contact_us > div:last-child > p {
+        margin-top: 30px;
+    }
+</style>
+
+<div>
+
+
+    @Html.Partial(string.Format( "~/Views/SystemInfo/{0}/{1}/{2}.cshtml",Model.Model,Model.Topic,Model.Page))
+
+
+    @*<img src="~/Content/images/img/about_contactus.png" />
+    <div class="contact_us">
+        <div>
+            <img src="~/Content/images/img/about_img_us.png" />
+        </div>
+        <div>
+            <p>公司名字:杭州绿中游智能科技有限公司</p>
+            <p>地址：浙江省杭州市西湖区文一西路公元里9号楼5座2楼</p>
+            <p>电话：0571-56075697</p>
+            <p>传真：0571-56075698</p>
+            <p>邮箱：lzyznkj@163.com</p>
+        </div>
+
+
+    </div>*@
+</div>

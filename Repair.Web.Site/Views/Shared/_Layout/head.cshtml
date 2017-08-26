@@ -1,0 +1,60 @@
+﻿@{
+    var currentUser = User as Repair.Web.Site.Models.UserCookie;
+}
+<div style="background-color:#f8f8f8; height:35px;">
+    <div style="width:1190px; margin-left:auto;margin-right:auto;">
+        <ul class="header-nav pull-left">
+            @{
+                if (currentUser == null)
+                {
+                    <li>
+                        <a href="@Url.Action("Login", new {area = "", Controller = "Author"})">登录</a>
+                    </li>
+                    <li><a href="@Url.Action("Register", new { area = "", Controller = "Author" })">注册</a></li>
+                }
+                else
+                {
+                    <li>
+                        <span>@currentUser.User.RealName &nbsp;&nbsp;<a href="@Url.Action("LogOut", new {area = "", Controller = "Author"})">退出</a></span>
+                    </li>
+                }
+            }
+        </ul>
+        <ul class="header-nav pull-right">
+            <li><a href="/">首页</a></li>
+            <li>
+                <a href="@Url.Action("Index", new { area = "User", Controller = "Auth" })">我是业主</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", new { area = "SP", Controller = "Auth" })">我是服务商</a>
+            </li>
+            @*<li>
+                    <a href="@Url.Action("Order", new {area = "SP", Controller = "Order"})">我是厂商</a>
+                </li>*@
+            <li>
+                <a href="@Url.Action("Index", new {area=string.Empty,  Controller = "SystemInfo", Id = "关于我们" })">关于我们</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", new {area=string.Empty,  Controller = "SystemInfo", Id = "帮助中心" })">帮助中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div style="width:1190px; margin-left:auto;margin-right:auto; height:100px;">
+    <div class=" clear-top-18">
+        <div style="float:left; width:218px;"><img src="~/Content/images/img/zmnbx.com.png" /></div>
+        <div class="clear-top-8  clear-left-50" style="width:635px; float:left; margin-left:135px;">
+            <div class="input-group input-group-lg" style="border:2px solid red">
+                <span class="input-group-btn" style="border-radius: 0 !important;">
+                    <img src="~/Content/images/img/search.png" class="clear-top-10 clear-bottom-10 clear-left-10 clear-right-10" />
+                </span>
+                <input type="text" class="form-control" placeholder="请输入你要查找的关键字" style="border-radius:0 !important; border:0 !important;">
+                <span class="input-group-btn">
+                    <button class="btn" type="button" style="border-radius: 0 !important;background-color:red; font-weight:bold; color:white; font-size:16px; width:100px;">搜索</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+

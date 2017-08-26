@@ -1,0 +1,29 @@
+@model  string[]
+@{
+    
+    var cur = Model.Last();
+
+    if (cur.Contains("-"))
+    {
+        cur = cur.Split('-')[1];
+    }
+    
+    var list = new List<string>(Model);
+    var arr = list.GetRange(0, list.Count - 1);
+}
+<div class="panel-title lineb">
+    <h5>
+        @foreach (var item in arr)
+        {
+            var title_name = item;
+            if(title_name.Contains("-"))
+            {
+                title_name = item.Split('-')[1];
+            }
+            
+         
+            <span>@title_name &gt;</span>
+        }
+        <span style="font-size: larger; font-weight: bold;color: red">@cur</span>
+    </h5>
+</div>

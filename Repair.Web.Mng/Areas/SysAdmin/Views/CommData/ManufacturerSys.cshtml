@@ -1,0 +1,74 @@
+﻿@model LZY.BX.Model.Page<LZY.BX.Model.Manufacturer>
+@{
+    ViewBag.Title = "Manufacturer";
+    
+}
+<form id="form1" action="@Url.Action("ManufacturerSys")" method="POST">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>制造商管理</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                @Html.ActionLink("添加", "ManufacturerEdit", new { id = 0 }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <input type="text" class="form-control" name="key" value="@Request["key"]" placeholder="请输入名称">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </div>
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">编号</th>
+                                <th class="column-title">名称</th>
+                                <th class="column-title">联系人</th>
+                                <th class="column-title">联系电话</th>
+                                <th class="column-title">地理位置</th>
+                               
+                                <th class="column-title">描述</th>
+                                <th class="column-title no-link last">
+                                    <span class="nobr">编辑</span>
+                                </th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td class=" ">@item.ManufacturerId</td>
+                                    <td class=" ">@item.Name</td>
+                                    <td class=" ">@item.Contact</td>
+                                    <td class=" ">@item.Phone</td>
+                                    <td class=" ">@item.Position</td>
+                                   
+                                    <td class=" ">@item.Describe</td>
+                                    <td class=" ">
+                                        
+                                        @Html.ActionLink("删除", "ManufacturerDelete", new { id = item.ManufacturerId },new{onclick="return confirm('确定要删除吗?')"})
+
+                                        @Html.ActionLink("修改", "ManufacturerEdit", new { id = item.ManufacturerId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+            @Html.Partial("Html/Pager", @Model)
+
+
+
+
+        </div>
+    </div>
+</form>

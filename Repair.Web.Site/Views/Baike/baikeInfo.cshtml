@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "维修百科";
+    ViewBag.subTitle = "维修百科";
+    Layout = "~/Views/Shared/_Layout_No.cshtml";
+}
+
+@section styles
+{
+    <style>
+        .weixiuLitle{
+            height:40px;
+            width:100%;
+            line-height:40px;
+        }
+        .weixiuLitle>span{
+            font-size:15px;
+            color:#f5474c;
+        }
+        .maintenanceLeft{
+            float:left;
+            width:900px;
+            border:1px solid #dedede;
+            height:auto;
+        }
+        .maintenanceLeft>ul>li{
+            height:auto;
+            width:100%;
+            padding:0 20px 0 10px;
+            
+        }
+        .maintenanceLeft ul p{
+            padding:10px 0 5px 0;
+            font-weight:bold;
+        }
+        .maintenanceLeft ul span{
+            text-indent:20px;
+            display:block;
+        }
+
+        .maintenanceLeft ul span:last-child{
+            padding-bottom:10px;
+        }
+         .maintenanceRight{
+            float:right;
+            width:280px;
+            border:1px solid #dedede;
+            height:auto;
+        }
+         .maintenanceRight h4{
+             height:40px;
+             width:100%;
+             background:#eeeeee;
+             line-height:40px;
+             padding-left:10px;
+         }
+         .maintenanceRight li{
+             margin:10px 5px;
+             width:100%;
+         }
+         .maintenanceRight li a i{
+            display:inline-block;
+            height:5px;
+            width:5px;
+            border-radius:100%;
+            background:#42a2ff;
+            margin:0 5px 1px 0;
+         }
+    </style>
+}
+
+<p class="weixiuLitle">油烟机&nbsp;&gt;&nbsp;<span>常见问题</span></p>
+<div class="maintenanceLeft">
+    <ul>
+        <li>
+            <p>1、抽油烟机的指示灯不亮</p>
+            <span>
+                故障解决办法：抽抽油烟机如果电机会转，灯不亮的话一般是灯泡烧掉了，换掉灯泡就可以了。
+            </span>
+        </li>
+        <li>
+            <p>2、抽油烟机排烟效果差</p>
+            <span>
+                故障解决办法：检查下是不是抽抽油烟机安装高度过高了，适当调整高度一般与灶具间距65cm—75cm。若是出烟口的方向选择不对，前面有异物阻挡;
+                须改变安装位置，避开障碍物。排烟管道接口有漏气的现象;须对接口进行密封处理。滤油网油污太多;应定时清洗。
+            </span>
+        </li>
+        <li>
+            <p>3、电机工作时产生噪声</p>
+            <span>故障解决办法：可能是叶轮安装不到位，如果安装不到位引起的噪声，可以重新安装叶轮，即可。也有可能有异物进入风道，若是，应清除异物</span>
+        </li>
+        <li>
+            <p>4、油烟机漏电</p>
+            <span>
+                故障解决办法：更换严重绝缘皮破损的电源线；清理琴键开关上污垢或对严重受潮的开关内部进行干燥处理后使用；改变排烟管的出口位置，避免雨水流入
+                 机内；对受潮的电器元件，进行干燥处理后再使用；将脱落导线重新接好。 
+            </span>
+        </li>
+         <li>
+            <p>5、通电后不能启动 </p>
+            <span>
+                故障解决办法：电源线断路或接头脱焊，仔细查出断路点或脱焊点，重新焊牢;通断开关断路或触点接触不良，检查断路器处是否焊好，若触点接触不良
+                要换新品;电机启动电容器容量减小或短路、断路，这要更换同规格的电容器才能使电机运转;变速线圈断路或短路，对变速线圈修补或更换新品;轴承损坏
+                而卡住转轴，必须更换轴承;定子绕组短路或连接线断路，对定子绕组修补或更换新品。
+            </span>
+        </li>
+        <li>
+            <p>6、运转时有异常声音或噪音大 </p>
+            <span>
+                故障解决办法：电源线断路或接头脱焊，仔细查出断路点或脱焊点，重新焊牢;通断开关断路或触点接触不良，检查断路器处是否焊好，若触点接触不良
+                要换新品;电机启动电容器容量减小或短路、断路，这要更换同规格的电容器才能使电机运转;变速线圈断路或短路，对变速线圈修补或更换新品;轴承损坏
+                而卡住转轴，必须更换轴承;定子绕组短路或连接线断路，对定子绕组修补或更换新品。
+            </span>
+        </li>
+        <li>
+            <p>7、抽油烟机振动过大 </p>
+            <span>
+                故障解决办法：固定不坚实或安装不良，加橡胶垫或泡沫塑料，固定结实;叶片上有异物，内部积垢过厚.清除叶片上的异物及内部脏垢;主轴与风叶套筒偏
+                心，重新调整主轴与风叶套简使其同心;电机轴承磨损或轴承孔过大，更换同规格的新轴承;电机绕组局部短路或断路，更换绕组或电机。
+            </span>
+        </li>
+        <li>
+            <p>8、琴键开关失灵 </p>
+            <span>
+                故障解决办法：如果按下琴键开关能锁住，各档按下都不能启动电机，则公共连线断路，查出并重新焊好;如其中一档按下电机不能运行，另外档正常，表
+                明只有失控那一档的接点损坏或分档连线断落，应修复接点和连线;如按下琴键开关电机能运行，松开后琴键锁不住，主要是开关中导电弹簧变形与导电片
+                接触不上，或开关弹簧片位移或脱落，应调整弹簧片或更换新开关;如按下琴键开关两档都锁住，说明互锁弹簧被挤压变形、位移，应调整修理互锁弹簧。 
+            </span>
+        </li>
+        <li>
+            <p>9、抽油烟机影响炊事火源热量</p>
+            <span>
+                故障解决办法：排风量选择过大，引起热量浪费，延长了加热时间，要适当选择排风量;抽油烟机安装过低，应适当提高抽油烟机的高度。
+            </span>
+        </li> 
+        <li>
+            <p>10、抽油烟机脏污严重 </p>
+            <span>
+                故障解决办法：排风量选择过大，引起热量浪费，延长了加热时间，要适当选择排风量;抽油烟机安装过低，应适当提高抽油烟机的高度。
+            </span>
+        </li> 
+        <li>
+            <p>11、触摸开关不灵</p>
+            <span>
+                故障解决办法：更换开关玻璃板。  
+            </span>
+        </li>  
+    </ul>
+
+
+</div>
+<div class="maintenanceRight">  
+   <h4>维修心得</h4>
+    <ul>
+        <li><a href="baikeTips"><i></i>油烟机接通电源，风机不转运</a></li>
+        <li><a href="baikeTips"><i></i>排油烟机使用中漏油</a></li>
+        <li><a href="baikeTips"><i></i>油烟机漏电</a></li>
+        <li><a href="baikeTips"><i></i>抽油烟机无任何反应</a></li>
+        <li><a href="baikeTips"><i></i>工作时电动机异常发热</a></li>
+        <li><a href="baikeTips"><i></i>抽油烟机脏污严重</a></li>
+        <li><a href="baikeTips"><i></i>抽油烟机影响炊事火源热量 </a></li>
+    </ul>
+</div>

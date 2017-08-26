@@ -1,0 +1,674 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>False</_NewBackgroundProfile>
+    <_PublishTargetUrl>C:\www\main</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/11/2013 09:10:04</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.Extensions.dll">
+      <publishTime>05/23/2011 16:01:52</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/11/2013 09:10:04</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Model.dll">
+      <publishTime>07/12/2017 13:09:33</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Model.pdb">
+      <publishTime>07/12/2017 13:09:33</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.dll">
+      <publishTime>07/12/2017 13:09:53</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.dll.config">
+      <publishTime>07/06/2017 11:18:00</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Service.pdb">
+      <publishTime>07/12/2017 13:09:53</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.SMSManager.dll">
+      <publishTime>07/12/2017 13:09:53</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.SMSManager.pdb">
+      <publishTime>07/12/2017 13:09:53</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Utilities.dll">
+      <publishTime>07/12/2017 13:09:33</publishTime>
+    </File>
+    <File Include="bin/LZY.BX.Utilities.pdb">
+      <publishTime>07/12/2017 13:09:33</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>12/13/2016 03:10:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>06/17/2016 18:29:10</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>06/17/2016 18:29:12</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/20/2012 22:45:56</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>07/06/2017 11:18:22</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/Repair.Web.Site2.0.dll">
+      <publishTime>07/12/2017 13:09:57</publishTime>
+    </File>
+    <File Include="bin/Repair.Web.Site2.0.pdb">
+      <publishTime>07/12/2017 13:09:57</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/28/2015 04:02:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/28/2015 04:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/ThoughtWorks.QRCode.dll">
+      <publishTime>07/06/2017 11:18:23</publishTime>
+    </File>
+    <File Include="bin/WeiXin.dll">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/WeiXin.pdb">
+      <publishTime>07/12/2017 11:43:31</publishTime>
+    </File>
+    <File Include="bin/ZR.dll">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="bin/ZR.pdb">
+      <publishTime>07/06/2017 13:37:32</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="gulpfile.js">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="package.json">
+      <publishTime>07/06/2017 11:17:59</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/images/a7.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-aptitude.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-banner.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-img1.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-img2.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-img3.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-img4.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-img5.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/about-map.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/banner.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/cook-01.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/cook-02.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/cook-03.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/cook-04.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/cook-ad.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/footer-logo.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/help-banner.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/home-ad1.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/home-ad2.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/home-ad3.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/home-info1.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/home-info2.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/home-info3.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/home-row1.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/home-row2.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/home-row3.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/home-row4.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/house.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-banner.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/join-img1.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img2.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img3.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img4.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img5.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img6.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/join-img7.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/LatestNews-lianzhong.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/LatestNews-redio.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/LatestNews-zheda.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/login-bg.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/login-img.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/login-logo.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/NewsCenter-banner.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/NewsDetail-1.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/NewsDetail-2.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/NewsDetails-centerBanner.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/placeholderFigure.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/RencentNews-01.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/RencentNews-02.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/RencentNews-03.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/RencentNews-04.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/repairService-banner.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/repairService-copy.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/repairService-projector.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/RepairService-washing.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/selfCenter-nav.jpg">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/selfCenter-qrCode.png">
+      <publishTime>07/06/2017 11:17:56</publishTime>
+    </File>
+    <File Include="Static/images/toTop.gif">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/images/zmnbx.com.png">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/barChart.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/echarts.min.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/imgUp.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/jquery-3.1.0.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/jquery.min.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/jquery/jquery.form.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/layer.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/default/icon-ext.png">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/default/icon.png">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/default/loading-0.gif">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/default/loading-1.gif">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/default/loading-2.gif">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/layer/skin/layer.css">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/LayerFunction.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/quit.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/common/selectTime.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/common/vue.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/component/btn-verify-code.js">
+      <publishTime>07/06/2017 11:17:57</publishTime>
+    </File>
+    <File Include="Static/scripts/view/AreaReport.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/CategoryReport.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/composite.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/equipmentList.js">
+      <publishTime>07/12/2017 13:01:40</publishTime>
+    </File>
+    <File Include="Static/scripts/view/handOrder.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/help.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/index.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/joinUs.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/login.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/NewsDetails.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/orderlist.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/RecentNews.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/RepairService.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/selfCenter.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/ServerList.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/statisticsOrder.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/statisticsOrderCount.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/statisticsTime.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/TimeReport.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/userlist.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/scripts/view/workOrder.js">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Static/styles/index.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/join.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/login.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/main.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/News.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/RepairService.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/selfCenter.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/ServerList.css">
+      <publishTime>07/06/2017 11:17:53</publishTime>
+    </File>
+    <File Include="Static/styles/workOrder.css">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/About/Index.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/BindService/Index.cshtml">
+      <publishTime>07/06/2017 13:49:58</publishTime>
+    </File>
+    <File Include="Views/Device/Index.cshtml">
+      <publishTime>07/12/2017 13:09:24</publishTime>
+    </File>
+    <File Include="Views/Equipment/Equipment.cshtml">
+      <publishTime>07/12/2017 11:56:02</publishTime>
+    </File>
+    <File Include="Views/Equipment/Index.cshtml">
+      <publishTime>07/12/2017 12:23:22</publishTime>
+    </File>
+    <File Include="Views/Help/HelpContact.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Help/HelpDeal.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Help/HelpEvaluate.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Help/HelpLogin.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Help/HelpReg.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Help/HelpSafety.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Home/Reg.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Join/Index.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/News/LatestNews.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/News/Media.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/News/NewsDetails.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/News/Notice.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/RepairService/CookDevice.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/AreaReport.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/CategoryReport.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/Composite.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/EquipmentList.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/HandOrder.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/OrderCount.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/OrderList.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/OrderPre.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/OrderTime.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/ServerList.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/TimeReport.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Server/UserList.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/footer.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/header.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/HelpMenu.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/Menu.cshtml">
+      <publishTime>07/12/2017 13:00:21</publishTime>
+    </File>
+    <File Include="Views/Shared/NewsMenu.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/pagger.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/Shared/_CenterLayout.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_New.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_Other.cshtml">
+      <publishTime>07/11/2017 22:44:55</publishTime>
+    </File>
+    <File Include="Views/User/Center.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/06/2017 11:17:58</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/11/2017 18:46:02</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

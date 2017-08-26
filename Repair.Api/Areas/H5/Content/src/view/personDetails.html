@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>个人信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_lz0upabtupojemi.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="person-info text-center">
+            <a href="my.html" class="iconfont icon-fanhui btn-back"></a>
+                个人信息
+        </div>
+    </nav>
+    <ul class="person-details list-group"> 
+        <li class="row list-group-item details-first">
+            <div class="col-xs-4 text-bottom">头像</div>
+            <div class="col-xs-8 text-right row-right"><span class="iconfont icon-touxiang details-photo"></span></div>
+        </li>
+        <li class="list-group-item row">
+            <div class="col-xs-4">用户名</div>
+            <div class="col-xs-8 text-right row-right" id="username">gadfg</div>
+        </li>
+        <li class="list-group-item row">
+            <div class="col-xs-4">性别</div>
+            <div class="col-xs-8 text-right row-right" id="sex"></div>
+        </li>
+        <li class="person-line"></li>
+        <li class="list-group-item row">
+            <div class="col-xs-4">手机号</div>
+            <div class="col-xs-8 text-right row-right" id="phone"></div>
+        </li>
+        <li class="list-group-item row">
+            <div class="col-xs-4">电子邮箱</div>
+            <div class="col-xs-8 text-right row-right" id="email"></div>
+        </li>
+        <li class="person-line"></li>
+        <li class="list-group-item row">
+            <div class="col-xs-4">公司名称</div>
+            <div class="col-xs-8 text-right row-right" id="company"></div>
+        </li>
+    </ul>
+</body>
+</html>
+
+
+<script type="text/javascript" src="../js/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="../common/layer/layer.js"></script>
+<script type="text/javascript" src="../common/LayerFunction.js"></script>
+<script type="text/javascript">
+
+    $.get("/api/user/Info", function(res) {
+        $("#username").html(res.name);
+        $("#sex").html(res.sex);
+        $("#phone").html(res.phone);
+        $("#email").html(res.email);
+        console.log(res);
+        if (localStorage.appType == 1) {           
+            if (res.status == "Normal")
+                $("#company").html(res.useCompany);
+            else if (res.status == "NotActive")
+                $("#company").html("<font color='green'>审核中</font>");
+            else if (res.status == "Locked")
+                $("#company").html("<a href='useCompanyInfo.html?returnUrl=personDetails'>审核不通过</a>");
+            
+        } else {           
+            if (res.status == "Normal")
+                $("#company").html(res.useCompany);
+            else if (res.status == "NotActive")
+                $("#company").html("<font color='green'>审核中</font>");
+            else if (res.status == "Locked")
+                $("#company").html("<a href='useCompanyInfo.html?returnUrl=personDetails'>审核不通过</a>");
+           
+        }
+    });
+    
+    
+
+</script>

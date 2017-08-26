@@ -1,0 +1,108 @@
+﻿@using LZY.BX.Model
+@model Page<Equipment>
+@{
+    ViewBag.Title = "Index";
+    var useCompany = ViewData["useCompany"] as List<UseCompany>;
+}
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <form id="createQRCodeform" action="@Url.Action("CreateQRCodeAndDownload")" method="POST">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">批量生成二维码并下载</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <label>生成数量</label>
+                        <select name="number">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>用户企业</label>
+                        <select name="info">
+                            @foreach (var item in useCompany)
+                            {
+                                <option value="@string.Format("{0},{1}", item.UseCompanyId,item.Code)">@item.Name</option>
+                            }
+                        </select>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>二维码列表</h2>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <form action="@Url.Action("DownloadQRCodePic")" method="POST">
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary" type="submit">下载选中二维码</button>
+                </div>
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target=".bs-example-modal-sm">批量生成并下载</button>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title"></th>
+                                <th class="column-title">编号</th>
+                                <th class="column-title">二维码</th>
+                                <th class="column-title">设备名称</th>
+                                <th class="column-title">创建时间</th>
+                                <th class="bulk-actions" colspan="7">
+                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                                foreach (var item in Model.Data)
+                                {
+                                    <tr>
+                                        <td><input value="@item.Code" name="QRCodeUrl" type="checkbox" /></td>
+                                        <td>@item.EquipmentId</td>
+                                        <td>@item.Code</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.CreateTime</td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </form>
+        </div>
+
+        <form id="form1" action="@Url.Action("Index")" method="POST">
+            @Html.Partial("Html/Pager", @Model)
+        </form>
+    </div>
+
+
+
+</div>

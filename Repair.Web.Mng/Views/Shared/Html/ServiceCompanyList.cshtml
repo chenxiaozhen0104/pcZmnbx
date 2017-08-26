@@ -1,0 +1,14 @@
+﻿@model List<LZY.BX.Model.ServiceCompany>
+@{
+    
+    Layout = null;
+}
+<div class ="col-md-12 col-sm-12 col-xs-12">
+    <select name="ServiceCompanyId" class=" form-control">
+        @foreach (var item in Model)
+        {
+            <option value="@item.ServiceCompanyId">@item.Name</option>
+        }
+    </select>
+</div>
+

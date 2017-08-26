@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-inline" action="@Url.Action("UserCompanyList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="text-center">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="keywords" placeholder="请输入公司名称搜索">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("UserCompanyList");
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function SubmitServerCompany(name,id) {
+            AComfig("确定加入公司:"+name+"?", function () {
+                $.post(GetAjaxOptions('@Url.Action("SubmitServerCompany", "ServerCompany")', { id: id }));
+            });
+        }
+        
+    </script>
+}
+

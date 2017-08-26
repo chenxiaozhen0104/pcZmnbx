@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "手工单录入";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+
+<div class="hand-order" id="handOrder">
+
+    <h4>工单信息</h4>
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">设备名称</p>
+        <div class="hand-rowRight"><input type="text" name="name" v-model="orderName" /></div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">类目</p>
+        <div class="hand-rowRight">
+            <select v-model="categoryId">
+                <option v-bind:value="item.CategoryId" v-for="item in categorys" v-html="item.Name"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">品牌</p>
+        <div class="hand-rowRight">
+            <select v-model="brandId">
+                <option v-bind:value="item.BrandId" v-for="item in brands" v-html="item.Name"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">设备使用公司</p>
+        <div class="hand-rowRight"><input type="text" name="name" v-model="useCompanyName" /></div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">联系人</p>
+        <div class="hand-rowRight"><input type="text" name="name" v-model="contacts" /></div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">联系电话</p>
+        <div class="hand-rowRight"><input type="text" name="name" v-model="contactsPhone" /></div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">设备安装地址</p>
+        <div class="hand-rowRight"><input type="text" name="name" v-model="address" /></div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">工单类型</p>
+        <div class="hand-rowRight">
+            <label><input type="radio" value="1" v-model="type" />需要维修</label>
+            <label><input type="radio" value="2" v-model="type" />需要保养</label>
+        </div>
+    </div>
+
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">工单级别</p>
+        <div class="hand-rowRight">
+            <label><input type="radio" value="1" v-model="level" />普通工单</label>
+            <label><input type="radio" value="2" v-model="level" />加急工单</label>
+        </div>
+    </div>
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft">故障描述</p>
+        <div class="hand-rowRight">
+            <textarea placeholder="请输入不超过150字的故障描述" v-model="orderNote"></textarea>
+        </div>
+    </div>
+    <form enctype="multipart/form-data" id="userUpload">
+        <div class="hand-orderRow">
+            <p class="hand-rowLeft">设备故障图片</p>
+            <div class="hand-rowRight">
+                <div class="handImg-box full">
+                    <section class=" img-section">
+                        <div class="z_photo upimg-div clear">
+                            <section class="z_file fl">
+                                <span id="hand-takePhoto" class="iconfont icon-shangchuantupian add-img"></span>
+                                <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="hand-orderRow">
+        <p class="hand-rowLeft"></p>
+        <div class="hand-rowRight">
+            <button class="hand-orderSubmit" v-on:click="handOrderBtn()">提交</button>
+        </div>
+    </div>
+
+    <aside class="mask works-mask">
+        <div class="mask-content">
+            <p class="del-p ">您确定要删除作品图片吗？</p>
+            <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+        </div>
+    </aside>
+
+</div>
+
+
+@section js{
+    <script src="~/Static/scripts/common/imgUp.js"></script>
+    <script src="~/Static/scripts/view/handOrder.js"></script>
+}

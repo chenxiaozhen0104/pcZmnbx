@@ -1,0 +1,36 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@{
+    ViewBag.Title = "服务绑定列表";
+    ViewBag.title1 = "合作单位";
+    ViewBag.title2 = "服务绑定列表";
+
+    var timeRange = new Repair.Web.Site.CondTimeRange("CreateTime", 30);
+    timeRange.TimeEnd = timeRange.TimeEnd.AddDays(1);
+}
+<form class="form-inline" action="@Url.Action("BindingServiceList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+            @{
+                var bindingServiceType = Comm.EnumToHashtable(typeof(BindingServiceType));
+                foreach (var item in bindingServiceType.Keys)
+                {
+                    <a href="@Url.Action(item.ToString())" class="btn btn-primary" data-toggle="modal" data-target="#remoteDlgLg">@Comm.GetEnumDescription(item, typeof(BindingServiceType))</a>
+                }
+            }
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">关键字</div>
+                    <input name="keywords" id="input_text" placeholder="用户Id/姓名/手机号码" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("BindingServiceList")
+    </div>
+</form>
+<script src="~/Scripts/lzy/ArrayExtension.js"></script>

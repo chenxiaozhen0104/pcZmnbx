@@ -1,0 +1,31 @@
+﻿@model string[]
+@{
+    
+    var dir = Path.Combine( Server.MapPath("~/Views/SystemInfo"),
+        Model[0]
+        );
+        var dirs = Directory.GetDirectories(dir);
+        var list = dirs
+            .Select(x=>Path.GetFileName(x))
+            //.Where(x => x != Model[1])
+            .ToList();
+
+        if (list.Count == 1)
+        { 
+            list.Clear();
+            }
+            
+}
+<div style="border-bottom: 4px red solid;" class="clearfix">
+    <div class="frame center-block">
+        <ul class="nav-bar">
+            <li>@Model[0]</li>
+
+            @foreach (var item in list)
+            {
+                <li class="barlist"><a href="@Url.Action("Index", new { id = string.Join(",",new []{Model[0],item}) })"> @item</a></li>
+
+            }
+        </ul>
+    </div>
+</div>

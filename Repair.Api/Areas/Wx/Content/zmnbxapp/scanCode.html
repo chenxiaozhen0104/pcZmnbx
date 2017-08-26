@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>报修</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link href="../../../H5/Content/layer/skin/layer.css" rel="stylesheet" />
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .wxscanCode-content {
+            height: 100%;
+            width: 100%;
+            background: url(images/scanCode-bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .wxscan-box {
+            width: 90%;
+            height: 210px;
+            border: 1px solid #fcfcfc;
+            background-color: white;
+            position: relative;
+            top: 55%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+        }
+
+        .wxscan-btns {
+            height: 50px;
+            width: 85%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background-color: #1b81d5;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .wxscan-btn {
+            margin-top: 40px;
+        }
+
+        .wxscanCode-repair {
+            margin-top: -40px;
+        }
+
+        .wxscan-btns:active {
+            background-color: #59b1f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="wxscanCode-content">
+        <div class="wxscan-box">
+            <button class="wxscanCode-repair wxscan-btns">扫码报修</button>
+            <button class="wxscan-btn wxscan-btns">手工报修</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../../../H5/Content/src/js/jquery-3.1.0.js"></script>
+<script src="../../../H5/Content/layer/layer.js"></script>
+<script src="http://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../../../H5/Content/src/common/httpParams.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        fetch('/wx/auth/scanqrcode?url=' + window.location.href.split('#')[0], { method: 'POST' })
+            .then(function (r) {
+                r.json().then(function (res) {
+                    wx.config({
+                        debug: false,
+                        appId: res.appId,
+                        timestamp: res.timestamp,
+                        nonceStr: res.nnonceStr,
+                        signature: res.signature,
+                        jsApiList: [
+                            "scanQRCode", "chooseImage", "uploadImage"
+                        ]
+                    });
+                })
+            });
+
+
+
+    })
+
+    $(".wxscan-btn").click(function () {
+
+        location.href = 'handRepair.html';
+
+    })
+
+    $(".wxscanCode-repair").click(function () {
+        wx.scanQRCode({
+            needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+            scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+            success: function (res) {
+                // 当needResult 为 1 时，扫码返回的结果
+                //location.href = res.resultStr;
+
+                location.href = 'repair.html?id=' + res.resultStr.substr(res.resultStr.lastIndexOf('/') + 1);
+            }
+        });
+    })
+</script>

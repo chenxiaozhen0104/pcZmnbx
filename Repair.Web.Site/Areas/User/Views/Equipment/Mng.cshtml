@@ -1,0 +1,37 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "设备列表";
+    ViewBag.title1 = "设备信息";
+    ViewBag.title2 = "设备信息列表";
+
+    //var timeRange = new Repair.Web.Site.CondTimeRange("CreateTime", 30);
+    //timeRange.TimeEnd = timeRange.TimeEnd.AddDays(1);
+}
+<form class="form-inline" action="@Url.Action("MngList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+            @*<a href="@Url.Action("AddEquipment")" class="btn btn-primary" data-toggle="modal" data-target="#remoteDlgLg">添加</a>*@
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                @*@Html.Partial("_inc_time_range", timeRange)*@
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">关键字</div>
+                    <input name="keywords" id="input_text" placeholder="设备ID/设备名称" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("MngList")
+        @*@Html.Action("MngList", new RouteValueDictionary
+        {
+            {"CreateTimeLess",timeRange.TimeEnd},
+            {"CreateTimeGreaterEqual",timeRange.TimeStart},
+        })*@
+    </div>
+</form>

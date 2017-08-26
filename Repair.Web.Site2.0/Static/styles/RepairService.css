@@ -1,0 +1,236 @@
+﻿.cook {
+    width: 100%;
+}
+
+.cook-banner {
+    width: 100%;
+    height: 500px;
+    background: url('../images/repairService-banner.png') no-repeat;
+}
+/*导航*/
+.cook-nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-title {
+    height: 60px;
+    width: 106px;
+    line-height: 60px;
+    text-align: center;
+    margin-right:90px;
+    text-decoration:none;
+}
+.nav-title:hover .nav-text{
+    color:#fba02a;
+}
+.nav-title:hover{
+    border-bottom:2px solid #fba02a;
+    cursor: pointer;
+}
+.decoration{
+    color: #fba02a;
+    text-decoration: none;
+}
+.icon-icon_kitchen, .icon-sheshinuanqi, .icon-bangong, .icon-shenghuodianqi {
+    font-size: 22px;
+    color: #fba02a;
+    margin-right: 8px;
+}
+
+.cookDevice, .publicDevice, .workDevice {
+    width: 100px;
+    height: 22px;
+    margin-right: 90px;
+}
+
+.highLight {
+    border-bottom: 2px solid #fba02a;
+}
+
+.nav-text {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*.nav-text:hover {
+    color: #fba02a;
+    text-decoration: none;
+    cursor: pointer;
+}*/
+/*内容部分*/
+.cook-content {
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 43px;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*菜单部分*/
+.content-menu {
+    width: 1200px;
+    background-color: #fff;
+    border-left: 4px solid #fba02a;
+    padding: 20px 30px 21px 25px;
+    margin-bottom: 38px;
+}
+.none{
+    display:none;
+}
+/*项目分类*/
+.menu-category {
+    display: flex;
+    flex-direction: row;
+}
+
+.category-left {
+    font-size: 14px;
+    color: #959595;
+    margin-right: 23px;
+    width: 81px;
+}
+
+.category-middle {
+    width: 970px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.middle-text {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    margin-right: 36px;
+    margin-bottom: 37px;
+}
+
+.middle-text:hover {
+    color: #fba02a;
+    cursor: pointer;
+}
+.more {
+    width: 48px;
+    height: 56px;
+    color: #8c8c8c;
+    font-size: 14px;
+}
+
+.more:hover i, .more:hover, .more span:hover {
+    cursor: pointer;
+    color: #fba02a;
+}
+
+.more span, .icon-chevron-up, .icon-chevron-down-copy {
+    color: #8c8c8c;
+    font-size: 14px;
+}
+
+.more span {
+    margin-right: 4px;
+}
+
+.others {
+    width: 148px;
+    height: 20px;
+    border: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.others-text {
+    font-size: 14px;
+    color: #333;
+    width: 42px;
+    padding-left: 6px;
+}
+
+.others-input {
+    width: 106px;
+    height: 18px;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+/*产品展示*/
+.content-details {
+    width: 1200px;
+}
+
+.details-first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:22px;
+}
+
+.details-1 {
+    width: 285px;
+    height: 300px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.details-img {
+    width: 210px;
+    height: 102px;
+    margin-bottom: 30px;
+}
+.details-img2 {
+    width: 102px;
+    height: 122px;
+    margin-bottom: 30px;
+}
+.details-img3{
+    width:257px;
+    height:100px;
+    margin-bottom:30px;
+}
+.details-img4{
+    width:81px;
+    height:114px;
+    margin-bottom:30px;
+}
+.details-text {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 21px;
+}
+
+.details-text span {
+    color: #333333;
+    font-size: 12px;
+}
+
+.details-btn {
+    width: 200px;
+    height: 36px;
+    background-color: #dcdcdc;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 36px;
+}
+.details-btn:hover{
+    background-color: #fba02a;
+    cursor:pointer;
+}

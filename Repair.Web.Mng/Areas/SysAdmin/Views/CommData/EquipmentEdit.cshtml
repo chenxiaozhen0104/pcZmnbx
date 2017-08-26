@@ -1,0 +1,321 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+@model Equipment
+@{
+    ViewBag.Title = "EquipmentEdit";
+    var svr = new ProductSvr();
+    var manufacturer = ViewData["manufacturer"] as List<Manufacturer>;
+    var serviceCompany = ViewData["serviceCompany"] as List<ServiceCompany>;
+    var useCompany = ViewData["useCompany"] as List<UseCompany>;
+    var userType = ViewData["userType"].ToString();
+    var serviceCompanyId = Convert.ToInt64(ViewData["ServiceCompanyId"]);
+}
+
+<form class="form-horizontal form-label-left" id="form1" action="@Url.Action("EquipmentEdit")" method="POST">
+    @if (Model == null)
+    {
+        <span class="section">设备添加</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Name" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" id="manufacturer" name="ManufacturerId" tabindex="-1" onchange="GetManufactorer(this)">
+                    <option value="0">请选择制造商</option>
+                    @foreach (var item in manufacturer)
+                    {
+                        <option value="@item.ManufacturerId">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="brand_div" style="display: none">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属品牌
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="BrandId" id="brand" tabindex="-1" onchange="GetBrand(this)"></select>
+            </div>
+        </div>
+        <div class="form-group" id="product_div" style="display: none">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属产品
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ProductId" id="product" tabindex="-1"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                型号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Model" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                安装地址
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Position" type="text">
+            </div>
+        </div>
+        if (userType == "Admin")
+        {
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                    使用单位
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="select2_single form-control" name="UseCompanyId" tabindex="-1">
+                        <option value="0">请选择使用单位</option>
+                        @{
+
+            foreach (var item in useCompany)
+            {
+                <option value="@item.UseCompanyId">@item.Name</option>
+            }
+                        }
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                    服务单位
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="select2_single form-control" name="serviceCompanyId" tabindex="-1">
+                        <option value="0">请选择服务单位</option>
+                        @{
+
+            foreach (var item in serviceCompany)
+            {
+                <option value="@item.ServiceCompanyId">@item.Name</option>
+            }
+                        }
+
+                    </select>
+
+                </div>
+            </div>
+        }
+
+    }
+    else
+    {
+
+
+        <span class="section">设备修改</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.EquipmentId" data-validate-length-range="6" data-validate-words="2" name="EquipmentId" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编码
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Code" data-validate-length-range="6" data-validate-words="2" name="Code" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                名称
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Name" data-validate-length-range="6" data-validate-words="2" name="Name" required="required" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ManufacturerId" id="manufacturer" tabindex="-1" onchange="GetManufactorer(this)">
+                    @foreach (var item in manufacturer)
+                    {
+                        if (item.ManufacturerId == Model.ManufacturerId)
+                        {
+                            <option value="@item.ManufacturerId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ManufacturerId">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="brand_div">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属品牌
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="BrandId" id="brand" tabindex="-1" onchange="GetBrand(this)">
+                    @{
+                    var brand = ViewData["brand"] as List<Brand>;
+                    foreach (var item in brand)
+                    {
+                        if (item.BrandId == Model.BrandId)
+                        {
+                            <option value="@item.BrandId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.BrandId">@item.Name</option>
+                        }
+                    }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="product_div">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属产品
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ProductId" tabindex="-1">
+                    @{
+                    var products = svr.GetProductListByBrandId(Model.BrandId);
+                    foreach (var item in products)
+                    {
+                        if (item.ProductId == Model.ProductId)
+                        {
+                            <option value="@item.ProductId" selected="selected">@item.CNName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ProductId">@item.CNName</option>
+                        }
+                    }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                型号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Model" data-validate-length-range="6" data-validate-words="2" name="Model" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                安装地址
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Position" data-validate-length-range="6" data-validate-words="2" name="Position" type="text">
+            </div>
+        </div>
+        if (userType == "Admin")
+        {
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                    使用单位
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="select2_single form-control" name="UseCompanyId" tabindex="-1">
+                        <option value="0">请选择使用单位</option>
+                        @{
+
+            foreach (var item in useCompany)
+            {
+                if (item.UseCompanyId == Model.UseCompanyId)
+                {
+                    <option value="@item.UseCompanyId" selected="selected">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.UseCompanyId">@item.Name</option>
+                }
+            }
+                        }
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                    服务单位
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="select2_single form-control" name="serviceCompanyId" tabindex="-1">
+                        <option value="0">请选择服务单位</option>
+                        @{
+
+            foreach (var item in serviceCompany)
+            {
+                if (item.ServiceCompanyId == serviceCompanyId)
+                {
+                    <option value="@item.ServiceCompanyId" selected="selected">@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.ServiceCompanyId">@item.Name</option>
+                }
+
+            }
+                        }
+
+                    </select>
+
+                </div>
+            </div>
+        }
+    }
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+            <button id="send" type="button" onclick="Save()" class="btn btn-success">保存</button>
+        </div>
+    </div>
+
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function GetManufactorer(item) {
+            $.get("../../../../Handler.ashx?type=GetManufactorer&manufactorerId=" + item.value,
+                {},
+                function (res) {
+                    document.getElementById("brand").innerHTML = "<option value=\"0\">请选择品牌</option>" + res;
+                    document.getElementById("brand_div").style.display = "block";
+                });
+        }
+
+        function GetBrand(item) {
+            $.get("../../../../Handler.ashx?type=GetProduct&brandId=" + item.value,
+                {},
+                function (res) {
+                    document.getElementById("product").innerHTML = res;
+                    document.getElementById("product_div").style.display = "block";
+                });
+        }
+        function Save() {
+            if (document.getElementById("manufacturer").value == "0") {
+                return alert("请选择制造商");
+            }
+            if (document.getElementById("brand").value == "0") {
+                return alert("请选择品牌");
+            }
+            document.getElementById("form1").submit();
+        }
+
+    </script>
+}

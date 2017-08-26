@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "啄木鸟报修 - 注册";
+    Layout = null;
+}
+
+
+<link href="//at.alicdn.com/t/font_69y012v944m18aor.css" rel="stylesheet" />
+<link href="~/Static/styles/main.css" rel="stylesheet" />
+<link href="~/Static/styles/login.css" rel="stylesheet" />
+<link href="~/Static/scripts/common/layer/skin/layer.css" rel="stylesheet" />
+
+<div id="login-content">
+    <div class="login-top">
+        <div class="login-topConten">
+            <a href="/Home/Login">登录</a>
+            <a class="login-ColorActive"  href="/Home/Reg">注册</a>
+        </div>
+    </div>
+    <div class="login-logo">
+        <div class="login-logoCentent">
+            <a href="/Home/Index"><img src="/Static/images/login-logo.png" /></a>
+            <span class="login-wayText"> 新用户注册</span>
+        </div>
+    </div>
+    <div class="login-center">
+        <div class="login-centerContent">
+            <img src="~/Static/images/login-img.png" />
+
+            <!--手机号码注册-->
+            <div class="register-centerForm">
+                <ul class="login-centerTitle">
+                    <li class="login-liCommon login-active">手机号码注册</li>
+                </ul>
+                <div class="login-centerInput register-centerInput">
+                    <div class="login-inpuRow">
+                        <span class="login-incon login-inconActice"><i class="iconfont icon-yonghuming"></i></span>
+                        <input class="login-input" type="text" placeholder="用户真实姓名" v-model="userName" />
+                    </div>
+
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-shouji"></i></span>
+                        <input class="login-input longin-focus" id="phoneBlur"  type="text" placeholder="手机号码" v-model="regPhone"  v-on:input="regAlter"/>
+                    </div>
+                    <div class="login-inpuRow">
+                        <input class="login-input login-code" type="text" placeholder="验证码" v-model="regCode" />
+                        <btn-verify-code v-bind:verify-user="true" v-bind:mobile="regPhone"></btn-verify-code>
+                    </div>
+
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-mima"></i></span>
+                        <input class="login-input longin-focus" id="passwordBlur"  type="password" placeholder="请输入不小于6位的登录密码" v-model="regPassword" v-on:input="homeAlter('passwordBlur')"/>
+                    </div>
+                    <div class="login-inpuRow">
+                        <span class="login-incon"><i class="iconfont icon-mima"></i></span>
+                        <input class="login-input longin-focus"  type="password" placeholder="重复密码" v-model="regAgainPassword" />
+                    </div>
+                    <div class="login-row register-del">
+                        <label><input type="checkbox" class="register-checkbox2" v-model="regChecked" /> 我已阅读并接受<<</label>
+                        <a class="register-agreen" href="###">啄木鸟报修服务协议</a>>>
+                    </div>
+
+                    <div class="login-row">
+                        <button class="login-submit" v-on:click="register">注册</button>
+                    </div>
+                    <div class="login-row register-backLogin">
+                        <p>已有账号？<a class="register-backLogins" href="/Home/Login">直接登录</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="register-agreement">
+            <div class="agreement-title">
+                <h2>啄木鸟报修网服务协议</h2>
+                <i class="iconfont icon-shanchu"></i>
+            </div>
+            <hr>
+            <p>
+                <b>啄木鸟报修网服务协议</b><br />
+                <span>
+                    本协议是您与啄木鸟报修网站（简称"本站"，网址：www.zmnbx.com）服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击"同意并继续"按钮后，本协
+                    议即构成对双方有约束力的法律文件。
+                </span>
+
+                <b>第1条 本站服务条款的确认和接纳</b><br />
+                <span>
+                    1.1本站的各项维修服务的所有权和运作权归杭州绿中游智能科技有限公司所有。用户同意所有注册协议条款并完成注册程序，才能成为本站的正式用户。用户确认：本
+                    协议条款是处理双方权利义务的契约，始终有效，法律另有强制性规定或双方另有特别约定的，依其规定。<br />
+                    1.2用户点击同意本协议的，即视为用户确认自己具有享受本站服务、下单维修等相应的权利能力和行为能力，能够独立承担法律责任。<br />
+                    1.3如果您在18周岁以下，您只能在父母或监护人的监护参与下才能使用本站。<br />
+                    1.4啄木鸟报修保留在中华人民共和国大陆地区法施行之法律允许的范围内独自决定拒绝服务、关闭用户账户、清除或编辑内容或取消订单的权利。
+                </span>
+                <b>第2条 用户信息</b><br />
+                <span>
+                    2.1用户应自行诚信向本站提供注册资料，用户同意其提供的注册资料真实、准确、完整、合法有效，用户注册资料如有变动的，应及时更新其注册资料。如果用户提供
+                    的注册资料不合法、不真实、不准确、不详尽的，用户需承担因此引起的相应责任及后果，并且京东保留终止用户使用京东各项服务的权利。<br />
+                    2.2用户在本站进行浏览、下单购物等活动时，涉及用户真实姓名/名称、通信地址、联系电话、电子邮箱等隐私信息的，本站将予以严格保密，除非得到用户的授权或法
+                    律另有规定，本站不会向外界披露用户隐私信息。<br />
+                    2.3用户注册成功后，将产生用户名和密码等账户信息，您可以根据本站规定改变您的密码。用户应谨慎合理的保存、使用其用户名和密码。用户若发现任何非法使用用
+                    户账号或存在安全漏洞的情况，请立即通知本站并向公安机关报案。<br />
+                    2.4用户同意，啄木鸟拥有通过邮件、短信电话等形式，向在本站注册、报修用户、告知信息的权利。<br />
+                    2.5用户不得将在本站注册获得的账户借给他人使用，否则用户应承担由此产生的全部责任，并与实际使用人承担连带责任。<br />
+                    2.6用户同意，啄木鸟报修有权使用用户的注册信息、用户名、密码等信息，登录进入用户的注册账户，进行证据保全，包括但不限于公证、见证等。<br />
+                </span>
+                <b>第3条 用户依法言行义务</b><br />
+                <span>
+                    本协议依据国家相关法律法规规章制定，用户同意严格遵守以下义务：<br />
+                    （1）不得传输或发表：煽动抗拒、破坏宪法和法律、行政法规实施的言论，煽动颠覆国家政权，推翻社会主义制度的言论，煽动分裂国家、破坏国家统一的的言论，煽
+                    动民族仇恨、民族歧视、破坏民族团结的言论；<br />
+                    （2）从中国大陆向境外传输资料信息时必须符合中国有关法规；<br />
+                    （3）不得利用本站从事洗钱、窃取商业秘密、窃取个人信息等违法犯罪活动；<br />
+                    （4）不得干扰本站的正常运转，不得侵入本站及国家计算机信息系统；<br />
+                    （5）不得传输或发表任何违法犯罪的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、伤害性的、庸俗的，淫秽的、不文明的等信息资料；<br />
+                    （6）不得传输或发表损害国家社会公共利益和涉及国家安全的信息资料或言论；<br />
+                    （7）不得教唆他人从事本条所禁止的行为；<br />
+                    （8）不得利用在本站注册的账户进行牟利性经营活动；<br />
+                    （9）不得发布任何侵犯他人著作权、商标权等知识产权或合法权利的内容；<br />
+                </span>
+            </p>
+            <button class="agreement-submit">同意并继续</button>
+        </div>
+</div>
+@Html.Partial("footer")
+
+
+<script src="~/Static/scripts/common/jquery-3.1.0.js"></script>
+<script src="~/Static/scripts/common/vue.js"></script>
+<script src="~/Static/scripts/common/layer/layer.js"></script>
+<script src="~/Static/scripts/common/LayerFunction.js"></script>
+<script src="~/Static/scripts/component/btn-verify-code.js"></script>
+<script src="~/Static/scripts/view/login.js"></script>

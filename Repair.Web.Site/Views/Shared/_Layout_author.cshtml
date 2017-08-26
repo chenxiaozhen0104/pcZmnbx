@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Partial("_Layout/_inc_header_res")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div>
+        <div style="line-height:100px; vertical-align:middle;">
+            <div style="width:1190px; margin: 0 auto; ">
+                <div style="float:left;">
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/images/img/zmnbx.com.png" /></a>
+                </div>
+                <div style="float:left; margin:0 50px;">
+                    <img src="~/Content/images/img/登录分隔符.png" />
+                </div>
+                <div style="color:#cac7c7;font-size:24px; font-weight:bold;">
+                    @ViewBag.subTitle
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix center-block" style="height:600px; background-color:#e7e7e7; clear:both">
+        @RenderBody()
+    </div>
+    <div class="clearfix center-block">
+        @Html.Partial("_Layout/bottom")
+    </div>
+
+    @Html.Partial("_Layout/_inc_dlgs")
+    @Html.Partial("_Layout/_inc_bottom_res")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

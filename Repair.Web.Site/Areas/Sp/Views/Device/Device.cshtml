@@ -1,0 +1,96 @@
+﻿@section styles
+{
+    <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+}
+@{
+    ViewBag.Title = "设备列表";
+    ViewBag.title1 = "设备信息";
+    ViewBag.title2 = "设备信息列表";
+}
+<form class="form-inline" action="@Url.Action("DeviceList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#openExcel">导入设备</button>
+
+            <a class="btn btn-primary form-control" data-toggle="modal" href="@Url.Action("AddOrEditDevice")" data-target="#openEditDevice">新增设备</a>
+
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                @*@Html.Partial("_inc_time_range", timeRange)*@
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">关键字</div>
+                    <input name="keywords" id="input_text" placeholder="设备ID/设备名称" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("DeviceList")
+    </div>
+    <div class="modal fade" id="openEditDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="openExcel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">请选择Excel文件</h4>
+                </div>
+                <div class="modal-body">
+                    <a href="http://img.zmnbx.com//dist/Js/设备录入模板.xlsx" class="form-control" style="border:none;">下载导入模板</a>
+                    <input type="file" name="excelFile" id="excelFile" class="file-loading" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script src="~/Content/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="~/Content/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+    <script>
+        function remove(id) {
+            AComfig("删除后将无法恢复！确定要删除该设备信息吗？", function () {
+                $.post(GetAjaxOptions('@Url.Action("Remove", "Device")', { id: id }));
+            });
+        }
+        $(function () {
+            var fileInput = new FileInput();
+            fileInput.Init("excelFile", "@Url.Action("ImportExcel")");
+        });
+        var FileInput = function () {
+            var file = new Object();
+
+            //初始化fileinput控件（第一次初始化）
+            file.Init = function (ctrlName, uploadUrl) {
+                var control = $('#' + ctrlName);
+
+                //初始化上传控件的样式
+                control.fileinput({
+                    language: 'zh', //设置语言
+                    uploadUrl: uploadUrl, //上传的地址
+                    allowedFileExtensions: ['xls', 'xlsx'],//接收的文件后缀
+                    showUpload: true,
+                    showRemove: true,
+                    showCaption: false,
+                    showAjaxErrorDetails: false,
+                    browseClass: "btn btn-primary", //按钮样式
+                    enctype: 'multipart/form-data',
+                    validateInitialCount: true
+                });
+            }
+            return file;
+        };
+
+
+    </script>
+}

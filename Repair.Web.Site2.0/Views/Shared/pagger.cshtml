@@ -1,0 +1,53 @@
+﻿@using Repair.Web.Site2._0.Models
+@model PageInfoByNum
+@{
+    var formName = Model.FormName;
+    var curPageName = Model.CurPageName;
+    var pageRangeSize = 10;
+
+    var curPage = Model.Page;
+    var totalPage = Model.TotalPage;
+    var startPage = ((curPage - 1) / pageRangeSize) * pageRangeSize + 1;
+    var endPage = Math.Min(startPage + pageRangeSize - 1, totalPage);
+
+    var pageInfo = Model as PageInfoByNum;
+}
+
+
+<nav style="float: right;">
+    <ul class="pagination">
+        @if (curPage > 1)
+        {
+            <li><a href="#" data-pagger="1" data-target="@formName,@curPageName" aria-label="Home"><span aria-hidden="true">首页</span></a> </li>
+            <li><a href="#" data-pagger="@(curPage - 1)" data-target="@formName,@curPageName" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+        }
+        else
+        {
+            <li><a data-pagger="1" class="disabled" aria-label="Home"><span aria-hidden="true">首页</span></a> </li>
+            <li><a aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+        }
+        @for (var i = startPage; i <= endPage; i++)
+        {
+            <li class="@(curPage == i?"active":string.Empty)"><a class="curPage" href="#" data-target="@formName,@curPageName" data-pagger="@i">@i</a></li>
+        }
+
+        @if (curPage <= totalPage - 1)
+        {
+            <li><a data-pagger="@(curPage + 1)" href="#" data-target="@formName,@curPageName" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+            <li><a data-pagger="@endPage" href="#" data-target="@formName,@curPageName" aria-label="Last"><span aria-hidden="true">尾页</span></a></li>
+        }
+        else
+        {
+            <li><a aria-label="Next" class="disabled"><span aria-hidden="true">下一页</span></a></li>
+            <li><a aria-label="Last" class="disabled"><span aria-hidden="true">尾页</span></a></li>
+        }
+        <li><a>当前第 @curPage 页，共 @totalPage 页</a></li>
+    </ul>
+</nav>
+@if (pageInfo != null && pageInfo.OutputField && !pageInfo.Mark)
+{
+    pageInfo.Mark = false;
+    @Html.HiddenFor(x => pageInfo.Page, new { id = pageInfo.CurPageName })
+    @Html.HiddenFor(x => pageInfo.FormName)
+    @Html.HiddenFor(x => pageInfo.CurPageName)
+}

@@ -1,0 +1,87 @@
+﻿@using LZY.BX.Model
+@model User
+@{
+    ViewBag.Title = "UserToCompany";
+    var serviceCompanyUser = ViewData["serviceCompanyUser"] as ServiceCompanyUser;
+    var serviceCompany = ViewData["serviceCompany"] as List<ServiceCompany>;
+
+    var useCompanyUser = ViewData["useCompanyUser"] as UseCompanyUser;
+    var useCompany = ViewData["useCompany"] as List<UseCompany>;
+}
+
+<form class="form-horizontal form-label-left" action="@Url.Action("UserToCompanyEdit")" method="POST">
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+            用户名称
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+           @Html.HiddenFor(x=>x.UserId)
+            <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="RealName" required="required" value="@Model.RealName" type="text" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+            服务单位
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <select class="select2_single form-control" name="serviceCompanyId"  tabindex="-1">
+                <option value="0">请选择服务单位</option>
+                @foreach (var item in serviceCompany)
+                {
+                    if (serviceCompanyUser != null)
+                    {
+                        if (item.ServiceCompanyId == serviceCompanyUser.ServiceCompanyId)
+                        {
+                            <option value="@item.ServiceCompanyId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ServiceCompanyId">@item.Name</option>
+                        }
+                    }
+
+                    else
+                    {
+                        <option value="@item.ServiceCompanyId">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group" id="brand_div" >
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+            报修单位
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <select class="select2_single form-control" name="useCompanyId"  tabindex="-1">
+                <option value="0">请选择报修单位</option>
+                @foreach (var item in useCompany)
+                {
+                    if (useCompanyUser != null)
+                    {
+                        if (item.UseCompanyId == useCompanyUser.UseCompanyId)
+                        {
+                            <option value="@item.UseCompanyId" selected="selected">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.UseCompanyId">@item.Name</option>
+                        }
+                    }
+
+                    else
+                    {
+                        <option value="@item.UseCompanyId">@item.Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+            <button id="send" type="submit"  class="btn btn-success">保存</button>
+        </div>
+    </div>
+</form>

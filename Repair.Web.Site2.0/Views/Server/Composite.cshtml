@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "综合统计";
+    Layout = "~/Views/Shared/_CenterLayout.cshtml";
+}
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+<div id="statistics-time">
+    <ul class="statistics-tab">
+        <li class="statisticsIcon" onclick="servicePrevious()"><i class="iconfont icon-xiangzuo"></i></li>
+        <li class="statistics-selectActive" onclick="serviceTimes(this, selectTime.Type.Day)">日</li>
+        <li onclick="serviceTimes(this, selectTime.Type.Week)">周</li>
+        <li onclick="serviceTimes(this, selectTime.Type.Month)">月</li>
+        <li class="statisticsIcon" onclick="serviceNext()"><i class="iconfont icon-arrow-right"></i></li>
+    </ul>
+    <div class="serviceForm">
+        <h3 >2017-6-12 人员工单详情</h3>
+        <div class="serviceForm-rows">
+            <p>人员</p>
+            <p>工时(h)</p>
+            <p>工单总数</p>
+            <p>进行中</p>
+            <p>已完成</p>
+            <p>未解决</p>
+        </div>
+        <div  v-if="userNameArr.length>0"  class="serviceForm-row"  v-for="obj in userNameArr">
+            <p v-html="obj.RealName"></p>
+            <p v-html="getworktime(obj.UserId)"></p>
+            <p v-html="getorderIng(obj.UserId)+getordered(obj.UserId)+getUnComplated(obj.UserId)"></p>
+            <p v-html="getorderIng(obj.UserId)"></p>
+            <p v-html="getordered(obj.UserId)"></p>
+            <p v-html="getUnComplated(obj.UserId)"></p>
+        </div>
+        <div  v-if="userNameArr.length==0"  class="serviceForm-row">
+            <p>没有数据</p>
+        </div>
+    </div>
+</div>
+
+@section js{
+
+    <script src="~/Static/scripts/view/composite.js"></script>
+}

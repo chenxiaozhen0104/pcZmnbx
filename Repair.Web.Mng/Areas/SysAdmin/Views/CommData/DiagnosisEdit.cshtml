@@ -1,0 +1,182 @@
+﻿@using LZY.BX.Model
+@using LZY.BX.Service
+@model Diagnosis
+@{
+    ViewBag.Title = "DiagnosisEdit";
+    var manufacturer = ViewData["manufacturer"] as List<Manufacturer>;
+}
+
+<form class="form-horizontal form-label-left" id="form1" action="@Url.Action("DiagnosisEdit")" method="POST">
+    @if (Model == null)
+    {
+        <span class="section">产品故障描述添加</span>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" id="manufacturer" name="ManufacturerId" tabindex="-1" onchange="GetManufactorer(this)">
+                    <option value="0">请先选择制造商</option>
+                    @foreach (var item in manufacturer)
+                    {
+                        <option value="@item.ManufacturerId">@item.CNName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="brand_div" style="display: none">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属品牌
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="BrandId" id="brand" tabindex="-1" onchange="GetBrand(this)"></select>
+            </div>
+        </div>
+        <div class="form-group" id="product_div" style="display: none">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属产品
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ProductId" id="product" tabindex="-1"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                描述
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="Describe" type="text" required="required">
+            </div>
+        </div>
+    }
+    else
+    {
+
+
+        <span class="section">产品故障描述修改</span>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                编号
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.DiagnosisId" data-validate-length-range="6" data-validate-words="2" name="DiagnosisId" required="required" readonly="readonly" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属制造商
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ManufacturerId" id="manufacturer" tabindex="-1" onchange="GetManufactorer(this)">
+                    <option value="0">请先选择制造商</option>
+                    @foreach (var item in manufacturer)
+                    {
+                        if (item.ManufacturerId == Model.ManufacturerId)
+                        {
+                            <option value="@item.ManufacturerId" selected="selected">@item.CNName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ManufacturerId">@item.CNName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="brand_div">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属品牌
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" id="brand" name="BrandId" tabindex="-1" onchange="GetBrand(this)">
+                    @{
+                    var brand = ViewData["brand"] as List<Brand>;
+                    foreach (var item in brand)
+                    {
+                        if (item.BrandId == Model.BrandId)
+                        {
+                            <option value="@item.BrandId" selected="selected">@item.CNName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.BrandId">@item.CNName</option>
+                        }
+                    }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group" id="product_div">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                隶属产品
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="select2_single form-control" name="ProductId" tabindex="-1">
+                    @{
+                    var products = ViewData["product"] as List<Product>;
+                    foreach (var item in products)
+                    {
+                        if (item.ProductId == Model.ProductId)
+                        {
+                            <option value="@item.ProductId" selected="selected">@item.CNName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ProductId">@item.CNName</option>
+                        }
+                    }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                描述
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" value="@Model.Describe" data-validate-length-range="6" data-validate-words="2" name="Describe" required="required" type="text">
+            </div>
+        </div>
+
+    }
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" onclick="history.go(-1)" class="btn btn-primary">取消</button>
+            <button id="send" type="button" onclick="Save()" class="btn btn-success">保存</button>
+        </div>
+    </div>
+
+</form>
+@section scripts
+{
+    <script type="text/javascript">
+        function GetManufactorer(item) {
+            $.get("../../../../Handler.ashx?type=GetManufactorer&manufactorerId=" + item.value,
+                {},
+                function (res) {
+                    document.getElementById("brand").innerHTML = "<option value=\"0\">请选择品牌</option>" + res;
+                    document.getElementById("brand_div").style.display = "block";
+                });
+        }
+
+        function GetBrand(item) {
+            $.get("../../../../Handler.ashx?type=GetProduct&brandId=" + item.value,
+                {},
+                function (res) {
+                    document.getElementById("product").innerHTML = res;
+                    document.getElementById("product_div").style.display = "block";
+                });
+        }
+
+        function Save() {
+            if (document.getElementById("manufacturer").value == "0") {
+                return alert("请选择制造商");
+            }
+            if (document.getElementById("brand").value == "0") {
+                return alert("请选择品牌");
+            }
+            document.getElementById("form1").submit();
+        }
+
+    </script>
+}

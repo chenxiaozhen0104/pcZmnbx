@@ -1,0 +1,472 @@
+﻿#login-content {
+    position: relative;
+    flex: 1;
+    background-color:white;
+}
+.login-top {
+    width: 100%;
+    height: 40px;
+    background-color: #16191b;
+    display:flex;
+    justify-content:space-between;
+    color:white;
+}
+.login-topConten {
+    width: 1200px;
+    margin: 0 auto;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size:14px;
+}
+.homeTop-right {
+    display:flex;
+    flex-direction:row;
+}
+.homeTop-right > a {
+    margin-left: 20px;
+    color: white;
+    height:40px;
+    line-height:40px;
+    text-decoration: none;
+}
+.homeTop-right > a:hover {
+    color: #fba02a;
+}
+
+/*首页中间内容样式*/
+.home-center {
+    height: auto;
+    border-top: 1px solid #fba02a;
+    z-index:10;
+}
+.homeCenter-cont{
+    width:1200px;
+    margin:0 auto;
+}
+
+    /*第一部分样式*/
+.homeCont-one{
+    height:520px;
+    display:flex;
+    flex-direction:row;
+    padding-bottom:20px;
+}
+
+        /*第一部分左侧样式*/
+.homeContOne-left {
+    height: 500px;
+    width: 240px;
+    list-style: none;
+    background-color: #fba02a;
+}
+.homeContOne-left > li > a{
+    color:white;
+    text-decoration:none;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.homeContOne-left > li  {
+   width:100%;
+   padding:12px 30px 12px 15px;
+   position:relative;
+}
+.default {
+    cursor:default;
+}
+.oneIcon {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.homeContOne-left > li.home-serviceList:hover {
+    background-color: #333333;
+}
+
+.submenu:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0px 8px 15px;
+    position:absolute;
+    left:-15px;
+    top:16px;
+    transform:rotate(-90deg);
+    border-style: none solid solid;
+    border-color: transparent transparent white;
+}
+
+.submenu {
+    background: #ffffff;
+    position: absolute;
+    left: 240px;
+    top: 0;
+    width: 285px;
+    z-index: 1000;
+    list-style: none;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    display:none;
+
+}
+.submenu > li  {
+    display:inline-flex;
+    width:140px;
+    padding:15px 5px 15px 30px;
+    align-items:center;
+}
+.listIcon {
+   margin-right:10px;
+}
+
+.submenu > li > a {
+    text-decoration: none;
+    color: #666;
+}
+.submenu > li > a:hover {
+    color: #fba02a;
+}
+
+
+/*第一部分右侧样式*/
+.homeContOne-right {
+    width: 273px;
+    height: 500px;
+}
+.notice-content{
+    width:100%;
+    height:160px;
+    border:1px solid #dedede;
+    margin-bottom:10px;
+}
+.notice-titile {
+    height: 35px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dedede;
+    padding-left: 10px;
+    line-height: 35px;
+    color: #7b7b7b;
+}
+.notice-lists {
+   list-style:none;
+   padding-left:10px;
+}
+.notice-lists li:before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #7b7b7b;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: -10px;
+}
+
+.notice-lists > li {
+    padding:8px 0;
+}
+.notice-lists > li > a {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: 240px;
+    text-decoration: none;
+    color: #7b7b7b;
+    font-size: 14px;
+}
+
+.notice-lists > li > a:hover {
+  
+    text-decoration: underline;
+}
+
+.homeIcon {
+        margin-right: 10px;
+        color: #fba02a
+    }
+/*第一部分中间录播图样式*/
+.homeContOne-center {
+    width: 687px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+.nav .images {
+    width: 4000px;
+    position: absolute;
+    left: 0;
+}
+
+.nav .images li {
+    float: left;
+    list-style:none;
+}
+
+.nav .num {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+    left: 0;
+    text-align: center;
+    font-size: 0px;
+}
+
+.nav .num li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.nav .num .on {
+    background-color: coral;
+}
+
+.nav .btn {
+    width: 40px;
+    height: 60px;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    display: none;
+}
+
+.nav:hover .btn {
+    display: block;
+}
+
+.nav .btn_l {
+    left: 0;
+}
+
+.nav .btn_r {
+    right: 0;
+}
+
+
+/*第二部分样式*/
+.homeCont-row{
+    height:480px;
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+.homeCont-coloum {
+    width: 592px;
+    background-color: #f8f8f8;
+    border: 1px solid #dedede;
+    padding: 10px;
+}
+.homeCont-rowTitle{
+    width:100%;
+    height:305px;
+    position:relative;
+    padding-top:20px;
+}
+.home-img{
+    position:absolute;
+    left:50%;
+    top:20px;
+    transform:translate(-50%,0);
+}
+.home-caption{
+    position:absolute;
+    bottom:15px;
+    left:0;
+}
+.home-caption >p{
+    font-size:12px;
+    margin-top:10px;
+}
+.home-color1 {
+   color: #ff5c01;
+}
+.home-color2 {
+    color: #f7a945;
+}
+.home-color3 {
+    color: #0295fc
+}
+.home-color4 {
+    color: #ea5f8d
+}
+.homeCont-rowCont {
+    height: 155px;
+    border: 1px solid #dedede;
+}
+.panel-heading {
+    background-color: #f4f4f4;
+    height: 45px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+}
+.panel-heading > h3 {
+    padding-left: 10px;
+}
+.panel-heading > h3.panel-title1 {
+    border-left: 5px solid #ff5c01;
+}
+.panel-heading > h3.panel-title2 {
+    border-left: 5px solid #f7a945;
+}
+.panel-heading > h3.panel-title3 {
+    border-left: 5px solid #0295fc;
+}
+.panel-heading > h3.panel-title4 {
+    border-left: 5px solid #ea5f8d;
+}
+.panel-body {
+    height: 108px;
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+}
+.panel-body > a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 10px;
+    display: inline-flex;
+    color: #7b7b7b;
+    align-items:center;
+    justify-content:center;
+    margin-right:7px;
+
+}
+.panel-body > a:hover {
+    background-color: #dedede;
+}
+
+.home-ad{
+    margin-bottom:20px;
+}
+
+.home-partners:before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 550px;
+    height: 1px;
+    background-color:#dedede;
+}
+
+.home-partners {
+    display: flex;
+    justify-content: center;
+    color: #fba02a;
+    margin-bottom: 15px;
+    position:relative;
+}
+.home-partners:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 550px;
+    height: 1px;
+    background-color: #dedede;
+}
+.homeCont-last {
+    height: 205px;
+    background-color: #f8f8f8;
+    margin:-5px 0 25px 0;
+    display:flex;
+    flex-direction:row;
+}
+
+.homeCont-lastInfo{
+    flex:1;
+    padding:40px;
+    align-items:center;
+    display:flex;
+}
+.home-adInfo {
+    width:100%;
+    border-right: 2px solid #dedede;
+    padding: 0 20px 0 10px;
+    position:relative;
+    align-items:center;
+    height:95px;
+}
+.home-adInfo>img{
+   position:absolute;
+   top:10px;
+   left:0;
+}
+.home-adInfo > h4{
+    position:absolute;
+    left:90px;
+    top:15px;
+}
+.home-adInfo>p {
+    position: absolute;
+    left: 90px;
+    width:200px;
+    top: 40px;
+    font-size:12px;
+}
+.home-adInfoLast {
+    border-right: none;
+}
+.home-adInfoLast>img{
+    position:absolute;
+    top:5px;
+    left:0
+}
+
+
+
+#totop {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    z-index: 999;
+    width: 71px;
+    cursor: pointer;
+    display: none;
+    z-index:1000;
+}
+
+#totop a {
+    display: block;
+    width: 71px;
+    height: -20px;
+    padding-top: 48px;
+    background: url(../image/toTop.gif) no-repeat;
+    background-image: url('../images/toTop.gif');
+    text-align: center;
+    color: #888
+}
+
+#totop a.cur {
+    background-position: -88px 0;
+    text-decoration: none;
+    color: #3a9
+}
+
+
+

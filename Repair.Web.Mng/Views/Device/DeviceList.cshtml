@@ -1,0 +1,76 @@
+﻿@model Repair.Web.Mng.Models.DeviceQueryModel
+@{
+    ViewBag.Title = "DeviceList";
+    Layout = null;
+}
+<style type="text/css">
+    table, th {
+        text-align: left !important;
+    }
+</style>
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+                <th class="column-title">标识信息</th>
+                <th class="column-title">设备</th>
+                <th class="column-title">所属品牌</th>
+                <th class="column-title">所属单位</th>
+                <th class="column-title">位置</th>
+                <th class="column-title">类目</th>
+                <th class="column-title">时间</th>
+                <th class="column-title">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Data == null || Model.Data.Count == 0)
+            {
+                <tr>
+                    <td colspan="10" align="center">暂无数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <td>
+                            <p><label>编号：</label>@item.DeviceId</p>
+                            <p><label>二维码：</label>@item.QRCode</p>
+                            <p><label>资产码：</label>@item.AssetsId</p>
+                        </td>
+                        <td>
+                            <p><label>名称：</label>@item.Name</p>
+                            <p><label>型号：</label>@item.Model</p>
+                        </td>
+                        <td>
+                            <p><label>品牌：</label>@(item.BrandId > 0 ? item.Brand.Name : "")</p>
+                            <p><label>厂家：</label>@(item.BrandId > 0 ? (item.Brand.ManufacturerId > 0 ? item.Brand.Manufacturer.Name : "") : "")</p>
+                        </td>
+                        <td>@(item.UseCompanyId > 0 ? item.UseCompany.Name : "")</td>
+                        <td>
+                            <p><label>区域：</label>@(item.AreaId > 0 ? item.Area.Name : "")</p>
+                            <p><label>地址：</label>@item.Position</p>
+                        </td>
+                        <td>@(item.CategoryId > 0 ? item.Category.Name : "")</td>
+                        <td>
+                            <p><label>采购日期：</label>@item.BuyTime</p>
+                            <p><label>质保日期：</label>@item.WarrantyTime</p>
+                            <p><label>最近修改：</label>@item.LastUpdateTime</p>
+                            <p><label>创建时间：</label>@item.CreateTime</p>
+                        </td>
+                        <td>
+                            <a data-toggle="modal" href="@Url.Action("Edit", new { id = item.DeviceId })" data-target="#openEdit">编辑</a>
+                            <a style="color:red" href="javascript:void(0)" onclick="remove(@item.DeviceId)">删除</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

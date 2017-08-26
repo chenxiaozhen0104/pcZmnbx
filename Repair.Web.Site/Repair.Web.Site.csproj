@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD5F0EE7-77F4-4D27-9CFB-A1487DCAE91F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Repair.Web.Site</RootNamespace>
+    <AssemblyName>Repair.Web.Site</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Third\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Third\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dlls\Third\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ZR">
+      <HintPath>..\..\Dlls\Ours\ZR.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Other\Controllers\HelperController.cs" />
+    <Compile Include="Areas\Other\OtherAreaRegistration.cs" />
+    <Compile Include="Areas\Sp\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Sp\Controllers\DeviceController.cs" />
+    <Compile Include="Areas\Sp\Controllers\ReminderController.cs" />
+    <Compile Include="Areas\Sp\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Sp\Controllers\ServerCompanyController.cs" />
+    <Compile Include="Areas\Sp\Controllers\UserController.cs" />
+    <Compile Include="Areas\Sp\Models\DeviceQueryModel.cs" />
+    <Compile Include="Areas\Sp\Models\DispatchOrderQueryModel.cs" />
+    <Compile Include="Areas\Sp\Models\ConMngListQueryModel.cs" />
+    <Compile Include="Areas\Sp\Models\QueryListModelBase.cs" />
+    <Compile Include="Areas\Sp\Models\RepairCountReportModel.cs" />
+    <Compile Include="Areas\Sp\Models\EvaluteReportModel.cs" />
+    <Compile Include="Areas\Sp\Models\UserQueryModel.cs" />
+    <Compile Include="Areas\User\Controllers\AuthController.cs" />
+    <Compile Include="Areas\User\Controllers\BindingServiceController.cs" />
+    <Compile Include="Areas\User\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\User\Controllers\ReportController.cs" />
+    <Compile Include="Areas\User\Models\BindingServiceQueryModel.cs" />
+    <Compile Include="Areas\User\Models\CompanyQueryModel.cs" />
+    <Compile Include="Areas\User\Models\CopMngListQueryModel.cs" />
+    <Compile Include="Areas\User\Models\EquipmentFaultCount.cs" />
+    <Compile Include="Areas\User\Models\EquipmentFull.cs" />
+    <Compile Include="Areas\User\Models\EquipmentReportQueryModel.cs" />
+    <Compile Include="Areas\User\Models\ReportDeviceQueryModel.cs" />
+    <Compile Include="Areas\User\Models\WorkIngReportModel.cs" />
+    <Compile Include="Areas\User\Models\DispatchReportModel.cs" />
+    <Compile Include="Areas\User\Models\QueryListModelBase.cs" />
+    <Compile Include="Areas\WeiXin\Controllers\RepairController.cs" />
+    <Compile Include="Areas\WeiXin\WeiXinAreaRegistration.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
+    <Compile Include="Controllers\BaikeController.cs" />
+    <Compile Include="Controllers\EquipmentController.cs" />
+    <Compile Include="Controllers\NoController.cs" />
+    <Compile Include="Controllers\StatisHtmlController.cs" />
+    <Compile Include="Controllers\SystemInfoController.cs" />
+    <Compile Include="DlgConfirmInfo.cs" />
+    <Compile Include="Models\AuthUser.cs" />
+    <Compile Include="Models\JsonMessage.cs" />
+    <Compile Include="Models\UserCookie.cs" />
+    <Compile Include="QueryListModelBase.cs" />
+    <Compile Include="Areas\User\Models\EquipmentQueryModel.cs" />
+    <Compile Include="Areas\User\Models\OrderQueryModel.cs" />
+    <Compile Include="Areas\User\Models\UserQueryModel.cs" />
+    <Compile Include="Areas\Sp\Models\OrderQueryModel.cs" />
+    <Compile Include="Areas\User\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Sp\Controllers\OrderController.cs" />
+    <Compile Include="Areas\User\Controllers\MngController.cs" />
+    <Compile Include="Areas\Sp\Controllers\MngController.cs" />
+    <Compile Include="Areas\User\Controllers\EquipmentController.cs" />
+    <Compile Include="Areas\User\Controllers\OrderController.cs" />
+    <Compile Include="Areas\User\Controllers\UserController.cs" />
+    <Compile Include="Areas\User\ServiceProviderAreaRegistration.cs" />
+    <Compile Include="Areas\Sp\ServiceProviderAreaRegistration.cs" />
+    <Compile Include="CondTimeRange.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IPagedList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\AuthMng.cs" />
+    <Compile Include="Utilities\CategoryMng.cs" />
+    <Compile Include="Utilities\ControllerBase.cs" />
+    <Compile Include="Utilities\DefaultControllerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-3.3.5-dist\css\fileinput.css" />
+    <Content Include="Content\bootstrap-datetimepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Content\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Content\bootstrap-fileinput\.gitignore" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput.min.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ar.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_bg.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ca.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_cr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_cz.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_da.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_de.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_el.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_es.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_fa.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_fr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_hu.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_id.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_it.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ja.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_LANG.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_nl.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pl.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pt-BR.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_pt.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ro.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_ru.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_sk.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_th.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_tr.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_uk.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_zh-TW.js" />
+    <Content Include="Content\bootstrap-fileinput\js\fileinput_locale_zh.js" />
+    <Content Include="Content\bootstrap-fileinput\js\plugins\canvas-to-blob.js" />
+    <Content Include="Content\bootstrap-fileinput\js\plugins\canvas-to-blob.min.js" />
+    <Content Include="Content\images\img\baike_01.png" />
+    <Content Include="Content\images\img\baike_bg.png" />
+    <Content Include="Content\images\img\coffee.png" />
+    <Content Include="Content\images\img\computer.png" />
+    <Content Include="Content\images\img\conditioning.png" />
+    <Content Include="Content\images\img\dishwasher.png" />
+    <Content Include="Content\images\img\disinfection.png" />
+    <Content Include="Content\images\img\lampblack.png" />
+    <Content Include="Content\images\img\placeholderFigure.png" />
+    <Content Include="Content\images\img\projector.png" />
+    <Content Include="Content\images\img\refrigerator.png" />
+    <Content Include="Content\images\img\st_icon_open.png" />
+    <Content Include="Content\images\img\TV.png" />
+    <Content Include="Content\images\img\washing.png" />
+    <Content Include="Content\images\img\water.png" />
+    <Content Include="Content\images\img\water_heater.png" />
+    <Content Include="Content\images\weixin\610001000001.png" />
+    <Content Include="Content\images\weixin\back_repair.png" />
+    <Content Include="Content\images\weixin\blue.png" />
+    <Content Include="Content\images\weixin\code_bg.png" />
+    <Content Include="Content\images\weixin\code_ways.png" />
+    <Content Include="Content\images\weixin\Qr_code.png" />
+    <Content Include="Content\images\weixin\yuan.png" />
+    <Content Include="Content\images\weixin\gray.png" />
+    <Content Include="Content\images\weixin\noFound.png" />
+    <Content Include="Content\images\weixin\time.png" />
+    <Content Include="Content\images\weixin\time02.png" />
+    <Content Include="Content\images\weixin\bxdownload.png" />
+    <Content Include="Content\images\weixin\wxdownload.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="MP_verify_vzIAwm1kVpT60ldq.txt" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\jquery.selectlist.css" />
+    <Content Include="Content\css\jquery.treeview.css" />
+    <Content Include="Content\css\kitchen.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\Style.css" />
+    <Content Include="Content\css\wxbk.css" />
+    <Content Include="Content\css\zr.css" />
+    <Content Include="Content\date-picker\dateRange.css" />
+    <Content Include="Content\date-picker\dateRange.js" />
+    <Content Include="Content\date-picker\images\calendar_all.png" />
+    <Content Include="Content\date-picker\images\icon_date.png" />
+    <Content Include="Content\date-picker\images\page.png" />
+    <Content Include="Content\date-picker\images\px.png" />
+    <Content Include="Content\date-picker\index.html" />
+    <Content Include="Content\date-picker\monthPicker.css" />
+    <Content Include="Content\date-picker\monthPicker.js" />
+    <Content Include="Content\images\home\acrossline.jpg" />
+    <Content Include="Content\images\home\banner01.jpg" />
+    <Content Include="Content\images\home\banner1.jpg" />
+    <Content Include="Content\images\home\banner2.jpg" />
+    <Content Include="Content\images\home\better.jpg" />
+    <Content Include="Content\images\home\f-title.jpg" />
+    <Content Include="Content\images\home\friends.jpg" />
+    <Content Include="Content\images\home\go.jpg" />
+    <Content Include="Content\images\home\header.gif" />
+    <Content Include="Content\images\home\images01.jpg" />
+    <Content Include="Content\images\home\images02.jpg" />
+    <Content Include="Content\images\home\images03.jpg" />
+    <Content Include="Content\images\home\images04.jpg" />
+    <Content Include="Content\images\home\images05.jpg" />
+    <Content Include="Content\images\home\images06.jpg" />
+    <Content Include="Content\images\home\images07.jpg" />
+    <Content Include="Content\images\home\images08.jpg" />
+    <Content Include="Content\images\home\images_37.jpg" />
+    <Content Include="Content\images\home\images_40.jpg" />
+    <Content Include="Content\images\home\images_44.jpg" />
+    <Content Include="Content\images\home\images_46.jpg" />
+    <Content Include="Content\images\home\list-ico.jpg" />
+    <Content Include="Content\images\home\safe.jpg" />
+    <Content Include="Content\images\home\service.jpg" />
+    <Content Include="Content\images\home\zmnbx.jpg" />
+    <Content Include="Content\images\ico\head.png" />
+    <Content Include="Content\images\ico\ico_jiaoyi_1.png" />
+    <Content Include="Content\images\ico\ico_jiaoyi_2.png" />
+    <Content Include="Content\images\ico\单位.png" />
+    <Content Include="Content\images\ico\图层-11.png" />
+    <Content Include="Content\images\ico\图层-12.png" />
+    <Content Include="Content\images\ico\图层-13.png" />
+    <Content Include="Content\images\ico\图层-14.png" />
+    <Content Include="Content\images\ico\图层-15.png" />
+    <Content Include="Content\images\ico\图层-5.png" />
+    <Content Include="Content\images\ico\工单.png" />
+    <Content Include="Content\images\ico\用户管理.png" />
+    <Content Include="Content\images\ico\箭头.png" />
+    <Content Include="Content\images\ico\设备信息.png" />
+    <Content Include="Content\images\ico\首页-首页-拷贝.png" />
+    <Content Include="Content\images\ico\logo栏.png" />
+    <Content Include="Content\images\img\about_contactus.png" />
+    <Content Include="Content\images\img\about_culture.png" />
+    <Content Include="Content\images\img\about_icon_img.png" />
+    <Content Include="Content\images\img\about_icon_profile.png" />
+    <Content Include="Content\images\img\about_img_us.png" />
+    <Content Include="Content\images\img\about_profile.png" />
+    <Content Include="Content\images\img\Auth.png" />
+    <Content Include="Content\images\img\bad.png" />
+    <Content Include="Content\images\img\boss.png" />
+    <Content Include="Content\images\img\cfsb_bg.png" />
+    <Content Include="Content\images\img\credentials.png" />
+    <Content Include="Content\images\img\fen.gif" />
+    <Content Include="Content\images\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\img\glyphicons-halflings.png" />
+    <Content Include="Content\images\img\good.png" />
+    <Content Include="Content\images\img\haier_logo.png" />
+    <Content Include="Content\images\img\help_service_03.png" />
+    <Content Include="Content\images\img\help_service_06.png" />
+    <Content Include="Content\images\img\help_service_08.png" />
+    <Content Include="Content\images\img\lam1.png" />
+    <Content Include="Content\images\img\lam2.png" />
+    <Content Include="Content\images\img\lam3.png" />
+    <Content Include="Content\images\img\lampblack01.png" />
+    <Content Include="Content\images\img\lampBlack02.png" />
+    <Content Include="Content\images\img\login_login.png" />
+    <Content Include="Content\images\img\login_loginbg.png" />
+    <Content Include="Content\images\img\login_people.png" />
+    <Content Include="Content\images\img\login_rejister.png" />
+    <Content Include="Content\images\img\meidi_logo.png" />
+    <Content Include="Content\images\img\middle.png" />
+    <Content Include="Content\images\img\service_4.png" />
+    <Content Include="Content\images\img\service_1.png" />
+    <Content Include="Content\images\img\service_2.png" />
+    <Content Include="Content\images\img\service_3.png" />
+    <Content Include="Content\images\img\service_5.png" />
+    <Content Include="Content\images\img\service_6.png" />
+    <Content Include="Content\images\img\service_7.png" />
+    <Content Include="Content\images\img\service_log_1.png" />
+    <Content Include="Content\images\img\startsL.png" />
+    <Content Include="Content\images\img\startsN.png" />
+    <Content Include="Content\images\img\userlog_on.png" />
+    <Content Include="Content\images\img\wxbd.png" />
+    <Content Include="Content\images\img\wxbk_bg_02.png" />
+    <Content Include="Content\images\img\zmnbx.com.png" />
+    <Content Include="Content\images\img\登录分隔符.png" />
+    <Content Include="Content\images\img\search.png" />
+    <Content Include="Content\images\SystemInfo\注册_手机注册1.png" />
+    <Content Include="Content\images\SystemInfo\注册_手机注册2.png" />
+    <Content Include="Content\images\SystemInfo\注册_手机注册3.png" />
+    <Content Include="Content\images\SystemInfo\注册_维修机构1.png" />
+    <Content Include="Content\images\SystemInfo\注册_维修机构2.png" />
+    <Content Include="Content\images\SystemInfo\注册_维修机构3.png" />
+    <Content Include="Content\images\SystemInfo\登录_方式1.png" />
+    <Content Include="Content\images\SystemInfo\登录_方式2.png" />
+    <Content Include="Content\images\tree\minus.gif" />
+    <Content Include="Content\images\tree\plus.gif" />
+    <Content Include="Content\images\tree\treeview-black-line.gif" />
+    <Content Include="Content\images\tree\treeview-black.gif" />
+    <Content Include="Content\images\tree\treeview-default-line.gif" />
+    <Content Include="Content\images\tree\treeview-default.gif" />
+    <Content Include="Content\images\tree\treeview-famfamfam-line.gif" />
+    <Content Include="Content\images\tree\treeview-gray-line.gif" />
+    <Content Include="Content\images\tree\treeview-gray.gif" />
+    <Content Include="Content\images\tree\treeview-red-line.gif" />
+    <Content Include="Content\images\weixin\iconfont.png" />
+    <Content Include="Content\images\weixin\indexBg.png" />
+    <Content Include="Content\images\weixin\logo.png" />
+    <Content Include="Content\images\weixin\name.png" />
+    <Content Include="Content\images\weixin\password2.png" />
+    <Content Include="Content\images\weixin\phone2.png" />
+    <Content Include="Content\My97DatePicker\calendar.js" />
+    <Content Include="Content\My97DatePicker\lang\en.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\My97DatePicker\WdatePicker.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Content\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\echarts.min.js" />
+    <Content Include="Scripts\jquery.selectlist.js" />
+    <Content Include="Scripts\jquery.tree.js" />
+    <Content Include="Scripts\jquery.treeview.js" />
+    <Content Include="Scripts\layer\layer.js" />
+    <Content Include="Scripts\layer\skin\default\icon-ext.png" />
+    <Content Include="Scripts\layer\skin\default\icon.png" />
+    <Content Include="Scripts\layer\skin\default\loading-0.gif" />
+    <Content Include="Scripts\layer\skin\default\loading-1.gif" />
+    <Content Include="Scripts\layer\skin\default\loading-2.gif" />
+    <Content Include="Scripts\layer\skin\layer.css" />
+    <Content Include="Scripts\lzy\ArrayExtension.js" />
+    <Content Include="Scripts\lzy\main.js" />
+    <Content Include="Scripts\lzy\md5.js" />
+    <Content Include="Scripts\lzy\zr.js" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\联系客服\联系客服\01-联系客服\百度一下，你就知道.html" />
+    <Content Include="Views\SystemInfo\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_Helper\_inc_nav_path.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Layout_Author.cshtml" />
+    <Content Include="Views\Author\Login.cshtml" />
+    <Content Include="Views\Author\Register.cshtml" />
+    <Content Include="Views\SystemInfo\关于我们\关于我们\01-关于我们\01-公司简介.cshtml" />
+    <Content Include="Views\SystemInfo\关于我们\关于我们\01-关于我们\02-企业文化.cshtml" />
+    <Content Include="Views\SystemInfo\关于我们\关于我们\01-关于我们\03-联系我们.cshtml" />
+    <Content Include="Areas\Sp\Views\Auth\Index.cshtml" />
+    <Content Include="Areas\Sp\Views\Auth\Register.cshtml" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\bootstrap-3.3.5-dist\bootstrap.js" />
+    <Content Include="Scripts\jquery\jquery-3.1.0.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\jquery\jquery.form.js" />
+    <Content Include="Scripts\lzy\AjaxFormPost.js" />
+    <Content Include="Scripts\lzy\LayerFunction.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SystemInfo\帮助中心\常见问题\002-安全保障\01-账号安全.cshtml" />
+    <Content Include="Views\SystemInfo\帮助中心\常见问题\001-新手入门\01-账户注册.cshtml" />
+    <Content Include="Views\SystemInfo\帮助中心\常见问题\001-新手入门\02-账户登录.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Other\Models\" />
+    <Folder Include="Areas\Other\Views\Shared\" />
+    <Folder Include="Areas\Sp\Views\Shared\" />
+    <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Content\bootstrap-fileinput\examples\" />
+    <Folder Include="Content\bootstrap-fileinput\nuget\" />
+    <Folder Include="StaticFile\SystemInfo\关于我们\关于我们\01-关于我们\01-公司简介\" />
+    <Folder Include="StaticFile\SystemInfo\关于我们\关于我们\01-关于我们\02-企业文化\" />
+    <Folder Include="StaticFile\SystemInfo\关于我们\关于我们\01-关于我们\03-联系我们\" />
+    <Folder Include="StaticFile\SystemInfo\关于我们\关于我们\02-公司资质\01-公司资质\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Mng\CopMng.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\head.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\bottom.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Mng\CopMngList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Equipment\Mng.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Equipment\MngList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Order\Order.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Order\OrderList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\Order\Order.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\Order\OrderList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\pagger.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\_inc_dlgs.cshtml" />
+    <Content Include="Views\Shared\_Layout\_inc_nav.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LZY.BX.Model\LZY.BX.Model.csproj">
+      <Project>{ea9ecd9c-a03c-489d-812f-8e0947fc5366}</Project>
+      <Name>LZY.BX.Model</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.Service\LZY.BX.Service.csproj">
+      <Project>{a7ee2791-dd9a-4449-8b05-4ec47372dba2}</Project>
+      <Name>LZY.BX.Service</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.SMSManager\LZY.BX.SMSManager.csproj">
+      <Project>{4d3907b9-6f25-4be1-a96b-9523245610c4}</Project>
+      <Name>LZY.BX.SMSManager</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LZY.BX.Utilities\LZY.BX.Utilities.csproj">
+      <Project>{104959f9-f140-4d13-9b63-82d808b0ae33}</Project>
+      <Name>LZY.BX.Utilities</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout _User.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\User\AddUser.cshtml" />
+    <Content Include="Areas\User\Views\Mng\AddConMng.cshtml" />
+    <Content Include="Areas\Sp\Views\User\AddUser.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Other\Views\Web.config" />
+    <Content Include="Areas\Other\Views\About\CompanyProfile.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\ConttactService.cshtml" />
+    <Content Include="Views\Shared\_Layout_Helper.cshtml" />
+    <Content Include="Views\Shared\_Layout_Helper\_inc_menu.cshtml" />
+    <Content Include="Views\Shared\_Layout_Helper\_inc_nav.cshtml" />
+    <Content Include="Areas\Other\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_product.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Other\Views\Helper\Service_add.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_comment.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_transaction.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_beforeTransaction.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_register.cshtml" />
+    <Content Include="Areas\Other\Views\About\ContactUs.cshtml" />
+    <Content Include="Areas\Other\Views\About\CorporateCulture.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_binding.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_login.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\Service_safe.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_register.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_login.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_safe.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_binding.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_transactionOrder.cshtml" />
+    <Content Include="Areas\Other\Views\Helper\User_comment.cshtml" />
+    <Content Include="Views\Shared\dlg_confirm_info.cshtml" />
+    <Content Include="Areas\Other\Views\About\Index.cshtml" />
+    <Content Include="Areas\User\Views\Auth\Index.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\003-规则攻略\01-交易规则\交易规则.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\003-规则攻略\02-评价攻略\订单评价问题.cshtml" />
+    <Content Include="Areas\User\Views\Auth\Register.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\001-新手入门\01-账户注册\普通用户如何申请成为维修机构.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\001-新手入门\01-账户注册\用户如何注册啄木鸟账号.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\001-新手入门\02-账户登录\啄木鸟网有哪些登录方式.cshtml" />
+    <Content Include="StaticFile\SystemInfo\帮助中心\常见问题\002-安全保障\01-账号安全\账号登录异常、登录失败的原因.cshtml" />
+    <Content Include="Areas\User\Views\Auth\DisplayApply.cshtml" />
+    <Content Include="Areas\Sp\Views\Auth\DisplayApply.cshtml" />
+    <Content Include="Views\Shared\_Layout_No\_inc_nav.cshtml" />
+    <Content Include="Views\Shared\_Layout_No.cshtml" />
+    <Content Include="Views\No\Index.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\Index.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\BindingServiceList.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\Category.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\Equipment.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\Manufacturer.cshtml" />
+    <Content Include="Areas\User\Views\BindingService\CategoryTree.cshtml" />
+    <Content Include="Areas\Sp\Views\Mng\Index.cshtml" />
+    <Content Include="Areas\Sp\Views\Mng\CopMngList.cshtml" />
+    <Content Include="Areas\Sp\Views\Report\Evaluate.cshtml" />
+    <Content Include="Areas\Sp\Views\Report\RepairCount.cshtml" />
+    <Content Include="Areas\User\Views\Report\Dispatch.cshtml" />
+    <Content Include="Areas\User\Views\Report\StartWork.cshtml" />
+    <Content Include="Areas\User\Views\Report\DerviceFault.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\Equ.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\EquList.cshtml" />
+    <Content Include="Areas\User\Views\Report\Dervice.cshtml" />
+    <Content Include="Areas\User\Views\Report\DerviceList.cshtml" />
+    <Content Include="Areas\Sp\Views\User\Check.cshtml" />
+    <Content Include="Areas\Sp\Views\User\UserCheckList.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\EditEquipment.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\select_area_control.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\select_brand_control.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\select_category_control.cshtml" />
+    <Content Include="Areas\User\Views\Equipment\select_usecompany_control.cshtml" />
+    <Content Include="Content\bootstrap-fileinput\bower.json" />
+    <Content Include="Content\bootstrap-fileinput\CHANGE.md" />
+    <Content Include="Content\bootstrap-fileinput\composer.json" />
+    <Content Include="Content\bootstrap-fileinput\LICENSE.md" />
+    <Content Include="Content\bootstrap-fileinput\package.json" />
+    <Content Include="Content\bootstrap-fileinput\README.md" />
+    <Content Include="Areas\User\Views\BindingService\Area.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\Device.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\DeviceList.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\AddOrEditDevice.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\select_area_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\select_brand_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\select_category_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Device\select_usecompany_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Order\OrderWrite.cshtml" />
+    <Content Include="Areas\Sp\Views\Order\select_category_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Order\select_area_control.cshtml" />
+    <Content Include="Areas\Sp\Views\Order\select_brand_control.cshtml" />
+    <None Include="Properties\PublishProfiles\website.pubxml" />
+    <Content Include="Views\Shared\_Layout_User\_inc_menu.cshtml" />
+    <Content Include="Views\Shared\_Layout_User\_inc_nav.cshtml" />
+    <Content Include="Views\SystemInfo\帮助中心\联系客服\联系客服\01-联系客服.cshtml" />
+    <Content Include="Views\StatisHtml\Service_1.cshtml" />
+    <Content Include="Views\StatisHtml\Service_2.cshtml" />
+    <Content Include="Views\StatisHtml\Service_3.cshtml" />
+    <Content Include="Views\StatisHtml\Service_4.cshtml" />
+    <Content Include="Views\StatisHtml\Service_5.cshtml" />
+    <Content Include="Views\StatisHtml\Service_6.cshtml" />
+    <Content Include="Views\StatisHtml\Service_7.cshtml" />
+    <Content Include="Views\StatisHtml\Service_login_1.cshtml" />
+    <Content Include="Views\StatisHtml\Service_login_2.cshtml" />
+    <Content Include="Views\StatisHtml\Service_login_3.cshtml" />
+    <Content Include="Views\StatisHtml\Service_login_4.cshtml" />
+    <Content Include="Views\SystemInfo\关于我们\关于我们\02-公司资质\01-公司资质.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SystemInfo\帮助中心\常见问题\003-规则攻略\01-交易规则.cshtml" />
+    <Content Include="Views\SystemInfo\帮助中心\常见问题\003-规则攻略\02-评价攻略.cshtml" />
+    <Content Include="Views\No\cfsb_info.cshtml" />
+    <Content Include="Views\Baike\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_Baike.cshtml" />
+    <Content Include="Views\Shared\_Layout_Baike\_inc_nav.cshtml" />
+    <Content Include="Views\Baike\baikeInfo.cshtml" />
+    <Content Include="Views\Baike\baikeTips.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout _Sp.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout_Sp\_inc_menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\Order\DispatchOrder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\User\UserList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\User\Views\Equipment\AddEquipment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_inc_time_range.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Sp\Views\User\UserList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\_inc_header_res.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout\_inc_bottom_res.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\dlg_info.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout_Sp\_inc_nav.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7818</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7818/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

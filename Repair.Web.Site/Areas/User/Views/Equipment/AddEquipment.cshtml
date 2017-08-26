@@ -1,0 +1,116 @@
+﻿@using Repair.Web.Site.Areas.User.Models
+@model EquipmentQueryModel
+@{
+    Layout = null;
+}
+<form class="form-horizontal" action="@Url.Action("EditEquipment")" method="post">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">添加设备</h4>
+    </div>
+
+    <div class="modal-body" style="height:auto;">
+        @Html.HiddenFor(x => x.Equipment.EquipmentId)
+        <div class="form-group">
+            <label class="col-md-2 control-label">名称</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Equipment.Name, new { @class = "form-control", @placeholder = "请输入名称", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">隶属制造商</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Equipment.ManufacturerId, Model.ManufactorerList, new { @class = "form-control", required = "required" })
+            </div>
+        </div>
+
+        <div class="form-group" id="brandList">
+            <label class="col-md-2 control-label">隶属品牌</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Equipment.BrandId, Model.BrandList, new { @class = "form-control", id = "set_brandList", required = "required" })
+            </div>
+        </div>
+
+        <div class="form-group" id="productList">
+            <label class="col-md-2 control-label">隶属产品</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Equipment.ProductId, Model.ProductList, new { @class = "form-control", id = "set_productList", required = "required" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputModel" class="col-md-2 control-label">型号</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Equipment.Model, new { @class = "form-control", @placeholder = "请输入型号", required = "required" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputPosition" class="col-md-2 control-label">安装地址</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Equipment.Position, new { @class = "form-control", @placeholder = "请输入型号", required = "required" })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">保存</button>
+        <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">取消</button>
+    </div>
+</form>
+
+@section script{
+    <script type="text/javascript">
+        //根据制造商ID搜索相应的品牌
+        $("select[name='Equipment.ManufacturerId']").change(function () {
+            var id = $(this).val();
+            alert(id);
+            var brandId = 0;
+            $.ajax({
+                url: "@Url.Action("BrandList")",
+                data: { id: id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    brandId = data[0].BrandId;
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i].BrandId + "'>" + data[i].CNName + "</option>";
+                    }
+                    document.getElementById("set_brandList").innerHTML = html;
+                }
+            });
+
+            $.ajax({
+                url: "@Url.Action("ProductList")",
+                data: { id: brandId },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i].ProductId + "'>" + data[i].CNName + "</option>";
+                    }
+                    document.getElementById("set_productList").innerHTML = html;
+                }
+            });
+        });
+
+        //根据品牌Id搜索相应的产品
+        $("select[name='Equipment.BrandId']").change(function () {
+            var id = $(this).val();
+            $.ajax({
+                url: "@Url.Action("ProductList")",
+                data: { id: id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i].ProductId + "'>" + data[i].CNName + "</option>";
+                    }
+                    document.getElementById("set_productList").innerHTML = html;
+                }
+            });
+        });
+</script>
+}

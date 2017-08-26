@@ -1,0 +1,174 @@
+﻿@using Repair.Web.Site
+@model dynamic
+
+@{
+   ViewBag.Title = "工单列表";
+    ViewBag.title1 = "工单列表";
+    ViewBag.title2 = "常规工单";
+    var timeRange = new CondTimeRange("CreateTime", 30);
+    timeRange.TimeEnd = timeRange.TimeEnd.AddDays(1);
+}
+
+
+<form class="form-inline" action="@Url.Action("OrderList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-right">
+            <div class="form-group">
+                @Html.Partial("_inc_time_range", timeRange)
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">状态</div>
+                    <select id="state" name="State" class="form-control">
+                        <option value="2040">==全部订单==</option>
+                        <option value="4">新工单</option>
+                        <option value="8">待派单</option>
+                        <option value="16">已派单</option>
+                        <option value="32">工作中</option>
+                        <option value="64">未确认</option>
+                        <option value="128">未解决</option>
+                        <option value="256">已取消</option>
+                        <option value="512">已关闭</option>
+                        <option value="1024">已完成</option>
+                        <option value="2048">已评论</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">工单号</div>
+                    <input class="form-control" type="text" name="keywords" placeholder="请输入工单号">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+            <div id="nss" style="margin-left:auto; margin-right:auto;width:210px;margin-top:35px; display:block"></div>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("OrderList", new RouteValueDictionary
+            {
+                {"CreateTimeLess",timeRange.TimeEnd},
+                {"CreateTimeGreaterEqual",timeRange.TimeStart},
+                { "State",4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024+2048}
+            })
+    </div>
+    <div id="workedDialog" style="display:none">
+        <label class="radio-inline">
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Worked" checked="checked" name="workedState">
+                <span class="demo--radioInput"></span>完成
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Unsolved" name="workedState">
+                <span class="demo--radioInput"></span>未解决
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Cancel" name="workedState">
+                <span class="demo--radioInput"></span>取消
+            </label>
+            <label class="demo-label">
+                <input class="demo--radio" type="radio" value="Close" name="workedState">
+                <span class="demo--radioInput"></span>关闭
+            </label>
+            <label class="demo-label" style="display:none !important">
+                <input class="demo--radio" type="radio" value="Confirm" name="workedState">
+                <span class="demo--radioInput"></span>确认
+            </label>
+            <label class="demo-label" style="display:none !important">
+                <input class="demo--radio" type="radio" value="UseComment" name="workedState">
+                <span class="demo--radioInput"></span>评论
+            </label>
+            <br />
+            <br />
+        </label>
+        <div style="display:none;" class="level">
+            <label>服务打分：</label>
+        </div>
+        <div>
+            <label id="contentTitle">描述：</label>
+            <div>
+                <textarea id="description" class="form-control" rows="6"></textarea>
+            </div>
+        </div>
+        
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+
+            realtime();
+
+            setInterval(function () {
+                realtime();
+            }, 1000 * 10);
+        });
+
+        var layerIndex = 0;
+
+        function realtime() {
+            $.post('@Url.Action("RealtTimeOrderCount", "Order")', function (data) {
+                if (parseInt(data) > 0) {
+                    layerIndex = layer.open({
+                        type: 1,
+                        area: ['240px', '150px'],
+                        title: '未派单工单提醒',
+                        offset: 'rb',
+                        shade: false,
+                        anim: 2,
+                        skin: 'layui-layer-red',
+                        content: $('#nss').html("<button type='submit' onclick='setState()' class='btn btn-link'>近2个月内有" + data + "个工单未派出</button>")
+                    });
+                }
+                else {
+                    layer.closeAll();
+                }
+            });
+        }
+
+        function setState() {
+            $("#state").val("Sending");
+
+            @{
+                timeRange .TimeStart= DateTime.Now.AddMonths(-2);
+
+                timeRange.TimeEnd = DateTime.Now;
+             }
+
+            $("#TimeStart").val("@timeRange.TimeStart");
+
+            $("#TimeEnd").val("@timeRange.TimeEnd");
+
+            $("#daterange").val('@timeRange.TimeStart.ToString("yyyy-MM-dd") 至 @timeRange.TimeEnd.ToString("yyyy-MM-dd")');
+        }
+
+        function work(MainOrderId) {
+            AComfig("确定开始工作?", function () {
+                $.post(GetAjaxOptions('@Url.Action("Working", "Order")', { orderId: MainOrderId }));
+            });
+        }
+        function worked(MainOrderId) {
+            layer.open({
+                type: 1,
+                closeBtn: false,
+                title: false, //不显示标题
+                content: $('#workedDialog'),
+                btn: ['提交', '取消'],
+                btnAlign: 'c',
+                yes: function (index, layero) {
+                    $.post(GetAjaxOptions('@Url.Action("SubmitState", "Order")', { orderId: MainOrderId, description: $("#workedDialog #description").val(), state:$("#workedDialog input:radio[name='workedState']:checked").val() }));
+                },
+                cancel: function () {
+                }
+            });
+
+            @*APrompt("请输入描述", function (description) {
+                $.post(GetAjaxOptions('@Url.Action("SubmitState", "Order")', { orderId: MainOrderId, description: description, state: 64 }));
+            });*@
+        }
+
+    </script>
+}

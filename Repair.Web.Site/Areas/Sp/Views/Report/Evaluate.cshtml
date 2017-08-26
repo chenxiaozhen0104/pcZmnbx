@@ -1,0 +1,176 @@
+﻿@using Repair.Web.Site.Areas.Sp.Models
+@using Repair.Web.Site.Models
+@using Newtonsoft.Json
+@using LZY.BX.Model
+@model List<EvaluteReportModel>
+@{
+    ViewBag.Title = "评价统计";
+    ViewBag.title1 = "统计";
+    ViewBag.title2 = "评价统计";
+
+    var data = JsonConvert.SerializeObject(Model);
+
+    var company = (User as UserCookie) == null ? new ServiceCompany() : (User as UserCookie).ServiceCompany;
+}
+
+@section styles{
+    <style>
+        .form-group {
+            padding-right: 0;
+        }
+
+        .inputText {
+            width: 96% !important;
+        }
+
+        .col-xs-3 {
+            font-size: 14px;
+            height: 34px;
+            line-height: 34px;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .active {
+            border-bottom: 2px solid #41b0f8;
+        }
+
+        .charts {
+            height: 500px;
+            width: 920px;
+        }
+    </style>
+}
+
+<form action="">
+    <div class="clear-bottom-15 clear-top-15 panel-body row">
+        <div class="col-xs-3 text-center active ">表格</div>
+        <div class="col-xs-3 text-center">图表</div>
+        <div class="form-group col-xs-5 pull-right">
+            <div class="input-group  ">
+                <div class="input-group-addon">年份</div>
+                <input name="keywords" id="input_text" placeholder="2016" class="form-control inputText" />
+                <span class="input-group-btn ">
+                    <button class="btn btn-default" type="button">搜素</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ul class="formlists">
+        <li>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>人员</th>
+                    <th>2016</th>
+                    @{
+                        for (int i = 0; i < 9; i++)
+                        {
+                            <th>-</th>
+                        }
+                    }
+                </tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.RealName</td>
+                            <td>@item.Level</td>
+                            @{
+                        for (int i = 0; i < 9; i++)
+                        {
+                            <th>-</th>
+                        }
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+        </li>
+        <li style="display:none">
+            <div class="charts"></div>
+        </li>
+    </ul>
+</form>
+
+
+@section scripts{
+    <script src="~/Scripts/echarts.min.js"></script>
+    <script>
+        $(".col-xs-3").click(function () {
+            $(this).addClass("active").siblings(".col-xs-3").removeClass("active");
+            var index = $(this).index();
+            $(".formlists>li").eq(index).show().siblings("li").hide();
+
+        })
+
+
+        var data = eval(@Html.Raw(data));
+        var peosonNames = new Array();
+        var levels = new Array();
+        var counts = new Array();
+
+        $.each(data, function (i, item) {
+            peosonNames.push(item.RealName);
+            levels.push(item.Level);
+            counts.push(item.Count);
+        });
+
+
+        var myChart = echarts.init($(".charts")[0]);
+        option = {
+            color: ['#3398DB'],
+            title: {
+                text: '@company.Name' + '服务人员评分',
+                subtext: '2016年度统计',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                top: '20%',
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: peosonNames
+                    //data: ['人员1', '人员2', '人员3', '人员4', '人员5', '人员6', '人员7', '人员8', '人员9', '人员10'],
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '平均分数',
+                    axisLabel: {
+                        show: true,
+                        formatter: '{value} 分',
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '平均评分',
+                    type: 'bar',
+                    barWidth:'40%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideTop'
+                        }
+                    },
+                    data: levels
+                    //data: [4.52, 4.83, 4.34, 4.55, 4.66, 4.97, 4.28, 3.99, 4.69, 4.22]
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+
+    </script>
+}

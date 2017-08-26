@@ -1,0 +1,161 @@
+﻿@using LZY.BX.Model
+@using Newtonsoft.Json
+@{
+    ViewBag.Title = "啄木鸟报修 -个人中心 ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section css{
+    <link href="~/Static/styles/selfCenter.css" rel="stylesheet" />
+}
+
+<div class="banner"></div>
+<div class="content">
+    <div class="left">
+        <div class="top">
+            <img v-bind:src="imgUrl" class="headPhoto-img">
+            <p class="name text-size" v-html="dataArr.nickname"></p>
+        </div>
+        <div class="middle">
+            <span class="middle-text">个人中心</span>
+        </div>
+        <div class="bottom">
+            <a class="center-changeTitle" href="#tab0">
+                <i class="iconfont icon-gerenziliao"></i>
+                <span class="bottom-text">个人资料</span>
+            </a>
+            <a class="center-changeTitle" href="#tab1">
+                <i class="iconfont icon-avatar-fill"></i>
+                <span class="bottom-text">头像修改</span>
+            </a>
+            <a class="center-changeTitle" href="#tab2">
+                <i class="iconfont icon-mima1"></i>
+                <span class="bottom-text">密码修改</span>
+            </a>
+        </div>
+    </div>
+    <div class="right">
+        @*个人信息*@
+        <div class="center-change none">
+            
+                <p class="tips">嘘~您的信息我们会严格保密！信息填写越完整，星级越高哦~</p>
+                <div class="selfCenter-form">
+                    <div class="form-group">
+                        <label for="userName" class="col-sm-2">用户名</label>
+                        <input type="text" class="form-control" name="NickName" id="NickName" v-model="dataArr.nickname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday_container" class="col-sm-2">生日</label>
+                        <div class="form-group-noBorder">
+                            <select name="year" class="selectElement" v-model="selected1" v-on:change="chooseYear" prompt="Plaese Choose">
+                                <option value="">请选择年</option>
+                                <option v-bind:value="item.year" v-for="item in itemsYear">{{item.year}}</option>
+                            </select>
+                            <select name="month" class="selectElement" v-model="selected2" v-on:change="chooseMonth">
+                                <option value="">请选择月</option>
+                                <option v-bind:value="item.month" v-for="item in itemsMonth">{{item.month}}</option>
+                            </select>
+                            <select name="day" class="selectElement" v-model="selected3">
+                                <option value="">请选择日</option>
+                                <option v-bind:value="item.day" v-for="item in itemsDay">{{item.day}}</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="BirthDate" id="BirthDate" v-model="selectedAll" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" class="col-sm-2">性别</label>
+                        <div class="form-group-noBorder">
+                            <input type="radio" v-model="checkedSex" value="man" class="radio" id="man" /><label class="sexName" for="man">男</label>
+                            <input type="radio" v-model="checkedSex" value="woman" class="radio" id="woman"/><label class="sexName" for="woman">女</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2">真实姓名</label>
+                        <input type="text" class="form-control" name="RealName" id="RealName" v-model="dataArr.realname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="connectMobile" class="col-sm-2">手机号码</label>
+                        <input type="text" class="form-control" name="Phone" id="Phone" v-model="dataArr.phone" />
+                    </div>
+                    @*<div class="form-group">
+                            <div class="noBorder">
+                                <input type="text" class="code" name="SmsCode" v-model="code" id="SmsCode" />
+                                <button class="getCode" v-bind:disabled="btnCodeDisabled" v-on:click="getCode(this)">
+                                    <span class="getCode-text">{{ btnCodeText }}</span>
+                                </button>
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        <label for="Address" class="col-sm-2">详细地址</label>
+                        <input type="text" class="form-control" name="Address" id="Address" v-model="dataArr.address" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="col-sm-2">E-mail</label>
+                        <input type="text" class="form-control" name="Email" id="Email" v-model="dataArr.email" />
+                        <span class="warning"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group-noBorder">
+                            <input type="submit" class="selfCenter-submit" value="提交" id="submit" v-on:click="infoSubmit"/>
+                        </div>
+                    </div>
+                </div>
+          
+        </div>
+        @*更改头像*@
+        <div class="center-change none">
+            <form enctype="multipart/form-data" action="/user/UploadImage" method="post" id="userUpload">
+                <p class="tips">自己设置的头像比默认头像好看超多的哦！</p>
+                <div class="changePhoto-content">
+                    <div class="t-photo">
+                        <div id="preview"></div>
+                        <p class="t-photo-text">头像预览</p>
+                    </div>
+                    <div class="change-input">
+                        <div class="change-input-content">
+                            <input type="text" class="chagePhoto-input" disabled="disabled" value="文件名" v-model="photo"/>
+                            <a href="javascript:;" class="a-upload">
+                                <input type="file" class="file" name="imgurl" />浏览
+                            </a>
+                        </div>
+                        <input type="button" class="changePhoto-submit" value="保存"  onclick="subimtBtn()"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        @*更改密码*@
+        <div class="center-change none">
+            <p class="tips">密码要牢牢记住哦！</p>
+            <div class="changePwd-form">
+                <div class="form-group">
+                    <label for="password" class="col-sm-2">原密码</label>
+                    <input type="password" class="form-control" v-model="password" id="password" placeholder="请输入原来的密码" />
+                </div>
+                <div class="form-group">
+                    <label for="newPwd" class="col-sm-2">新密码</label>
+                    <input type="password" class="form-control" v-model="newPwd" id="newPwd" placeholder="请输入6-18个字符" />
+                    <span class="warning" id="pwdWarning"></span>
+                </div>
+                <div class="form-group">
+                    <label for="reNewPwd" class="col-sm-2">再输入新密码</label>
+                    <input type="password" class="form-control" v-model="reNewPwd" id="reNewPwd" placeholder="请再次输入密码" />
+                    <span class="warning" id="pwdWarning"></span>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <input type="submit" class="changePwd-submit" value="保存" v-on:click="pwdSubmit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section js{
+<script src="~/Static/scripts/common/jquery-3.1.0.js"></script>
+<script src="~/Static/scripts/common/jquery/jquery.form.js"></script>
+<script src="~/Static/scripts/view/selfCenter.js"></script>
+
+}

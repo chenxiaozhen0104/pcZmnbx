@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "帮助中心";
+    Layout = "~/Views/Shared/_Other.cshtml";
+}
+
+
+@section css{
+    <link href="~/Static/styles/workOrder.css" rel="stylesheet" />
+}
+
+
+<div class="equipmentContent">
+    <ul class="helpReg-list">
+        <li>
+            <p><span>被恶意差评了怎么办（如何举报恶意评价）？</span> <i class="iconfont icon-chevron-up"></i></p>
+
+            <ul>
+                <li>
+                    您好，每个啄木鸟报修交易完成后，有用户和维修机构相互对彼此进行评价的阶段。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    评价展示在啄木鸟报修页面上，有可能影响到后续交易者对你的印象。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    如果你被恶意评价，可以通过举报恶意评价入口，向啄木鸟报修官网举报，官方将调查真相，并给予你公正评价。
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><span>全部好评是否综合评分就能提升？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>您好，维修机构的评价与评分，是不同的模块。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    一般来说彼此相关（得好评的服务商普遍评分高），却不一定相同。
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><span>评价对 维修机构有什么影响？</span> <i class="iconfont icon-chevron-up"></i></p>
+            <ul>
+                <li>
+                    您好，好评多的维修机构，在与其他维修机构（好评率低），同时接一个单子时，会默认发给好评多的维修机构。
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+@section js{
+
+    <script src="~/Static/scripts/view/help.js"></script>
+}

@@ -1,0 +1,46 @@
+﻿@using LZY.BX.Model.Enum
+@using LZY.BX.Utilities
+@model Repair.Web.Site.Areas.User.Models.CopMngListQueryModel
+@{
+    ViewBag.Title = "合作单位";
+    Layout = null;
+}
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>序号</th>
+        <th>单位名称</th>
+        <th>联系人</th>
+        <th>签约时间</th>
+        <th>状态</th>
+        @*<th>有效期</th>*@
+        <th>操作</th>
+    </tr>
+    @if (Model.Data != null)
+    {
+        foreach (var item in Model.Data)
+        {
+            var servicecompany = Model.ServiceCompanyDic.ContainsKey(item.ServiceCompanyId) ? Model.ServiceCompanyDic[item.ServiceCompanyId] : null;
+            <tr>
+                <td>@item.ServiceCompanyId</td>
+                <td>@(servicecompany != null ? servicecompany.Name : "")</td>
+                <td>@(servicecompany != null ? servicecompany.Contact : "")</td>
+                <td>@item.CreateTime</td>
+                <td>@Comm.GetEnumDescription(item.State, typeof(CompanySginState))</td>
+                @*<td>3年</td>*@
+                <td>
+                    @if ((LZY.BX.Model.Enum.UserType)ViewData["RoleKey"] == LZY.BX.Model.Enum.UserType.UseCompanyUserAdmin)
+                    {
+                            if (item.State != CompanySginState.Waitting.ToString())
+                            {
+                                <a href="@Url.Action("DelConMng", new { sid = item.ServiceCompanyId })" data-toggle="confirm-request" data-title="解除合作" data-content="确认要与该单位解除合作吗?" data-confirm-text="确认" data-target="#remoteDlg">解除合作</a>
+                            }
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

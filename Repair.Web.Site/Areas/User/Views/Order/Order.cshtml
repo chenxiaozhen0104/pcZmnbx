@@ -1,0 +1,80 @@
+﻿@using Repair.Web.Site
+@model dynamic
+
+@{
+    ViewBag.Title = "工单列表";
+    ViewBag.title1 = "工单列表";
+    ViewBag.title2 = "常规工单";
+    var timeRange = new CondTimeRange("CreateTime", 30);
+    timeRange.TimeEnd = timeRange.TimeEnd.AddDays(1);
+}
+
+<form class="form-inline" action="@Url.Action("OrderList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+        <div class="pull-left">
+            @*<a class="btn btn-primary">报修</a>*@
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                @Html.Partial("_inc_time_range", timeRange)
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    @*<div class="input-group-addon">状态</div>
+                    <select name="state" class="form-control">
+                        <option value="">==全部订单==</option>
+                        @{
+                            var ht = LZY.BX.Utilities.Comm.EnumToHashtable(typeof(LZY.BX.Model.Enum.RepairState));
+                            foreach (var item in ht.Keys)
+                            {
+                                <option value="@item">@ht[item]</option>
+                            }
+                        }
+                    </select>*@
+                    <select id="state" name="State" class="form-control" style="display:none">
+                        <option value="2040">==全部订单==</option>
+                       
+                    </select>
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">工单号</div>
+                    <input class="form-control" type="text" name="keywords" placeholder="请输入工单号">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("OrderList", new RouteValueDictionary
+            {
+                {"CreateTimeLess",timeRange.TimeEnd},
+                {"CreateTimeGreaterEqual",timeRange.TimeStart},
+                { "State",4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024+2048}
+            })
+    </div>
+</form>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function cancel(id) {
+            AComfig("确认取消吗？", function () {
+                $.post(GetAjaxOptions('@Url.Action("Cancel", "Order")', { id: id }));
+            });
+        }
+
+        function reminder(id) {
+            AComfig("确认催促工单吗？", function () {
+                $.post(GetAjaxOptions('@Url.Action("Reminder", "Order")', { id: id }));
+            });
+        }
+        function worked(MainOrderId, state) {
+            AComfig(state==128?"确定未解决?":"确定已完成", function () {
+                $.post(GetAjaxOptions('@Url.Action("SubmitState", "Order")', { orderId: MainOrderId, description: "", state: state }));
+            });
+        }
+    </script>
+}

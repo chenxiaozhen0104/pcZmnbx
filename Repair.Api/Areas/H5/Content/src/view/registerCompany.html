@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_newtymnvzenuerk9.css">
+    <link href="../css/login.css" rel="stylesheet" />
+    <link href="../common/skin/layer.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="content">
+        <div class="main">
+            <div class="logo"></div>
+            <div class="form-row">
+                <label>公司名称：(<span class="required">*</span>)</label>
+                <div class="form-input">
+                    <i class="iconfont icon-company"></i>
+                    <input v-model="name" type="text" placeholder="请输入公司名称" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label>联系地址：(<span class="required">*</span>)</label>
+                <div class="form-input">
+                    <i class="iconfont icon-dingwei"></i>
+                    <input v-model="address" placeholder="请输入公司联系地址" type="text" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label>联系人:(<span class="required">*</span>)</label>
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="userName" type="text" placeholder="请输入联系人姓名" />
+                </div>
+            </div>
+            <div class="form-row">
+                <label>联系电话：(<span class="required">*</span>)</label>
+                <div class="form-input">
+                    <i class="iconfont icon-phone-o"></i>
+                    <input v-model="phone" type="tel" placeholder="请输入公司联系电话" />
+                </div>
+            </div>
+            <div>
+                <span class="err-msg"></span>
+                <button v-on:click="register" class="btn-block">确认申请</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../common/vue.js"></script>
+    <script src="../common/jquery-3.1.0.js"></script>
+    <script src="../common/layer.js"></script>
+    <script src="../js/register.company.js"></script>
+</body>
+</html>

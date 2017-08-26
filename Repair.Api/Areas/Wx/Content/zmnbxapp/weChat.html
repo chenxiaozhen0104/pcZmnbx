@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable= no">
+    <title>关注微信公众号</title>
+    <script src="dist/common.js"></script>
+    <style>
+        html,body{
+            height:100%;
+            width:100%;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .wxfocus{
+            width:100%;
+            height:100%;
+            background:url(images/weChat-bg.png) no-repeat;
+            background-size:100% 100%;
+            position:relative;
+        }
+        .wxfocus-success{
+            position:absolute;
+            left:38%;
+            top:32%;
+            font-size:0.4rem;
+            color:#f9ff45;
+        }
+        .wxfocus-alert{
+            position:absolute;
+            left:9%;
+            top:39%;
+            font-size:0.25rem;
+            color:white;
+        }
+        .wxfocus-codeText{
+            position:absolute;
+            left:17%;
+            bottom:25%;
+            font-size:0.25rem;
+            color:#818181;
+        }
+        .wxfocus-codeTexts{
+            position:absolute;
+            left:35%;
+            bottom:21%;
+            font-size:0.25rem;
+            color:#818181;
+        }
+        .wxfocus-back{
+            width:3.1rem;
+            display:flex;
+            height:0.8rem;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            font-size:0.4rem;
+            background-color:#ff9348;
+            border-radius:10px;
+            outline:none;
+            border:none;
+            position:absolute;
+            bottom:5.5%;
+            left:2.2rem;
+        }
+
+        .wxfocus-qrcode{
+            height:2.6rem;
+            width:2.6rem;
+            position:absolute;
+            left:32%;
+            bottom:28%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wxfocus">
+        <p class="wxfocus-success">报修成功</p>
+        <p class="wxfocus-alert">请您耐心等待，维修人员会通过电话的方式来联系您哦~</p>
+        <img class="wxfocus-qrcode" src="images/qrcode.jpg" />
+        <p class="wxfocus-codeText">长按或者扫描上方二维码，关注微信公众号</p>
+        <p class="wxfocus-codeTexts">了解报修实时情况</p>
+        <!--<button class="wxfocus-back">返回报修页面</button>-->
+    </div>
+</body>
+
+</html>
+<script src="../../../H5/Content/js/jquery-3.1.0.js"></script>
+<script type="text/javascript">
+    $(".wxfocus-back").click(function () {
+        location.href = "repair.html";
+    })
+</script>

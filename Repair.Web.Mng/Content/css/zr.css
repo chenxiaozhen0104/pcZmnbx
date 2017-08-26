@@ -1,0 +1,602 @@
+/*提示确认框显示级别 begin*/
+body {
+
+}
+#remoteDlg {
+    z-index: 9998 !important;
+}
+
+#remoteDlgSm {
+    z-index: 9999 !important;
+}
+/*提示确认框显示级别end*/
+
+.frame {
+    width: 1190px;
+}
+
+
+.left {
+    width: 230px;
+    float: left;
+    margin-top: 10px;
+}
+
+
+.main {
+    width: 950px;
+    float: right;
+    margin-top: 10px;
+}
+
+.header-nav {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .header-nav li {
+        float: left;
+        margin: 10px 5px 0px 5px;
+    }
+
+
+.nav-bar {
+    list-style: none;
+}
+
+    .nav-bar li {
+        float: left;
+        margin: 0px 5px 0px 5px;
+        height: 40px;
+        line-height:45px;
+        text-align: center;
+        font-size:20px;
+    }
+
+     .barlist { 
+        width:220px;
+    }
+    .barlist > a{ 
+        font-size:20px;
+        color:#000000;
+    }
+
+    .nav-bar > li:first-child {
+        width: 230px;
+        color: white;
+        margin-left: 0px;
+        background-color: red;
+    }
+
+.order-user {
+}
+
+    .order-user > li {
+        width: 150px;
+        float: left;
+        margin: 10px;
+        line-height: 40px;
+    }
+
+        .order-user > li:hover {
+            border: 1px #dedede solid;
+            width: 148px;
+            line-height: 38px;
+        }
+
+        .order-user > li > label {
+            width: 150px;
+        }
+
+.left-menu-first {
+    border-top: 1px solid #dedede;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+}
+
+    .left-menu-first .left-menu-first-icon {
+        float: left;
+        margin: 40px 0 20px 15px;
+    }
+
+    .left-menu-first .left-menu-first-info {
+        margin: 40px 0 0 25px;
+        float: left;
+    }
+
+.left-menu-first-info > p {
+    margin-top: 5px;
+}
+
+
+
+
+.left-menu {
+    border: 1px solid #dedede;
+}
+
+    .left-menu > div {
+        border-bottom: 1px solid #dedede;
+        padding: 35px 0px 20px 40px;
+    }
+
+        .left-menu > div:last-child {
+            border-bottom: 0px solid #dedede;
+        }
+
+        .left-menu > div > div {
+            font-family: 宋体;
+            font-size: 16px;
+            font-weight: bolder;
+            color: #4c4c4c;
+        }
+
+        .left-menu > div > ul {
+        }
+
+            .left-menu > div > ul > li {
+                margin: 30px 0 15px 26px;
+            }
+
+                .left-menu > div > ul > li > a {
+                    font-size: 14px;
+                    color: #4b494a;
+                }
+
+        .left-menu > div > div > i {
+            margin-right: 14px;
+        }
+
+/****************************首页***********************************/
+
+/*************************设备列表******************************/
+
+table, th {
+    text-align: center !important;
+}
+
+
+/*********************添加合作单位*********************************/
+.addconmng_tab {
+    margin-top: 20px;
+    width: 600px;
+}
+/************************联系客服******************************/
+    .service_us {
+        margin-top:20px;
+        width:940px;
+        height:250px;
+    }
+    .service_us > div:first-child {
+        float:left;
+        width:710px;
+        height:250px;
+        border-bottom:1px solid #dedede;
+        border-top:1px solid #dedede;
+        border-left:1px solid #dedede;
+    }
+    .service_us>div:first-child {
+        float:left;
+    }
+    .service_us>div>p {
+        margin:10px 0 10px 30px;
+        font-size:20px;
+        font-weight:bold;
+    }
+    .service_us > div > hr {
+         width:640px;
+         margin:0  auto 0 auto;
+    }
+    .service_us > div >ul>li {
+         font-size:14px;
+         list-style:disc;
+         margin:22px 0  0 50px ;
+    }
+
+/************************关于我们******************************/
+    .profile_div {
+        margin-top:12px;
+    }
+    .profile_text {
+        margin-top: 25px;
+        margin-left: 38px;
+    }
+
+    .profile_text > p {
+        letter-spacing: 6px;
+        line-height: 2em;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .profile_text_culture{
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+    .profile_text_culture > p {
+        letter-spacing: 6px;
+        line-height: 2em;
+        text-indent: 2em;
+        font-weight: bold;
+        font-size: 14px;
+    }.contact_us > div:first-child {
+        float: left;
+        margin-top: -50px;
+        margin-right: 50px;
+    }
+    .contact_us {
+        width: 700px;
+        margin: 0 auto 0 auto;
+    }
+
+    .contact_us > div:last-child {
+        margin-top: 80px;
+    }
+    .contact_us > div:last-child > p {
+        margin-top: 30px;
+    }
+
+/*****************************帮助中心*********************************/
+   .helpView {
+        border: 1px;
+        border-style: solid;
+        border-color: #dadada;
+        margin-top: 20px;
+        height: 500px;
+    }
+    .helpView>p{
+        font-size:25px;
+        margin:40px 0 0 40px;
+    }
+
+    .helpView > div {
+        margin-top:40px;
+    }
+    .helpView > div > ul {
+        margin-left:80px;
+    }
+     .helpView > div > ul>li {
+        margin-top:30px;
+        list-style:disc;
+    }
+
+
+
+/**************************************************************/
+.log-detail {
+    display: block;
+    min-height: 46px;
+    width: 100%;
+    border-radius: 1px;
+}
+
+    .log-detail small {
+        font-size: 14px;
+    }
+
+    .log-detail .progress {
+        background: rgba(0, 0, 0, 0.2);
+        margin: 5px -10px 5px -10px;
+        height: 2px;
+    }
+
+        .log-detail .progress, .log-detail .progress .progress-bar {
+            border-radius: 0;
+        }
+
+            .log-detail .progress .progress-bar {
+                background: #fff;
+            }
+
+.log-detail-icon {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    height: 46px;
+    width: 46px;
+    font-size: 27px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+    .log-detail-icon > img {
+        max-width: 100%;
+    }
+
+.log-detail-content {
+    padding: 5px 10px;
+    margin-left: 90px;
+}
+
+.log-detail-number {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.progress-description,
+.log-detail-text {
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.log-detail-text {
+    text-transform: uppercase;
+}
+
+.log-detail-more {
+    display: block;
+}
+
+
+
+.spinner {
+}
+
+    .spinner input {
+        text-align: right;
+    }
+
+    .spinner .form-control {
+        height: 25px;
+        padding: 3px;
+        text-align: right;
+    }
+
+.input-group-btn-vertical {
+    position: relative;
+    white-space: nowrap;
+    width: 1%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+    .input-group-btn-vertical > .btn {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 6px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0;
+    }
+
+        .input-group-btn-vertical > .btn:first-child {
+            border-top-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical > .btn:last-child {
+            margin-top: -2px;
+            border-bottom-right-radius: 4px;
+        }
+
+    .input-group-btn-vertical i {
+        position: absolute;
+        top: 0;
+        left: 4px;
+    }
+
+.sys-switch {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .sys-switch > a > i {
+        font-size: 20pt;
+        margin-right: 10px;
+    }
+
+    .sys-switch > a > span {
+        font-size: 20pt;
+        margin-right: 10px;
+    }
+
+
+
+.p-img {
+    width: 40px;
+    height: 40px;
+}
+
+.table thead .col-index {
+    width: 30px;
+    text-align: center;
+}
+
+.table thead .col-img {
+    width: 50px;
+    text-align: center;
+}
+
+.table thead .col-title-sm {
+    width: 120px;
+    text-align: center;
+}
+
+.table thead .col-title-md {
+    width: 180px;
+    text-align: center;
+}
+
+.table thead .col-title-lg {
+    width: 240px;
+    text-align: center;
+}
+
+.table thead .col-title-hg {
+    width: 340px;
+    text-align: center;
+}
+
+.table thead .col-datetime {
+    width: 170px;
+    text-align: center;
+}
+
+.table thead .col-date {
+    width: 50px;
+    text-align: center;
+}
+
+.table thead .col-note {
+    width: 200px;
+    text-align: center;
+}
+
+.table thead .col-num-sm {
+    width: 50px;
+    text-align: center;
+}
+
+.table thead .col-num-md {
+    width: 80px;
+    text-align: center;
+}
+
+.table thead .col-num-lg {
+    width: 120px;
+    text-align: center;
+}
+
+.table thead .col-decimal-sm {
+    width: 50px;
+    text-align: center;
+}
+
+.table thead .col-decimal-md {
+    width: 80px;
+    text-align: center;
+}
+
+.table thead .col-decimal-lg {
+    width: 120px;
+    text-align: center;
+}
+
+.table thead .col-status {
+    width: 70px;
+    text-align: center;
+}
+
+.table thead .col-status-lg {
+    width: 120px;
+    text-align: center;
+}
+
+.table tbody .col-title {
+    text-align: left;
+}
+
+.table tbody .col-datetime {
+    text-align: center;
+}
+
+.table tbody .col-date {
+    text-align: center;
+}
+
+.table tbody .col-note {
+    text-align: left;
+}
+
+.table tbody .col-num {
+    text-align: right;
+}
+
+.table tbody .col-decimal {
+    text-align: right;
+}
+
+.table tbody .col-status {
+    text-align: right;
+}
+
+.box-messages {
+}
+
+    .box-messages .box-message {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        .box-messages .box-message:before,
+        .box-messages .box-message:after {
+            content: " ";
+            display: table;
+        }
+
+        .box-messages .box-message:after {
+            clear: both;
+        }
+
+        .box-messages .box-message:last-of-type {
+            border-bottom: 0;
+        }
+
+        .box-messages .box-message:first-of-type {
+            padding-top: 0;
+        }
+
+    .box-messages .message-text {
+        color: #555;
+    }
+
+    .box-messages .title {
+        color: #444;
+        display: block;
+        font-weight: 600;
+    }
+
+    .box-messages .text-muted {
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+
+.scrollDiv {
+    height: 25px;
+    line-height: 25px;
+    border: 1px;
+    overflow: hidden;
+}
+
+    .scrollDiv li {
+        height: 25px;
+        padding-left: 10px;
+    }
+
+
+.mult-condition {
+    padding-left: 10px;
+    border-bottom: 1px dashed;
+    height: 30px;
+    margin-top: 10px;
+}
+
+    .mult-condition span {
+        font-weight: bold;
+    }
+
+    .mult-condition div {
+        float: left;
+    }
+
+    .mult-condition label {
+        padding-left: 10px;
+        cursor: pointer;
+    }
+
+        .mult-condition label:hover {
+            color: aqua;
+        }
+
+    .mult-condition input {
+        display: none;
+    }

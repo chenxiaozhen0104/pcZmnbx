@@ -1,0 +1,52 @@
+﻿
+@model List<LZY.BX.Model.Brand>
+@{
+    ViewBag.Title = "BrandList";
+    Layout = null;
+}
+<div class=" col-md-4 col-sm-12 col-xs-12 ">
+    <select class="form-control" id="brand" name="BrandId" onchange="GetBrand(this)">
+        <option value="0">请选择品牌</option>
+        @foreach (var item in Model)
+        {
+            <option value="@item.BrandId">@item.Name</option>
+        }
+    </select>
+</div>
+<div class=" col-md-4 col-sm-12 col-xs-12 ">
+    <select class="form-control" style="display: none" id="product" name="ProductId" onchange="SelectEquipment(this)">
+        
+    </select>
+</div>
+<div class=" col-md-4 col-sm-12 col-xs-12 ">
+    <select class="form-control" name="EquipmentId" style="display: none" id="equipment">
+        
+    </select>
+</div>
+
+
+<script type="text/javascript">
+    function GetBrand(item) {
+        $.get("../../../Handler.ashx?type=GetProduct&brandId=" + item.value,
+            {},
+            function (res) {
+                document.getElementById("product").innerHTML ="<option value=\"0\">请选择产品</option>"+ res;
+            document.getElementById("product").style.display = "block";
+        });
+    }
+    
+    function SelectEquipment(item) {
+        $.get("../../../Handler.ashx?type=GetEquipment&equipmentId=" + item.value, function (res) {
+            document.getElementById("equipment").innerHTML = res;
+            document.getElementById("equipment").style.display = "block";
+        });
+    }
+</script>
+
+
+
+
+
+
+
+

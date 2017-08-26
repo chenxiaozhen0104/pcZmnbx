@@ -1,0 +1,63 @@
+﻿@using LZY.BX.Utilities
+@using LZY.BX.Model.Enum
+@model Repair.Web.Mng.Models.AuditCompanyQueryModel
+@{
+    ViewBag.Title = "AuditServerCompanyList";
+    Layout = null;
+}
+
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+                <th class="column-title">编号</th>
+                <th class="column-title">申请人/电话</th>
+                <th class="column-title">单位类型</th>
+                <th class="column-title">申请单位名称</th>
+                <th class="column-title">单位联系人</th>
+                <th class="column-title">单位联系电话</th>
+                <th class="column-title">单位联系地址</th>
+                <th class="column-title">申请时间</th>
+                <th class="column-title">状态</th>
+                <th class="column-title">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ServiceCompanyList == null || Model.ServiceCompanyList.Count == 0)
+            {
+                <tr>
+                    <td colspan="10" align="center">暂无数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.ServiceCompanyList)
+                {
+                    <tr>
+                        <td>@item.ServiceCompanyId</td>
+                        <td>
+                            @{
+                    if (Model.UserDic.ContainsKey(item.ServiceCompanyId))
+                    {
+                        <span>@Model.UserDic[item.ServiceCompanyId].RealName / @Model.UserDic[item.ServiceCompanyId].Phone</span>
+                    }
+                            }
+                        </td>
+                        <td>@Comm.GetEnumDescription(CompanyType.Service)</td>
+                        <td>@item.Name</td>
+                        <td>@item.Contact</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Position</td>
+                        <td>@item.CreateTime</td>
+                        <td>@Comm.GetEnumDescription(item.State, typeof(CompanyState))</td>
+                        <td>@Html.Raw(item.State == CompanyState.NotActive ? "<a href='javascript:void(0)' onclick=ServerPassed('" + item.ServiceCompanyId + "')>通过</a>  <a href='javascript:void(0)' onclick=ServerUnPassed('" + item.ServiceCompanyId + "')>不通过</a>" : "")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div id="page">
+    <input type="hidden" name="PageInfo.Page" id="PAGE_CUR" />
+    @Html.Partial("pagger", Model.PageInfo)
+</div>

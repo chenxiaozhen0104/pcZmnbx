@@ -1,0 +1,138 @@
+﻿
+<div class="publicLeft-content">
+    <div class="public-left">
+        <div class="publicLeft-Top">
+            <i class="iconfont  icon-yonghutouxiang1 headPhoto-img"></i>
+            <div class="public-selfInfo">
+                <p class="text-size commonName"></p>
+                <p class="text-size commonCompany"></p>
+            </div>
+           
+        </div>
+
+        <p class="publicLeft-middle" id="titleSer" style="display:none">我的维修</p>
+
+        <p class="publicLeft-middle" id="userTitle">我的报修</p>
+
+        <div class="publicLeft-bottom">
+
+
+
+            <div id="serverCompanyMenu" style="display:none">
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-iconfontdingdan"></i>
+                    <a href="@Url.Action("OrderList","Server", new RouteValueDictionary
+            {
+                { "State",4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024+2048+4096},
+                { "type","2"}
+                })">
+                        工单列表
+                    </a>
+                </div>
+
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-user"></i>
+                    <a href="@Url.Action("UserList","Server",new RouteValueDictionary
+            {
+                { "type","2"}
+                })">
+                        用户列表
+                    </a>
+                </div>
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-liebiaoqiehuan"></i>
+                    <a href="/Device/Index">设备列表</a>
+                </div>
+              
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-shougongchudanJv"></i>
+                    <a href="/Server/HandOrder">手工单录入</a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-gongshi"></i>
+                    <a href="/Server/OrderTime">人员工时统计</a>
+                </div>
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-wodegongdan"></i>
+                    <a href="/Server/OrderPre">人员工单统计</a>
+                </div>
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-dingdantongji"></i>
+                    <a href="/Server/OrderCount">工单总量统计</a>
+                </div>
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-tongji"></i>
+                    <a href="/Server/Composite">综合统计</a>
+                </div>
+            </div>
+
+            <div id="userCompanyMenu">
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-iconfontdingdan"></i>
+                    <a href="@Url.Action("OrderList","Server", new RouteValueDictionary
+            {
+                { "State",4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024+2048+4096},
+                { "type","1"}
+                })">
+                        工单列表
+                    </a>
+                </div>
+
+
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-user"></i>
+                    <a href="@Url.Action("UserList","Server",new RouteValueDictionary
+            {
+                { "type","1"}
+                })">
+                        用户列表
+                    </a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-liebiaoqiehuan"></i>
+                    <a href="/Device/Index">设备列表</a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-bangding"></i>
+                    <a href="/BindService/Index">服务绑定列表</a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-icon11"></i>
+                    <a href="/Server/CategoryReport">类目统计</a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-cf-c12"></i>
+                    <a href="/Server/AreaReport">区域统计</a>
+                </div>
+                <div class="publistBottom-lists">
+                    <i class="iconfont icon-sikaoshijian"></i>
+                    <a href="/Server/TimeReport">响应时间</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    if (sessionStorage._page == 2) {
+        document.getElementById("serverCompanyMenu").style.display = "block";
+        document.getElementById("userCompanyMenu").style.display = "none";
+        document.getElementById("titleSer").style.display = "block";
+        document.getElementById("userTitle").style.display = "none";
+    }
+    if (sessionStorage._page == 1) {
+        document.getElementById("serverCompanyMenu").style.display = "none";
+        document.getElementById("userCompanyMenu").style.display = "block";
+        document.getElementById("titleSer").style.display = "none";
+        document.getElementById("userTitle").style.display = "block";
+    }
+
+</script>

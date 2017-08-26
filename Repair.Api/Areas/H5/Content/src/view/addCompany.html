@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>公司基本信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="//at.alicdn.com/t/font_newtymnvzenuerk9.css" rel="stylesheet" />
+    <style>
+        .showSearch a{
+            color:white;
+            text-decoration:none;
+            position:absolute;
+            top:12px;
+            left:15px;
+        }
+        #search-companyname{
+            background-color:rgba(46,140,212,0.7);
+            border:none;
+            color:white;
+            padding:6px 12px 6px 40px; 
+            border-radius:20px;
+        }
+        .companyinfo {
+            font-size:11px;
+            color:#bbb;
+        }
+        .list-group-item:active {
+            color:#ccc;
+        }
+        .noResult {
+            font-size:11px;
+            color:#bbb;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="CompanyInfoList">
+        <nav class="navbar navbar-fixed-top">
+            <div class="row clickSerch showSearch">
+                <div class="col-xs-1">
+                    <a href="CompanyType.html" class="iconfont icon-fanhui btn-back"></a>
+                </div>
+                <div class="col-xs-10 searchBtn">
+                    <span class="iconfont icon-sou"></span>
+                    <form v-on:submit.prevent="search()">
+                        <input type="search" class="form-control" autocomplete="off" id="search-companyname" v-model="Name" placeholder="请输入公司名称搜索">
+                    </form>
+                </div>
+            </div>
+        </nav>
+           
+            <div style="padding-top:50px">
+                <ul class="list-group">
+                    <li class="list-group-item" style="border:none;border-bottom:1px solid #ddd;" v-for="item in items" v-on:click="itemClick(item)" v-show="!itemsShow">
+                        <div>{{item.Name}}</div>
+                        <div><span class="text-left companyinfo">联系人:{{item.Contact||'暂无'}}</span></div>
+                        <div class="text-left companyinfo"> 地址:{{item.Position}}</div>
+                    </li>
+                    <li class="list-group-item" style="border:none;border-bottom:1px solid #ddd;" v-show="itemsShow">
+                        <div class="text-center noResult">暂无结果</div>
+                       
+                    </li>
+                </ul>
+
+            </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-3.1.0.js"></script>
+<script src="../common/httpParams.js"></script>
+<script type="text/javascript" src="../common/layer/layer.js"></script>
+<script type="text/javascript" src="../common/LayerFunction.js"></script>
+<script src="../common/vue.js"></script>
+<script type="text/javascript">   
+    //(new LG.URL()).get('Type')
+    var CompanyInfoList = new Vue({
+        el: "#CompanyInfoList",
+        data: {
+            items: [],
+            Name:'',
+            itemsShow:false
+        },
+        methods: {
+            itemClick: function (obj) {
+                AComfig("确定加入" + obj.Name+ "?", function () {
+                    $.post('/api/company/addcompany', { appType: localStorage.appType, id: obj.Id }, function (res) {
+                        if (res.error) {
+                            layer.alert(res.error, { icon: 0 });
+                        } else {
+                            layer.msg('加入成功', {
+                                icon: 1,
+                                time: 2000
+                            }, function () {
+                                if (localStorage.appType == 1) {
+                                    location.href = "repair.html?target=_blank_closecurrent&appType=" + localStorage.appType;
+                                } else {
+                                    location.href = "orderlist.html?target=_blank_closecurrent&appType=" + localStorage.appType;
+                                }
+                            });
+                        }
+                    });
+                })
+            },
+            search: function () {
+                if (this.Name) {
+                    var obj = this;
+                    $.get('/api/company/getallcompanyinfo', { appType: localStorage.appType, name: this.Name }, function (res) {
+                        if (res.length > 0) {
+                            obj.itemsShow = false;
+                            obj.items = res;
+                        } else {
+                            obj.itemsShow = true;                           
+                        }
+                    });
+                } else {
+                    layer.alert("公司名称不能为空", { icon: 0 });
+                }
+            }
+        }
+    })
+   
+</script>

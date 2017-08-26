@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable= no">
+    <title>扫码报修</title>
+    <link href="../../../H5/Content/layer/skin/layer.css" rel="stylesheet" />
+    <script src="dist/common.js"></script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 0.24rem;
+            box-sizing: border-box;
+        }
+
+        #wxrepair-content {
+            height: auto;
+            width: 100%;
+            background-color: #eee;
+            padding-bottom: 1.2rem;
+        }
+
+        .wxrepair-info {
+            height: auto;
+            width: 100%;
+            position: relative;
+            padding-bottom: 0.1rem;
+        }
+
+        .repair-listBottom {
+            width: 7.3rem;
+            height: 0.13rem;
+            position: absolute;
+            bottom: 0;
+            left: 0.1rem;
+        }
+
+        .wxrepair-infoList {
+            height: auto;
+            width: 7.3rem;
+            margin: 0 auto;
+            background-color: white;
+            padding-top: 0.15rem;
+        }
+
+        .wxrepair-commons {
+            display: flex;
+            font-size: 0.24rem;
+            flex-direction: row;
+            padding: 0.1rem 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .wxrepair-left {
+            width: 2rem;
+            padding-left: 0.8rem;
+            align-items: center;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .repair-name {
+            background: url(images/repair-name.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.16rem;
+        }
+
+        .repair-category {
+            background: url(images/repair-category.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.3rem;
+        }
+
+        .repair-model {
+            background: url(images/repair-model.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.19rem;
+        }
+
+        .repair-code {
+            background: url(images/repair-code.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.2rem;
+        }
+
+        .repair-position {
+            background: url(images/repair-position.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.32rem;
+        }
+
+        .repair-serviceCompany {
+            background: url(images/repair-serviceCompany.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.18rem;
+        }
+
+        .repair-contact {
+            background: url(images/repair-contact.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.25rem;
+        }
+
+        .repair-phoneNumber {
+            background: url(images/repair-phoneNumber.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.32rem;
+        }
+
+        .repair-type {
+            background: url(images/repair-type.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.14rem;
+        }
+
+        .repair-leve {
+            background: url(images/repair-leve.png) no-repeat 0.4rem center;
+            background-size: 0.2rem 0.26rem;
+        }
+
+        .repair-describle {
+            background: url(images/repair-describle.png) no-repeat 0.4rem 0.15rem;
+            background-size: 0.2rem 0.16rem;
+            align-items: baseline;
+        }
+
+        .repair-takephoto {
+            background: url(images/repair-photo.png) no-repeat 0.4rem 0.15rem;
+            background-size: 0.2rem 0.16rem;
+            align-items: baseline;
+        }
+
+        .wxrepair-right {
+            width: 5.3rem;
+            font-size: 0.24rem;
+            padding: 0.1rem 0 0.1rem 0.2rem;
+            position: relative;
+        }
+
+        .wxrepair-text {
+            outline: none;
+            border: none;
+            width: 4rem;
+            height: 0.5rem;
+            border-bottom: 1px solid #e4e4e4;
+            border-radius: 0;
+        }
+
+        .wxrepair-textarea {
+            resize: none;
+            width: 4.7rem;
+            height: 80px;
+            outline: none;
+            border-radius: 0.1rem;
+            padding: 0.1rem;
+        }
+
+        .showPhoto {
+            width: 5rem;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+
+        .wxrepair-img, .photo-imgs {
+            height: 1.4rem;
+            width: 1.4rem;
+        }
+
+        .wxrepair-img {
+            margin-right: 0.2rem;
+        }
+
+        .deleteImg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0.4rem;
+            height: 0.4rem;
+        }
+
+        .img-lists {
+            width: 1.4rem;
+            height: 1.4rem;
+            margin-right: 0.2rem;
+            margin-bottom: 0.2rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wxrepair-bottom {
+            height: 0.9rem;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            align-items: center;
+            background-color: white;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .wxrepair-Btn {
+            height: 0.7rem;
+            width: 90%;
+            border: none;
+            background-color: #1b81d3;
+            color: white;
+        }
+
+        .wxrepair-titleBox {
+            width: 7.3rem;
+            margin-left: 0.15rem;
+            padding: 0.2rem 0;
+        }
+
+        .wxrepair-title {
+            padding-left: 0.2rem;
+            border-left: 4px solid #f4ae1b;
+        }
+
+        .wxrepair-company {
+            width: 100%;
+        }
+
+        .wxrepair-select, .wxselect-category {
+            width: 80%;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #e4e4e4;
+            padding: 0.1rem 0 0.1rem 0.15rem;
+        }
+
+        .wxselect-Img {
+            height: 50%;
+            position: absolute;
+            top: 0.2rem;
+            right: 1.5rem;
+        }
+
+        /*蒙版*/
+        .wxrepair-mask {
+            height: 100%;
+            width: 100%;
+            background: rgba(76,76,76,0.6);
+            position: relative;
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            align-items: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .wxrepair-maskImg {
+            position: absolute;
+            top: 0;
+            left: 0.85rem;
+            width: 5.8rem;
+            height: 8.07rem;
+        }
+
+        .wxrepair-maskDelete {
+            height: 0.45rem;
+            width: 0.45rem;
+            position: absolute;
+            left: 3.55rem;
+            top: 8.07rem;
+        }
+
+        .wxrepair-maskPrompt {
+            position: absolute;
+            left: 2.55rem;
+            top: 6.35rem;
+            width: 4rem;
+            height: 0.7rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .wxrepair-maskCompany {
+            position: absolute;
+            top: 5.25rem;
+            width: 100%;
+            left: 0;
+            text-align: center;
+            font-size: 0.32rem;
+            color: white;
+        }
+
+        .wxcompany-logo {
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            z-index: 100;
+            top: 3.5rem;
+            left: 40%;
+            border-radius: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wxrepair-content">
+        <div class="wxrepair-info">
+            <div class="wxrepair-titleBox">
+                <p class="wxrepair-title">报修信息</p>
+            </div>
+
+            <div class="wxrepair-infoList">
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-serviceCompany">服务公司:</div>
+                    <div class="wxrepair-right">
+                        <p class="wxrepair-company" v-html="serviceCompanyName||'暂无'"></p>
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-type">工单类型:</div>
+                    <div class="wxrepair-right">
+                        <label><input type="radio" name="Type" value="1" v-model="pickedType" /> 维修</label>&nbsp;&nbsp;
+                        <label><input type="radio" name="Type" value="2" v-model="pickedType" /> 保养</label>
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-leve">工单级别:</div>
+                    <div class="wxrepair-right">
+                        <label><input type="radio" name="Level" value="1" v-model="pickedLevel" /> 普通</label>&nbsp;&nbsp;
+                        <label><input type="radio" name="Level" value="2" v-model="pickedLevel" /> 加急</label>
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-position">安装地址:</div>
+                    <div class="wxrepair-right">
+                        <input class="wxrepair-text" type="text" v-model="address" />
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-contact">联系人:</div>
+                    <div class="wxrepair-right">
+                        <input class="wxrepair-text" type="text" v-model="contactName" />
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-phoneNumber">联系电话:</div>
+                    <div class="wxrepair-right">
+                        <input class="wxrepair-text" type="text" v-model="contacNumber" />
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-describle">故障描述:</div>
+                    <div class="wxrepair-right">
+                        <textarea rows="4" class="wxrepair-textarea" v-model="describe" placeholder="请输入不超过150字的故障描述"></textarea>
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-takephoto">现场图片:</div>
+                    <div class="wxrepair-right showPhoto">
+                        <img @click="camera" class="wxrepair-img" src="images/repair-takephoto.png" v-if="RepairImages.length<3" />
+                        <div class="img-lists" v-for="imgItem in RepairImages">
+                            <img :src="imgItem.imgSrc" class="photo-imgs" @click="scaleImg(imgItem.imgSrc)" />
+                            <img :src="imgItem.deleteSrc" class="deleteImg" @click="deletePhoto(imgItem.id)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wxrepair-titleBox">
+                <p class="wxrepair-title">设备信息</p>
+            </div>
+
+            <div class="wxrepair-infoList">
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-name">设备名称:</div>
+                    <div class="wxrepair-right">
+                        <input class="wxrepair-text" type="text" v-model="deviceName" />
+                    </div>
+                </div>
+                <div class="wxrepair-commons">
+                    <div class="wxrepair-left repair-model">型号:</div>
+                    <div class="wxrepair-right">
+                        <input class="wxrepair-text" type="text" v-model="modeal" />
+                    </div>
+                </div>
+            </div>
+
+            <!--<img class="repair-listBottom" src="images/wxrepair-bg.png" />-->
+        </div>
+
+        <!-- 蒙版放大图片 -->
+        <img id="targetObj" style="position:relative;transform-origin:center;display:none;" :src="bigImgSrc" />
+
+        <div class="wxrepair-bottom">
+            <button class="wxrepair-Btn" @click="repair">报修</button>
+        </div>
+
+        <div class="wxrepair-mask" style="display:none;">
+            <img class="wxrepair-maskImg" src="images/wxrepair-mask.png" />
+            <img class="wxrepair-maskDelete" src="images/wxrepair-delete.png" @click="deleteMask" />
+            <img class="wxcompany-logo" :src="companyImgUrl?companyImgUrl:'images/login-logo.png'" />
+            <p class="wxrepair-maskCompany" v-html="serviceCompanyName"></p>
+            <p class="wxrepair-maskPrompt" v-html="companyNote?companyNote:'亲，我们将为您竭诚服务哦！'"></p>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
+
+
+<script src="../../../H5/Content/js/jquery-3.1.0.js"></script>
+<script src="dist/touch.min.js"></script>
+<script src="dist/cat.touchjs.js"></script>
+<script src="../../../H5/Content/layer/layer.js"></script>
+<script src="../../../H5/Content/dist/common/vue.js"></script>
+<script src="../../../H5/Content/src/common/httpParams.js"></script>
+<script src="http://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+
+<script type="text/javascript">
+
+
+    var logins = new Vue({
+        el: '#wxrepair-content',
+        data: {
+            device: { Category: {} },
+            deviceName: "",
+            contacNumber: "",
+            contactName: "",
+            address: "",
+            describe: "",
+            pickedType: 1,
+            pickedLevel: 1,
+            deviceId: "",
+            RepairImages: [],
+            areaId: "",
+            serviceCompanyName: "",
+            serviceCompanyId: "",
+            alterShow: true,
+            qrcode: '',
+            token: '',
+            bigImgSrc: "",
+            modeal: "",
+            companyImgUrl: "",
+            companyNote: "",
+
+        },
+        methods: {
+            // 报修按钮;
+            repair: function () {
+                var self = this;
+
+                if (!self.deviceName || !self.address) {
+                    layer.msg("请填写维修地址,设备名称", { icon: 0, shade: [0.3, '#000'], time: 1000 });
+                    return;
+                }
+                if (self.describe) {
+                    if (self.alterShow) {
+                        var index = layer.msg("提交中...", { icon: 16, time: 0, shadeClose: false });
+                        self.commonPost();
+                    } else {
+                        layer.confirm("该设备正在维修,是否继续报修？", { btn: ["取消", "确定"] }, function () {
+                            layer.closeAll()
+                        }, function () {
+                            var index = layer.msg("提交中...", { icon: 16, time: 0, shadeClose: false });
+                            self.commonPost();
+                        })
+                    }
+                } else {
+                    layer.msg("故障描述不能为空", { icon: 0, shade: [0.3, '#000'], time: 1000 });
+                }
+
+            },
+            commonPost: function () {
+                var self = this;
+                $.post("/api/order/WxCreate", {
+                    DeviceId: self.deviceId,
+                    Describe: self.describe,
+                    Level: self.pickedLevel,
+                    Type: self.pickedType,
+                    RepairImages: self.RepairImages.map(function (item) { return item.id }).join(','),
+                    ServiceCompanyId: self.serviceCompanyId,
+                    AreaId: self.areaId,
+                    Address: self.address,
+                    ContactsPhone: self.contacNumber,
+                    Contacts: self.contactName,
+                    RepairType: 1//表示微信报修
+                }, function (res) {
+                    if (res.error) {
+                        layer.msg(res.error, { icon: 2, shade: [0.3, '#000'], time: 2000 });
+                    } else {
+
+                        $(".wxrepair-Btn").attr("disabled", "disabled").css("opacity", "0.5");
+                        layer.msg("报修成功！", { icon: 1, shade: [0.3, '#000'], time: 2000 });
+                        location.href = "repairSuccess.html?id=" + res.id;
+                    }
+                    self.describe = "";
+                })
+
+            },
+            camera: function () {
+                self = this;
+                wx.chooseImage({
+                    count: 1, // 默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        wx.getLocalImgData({
+                            localId: res.localIds[0],
+                            success: function (obj) {
+                                if (!/data:image/.test(obj.localData)) {
+                                    obj.localData = 'data:image/jpeg;base64,' + obj.localData.replace(/\n/g, '');
+                                }
+                                var photo = {
+                                    imgSrc: obj.localData,
+                                    deleteSrc: 'http://img.zmnbx.com//dist/Images/wxdelete.png'
+                                };
+                                //layer.msg(obj.localData, { icon: 1, shade: [0.3, '#000'], time: 2000 });
+                                self.RepairImages.push(photo);
+                                fetch('/api/upload/UploadBase64Image',
+                                    {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/x-www-form-urlencoded"
+                                        },
+                                        body: "type=2&strImage=" + obj.localData
+                                    }
+                                ).then(function (response) {
+                                    response.json().then(function (result) {
+                                        photo.id = result[0].PictureId;
+                                    });
+
+                                });
+
+                            }
+                        });
+                    }
+                });
+
+            },
+
+            // 删除图片
+            deletePhoto: function (id) {
+                var self = this;
+                layer.confirm("确定要删除？", { btn: ["取消", "确定"] }, function () {
+                    layer.closeAll();
+                }, function () {
+                    self.RepairImages = self.RepairImages.filter(function (item) {
+                        return item.id != id;
+                    })
+                })
+            },
+
+            // 图片缩放
+            scaleImg: function (imgSrc) {
+                var self = this;
+                self.bigImgSrc = imgSrc;
+                layer.open({
+                    type: 1,
+                    title: false,
+                    closeBtn: 0,
+                    area: ['96%', '70%'],
+                    skin: 'layui-layer-nobg',
+                    shadeClose: true,
+                    content: $('#targetObj')
+                });
+                var $targetObj = $('#targetObj');
+                //初始化设置
+                cat.touchjs.init($targetObj, function (left, top, scale, rotate) {
+                    $targetObj.css({
+                        left: left,
+                        top: top,
+                        'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)',
+                        '-webkit-transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)'
+                    });
+                });
+
+                cat.touchjs.drag($targetObj);
+
+                cat.touchjs.scale($targetObj, function (scale) {
+
+                });
+            },
+            deleteMask: function () {
+                layer.closeAll();
+            }
+        },
+
+        created: function () {
+
+            fetch('/wx/auth/scanqrcode?url=' + window.location.href.split('#')[0], { method: 'POST' })
+                .then(function (r) {
+                    r.json().then(function (res) {
+                        wx.config({
+                            debug: false,
+                            appId: res.appId,
+                            timestamp: res.timestamp,
+                            nonceStr: res.nnonceStr,
+                            signature: res.signature,
+                            jsApiList: [
+                                "scanQRCode", "chooseImage", "uploadImage"
+                            ]
+                        });
+                    })
+                });
+
+            var t = this;
+            t.qrcode = (new LG.URL()).get("id");
+            alert(t.qrcode);
+            $.post('/api/device/WxGetDeviceInfoByQRCode?qrCode=' + t.qrcode, function (res) {
+                console.log(res);
+                if (res.device) {
+                    t.device = res.device;
+                    t.address = res.device.Position;
+                    t.deviceName = res.device.Name;
+                    t.deviceId = res.device.DeviceId;
+                    t.areaId = res.device.Area ? res.device.Area.AreaId : '';
+                    t.modeal = res.device.Model;
+                }
+                if (res.DeviceContractList) {
+                    t.serviceCompanyName = res.DeviceContractList.Name;
+                    t.serviceCompanyId = res.DeviceContractList.ServiceCompanyId;
+                    t.companyImgUrl = res.DeviceContractList.ImgUrl;
+                    t.companyNote = res.DeviceContractList.Note;
+                }
+                t.contacNumber = res.userPhone;
+                t.contactName = res.userName;
+                t.alterShow = res.canRpearid
+            });
+
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                area: ['100%', '100%'],
+                skin: 'layui-layer-nobg',
+                anim: 1,
+                isOutAnim: true,
+                shadeClose: true,
+                content: $('.wxrepair-mask')
+            });
+
+            setTimeout(function () {
+                layer.closeAll();
+            }, 5000)
+
+        }
+    })
+
+</script>

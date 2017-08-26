@@ -1,0 +1,32 @@
+﻿@model dynamic
+
+@{
+    ViewBag.title1 = "用户管理";
+    ViewBag.title2 = "用户列表";
+    ViewBag.Title = "用户管理";
+   
+}
+
+<form class="form-inline" action="@Url.Action("UserList")" id="editFrm" data-toggle="ajax-form" data-target="#data-list">
+    <div class="clear-bottom-15 clear-top-15 panel-body">
+     
+        <div class="pull-left">
+            @if ((LZY.BX.Model.Enum.UserType)ViewData["RoleKey"] == LZY.BX.Model.Enum.UserType.SvcCompanyUserAdmin)
+            {
+                <a href="@Url.Action("AddUser")" class="btn btn-primary" data-toggle="modal" data-target="#remoteDlgLg">绑定</a>
+            }
+        </div>
+        <div class="pull-right">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">关键字</div>
+                    <input name="keywords" id="input_text" placeholder="用户Id/姓名/手机号码" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </div>
+    <div id="data-list">
+        @Html.Action("UserList")
+    </div>
+</form>

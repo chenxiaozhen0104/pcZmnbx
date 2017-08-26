@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>绑定手机号</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_g5jlvdo9dju7hkt9.css">
+    <link href="../../../H5/Content/layer/skin/layer.css" rel="stylesheet" />
+    <script src="dist/common.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+        }
+
+        #content {
+            height:100%;
+            width: 100%;
+            position: relative;
+          
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+
+             -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        /*头部样式*/
+        .login-top{
+            width:100%;
+            height:1.47rem;
+        }
+        .login-head{
+           position:absolute;
+           left:0;
+           top:0;
+           -webkit-animation:all 400ms ease-in-out;
+           transition:all 400ms ease-in-out;
+           -webkit-transform:translate3d(0,-100%,0);
+           -o-transform: translate3d(0, -100%, 0);
+	       -moz-transform: translate3d(0,-100%, 0);
+           transform:translate3d(0,-100%,0)
+        }
+       .login-down1{
+           height:1.24rem;
+           width:56.8%;
+           transition-delay:100ms;
+       }
+       .login-down2{
+           height:0.9rem;
+           width:59.2%;
+           transition-delay:300ms;
+       }
+        .login-down3{
+           height:1.47rem;
+           width:100%;
+           transition-delay:500ms;
+       }
+
+        .login-logo{
+            height:1.54rem;
+            width:1.54rem;
+            margin-top:-1rem;
+        }
+        .login-yun{
+            position:absolute;
+            transition:all 400ms;
+            -webkit-animation:all 400ms;
+            transform:translate3d(100%,0,0);
+            opacity:0;
+        }
+        .login-yun1{
+            position:absolute;
+            height:0.43rem;
+            width:0.95rem;
+            right:33.5%;
+            top:0.2rem;
+            transition-delay:700ms;
+        }
+         .login-yun2{
+            height:0.48rem;
+            width:1.02rem;
+            right:13%;
+            top:0.45rem;
+            transition-delay:900ms;
+        }
+         .login-yun3{
+            height:0.48rem;
+            width:1.02rem;
+            right:28%;
+            top:1.1rem;
+            transition-delay:1100ms;
+        }
+
+        /*输入样式*/
+        .login-cont{
+            width:100%;
+        }
+        .form-row{
+            padding:0 0.5rem;
+            width:100%;
+        }
+         .form-input {
+            border-bottom: 1px solid #126bc5;
+            position:relative;
+            
+        }
+         .form-input input{
+             position:absolute;
+             left:13%;
+             bottom:0;
+             outline:none;
+             border:none;
+             text-indent:0.4rem;
+             height:0.7rem;
+             width:3.8rem;
+             font-size:0.3rem;
+        }
+         .iconfont{
+             margin-left:0.4rem;
+             color:#3879d9;
+         }
+        a {
+            position:absolute;
+            right:0.1rem;
+            bottom:0.1rem;
+            color: #3879d9;
+            font-size: 0.3rem;
+            text-decoration: none;
+            border:1px solid #fc7e27;
+            border-radius:5px;
+            padding:0.1rem;
+            color:#fc7e27;          
+        }
+        
+        .btn-block{
+            width:100%;
+            height:0.7rem;
+            border-radius:5px;
+            outline:none;
+            background-color:rgba(27,129,211,1);
+            color:white;
+            border:none;
+            margin-top:1rem;
+            font-size:0.28rem;
+        }
+       
+         .btn-block:disabled {
+            background-color: rgba(27,129,211,0.6);
+          }
+     
+    /*底部样式*/
+    .login-footer{
+        position:absolute;
+        bottom:0;
+        right:0;
+        -webkit-transition:all 400ms;
+        transition:all 400ms;
+        transform:translate3d(0,100%,0);
+        -webkit-transform:translate3d(0,100%,0);
+    }
+
+    .login-up1{
+        height:1.24rem;
+        width:56.8%;
+        -webkit-animation-delay:100ms;
+        transition-delay:100ms;
+    }
+    .login-up2{
+        height:0.9rem;
+        width:59.2%;
+        -webkit-animation-delay:300ms;
+        transition-delay:300ms;
+    }
+    .login-up3{
+        height:1.47rem;
+        width:100%;
+        -webkit-animation-delay:500ms;
+        transition-delay:500ms;
+    }
+
+    .login-radius{
+        position:absolute;
+        transition:all 200ms;
+        -webkit-transition:all 200ms;
+        -webkit-transform:translate3d(0,200%,0),scale(1.5);
+        transform:translate3d(0,200%,0),scale(1.5);
+        opacity:0.5;
+    }
+
+   .login-radiu{
+       position:absolute;
+       left:2.5rem;
+       bottom:1.5rem;
+       width:0.57rem;
+       height:0.55rem;
+   }
+   .login-radiu1{
+       left:2.1rem;
+       bottom:1.23rem;
+       width:0.21rem;
+       height:0.21rem;  
+       -webkit-animation-delay:800ms;
+       transition-delay:800ms;
+   }
+   .login-radiu2{
+       left:1.8rem;
+       bottom:1.5rem;
+       width:0.21rem;
+       height:0.21rem;
+       -webkit-animation-delay:850ms;
+       transition-delay:850ms;
+   }
+    .login-radiu3{
+       left:1.4rem;
+       bottom:1.45rem;
+       width:0.16rem;
+       height:0.16rem;
+       -webkit-animation-delay:900ms;
+       transition-delay:900ms;
+   }
+    .login-radiu4 {
+        left: 1rem;
+        bottom: 1.45rem;
+        width: 0.14rem;
+        height: 0.14rem;
+        -webkit-animation-delay:950ms;
+        transition-delay:950ms;
+    }
+    .login-radiu5{
+       left:1.2rem;
+       bottom:2rem;
+       width:0.15rem;
+       height:0.15rem;
+       -webkit-animation-delay:1000ms;
+       transition-delay:1000ms;
+   }
+     .login-radiu6{
+       left:1.6rem;
+       bottom:1.8rem;
+       width:0.16rem;
+       height:0.16rem;
+       -webkit-animation-delay:1050ms;
+       transition-delay:1050ms;
+   }
+   .login-radiu7{
+       left:1.5rem;
+       bottom:2.4rem;
+       width:0.12rem;
+       height:0.12rem;
+       -webkit-animation-delay:1100ms;
+       transition-delay:1100ms;
+   }
+      
+
+
+    </style>
+</head>
+
+
+<body>
+
+
+
+    <div id="content">
+            <img class="login-down1 login-head" src="images/login-down1.png" />
+            <img class="login-down2 login-head" src="images/login-down2.png" />
+            <img class="login-down3 login-head" src="images/login-down3.png" />
+            <img class="login-yun1 login-yun" src="images/login-yun1.png" />
+            <img class="login-yun2 login-yun" src="images/login-yun2.png" />
+            <img class="login-yun3 login-yun" src="images/login-yun3.png" />
+            <img class="login-logo" src="images/login-logo.png" />
+        <div class="login-cont">
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-user"></i>
+                    <input v-model="realName" type="text" placeholder="请输入用户名" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-company"></i>
+                    <input v-model="companyName" type="text" placeholder="请输入单位信息" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-10"></i>
+                    <input v-model="mobile" type="tel" placeholder="请输入手机号" />                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-input">
+                    <i class="iconfont icon-save"></i>
+                    <input v-model="smsCode" placeholder="请输入验证码" type="tel" />
+                    <btn-verify-code v-bind:verify-user="true" v-bind:mobile="mobile"></btn-verify-code>
+                </div>
+            </div>
+            <div class="form-row">
+                <span class="err-msg"></span>
+                <button v-on:click="login" class="btn-block" v-bind:disabled="!(mobile&&smsCode&&companyName&&realName)">绑定手机号</button>
+            </div>
+        </div>
+        <img class="login-up1 login-footer" src="images/login-up1.png" />
+        <img class="login-up2 login-footer" src="images/login-up2.png" />
+        <img class="login-up3 login-footer" src="images/login-up3.png" />
+        <img class="login-radiu1 login-radius" src="images/login-raidu1.png" />
+        <img class="login-radiu2 login-radius" src="images/login-raidu2.png" />
+        <img class="login-radiu3 login-radius" src="images/login-raidu3.png" />
+        <img class="login-radiu4 login-radius" src="images/login-raidu4.png" />
+        <img class="login-radiu5 login-radius" src="images/login-raidu5.png" />
+        <img class="login-radiu6 login-radius" src="images/login-raidu6.png" />
+        <img class="login-radiu7 login-radius" src="images/login-raidu7.png" />
+        <img class="login-radiu" src="images/login-up.png" />
+    </div>
+
+
+    <script src="../../../H5/Content/src/common/vue.js"></script>
+    <script src="../../../H5/Content/src/js/jquery-3.1.0.js"></script>
+    <script src="../../../H5/Content/layer/layer.js"></script>
+    <script src="../../../H5/Content/src/js/component/btn-verify-code.js"></script>
+    <script src="../../../H5/Content/src/common/httpParams.js"></script>
+    <script type="text/javascript">
+        function cacheUser(res) {
+            localStorage.userId = res.id + '';
+            localStorage.userName = res.name;
+            localStorage.userType = res.type;
+            localStorage.userPhone = res.phone;
+        }
+        var login = new Vue({
+            el: '#content',
+            data: {
+                passwordLogin: false,
+                userName: '',
+                password: '',
+                mobile: '',
+                smsCode: '',
+                id: '',
+                realName: '',
+                companyName:''
+            },
+            methods: {
+                login: function () {
+                    var self = this;
+                    var index = layer.msg("登录中...", { icon: 16, time: 0, shadeClose: false });
+                    $.post('/api/user/WxLogin', { strName: self.realName, strCompanyName: self.companyName,strPhone: self.mobile, strSmsCode: self.smsCode }, function (res) {
+                        if (res.error) {
+                            layer.msg(res.error, { icon: 2, time: 2000 })
+                            layer.close(index)
+                        } else {
+                            cacheUser(res);
+                            //直接跳到保修页面
+
+                            if (self.id) {
+                                location.href = "repair.html?id=" + self.id;
+                            } else {
+                                location.href = "scanCode.html";
+                            }
+                            
+                        }
+                    })
+                }
+            },
+            created: function () {
+                this.id = (new LG.URL()).get("id");
+                //if (!this.id) {
+                //    layer.msg("参数错误", { icon: 2, time: 2000 });
+                //    //不给登陆
+                //    $(".btn-block").attr("disabled", "disabled").css("backgroundcolor","rgba(27,129,211,0.7)")
+                //}
+                $(function () {
+                    $(".login-down3,.login-down2,.login-down1").css({
+                        "transform": "translate3d(0, 0, 0)",
+                        "-ms-transform": "translate3d(0, 0, 0)",
+                        "-o-transform": "translate3d(0, 0, 0)",
+                        "-webkit-transform": "translate3d(0, 0, 0)",
+                        "-moz-transform": "translate3d(0, 0, 0)",
+  
+                    });
+                    
+                    $(".login-yun1,.login-yun2,.login-yun3").css({
+                        "transform": "translate3d(0,0,0)", "opacity": "1",
+                        "-webkit-transform": "translate3d(0,0,0)", "opacity": "1",
+                        "-ms-transform": "translate3d(0, 0, 0)" ,"opacity": "1",
+                        "-o-transform": "translate3d(0, 0, 0)", "opacity": "1",
+                        "-moz-transform": "translate3d(0, 0, 0)", "opacity": "1",
+                    });
+                  
+                    $(".login-up3,.login-up2,.login-up1").css({
+                        "transform": "translate3d(0,0,0)",
+                        "-webkit-transform": "translate3d(0,0,0)",
+                        "-ms-transform": "translate3d(0, 0, 0)",
+                        "-o-transform": "translate3d(0, 0, 0)",
+                        "-moz-transform": "translate3d(0, 0, 0)",
+                    });
+                  
+                    $(".login-radiu1,.login-radiu2,.login-radiu3,.login-radiu4,.login-radiu5,.login-radiu6,.login-radiu7").css({
+                        "transform": "translate3d(0,0,0)", "opacity": "1", "scale": "(1)",
+                        "-webkit-transform": "translate3d(0,0,0)", "opacity": "1", "scale": "(1)"
+                    });
+              
+                })
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

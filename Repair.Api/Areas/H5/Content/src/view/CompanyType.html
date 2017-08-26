@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>请选择角色类型</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../css/my.css" rel="stylesheet" />
+    <link href="//at.alicdn.com/t/font_lz0upabtupojemi.css" rel="stylesheet" />
+   <style>
+       .body{
+           height:100%;
+           width:100%;
+       }
+       .vertical-center{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+        }
+       .btns{
+           display:block;
+           height:50px;
+           color:white;
+           line-height:50px;
+           text-align:center;
+           border-radius:5px;
+           width:250px;
+           font-size:16px;
+           text-decoration:none;
+       }
+       .btn1{
+           background:rgb(114, 133, 148);
+           margin-bottom:40px;
+       }
+       .btn2{
+           background:#3879d9;
+       }
+   </style>
+</head>
+<body>
+    <div class="text-center panel" id="CompanyType">
+        <!--<div class="person-info text-center">
+            请选择角色类型
+        </div>-->    
+        <div class="vertical-center">
+           <a class='btns btn1' v-on:click="LinkCompany(1)">加入已有企业</a>
+           <a class='btns btn2' v-on:click="LinkCompany(2)">注册企业</a>
+        </div>
+
+        <!--<div class="vertical-center" v-else>
+            <div class="panel-group"><a class='btn btn-success' v-on:click="LinkCompany(1)">加入已有企业</a></div>
+            <div class="panel-group"><a class='btn btn-success' v-on:click="LinkCompany(2)">注册企业</a></div>
+        </div>-->
+    </div>
+    <script src="../common/vue.js"></script>
+    <script src="../common/jquery-3.1.0.js"></script>
+    <script src="../js/component/btn-verify-code.js"></script>
+    <script src="../common/layer/layer.js"></script>
+    <script type="text/javascript">
+       
+        new Vue({
+            el: "#CompanyType",
+            data: {
+                
+            },
+            methods: {
+                LinkCompany: function (Type) {
+                    //appType=1 代表使用端 Type=1 代表加入使用公司，Type=2 注册使用公司，
+                    //appType=2 代表使用端 Type=1 代表加入服务公司，Type=2 注册服务公司，  
+                    if(Type==1)                                   
+                        location.href = "addCompany.html";
+                    else 
+                        location.href = "useCompanyInfo.html";
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
